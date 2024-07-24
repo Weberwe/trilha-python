@@ -38,3 +38,5 @@ Ao realizar o primeiro acesso, será pedido para alterar a senha de acesso. A no
 | ---- |  ---- |  ---- |
 | 22/07/2024 | Segunda-Feira | Desenvolver algoritmos estruturados em lógica de programação |
 | 23/07/2024 | Terça-Feira | Desenvolver algoritmos estruturados em lógica de programação |
+| 24/07/2024 | Quarta-Feira | Desenvolver algoritmos estruturados em lógica de programação |
+
