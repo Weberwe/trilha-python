@@ -104,7 +104,7 @@ Se você é usuário de Linux, provavelmente você já sabe instalar o Python ;)
 1. Instale o Python 3.6 e o Python 3.10 simultaneamente:
     1. Baixe e instale o Python 3.6 e o Python 3.10 na sua máquina.
     1. Verifique a instalação rodando `python --version`;
-    1. Troque a ordem de precedência do para o Python 3.6 no PATH.
+    1. Troque a ordem de precedência para o Python 3.6 no PATH.
     1. Verifique a instalação rodando `python --version`;
 1. Remova o Python 3.6:
     1. Desinstale o Python 3.6 do seu sistema.
@@ -112,7 +112,7 @@ Se você é usuário de Linux, provavelmente você já sabe instalar o Python ;)
 1. Instale o Python 3.7 e o Python 3.11 simultaneamente:
     1. Baixe e instale o Python 3.7 e o Python 3.11 na sua máquina.
     1. Verifique a instalação rodando `python --version`.
-    1. Troque a ordem de precedência do para o Python 3.7 no PATH.
+    1. Troque a ordem de precedência para o Python 3.7 no PATH.
     1. Verifique a instalação rodando `python --version`;
 1. Remova o Python 3.10:
     1. Desinstale o Python 3.10 do seu sistema.
@@ -120,7 +120,7 @@ Se você é usuário de Linux, provavelmente você já sabe instalar o Python ;)
 1. Instale o Python 3.8 e o Python 3.7 simultaneamente:
     1. Baixe e instale o Python 3.8 e o Python 3.7 na sua máquina.
     1. Verifique a instalação rodando `python --version`.
-    1. Troque a ordem de precedência do para o Python 3.8 no PATH.
+    1. Troque a ordem de precedência para o Python 3.8 no PATH.
     1. Verifique a instalação rodando `python --version`.
 1. Remova o Python 3.11:
     1. Desinstale o Python 3.11 do seu sistema.
@@ -128,7 +128,7 @@ Se você é usuário de Linux, provavelmente você já sabe instalar o Python ;)
 1. Instale o Python 3.9 e o Python 3.8 simultaneamente:
     1. Baixe e instale o Python 3.9 e o Python 3.8 na sua máquina.
     1. Verifique a instalação rodando `python --version`;
-    1. Troque a ordem de precedência do para o Python 3.9 no PATH.
+    1. Troque a ordem de precedência para o Python 3.9 no PATH.
     1. Verifique a instalação rodando `python --version`.
 1. Remova o Python 3.7:
     1. Desinstale o Python 3.7 do seu sistema.
