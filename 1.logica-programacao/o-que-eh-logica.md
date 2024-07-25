@@ -291,9 +291,3 @@ Vale a pena ressaltar que praticamente qualquer pessoa seria capaz de resolver o
 
     </details>
 
-1. Considere uma calculadora comum de 4 operações, mas as teclas de multiplicação de divisão estão estragadas. Crie dois algoritmos que resolvam as operações de multiplicação e divisão usando *apenas* as operações de soma e subtração. Teste o resultado com as operações :
-    - 12 x 4
-    - 23 x 11
-    - 10 / 2
-    - 175 / 7
-    - 2^8

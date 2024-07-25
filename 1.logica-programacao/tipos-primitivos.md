@@ -1,5 +1,18 @@
 # tipos primitivos
 
+Índice
+1. [informação](#informação)
+1. [constantes](#constantes)
+1. [variáveis](#variáveis)
+1. [declarando variáveis](#declarando-variáveis)
+1. [expressões aritméticas](#expressões-aritméticas)
+1. [parênteses](#parênteses)
+1. [prioridades](#prioridades)
+1. [expressões lógicas](#expressões-lógicas)
+1. [comandos de atribuição](#comandos-de-atribuição)
+
+## informação
+
 Para entender os tipos primitivos, tem que estar atentos para um conceito muito importante, *a informação*.
 
 Existe uma diferença sutil entre dado e informação. Ao citar uma data, por exemplo, 20 de setembro. Essa data sozinha, representa apenas um dado, mas ao dizer que é a data de início da Revolução Farroupilha, está sendo agregado um valor ao dado da data, apresentando uma informação.
@@ -628,7 +641,7 @@ Na resolução das expressões aritméticas, as operações guardam uma hierarqu
 | :----: | :----: |
 | 1 | parênteses mais internos |
 | 2 | ** |
-| 3 | * / // % |
+| 3 | * / % // |
 | 4 | + - |
 
 Em caso de empate (operadores de mesma prioridade), deve-se resolver da esquerda para a direita, conforme a sequência da própria expressão. Se for necessário alterar essa prioridade, usa-se parênteses. Veja alguns exemplos :
@@ -791,7 +804,7 @@ Em caso de empate (operadores de mesma prioridade), deve-se resolver da esquerda
 Usa-se `operadores relacionais` para realizar comparações entre dois valores de mesmo tipo primitivo, que podem ser representados como constantes, ou variáveis ou expressões aritméticas. Eles são usados para construir equações.
 
 | Operador | Função | Exemplo |
-| ---- | ---- | ---- |
+| :----: | :----: | :----: |
 | `==` | igual a | `3 == 2`, `"a" == "a"` |
 | `>` | maior que | `5 > 4`, `X > Y` |
 | `<` | menor que | `5 < 4`, `A < Z` |
@@ -806,7 +819,7 @@ O resultado obetido de uma relação é sempre um valor **lógico**. Por exemplo
 Existem três `operadores lógicos` básicos que são usados para a formação de novas proposições lógicas compostas a partir de outras proposições lógicas simples.
 
 | Operador | Função |
-| ---- | ---- |
+| :----: | :----: |
 | `not` | negação |
 | `and` | conjunção |
 | `or` | disjunção |
@@ -847,36 +860,32 @@ Alguns exemplos práticos :
     - Como é possível ver, usou-se o conectivo `e` (que no Python é usado como `and`) para verificar se a proposição *ficar em casa* será satisfeita. A pessoa ficará em casa apenas se chover **E** trovejar, se ambas forem verdade ao mesmo tempo.<br><br>
 - Se chover `ou` trovejar, eu fico em casa.
     - Agora, usando o operadore `ou` (que no Python é usado como `or`) indica que a pessoa ficará vem casa se chover **OU** se trovejar, aumentando as chaves de não sair de casa.<br><br>
--
 ```python
 2 < 5 and 15/3 == 6
  True and 5 == 6
  True and False
      False
 ```
--
 ```python
 2 < 5 or 15/3 == 6
  True or 5 == 6
  True or False
      True
 ```
--
 ```python
 False or 20 // (18 / 3) != (21 / 3) // 2
-  False or 20 // 6 != 7 // 2
-  False or 3 != 3
-  False or False
-     False
+False or 20 // 6 != 7 // 2
+False or 3 != 3
+False or False
+    False
 ```
--
 ```python
 not True or (3 ** 2) / 3 < 15 - 35 % 7
-  not True or 9 / 3 < 15 - 0
-  not True or 3 < 15
-  not True or True
-     False or True
-          True
+not True or 9 / 3 < 15 - 0
+not True or 3 < 15
+not True or True
+   False or True
+        True
 ```
 
 ### prioridades
@@ -987,3 +996,16 @@ E por fim, veja a prioridade entre todos os operadores :
     1. Verifique se 99 - 11 é diferente de 88 or 18 / 3 é igual a 6.
 
 </details>
+
+## comando de atribuição
+
+Um comando de atribuição permite armazenar um valor em uma variável (ainda usando a analogia do armário, equivalente a guardar na gaveta). Para o comando de atribuição funcionar, é usado o sinal de igual `=`.
+
+Veja exemplos :
+- `numero = 10`
+- `nome_completo = 'Arnold Schwarzenegger'`
+
+A ordem de atribuição será sempre da direita para a esquerda, isto é, a variável `nome` está recebendo a string `'Arnold Schwarzenegger'` para ser armazenada dentro dela. Tenha em mente que, se outro nome for atribuído à variáve, o valor antigo será perdido para todo sempre.
+
+Sempre use nome de variáveis que sejam compatíveis com o que ela vai armazenar, isso facilita a ligibilidade do código.
+
