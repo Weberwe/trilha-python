@@ -73,65 +73,72 @@ Se você é usuário de Linux, provavelmente você já sabe instalar o Python ;)
 
 1. Instale o Python 3.6:
     1. Baixe e instale o Python 3.6 na sua máquina.
-    1. Verifique a instalação rodando python3.6 --version.
+    1. Verifique a instalação rodando `python --version`.
 1. Instale o Python 3.7:
     1. Baixe e instale o Python 3.7 na sua máquina.
-    1. Verifique a instalação rodando python3.7 --version.
+    1. Verifique a instalação rodando `python --version`.
 1. Remova o Python 3.6:
     1. Desinstale o Python 3.6 do seu sistema.
-    1. Verifique a remoção rodando python3.6 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Instale o Python 3.8:
     1. Baixe e instale o Python 3.8 na sua máquina.
-    1. Verifique a instalação rodando python3.8 --version.
+    1. Verifique a instalação rodando `python --version`.
 1. Remova o Python 3.7:
     1. Desinstale o Python 3.7 do seu sistema.
-    1. Verifique a remoção rodando python3.7 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Instale o Python 3.9:
     1. Baixe e instale o Python 3.9 na sua máquina.
-    1. Verifique a instalação rodando python3.9 --version.
+    1. Verifique a instalação rodando `python --version`.
 1. Remova o Python 3.8:
     1. Desinstale o Python 3.8 do seu sistema.
-    1. Verifique a remoção rodando python3.8 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Instale o Python 3.10:
     1. Baixe e instale o Python 3.10 na sua máquina.
-    1. Verifique a instalação rodando python3.10 --version.
+    1. Verifique a instalação rodando `python --version`.
 1. Instale o Python 3.11:
     1. Baixe e instale o Python 3.11 na sua máquina.
-    1. Verifique a instalação rodando python3.11 --version.
+    1. Verifique a instalação rodando `python --version`.
 1. Remova o Python 3.9:
     1. Desinstale o Python 3.9 do seu sistema.
-    1. Verifique a remoção rodando python3.9 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Instale o Python 3.6 e o Python 3.10 simultaneamente:
     1. Baixe e instale o Python 3.6 e o Python 3.10 na sua máquina.
-    1. Verifique a instalação rodando python3.6 --version e python3.10 --version.
+    1. Verifique a instalação rodando `python --version`;
+    1. Troque a ordem de precedência do para o Python 3.6 no PATH.
+    1. Verifique a instalação rodando `python --version`;
 1. Remova o Python 3.6:
     1. Desinstale o Python 3.6 do seu sistema.
-    1. Verifique a remoção rodando python3.6 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Instale o Python 3.7 e o Python 3.11 simultaneamente:
     1. Baixe e instale o Python 3.7 e o Python 3.11 na sua máquina.
-    1. Verifique a instalação rodando python3.7 --version e python3.11 --version.
+    1. Verifique a instalação rodando `python --version`.
+    1. Troque a ordem de precedência do para o Python 3.7 no PATH.
+    1. Verifique a instalação rodando `python --version`;
 1. Remova o Python 3.10:
     1. Desinstale o Python 3.10 do seu sistema.
-    1. Verifique a remoção rodando python3.10 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Instale o Python 3.8 e o Python 3.7 simultaneamente:
     1. Baixe e instale o Python 3.8 e o Python 3.7 na sua máquina.
-    1. Verifique a instalação rodando python3.8 --version e python3.7 --version.
+    1. Verifique a instalação rodando `python --version`.
+    1. Troque a ordem de precedência do para o Python 3.8 no PATH.
+    1. Verifique a instalação rodando `python --version`.
 1. Remova o Python 3.11:
     1. Desinstale o Python 3.11 do seu sistema.
-    1. Verifique a remoção rodando python3.11 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Instale o Python 3.9 e o Python 3.8 simultaneamente:
     1. Baixe e instale o Python 3.9 e o Python 3.8 na sua máquina.
-    1. Verifique a instalação rodando python3.9 --version e python3.8 --version.
+    1. Verifique a instalação rodando `python --version`;
+    1. Troque a ordem de precedência do para o Python 3.9 no PATH.
+    1. Verifique a instalação rodando `python --version`.
 1. Remova o Python 3.7:
     1. Desinstale o Python 3.7 do seu sistema.
-    1. Verifique a remoção rodando python3.7 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Remova o Python 3.8:
     1. Desinstale o Python 3.8 do seu sistema.
-    1. Verifique a remoção rodando python3.8 --version e confirmando que a versão não está mais disponível.
+    1. Verifique a remoção rodando `python --version` e confirmando que a versão não está mais disponível.
 1. Instale a última versão do Python (atual):
     1. Baixe e instale a última versão do Python 3 disponível.
-    1. Verifique a instalação rodando python3 --version.
+    1. Verifique a instalação rodando `python --version`.
     1. Confirme que é a única versão instalada no sistema.
 
 </details>
-
