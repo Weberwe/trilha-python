@@ -64,6 +64,31 @@ Python 3.xx
 C:\> |
 ```
 
+#### variáveis de ambiente
+Adicionar um programa às variáveis de ambiente do Windows envolve a atualização da variável de ambiente `PATH` para incluir o diretório do programa.
+
+Veja os passos :
+
+1. **Abrir as Propriedades do Sistema:**
+    - Pressione `Win + R`, digite `sysdm.cpl` e pressione `Enter`.
+1. **Acessar as Variáveis de Ambiente:**
+    - Na janela "Propriedades do Sistema", vá para a guia `Avançado` e clique em `Variáveis de Ambiente...`.
+1. **Editar a Variável PATH:**
+    - Na seção "Variáveis do sistema", encontre a variável `Path` e selecione-a.
+    - Clique em `Editar...`.
+1. **Adicionar o Caminho do Programa:**
+    - Na janela "Editar Variável de Ambiente", clique em `Novo` e adicione o caminho completo do diretório do programa que deseja adicionar.
+    - Por exemplo, se for adicionar o Python instalado para o usuário, vai estar em
+        - `C:\Users\<seu_usuário>\AppData\Programs\Python\Python312`
+    - Uma vez localizado, adicione esse caminho.
+1. **Salvar as Alterações:**
+    - Clique em `OK` para fechar todas as janelas abertas.
+
+#### verificando
+Para garantir que o programa foi adicionado ao `PATH`, abra o `Prompt de Comando` (CMD) e digite o comando relacionado ao programa para verificar se ele é reconhecido pelo sistema. Por exemplo, como foi adicionado o Python, digite `python --version` para verificar se o comando é executado corretamente.
+
+Isso deve permitir que o programa seja executado a partir de qualquer diretório no Prompt de Comando.
+
 ### linux
 
 Se você é usuário de Linux, provavelmente você já sabe instalar o Python ;)
