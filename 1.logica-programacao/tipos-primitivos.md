@@ -950,7 +950,7 @@ E por fim, veja a prioridade entre todos os operadores :
     1. Verifique se 40 // 7 é maior que 5 ou 9 ** 2 é diferente de 81.
     1. Verifique se 48 % 11 é igual a 4 e 10 * 2 é maior que 19.
         ```
-        48 % 11 == 4 and 10 * 2 > 19
+        48 % 11 ==F 4 and 10 * 2 > 19
               4 == 4 and 20 > 19
                 True and True
                     True
@@ -1008,4 +1008,3 @@ Veja exemplos :
 A ordem de atribuição será sempre da direita para a esquerda, isto é, a variável `nome` está recebendo a string `'Arnold Schwarzenegger'` para ser armazenada dentro dela. Tenha em mente que, se outro nome for atribuído à variáve, o valor antigo será perdido para todo sempre.
 
 Sempre use nome de variáveis que sejam compatíveis com o que ela vai armazenar, isso facilita a ligibilidade do código.
-
