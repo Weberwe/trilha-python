@@ -69,19 +69,19 @@ Adicionar um programa às variáveis de ambiente do Windows envolve a atualizaç
 
 Veja os passos :
 
-1. **Abrir as Propriedades do Sistema:**
+1. Abrir as Propriedades do Sistema :
     - Pressione `Win + R`, digite `sysdm.cpl` e pressione `Enter`.
-1. **Acessar as Variáveis de Ambiente:**
+1. Acessar as Variáveis de Ambiente :
     - Na janela "Propriedades do Sistema", vá para a guia `Avançado` e clique em `Variáveis de Ambiente...`.
-1. **Editar a Variável PATH:**
+1. Editar a Variável PATH :
     - Na seção "Variáveis do sistema", encontre a variável `Path` e selecione-a.
     - Clique em `Editar...`.
-1. **Adicionar o Caminho do Programa:**
+1. Adicionar o Caminho do Programa :
     - Na janela "Editar Variável de Ambiente", clique em `Novo` e adicione o caminho completo do diretório do programa que deseja adicionar.
     - Por exemplo, se for adicionar o Python instalado para o usuário, vai estar em
         - `C:\Users\<seu_usuário>\AppData\Programs\Python\Python312`
     - Uma vez localizado, adicione esse caminho.
-1. **Salvar as Alterações:**
+1. Salvar as Alterações :
     - Clique em `OK` para fechar todas as janelas abertas.
 
 #### verificando
