@@ -17,4 +17,3 @@ Abaixo, há links relacionados a outros tópicos que também são interessantes.
     * [Git Notes for Professionals](https://books.goalkicker.com/GitBook) (en-us)
 * VS Code
     * [Boost Your Coding Fu](https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/dedication) (en-us)
-

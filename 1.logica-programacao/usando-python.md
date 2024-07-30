@@ -257,4 +257,3 @@ Refaça todos os exercícios do arquivo [tipos-primitivos](tipos-primitivos.md#e
 Use um ou mais módulos Python para salvar a execução de seus códigos.
 
 </details>
-

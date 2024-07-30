@@ -31,4 +31,3 @@ Ao realizar o primeiro acesso, será pedido para alterar a senha de acesso. A no
     - caracteres minúsculos (a - z)
     - números (0 - 9)
     - caracteres especiais, não alfanuméricos (!,@,#,&,% etc)
-
