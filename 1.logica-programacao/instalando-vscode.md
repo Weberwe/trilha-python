@@ -40,20 +40,20 @@ A versão **User Installer** é usada para realizar uma instalação onde o usu�
 1. **Revisar e Instalar:**
     - Revise as opções de instalação de modo que fique parecido com o modelo abaixo :
     ```
-    Destination location:
-        C:\Users\<seu-usuario>\AppData\Local\Programs\Microsoft VS Code
+    Local de destino:
+        C:\Users\<seu_usuario>\AppData\Local\Programs\Microsoft VS Code
 
-    Start Menu folder:
+    Pasta do Menu Iniciar:
         Visual Studio Code
 
-    Additional tasks:
-        Additional icons:
-            Create a desktop icon
-        Other:
-            Add "Open with Code" action to Windows Explorer directory context menu
-            Add "Open with Code" action to Windows Explorer file context menu
-            Add to PATH (requires shell restart)
-            Register Code as an editor for supported file types
+    Tarefas adicionais:
+        Atalhos adicionais:
+            Criar um atalho na área de trabalho
+        Outros:
+            Adicione a ação "Abrir com Code" ao menu de contexto de arquivo do Windows Explorer
+            Adicione a ação "Abrir com Code" ao menu de contexto de diretório do Windows Explorer
+            Registre Code como um editor para tipos de arquivos suportados
+            Adicione em PATH (disponível após reiniciar)
     ```
    - Clique em "Install" (Instalar). Aguarde a instalação ser concluída.
 1. **Finalizar a Instalação:**
@@ -73,25 +73,25 @@ A versão **User Installer** é usada para realizar uma instalação onde o usu�
 
 1. **Dependendo da Distribuição, Utilize o Método Apropriado:**
 
-   **Ubuntu/Debian:**
-   - Abra o terminal.
-   - Digite o comando:
-     ```
-     sudo apt update
-     sudo apt install code
-     ```
-   - Pressione Enter e siga as instruções para instalar.<br><br>
+    **Ubuntu/Debian:**
+    - Abra o terminal.
+    - Digite o comando:
+    ```
+    sudo apt update
+    sudo apt install code
+    ```
+    - Pressione Enter e siga as instruções para instalar.<br><br>
 
-   **Fedora/RHEL:**
-   - Abra o terminal.
-   - Digite o comando:
-     ```
-     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-     sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-     sudo dnf check-update
-     sudo dnf install code
-     ```
-   - Pressione Enter e siga as instruções para instalar.<br><br>
+    **Fedora/RHEL:**
+    - Abra o terminal.
+    - Digite o comando:
+    ```
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+    sudo dnf check-update
+    sudo dnf install code
+    ```
+    - Pressione Enter e siga as instruções para instalar.<br><br>
 
 2. **Abrir o VS Code:**
    - Após a instalação, abra o Visual Studio Code pelo menu de aplicativos ou digitando `code` no terminal.
@@ -148,4 +148,3 @@ Há uma extensão perfeita para trabalhar com Python no VS Code. Para instalá-l
    - O terminal deve abrir na parte inferior do VS Code e exibir a saída `Olá, mundo!`.
 
 Agora, você está pronto para começar a programar em Python no VS Code com a extensão instalada.
-
