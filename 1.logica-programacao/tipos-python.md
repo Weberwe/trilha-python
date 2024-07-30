@@ -311,3 +311,181 @@ Para transformar em algoritmo, pode se fazer de várias formas :
 </details>
 
 ## Texto
+
+O Python pode manipular texto (representado pelo tipo `str`, também chamado de `strings`), bem como os números. Isso inclui caracteres `!`, palavras `coelho`, nomes `Paris`, frases `Eu te protejo.`, `Oba! :)` etc.. Eles podem ser colocados entre aspas simples `'...'` ou aspas duplas `"..."` com o mesmo resultado.
+
+```python
+>>> 'sou um texto'  # aspas simples
+'sou um texto'
+>>> "sou outro texto"  # aspas duplas
+'sou outro texto'
+>>> '1984'  # dígitos e números entre aspas também são strings
+'1984'
+```
+
+Para colocar aspas entre aspas, precisamos "escapá-la", precedendo-as com `\`. Alternativamente, podemos usar o outro tipo de aspas:
+
+```python
+>>> 'The Kids Aren\'t Alright'  # use \' para escapar as aspas simples...
+"The Kids Aren't Alright"
+>>> "The Kids Aren't Alright"  # ou use aspas duplas
+"The Kids Aren't Alright"
+>>>
+>>> '"pois não", disse o garçom'
+'"pois não", disse o garçom'
+>>> "\"pois não\", disse o garçom"
+'"pois não", disse o garçom'
+>>> |
+```
+
+No shell do Python, a definição de string e a string de saída podem parecer diferentes. A função `print()` produz uma saída mais legível, omitindo as aspas delimitadoras e imprimindo caracteres de escape e especiais:
+```python
+>>> texto = 'linha um\nlinha dois'
+>>> texto  # sem o print(), caracteres especiais são incluídos na string
+'linha um\nlinha dois'
+>>> print(texto)  # com o print, os caracteres especiais são interpretados
+linha um
+linha dois
+>>>
+```
+
+### Caracteres Especiais
+
+Os caracteres especiais são uma forma de mandar para a linguagem de programação comandos a serem executados de dentro da string :
+
+- `\n` : é usado quando se quer criar uma nova linha na exibição do texto;
+```python
+>>> print('linha 1\nlinha 2\nlinha 3\nlinha 4\n')
+linha 1
+linha 2
+linha 3
+linha 4
+
+>>> |
+```
+- `\t` : é usado quando se quer inserir uma tabulação no texto;
+```python
+>>> print('sem tabulação\n\tuma tabulação\n\t\tduas tabulações\n\t\t\ttrês tabulações')
+sem tabulação
+    uma tabulação
+        duas tabulações
+            três tabulações
+>>> |
+```
+
+Se não quiser que os caracteres precedidos por `\` sejam interpretados como caracteres especiais, pode-se usar strings `raw` ("crua" ou sem processamento de caracteres de escape) adicionando um r antes da primeira aspa ou então colocando duas `\\`:
+
+```python
+>>> print('C:\nemo')  # aqui \n indica nova linha!
+C:
+emo
+>>> print(r'C:\nemo')  # note o r antes da aspa
+C:\nemo
+>>> print('c:\nemo\\nemo')  # repare no uso duplo da \\
+c:
+emo\nemo
+>>> |
+```
+
+Há um aspecto sutil nas strings raw: uma string raw não pode terminar em um número ímpar de caracteres `\`.
+
+```python
+>>> print(r'C:\nemo\\')
+C:\nemo\\
+>>>
+>>> print(r'C:\nemo\\\')
+  File "<stdin>", line 1
+    print(r'C:\nemo\\\')
+          ^
+SyntaxError: unterminated string literal (detected at line 1)
+>>> |
+```
+
+### String Literais
+
+As strings literais podem abranger várias linhas. Uma maneira é usar as aspas triplas: `"""..."""` ou `'''...'''`. O fim das linhas é incluído automaticamente na string, mas é possível evitar isso adicionando uma `\` no final.
+O seguinte exemplo:
+```python
+>>> print("""\
+... Uso: alguma coisa [opcional]
+...     -h                      Mostra esta mensagem.
+...     -H hostname             Nome do host para conectar.
+... """)
+Uso: alguma coisa [opcional]
+  -h              Mostra esta mensagem.
+  -H hostname     Nome do host para conectar.
+
+>>> |
+```
+
+```python
+>>> print("""sou uma string
+... dividida em apenas \
+... duas linhas""")
+sou uma string
+dividida em apenas duas linhas
+>>> |
+```
+
+## Exercícios de Texto e Print
+
+<details>
+  <summary>Lista de Exercícios</summary>
+
+1. Exercícios Simples
+    1. Crie uma string com seu nome e imprima-a.
+    1. Crie uma string com uma citação famosa e imprima-a.
+    1. Use aspas duplas para criar uma string e imprima-a.
+    1. Use aspas simples para criar uma string e imprima-a.
+    1. Crie uma string com aspas dentro dela, usando aspas duplas e simples, e imprima-a.
+    1. Crie uma string que contenha uma nova linha (\n) e imprima-a.
+    1. Crie uma string que contenha um tab (\t) e imprima-a.
+    1. Crie uma string que contenha tanto \n quanto \t e imprima-a.
+    1. Crie uma string que contenha barras invertidas (\\) e imprima-a.
+    1. Crie uma string usando raw string (prefixo r) e imprima-a.
+1. Exercícios de Nível Intermediário
+    1. Crie uma string com várias linhas usando \n e imprima-a.
+    1. Crie uma string com várias tabs usando \t e imprima-a.
+    1. Crie uma string com um caminho de arquivo usando barras invertidas e imprima-a.
+    1. Use raw string para criar um caminho de arquivo e imprima-a.
+    1. Combine aspas duplas e simples em uma string e imprima-a.
+    1. Crie uma string que contenha aspas simples escapadas e imprima-a.
+    1. Crie uma string que contenha aspas duplas escapadas e imprima-a.
+    1. Crie uma string com uma citação famosa usando raw string e imprima-a.
+    1. Crie uma string que contenha um caractere de nova linha escapado (\\n) e imprima-a.
+    1. Crie uma string que contenha um caractere de tab escapado (\\t) e imprima-a.
+1. Exercícios Avançados
+    1. Crie uma string longa usando múltiplas linhas e o caractere \n e imprima-a.
+    1. Crie uma string longa usando múltiplas tabs e o caractere \t e imprima-a.
+    1. Crie uma string com várias barras invertidas (\\\\) e imprima-a.
+    1. Crie uma string que combine várias linhas, tabs e barras invertidas e imprima-a.
+    1. Use raw string para criar uma string com várias linhas e tente imprimi-la.
+    1. Use raw string para criar uma string com várias tabs e tente imprimí-la.
+    1. Use raw string para criar uma string com várias barras invertidas e imprima-a.
+    1. Combine aspas duplas, simples e barras invertidas em uma string e imprima-a.
+    1. Crie uma string com uma citação famosa que contenha várias linhas e imprima-a.
+    1. Crie uma string com um poema que contenha várias tabs e imprima-a.
+1. Exercícios Complexos
+    1. Crie uma string que represente uma linha de JSON e imprima-a.
+    1. Crie uma string que represente uma linha de script HTML e imprima-a.
+    1. Crie uma string que contenha CSS com várias linhas e imprima-a.
+    1. Crie uma string que contenha código Python com várias linhas e imprima-a.
+    1. Crie uma string com uma mensagem que use aspas duplas, simples, \n e \t, e imprima-a.
+    1. Crie uma string que represente um caminho de rede e imprima-a.
+    1. Crie uma string que contenha uma citação longa com várias linhas e tabs, e imprima-a.
+    1. Use raw string para criar uma string com código Python e imprima-a.
+    1. Use raw string para criar uma string com script HTML e imprima-a.
+    1. Use raw string para criar uma string com CSS e imprima-a.
+1. Exercícios Muito Complexos
+    1. Crie uma string que contenha um bloco de código JSON com várias linhas e imprima-a.
+    1. Crie uma string que contenha um bloco de código HTML com várias linhas e imprima-a.
+    1. Crie uma string que contenha um bloco de código CSS com várias linhas e imprima-a.
+    1. Crie uma string que contenha um bloco de código Python com várias linhas e imprima-a.
+    1. Combine raw string com uma string que contenha um bloco de código Python e imprima-a.
+    1. Combine raw string com uma string que contenha um bloco de código HTML e imprima-a.
+    1. Combine raw string com uma string que contenha um bloco de código CSS e imprima-a.
+    1. Crie uma string que contenha um caminho de arquivo complexo e imprima-a.
+    1. Crie uma string que combine várias técnicas de formatação (raw string, escapamento, \n, \t) e imprima-a.
+    1. Crie uma string que contenha um script completo em qualquer linguagem de programação e imprima-a.
+
+</details>
