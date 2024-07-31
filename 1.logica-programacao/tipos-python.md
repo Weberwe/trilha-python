@@ -464,6 +464,10 @@ C:\nemo\\
     print(r'C:\nemo\\\')
           ^
 SyntaxError: unterminated string literal (detected at line 1)
+
+# mais exemplos
+print('uma tabulação\\tdois')
+print('C:\\usuario\\ted')
 >>> |
 ```
 
@@ -548,6 +552,13 @@ dividida em apenas duas linhas
     1. Crie uma string que contenha um bloco de código CSS com várias linhas e imprima-a.
     1. Crie uma string que contenha um bloco de código Python com várias linhas e imprima-a.
     1. Combine raw string com uma string que contenha um bloco de código Python e imprima-a.
+        '''python
+        texto = """
+        valor = 10
+        print(valor)
+        """
+        print(r'estou na raw string ',texto) 
+        '''
     1. Combine raw string com uma string que contenha um bloco de código HTML e imprima-a.
     1. Combine raw string com uma string que contenha um bloco de código CSS e imprima-a.
     1. Crie uma string que contenha um caminho de arquivo complexo e imprima-a.
@@ -555,4 +566,284 @@ dividida em apenas duas linhas
     1. Crie uma string que contenha um script completo em qualquer linguagem de programação e imprima-a.
 
 </details>
+
+## Manipulando Strings
+
+Strings suportam uma série de operações usando alguns operadores matemáticos.
+
+### Concatenando
+
+Elas podem ser concatenadas (coladas, "somadas") com o operador `+` ou então apenas deixando um espaço entre elas :
+```python
+>>> 'Py' + 'thon'
+'Python'
+>>> 'Arnold' + ' ' + 'Schwarzenegger'
+'Arnold Schwarzenegger'
+>>> 'Arnold' ' ' 'Schwarzenegger'
+'Arnold Schwarzenegger'
+>>> 'Arnold ' 'Schwarzenegger'
+'Arnold Schwarzenegger'
+>>> |
+```
+
+Concaternar strings com espaço pode ser útil para quebrar uma longa string e várias linhas :
+```python
+>>> texto = ('Coloque várias strings dentro de parênteses '
+...          'para juntá-las em uma.')
+>>> texto
+'Coloque várias strings dentro de parênteses para juntá-las em uma.'
+>>> |
+```
+
+Strings literais não podem ser concatenadas com variáveis dessa forma, mesmo elas também sendo strings.
+Para isso funcionar, é necessário usar o operador `+`.
+
+Veja exemplos :
+```python
+>>> # definindo as variáveis
+>>> nome = 'Arnold'
+>>> sobrenome = 'Schwarzenegger'
+```
+```python
+>>> # mostrando os erros
+>>> nome 'Schwarzenegger'
+  File "<stdin>", line 1
+    nome 'Schwarzenegger'
+         ^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+>>>
+>>> print('Arnold' sobrenome)
+  File "<stdin>", line 1
+    print('Arnold' sobrenome)
+          ^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+>>>
+>>> nome sobrenome
+  File "<stdin>", line 1
+    nome sobrenome
+         ^^^^^^^^^
+SyntaxError: invalid syntax
+>>>
+>>> print(nome sobrenome)
+  File "<stdin>", line 1
+    print(nome sobrenome)
+          ^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+```
+```python
+>>> # mostrando como funciona
+>>> nome + 'Schwarzenegger'
+'ArnoldSchwarzenegger'
+>>> print('Arnold' 'Schwarzenegger')
+ArnoldSchwarzenegger
+>>> print(nome + ' ' + sobrenome)
+Arnold Schwarzenegger
+>>> |
+```
+
+### Multiplicando
+
+Também é possível usar o operador de multiplicação `*` para manipular as string.
+
+```python
+>>> 5 * nome
+'ArnoldArnoldArnoldArnoldArnold'
+>>> print(25 * '=-' + '=')
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+>>> print(" + " * 20)
+ +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +
+>>> |
+```
+
+### Combinando os Operadores
+
+É possível usar ambos os operadores de uma vez :
+```python
+>>> 3 * nome + ' ' +  sobrenome
+'ArnoldArnoldArnold Schwarzenegger'
+>>> |
+```
+
+## Indexando Strings
+Uma string nada mais é do que uma sucessão de caracteres. Diferente dos números, onde o valor 2.147.483.648 corresponde a apenas um valor, uma palavra é composta por diversos caracteres. Por causa disso, é possível *indexar* uma string com o primeiro caractere iniciando em `zero`.
+
+Veja abaixo :
+```python
+>>> sobrenome = 'Schwarzenegger'
+>>> sobrenome[0]  # caractere na posição 0
+'S'
+>>> sobrenome[5]  # caractere na posição 5
+'r'
+```
+
+Também é possível usar números negativos e começar a contagem da direita :
+```python
+>>> sobrenome[-1]
+'r'
+>>> sobrenome[-2]
+'e'
+>>> sobrenome[-7]
+'e'
+>>> |
+```
+
+Repare que, como -0 é a mesma coisa que 0, os índices negativos iniciam em `-1`.
+
+## Dividindo Strings
+Além de indexar, as strings também podem ser *divididas*. Enquanto indexar é usado para obter um caractere, dividir permite obter uma substring a partir da original.
+
+Veja abaixo :
+```python
+>>> sobrenome[0:5]  # caracteres da posição 0 (incluída) até 5 (excluída)
+'Schwa'
+>>> sobrenome[5:8]  # caracteres da posição 5 (incluída) até 8 (excluída)
+'rze'
+>>> |
+```
+
+Dividir índices tem alguns padrões interessantes. Se o primeiro índice for omitido, o valor padrão é zero. Se o segundo índice é omitido, o tamanho da string é o valor padrão. Veja :
+```python
+>>> sobrenome[:6]  # caractere iniciado do início até a posição 6 (excluída)
+'Schwar'
+>>> sobrenome[8:]  # caracteres da posição 8 (incluída) até o final
+'enegger'
+>>> sobrenome[-3:]  # caracteres da terceira última posição (incluída) até o final
+'ger'
+>>> |
+```
+
+Repare que o índice inicial é sempre incluído e o último é sempre excluído. Isso é feito dessa maneira para que `sobrenome[:i] + sobrenome[i:]` seja **sempre** igual a `sobrenome` :
+```python
+>>> sobrenome[:6] + sobrenome[6:]
+'Schwarzenegger'
+>>>
+>>> sobrenome[:9] + sobrenome[9:]
+'Schwarzenegger'
+>>> |
+```
+
+Uma forma de lembrar como a divisão de strings funciona é pensar nos índices como ponteiros entre os caracteres, com a margem esquerda so primeiro caractere iniciando em 0. E a margem da direita do último caractere da string de tamanho *n* tem o índice *n*.
+
+Veja um exemplo :
+```
+  +---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+  | S | c | h | w | a | r | z | e | n | e | g | g | e | r |
+  +---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+-14 -13 -12 -11 -10  -9  -8  -7  -6  -5  -4  -3  -2  -1
+```
+A primeira linha de números mostra a posição dos índices 0..14 da string. A segunda linha mostra os índices negativos correspondentes. A divisão de `i` a `j` consiste em todos os caracteres entre as margens marcadas com `i` e `j`, respectivamente.
+
+Tentar acessar um índice maior que a string irá levantar um erro, mas se tentar acessar um índice da divisão maior que o tamanho da string, não acontece o erro :
+```python
+>>> sobrenome = 'Schwarzenegger'
+>>> sobrenome[42]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>> sobrenome[6:42]
+'zenegger'
+>>> sobrenome[42:]
+''
+>>> |
+```
+
+<details>
+    <summary>Lista de Exercícios</summary>
+
+1. Exercícios Simples
+    1. Concatene as strings "Olá " e "Mundo".
+    1. Concatene as strings "Python" e "Programação".
+    1. Multiplique a string "Olá " por 3.
+    1. Acesse o primeiro caractere da string "Olá ".
+    1. Acesse o último caractere da string "Mundo".
+    1. Concatene as strings "Py" e "thon".
+    1. Concatene as strings "Senac " e "Tech".
+    1. Multiplique a string "Python" por 2.
+    1. Acesse o segundo caractere da string "Django".
+    1. Acesse o penúltimo caractere da string "Desenvolvimento Web".
+1. Exercícios de Nível Intermediário
+    1. Concatene as strings "Aprendizado de" e "Máquina".
+    1. Multiplique a string "Dados" por 4.
+    1. Acesse o terceiro caractere da string "Inteligência".
+    1. Acesse o antepenúltimo caractere da string "Artificial".
+    1. Concatene as strings "Big" e "Data" e acesse o quinto caractere.
+    1. Concatene as strings "Deep" e "Learning".
+    1. Multiplique a string "Neural" por 3.
+    1. Acesse o quarto caractere da string "Networks".
+    1. Acesse o primeiro caractere da string concatenada "LinguagemNatural".
+    1. Acesse o último caractere da string concatenada "LinguagemNatural".
+1. Exercícios Avançados
+    1. Concatene as strings "Olá " e " " e "Mundo".
+    1. Acesse o quinto caractere da string "Inteligência Artificial".
+    1. Multiplique a string "Big" por 5 e acesse o terceiro caractere.
+    1. Concatene as strings "Deep" e " " e "Learning".
+    1. Acesse o primeiro caractere da string "Neural" multiplicada por 3.
+    1. Acesse o terceiro caractere da string concatenada "Ciência de Dados".
+    1. Concatene as strings "Senac" e " " e "Tech" e acesse o último caractere.
+    1. Multiplique a string "Máquina" por 2 e acesse o décimo caractere.
+    1. Acesse o segundo caractere da string "Aprendizagem Profunda".
+    1. Concatene as strings "Linguagem" e "Natural" e acesse o sexto caractere.
+1. Exercícios Complexos
+    1. Acesse o primeiro e último caractere da string "Programando em Python".
+    1. Multiplique a string "Python 3.12" por 4 e acesse o oitavo caractere.
+    1. Concatene as strings "Aprendizado" e " " e "Máquina" e acesse o décimo segundo caractere.
+    1. Acesse o penúltimo caractere da string "Inteligência Artificial".
+    1. Multiplique a string "Aprendizagem Profunda" por 2 e acesse o vigésimo caractere.
+    1. Acesse o quinto caractere da string concatenada "BigData".
+    1. Concatene as strings "Redes" e " " e "Neurais" e acesse o décimo quinto caractere.
+    1. Multiplique a string "LinguagemNatural" por 3 e acesse o vigésimo terceiro caractere.
+    1. Acesse o segundo caractere da string "Ciência de Dados".
+    1. Concatene as strings "Olá " e "Mundo" e acesse o sexto caractere.
+1. Exercícios Muito Complexos
+    1. Acesse o primeiro e último caractere da string concatenada "Inteligência Artificial".
+    1. Multiplique a string "Linguagem de Progamação Python" por 6 e acesse o trigésimo segundo caractere.
+    1. Concatene as strings "Senac Tech" e "Escola de Tecnologia" e acesse o décimo nono caractere.
+    1. Acesse o penúltimo caractere da string "Aprendizado Profundo e Redes Neurais".
+    1. Multiplique a string "BigData" por 5 e acesse o quadragésimo quinto caractere.
+    1. Concatene as strings "Ciência" e "de Dados" e acesse o décimo segundo caractere.
+    1. Multiplique a string "Redes Neurais" por 3 e acesse o vigésimo quinto caractere.
+    1. Acesse o terceiro caractere da string concatenada "Processamento de Linguagem Natural".
+    1. Concatene as strings "Olá " e " " e "Mundo" e acesse o décimo quinto caractere.
+    1. Acesse o segundo e último caractere da string "Inteligência Artificial" multiplicada por 2.
+
+</details>
+
+## Lógico
+
+O tipo lógico, no Python, é conhecido como **Boolean**, que é representado por `bool`. Ele só pode ter dois valores, `True` e `False`, que são usados para representar a verdade ou falsidade de uma condição
+
+| Operadores Lógicos |
+| :----: |
+| `not` |
+| `and` |
+| `or` |
+
+| Operadores Relacionais | Função |
+| :----: | :----: |
+| `==` | igual a |
+| `>` | maior que |
+| `<` | menor que |
+| `>=` | maior ou igual a |
+| `<=` | menor ou igual a |
+| `!=` | diferente de |
+
+Veja abaixo alguns exemplos :
+
+```python
+print('not True = ', not True)
+print('not False =', not False)
+
+print('5 == 5 =', 5 == 5)
+print('42 < 16 =', 42 < 16)
+print('42 > 16 =', 42 > 16)
+print('42 <= 42 =', 42 <= 42)
+print('42 >= 43 =', 42 >= 43)
+print('42 != 42 =', 42 != 42)
+
+# usando para calcular média
+media = (3 + 7 + 9) / 3
+passou_de_ano = media >= 7
+print('A aluno passou de ano?', passou_de_ano)
+```
 
