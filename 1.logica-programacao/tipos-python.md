@@ -254,15 +254,81 @@ Para transformar em algoritmo, pode se fazer de várias formas :
 
 1. Exercícios Simples
     1. Calcule a área de um quadrado de lado 5.
+        ```python
+        lado = 5
+        area = lado * lado  # método 1
+        area = lado * 2  # método 2
+        print('a área do quadrado é')
+        print(area)
+        print(lado * lado)
+        ```
     1. Calcule a área de um retângulo de base 8 e altura 6.
+        ```python
+        base = 8
+        altura = 6
+        area = base * altura
+        print('a área do retângulo é')
+        print(area)
+        ```
     1. Calcule o perímetro de um triângulo equilátero de lado 7.
+        ```python
+        lado = 7
+        perimetro = lado + lado + lado  # método 1
+        perimetro = lado * 3  # método 2
+        print(perimetro)
+        ```
     1. Calcule o volume de um cubo de lado 3.
+        ```python
+        lado = 3
+        volume = lado * lado * lado  # método 1
+        volume = lado ** 3  # método 2
+        print(volume)
+        ```
     1. Calcule a área de um círculo de raio 4 (use π = 3.14).
+        ```python
+        PI = 3.14
+        raio = 4
+        area = pi * raio ** 2
+        print(area)
+        ```
     1. Calcule a hipotenusa de um triângulo retângulo com catetos 3 e 4.
+        ```python
+        cateto1 = 3
+        cateto2 = 4
+        cat1_mais_cat2 = (cateto1 ** 1) + (cateto2 ** 2)
+        hipotenusa = cat1_mais_cat2 ** (1/2)  # método 1
+        hipotenusa = cat1_mais_cat2 ** 0.5  # método 2
+        print(hipotenusa)
+        ```
     1. Calcule a área de um triângulo de base 10 e altura 5.
+        ```python
+        base = 10
+        altura = 5
+        area = (base * altura) / 2
+        print(area)
+        ```
     1. Calcule o perímetro de um retângulo de base 9 e altura 4.
+        ```python
+        base = 9
+        altura = 4
+        perimetro = base * 2 + altura * 2
+        print(perimetro)
+        ```
     1. Calcule a área de um losango com diagonais 8 e 6.
+        ```python
+        diagonal1 = 8
+        diagonal2 = 6
+        area = diagonal1 * diagonal2 / 2
+        print(area)
+        ```
     1. Calcule o volume de um paralelepípedo de arestas 2, 3 e 5.
+        ```python
+        aresta1 = 2
+        aresta2 = 3
+        aresta3 = 5
+        volume = aresta1 * aresta2 * aresta3
+        print(volume)
+        ```
 1. Exercícios de Nível Intermediário
     1. Calcule a área de um trapézio com bases 7 e 5 e altura 4.
     1. Calcule o volume de uma esfera de raio 3 (use π = 3.14).
@@ -489,3 +555,4 @@ dividida em apenas duas linhas
     1. Crie uma string que contenha um script completo em qualquer linguagem de programação e imprima-a.
 
 </details>
+
