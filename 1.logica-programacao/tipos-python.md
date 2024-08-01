@@ -217,7 +217,7 @@ SyntaxError: invalid syntax
 ## Exercícios de Números
 
 <details>
-  <summary>Lista</summary>
+  <summary>Lista de Exercícios</summary>
 
 Para os exercícios abaixo, use variáveis e comentários quando achar necessário.
 
@@ -366,6 +366,16 @@ Para transformar em algoritmo, pode se fazer de várias formas :
     1. Calcule a área de um decágono regular de lado 10.
     1. Calcule o volume de uma pirâmide hexagonal de base 6 e altura 10.
     1. Calcule a área de um triângulo retângulo inscrito em um semicírculo de raio 8 (use π = 3.14).
+        ```python
+        # referência : http://www.osfantasticosnumerosprimos.com.br/005-texto-017-triangulos-pitagoricos-inscrito-semicircunferencia.html
+        # todo triângulo retângulo inscrito em um semicírculo terá ângulos de 30, 60 e 90 graus.
+        # SOHCAHTOA = sen=op/hip cos=ad/hip tan=op/ad
+        # sen 30 graus = 1/2
+        cat_op = (1/2) * 8
+        cat_ad = ((3 ** (1/2)) / 2) * 8
+        area = (cat_op * cat_ad) / 2
+        print(area)
+        ```
     1. Calcule o volume de um cilindro inscrito em um cubo de lado 10 (use π = 3.14).
     1. Resolva a equação quadrática x² - 4x - 12 = 0 usando a fórmula de Bhaskara.
     1. Calcule a área de um círculo circunscrito a um triângulo de lados 7, 24 e 25 (use π = 3.14).

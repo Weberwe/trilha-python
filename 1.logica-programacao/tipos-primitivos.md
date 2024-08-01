@@ -398,16 +398,49 @@ Determine o tipo primitivo de cada uma das sentenças abaixo :
     inteiro
     ```
 1. O peso do peixe é 1.7 quilogramas.
+    ```
+    real
+    ```
 1. A frase "A resposta é 42" é do livro "Guia do Mochileiro das Galáxias".
+    ```
+    caracter
+    ```
 1. O computador está ligado ou desligado?
+    ```
+    lógico
+    ```
 1. O número de folhas é 100.
+    ```
+    inteiro
+    ```
 1. A massa do planeta é 5.97 x 10^24 quilogramas.
+    ```
+    real
+    ```
 1. O nome da cor é "Azul".
+    ```
+    caracter
+    ```
 1. A porta está trancada ou destrancada?
+    ```
+    lógico
+    ```
 1. O valor da corrente é 0.5 amperes.
+    ```
+    real
+    ```
 1. O título do artigo é "Impacto das Mudanças Climáticas".
+    ```
+    caracter
+    ```
 1. A lâmpada está ligada ou desligada?
+    ```
+    lógico
+    ```
 1. O número de série é "SN12345678".
+    ```
+    caracter
+    ```
 
 </details>
 
@@ -542,59 +575,210 @@ Para os exercícios abaixo, use variáveis e constantes quando achar necessário
 
 1. Exercícios Simples
     1. Calcule a soma de 5 e 3.
+        ```
+        5 + 3
+        ```
     1. Subtraia 8 de 15.
+        ```
+        15 - 8
+        ```
     1. Multiplique 4 por 6.
+        ```
+        4 * 6
+        ```
     1. Divida 20 por 4.
+        ```
+        20 / 4
+        ```
     1. Calcule 2 elevado à potência de 3.
+        ```
+        2 ** 3
+        2 ^ 3
+        ```
     1. Calcule a soma de 7, 3 e 2.
+        ```
+        7 + 3 + 2
+        ```
     1. Subtraia 5 de 10 e depois subtraia 3.
+        ```
+        (10 - 5) - 3
+        ```
     1. Multiplique 3, 2 e 4.
+        ```
+        3 * 2 * 4
+        ```
     1. Divida 25 por 5 e depois por 2.
+        ```
+        (25 / 5) / 2
+        ```
     1. Calcule 5 elevado à potência de 2 e subtraia 3.
+        ```
+        (5 ** 2) - 3
+        ```
 1. Exercícios de Nível Intermediário
     1. Calcule a soma de 4, 5 e 6 e depois multiplique o resultado por 2.
+        ```
+        (4 + 5 + 6) * 2
+        ```
     1. Subtraia 10 de 25, depois divida o resultado por 3.
+        ```
+        (25 - 10) / 3
+        ```
     1. Calcule 3 elevado à potência de 2 e depois adicione 7.
+        ```
+        (3 ** 2) + 7
+        ```
     1. Multiplique 8 por 3, depois subtraia 10.
+        ```
+        (8 * 3) - 10
+        ```
     1. Divida 36 por 6, depois adicione 2 e multiplique por 3.
+        ```
+        ((36 / 6) + 2) * 3
+        ```
     1. Calcule 2 elevado à potência de 4 e depois subtraia 5.
+        ```
+        (2 ** 4) - 5
+        ```
     1. Calcule a soma de 6 e 7, depois divida o resultado por 2.
+        ```
+        (6 + 7) / 2
+        ```
     1. Subtraia 14 de 28, depois multiplique o resultado por 3.
+        ```
+        (28 - 14) * 3
+        ```
     1. Calcule 4 elevado à potência de 3 e depois adicione 5.
+        ```
+        (4 ** 3) + 5
+        ```
     1. Multiplique 9 por 4, depois subtraia 15 e divida o resultado por 3.
+        ```
+        ((9 * 4) - 15) / 3
+        ```
 1. Exercícios Avançados
     1. Calcule a soma de 5, 8 e 12, depois multiplique o resultado por 2 e subtraia 10.
+        ```
+        ((5 + 8 + 12) * 2) - 10
+        ```
     1. Subtraia 15 de 45, depois divida o resultado por 5 e adicione 7.
+        ```
+        ((45 - 12) / 5) + 7
+        ```
     1. Calcule 2 elevado à potência de 5 e depois subtraia 9 e multiplique por 2.
+        ```
+        ((2 ** 5) - 9) * 2
+        ```
     1. Multiplique 7 por 6, depois adicione 10 e divida por 4.
+        ```
+        ((7 * 6) + 10) / 4
+        ```
     1. Divida 72 por 8, depois adicione 5 e multiplique por 3.
+        ```
+        ((72 / 8) + 5) * 3
+        ```
     1. Calcule 3 elevado à potência de 3 e depois subtraia 8 e divida por 2.
+        ```
+        ((3 ** 3) - 8) / 2
+        ```
     1. Calcule a soma de 9 e 14, depois multiplique por 3 e subtraia 5.
+        ```
+        ((9 + 14) * 3) - 5
+        ```
     1. Subtraia 20 de 60, depois divida por 4 e adicione 7.
+        ```
+        ((60 - 20) / 4) + 7
+        ```
     1. Calcule 4 elevado à potência de 4 e depois subtraia 20 e multiplique por 2.
+        ```
+        ((4 ** 4) - 20) * 2
+        ```
     1. Multiplique 10 por 5, depois adicione 8 e divida por 6.
+        ```
+        ((10 * 5) + 8) / 6
+        ```
 1. Exercícios Complexos
     1. Calcule a soma de 12, 8 e 5, depois multiplique o resultado por 3, subtraia 15 e divida por 2.
+        ```
+        (((12 + 8 + 5) * 3) - 15) / 2
+        ```
     1. Subtraia 18 de 50, depois divida por 4, adicione 7 e multiplique por 3.
+        ```
+        (((50 - 18) / 4) + 7) * 3
+        ```
     1. Calcule 5 elevado à potência de 3, depois subtraia 10, multiplique por 2 e adicione 8.
+        ```
+        (((5 ** 3) - 10) * 2) + 8
+        ```
     1. Multiplique 6 por 7, depois adicione 12, divida por 3 e subtraia 4.
+        ```
+        (((6 * 7) + 12) / 3) - 4
+        ```
     1. Divida 81 por 9, depois adicione 5, multiplique por 4 e subtraia 10.
+        ```
+        (((81 / 9) + 5) * 4) - 10
+        ```
     1. Calcule 2 elevado à potência de 6, depois subtraia 20, divida por 2 e multiplique por 3.
+        ```
+        (((2 ** 6) - 20) / 2) * 3
+        ```
     1. Calcule a soma de 7, 13 e 18, depois multiplique por 4, subtraia 25 e divida por 5.
+        ```
+        (((7 + 13 + 18) * 4) - 25) / 5
+        ```
     1. Subtraia 30 de 90, depois divida por 5, adicione 9 e multiplique por 2.
+        ```
+        (((90 - 30) / 5) + 9) * 2
+        ```
     1. Calcule 3 elevado à potência de 4, depois subtraia 50, multiplique por 3 e adicione 20.
+        ```
+        (((3 ** 4) - 50) * 3) + 20
+        ```
     1. Multiplique 8 por 9, depois adicione 20, divida por 7 e subtraia 3.
+        ```
+        (((8 * 9) + 20) / 7) - 3
+        ```
 1. Exercícios Muito Complexos
     1. Calcule a soma de 15, 9 e 7, depois multiplique por 2, subtraia 10, divida por 3 e adicione 5.
+        ```
+        ((((15 + 9 + 7) * 2) - 10) / 3) + 5
+        ```
     1. Subtraia 25 de 100, depois divida por 5, adicione 8, multiplique por 3 e subtraia 7.
+        ```
+        ((((100 - 25) / 5) + 8) * 3) - 7
+        ```
     1. Calcule 4 elevado à potência de 3, depois subtraia 15, multiplique por 2, adicione 10 e divida por 5.
+        ```
+        ((((4 ** 3) - 15) * 2) + 10) / 5
+        ```
     1. Multiplique 11 por 6, depois adicione 30, divida por 4, subtraia 8 e multiplique por 2.
+        ```
+        ((((11 * 6) + 30) / 4) - 8) * 2
+        ```
     1. Divida 144 por 12, depois adicione 7, multiplique por 3, subtraia 20 e divida por 2.
+        ```
+        ((((144 / 12) + 7) * 3) - 20) / 3
+        ```
     1. Calcule 5 elevado à potência de 4, depois subtraia 30, divida por 2, multiplique por 3 e adicione 10.
+        ```
+        ((((5 ** 4) - 30) / 2) * 3) + 10
+        ```
     1. Calcule a soma de 8, 14 e 22, depois multiplique por 5, subtraia 40, divida por 4 e adicione 6.
+        ```
+        ((((8 + 14 + 22) * 5) - 40) / 4) + 6
+        ```
     1. Subtraia 50 de 200, depois divida por 10, adicione 15, multiplique por 2 e subtraia 5.
+        ```
+        ((((200 - 50) / 10)/ + 15) * 2) - 5
+        ```
     1. Calcule 6 elevado à potência de 3, depois subtraia 40, multiplique por 4, adicione 25 e divida por 3.
+        ```
+        ((((6 ** 3) - 40) * 4) + 25) / 3
+        ```
     1. Multiplique 9 por 7, depois adicione 50, divida por 5, subtraia 10, multiplique por 3 e adicione 15.
+        ```
+        (((((9 * 7) + 50) / 5) - 10) * 3) + 15
+        ```
 
 </details>
 
@@ -912,9 +1096,25 @@ E por fim, veja a prioridade entre todos os operadores :
 
 1. Exercícios Simples
     1. Verifique se 5 + 3 é igual a 8.
+        ```
+        5 + 3 == 8
+        True
+        ```
     1. Verifique se 10 - 4 é diferente de 5.
+        ```
+        10 - 4 != 5
+        True
+        ```
     1. Verifique se 7 * 2 é maior que 13.
+        ```
+        7 * 2 > 13
+        True
+        ```
     1. Verifique se 16 / 4 é menor ou igual a 4.
+        ```
+        16 / 4 <= 4
+        True
+        ```
     1. Verifique se 3 ** 2 é maior ou igual a 9.
         ```
         3 ** 2 >= 9
@@ -930,9 +1130,25 @@ E por fim, veja a prioridade entre todos os operadores :
                    True
         ```
     1. Verifique se 15 // 2 é diferente de 7 ou 8 + 2 é menor que 11.
+        ```
+        15 // 2 != 7 or 8 + 2 < 11
+        True
+        ```
     1. Verifique se 18 % 4 é igual a 2 e 9 / 3 é igual a 3.
+        ```
+        18 % 4 == 2 and 9 / 3 == 3
+        True
+        ```
     1. Verifique se 5 ** 2 é menor que 30 ou 6 - 1 é maior que 4.
+        ```
+        5 ** 2 < 30 or 6 - 1 > 4
+        True
+        ```
     1. Verifique se 20 // 3 é maior ou igual a 6 e 7 + 8 é igual a 15.
+        ```
+        20 // 3 >= 6 and 7 + 8 == 15
+        True
+        ```
 1. Exercícios Avançados
     1. Verifique se 25 % 7 é menor que 4 e 3 ** 2 é igual a 9.
         ```
@@ -942,12 +1158,36 @@ E por fim, veja a prioridade entre todos os operadores :
                   False
         ```
     1. Verifique se 14 // 5 é maior que 2 ou 10 / 2 é diferente de 5.
+        ```
+        14 // 5 > 2 or 10 / 2 != 5
+        False
+        ```
     1. Verifique se 30 % 8 é igual a 6 e 5 * 2 é menor ou igual a 10.
+        ```
+        30 % 8 == 6 and 5 * 2 <= 10
+        True
+        ```
     1. Verifique se 27 // 4 é menor que 7 ou 4 ** 2 é igual a 16.
+        ```
+        27 // 4 < 7 or 4 ** 2 == 16
+        True
+        ```
     1. Verifique se 21 % 6 é diferente de 3 e 12 / 4 é maior ou igual a 3.
+        ```
+        21 % 6 != 3 and 12 / 4 >= 3
+        False
+        ```
 1. Exercícios Complexos
     1. Verifique se 35 % 9 é menor que 8 e 6 // 2 é igual a 3.
+        ```
+        35 % 9 < 8 and 6 // 2 == 3
+        False
+        ```
     1. Verifique se 40 // 7 é maior que 5 ou 9 ** 2 é diferente de 81.
+        ```
+        40 // 7 > 5 or 9 ** 2 != 81
+        True
+        ```
     1. Verifique se 48 % 11 é igual a 4 e 10 * 2 é maior que 19.
         ```
         48 % 11 ==F 4 and 10 * 2 > 19
@@ -956,7 +1196,15 @@ E por fim, veja a prioridade entre todos os operadores :
                     True
         ```
     1. Verifique se 50 // 6 é menor ou igual a 8 ou 12 / 3 é igual a 4.
+        ```
+        50 // 6 <= 8 or 12 / 3 == 4
+        True
+        ```
     1. Verifique se 33 % 7 é maior que 3 e 14 - 6 é menor ou igual a 8.
+        ```
+        33 % 7 > 3 and 14 - 6 <= 8
+        True
+        ```
 1. Exercícios Muito Complexos
     1. Verifique se 100 % 12 é diferente de 4 e 11 * 3 é menor que 34.
     1. Verifique se 12 * 5 é maior que 59 and 20 // 5 é igual a 4.
