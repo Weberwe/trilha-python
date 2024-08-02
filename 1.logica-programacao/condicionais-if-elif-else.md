@@ -173,6 +173,30 @@ Neste exemplo, o Python verifica cada condição `elif` na ordem em que aparecem
     1. Verifique se uma pessoa pode votar (idade >= 16). Exiba "Pode votar" ou "Não pode votar".
     1. Verifique se um número é divisível por 3. Exiba "Divisível por 3" ou "Não é divisível por 3".
     1. Verifique se um ano é bissexto (divisível por 4, mas não por 100, exceto se for divisível por 400). Exiba "Bissexto" ou "Não bissexto".
+        ```python
+        ano = 2095
+
+        if ano % 400 == 0:
+            eh_div_400 = True
+        else:
+            eh_div_400 = False
+
+        if ano % 100 == 0:
+            eh_div_100 = True
+        else:
+            eh_div_100 = False
+
+        if ano % 4 == 0:
+            eh_div_4 = True
+        else:
+            eh_div_4 = False
+
+        print('o ano', ano)
+        if eh_div_400 or (not eh_div_100 and eh_div_4):
+            print('é bissexto')
+        else:
+            print('não é bissexto')
+        ```
     1. Verifique se um número é positivo, negativo ou zero e exiba a mensagem correspondente.
 1. Exercícios Avançados
     1. Verifique se a média das notas de um aluno é maior ou igual a 7. Caso seja, exiba "Aprovado". Caso contrário, exiba "Reprovado".
@@ -181,6 +205,23 @@ Neste exemplo, o Python verifica cada condição `elif` na ordem em que aparecem
     1. Verifique se um aluno passou de ano. As notas finais de três matérias devem ser todas maiores ou iguais a 6. Caso seja, exiba "Passou". Caso contrário, exiba "Não passou".
     1. Verifique se um número está entre 1 e 100. Se estiver entre 1 e 50, exiba "Entre 1 e 50". Se estiver entre 51 e 100, exiba "Entre 51 e 100". Caso contrário, exiba "Fora do intervalo".
     1. Verifique se uma pessoa é maior de idade (idade >= 18) e se é aposentada (idade >= 65). Exiba "Maior de idade" ou "Aposentado" ou "Menor de idade".
+        ```python
+        idade = 78
+
+        if idade >= 65:
+            print('é aposentado')
+        elif idade >= 18:
+            print('é maior de idade')
+        else:
+            print('menor de idade')
+
+        if idade >= 18 and idade < 65:
+            print('é maior de idade')
+        elif idade >= 65:
+            print('é aposentado')
+        else:
+            print('menor de idade')
+        ```
     1. Verifique se um número é múltiplo de 5 ou de 10. Exiba "Múltiplo de 5", "Múltiplo de 10" ou "Não é múltiplo de 5 nem de 10".
     1. Verifique se a nota final de um aluno é maior ou igual a 7. Se for, exiba "Aprovado". Se for menor que 5, exiba "Reprovado". Se estiver entre 5 e 7, exiba "Recuperação".
     1. Verifique se a temperatura está abaixo de 0. Caso esteja, exiba "Congelante". Se estiver entre 0 e 15, exiba "Frio". Se estiver entre 16 e 30, exiba "Agradável". Se estiver acima de 30, exiba "Quente".
@@ -188,6 +229,15 @@ Neste exemplo, o Python verifica cada condição `elif` na ordem em que aparecem
 1. Exercícios Complexos
     1. Verifique se um triângulo é equilátero, isósceles ou escaleno com base nos comprimentos de seus lados.
     1. Verifique se uma pessoa pode se aposentar. Ela deve ter pelo menos 65 anos ou ter trabalhado por pelo menos 30 anos. Exiba "Pode se aposentar" ou "Não pode se aposentar".
+        ```python
+        idade = 45
+        tempo_trab = 31
+
+        if idade >= 65 or tempo_trab > 30:
+            print('pode ser aposentar')
+        else:
+            print('ainda não pode se aposentar')
+        ```
     1. Verifique se uma nota está entre 0 e 10. Se estiver fora, exiba "Nota inválida". Caso contrário, verifique se é maior ou igual a 7 (Aprovado), entre 5 e 6.9 (Recuperação) ou menor que 5 (Reprovado).
     1. Verifique se um ponto (x, y) está dentro, fora ou sobre a borda de um círculo de raio 5 centrado na origem.
     1. Verifique se um número é positivo, negativo ou zero. Além disso, verifique se é par ou ímpar e exiba as mensagens correspondentes.
@@ -197,8 +247,321 @@ Neste exemplo, o Python verifica cada condição `elif` na ordem em que aparecem
     1. Verifique se um número é par ou ímpar. Além disso, verifique se está entre 1 e 100 e exiba as mensagens correspondentes.
 1. Exercícios Muito Complexos
     1. Verifique se uma data (dia, mês, ano) é válida. Caso seja, verifique se é uma data futura, passada ou presente em relação à data atual.
+        ```python
+
+        hoje_dia = 2
+        hoje_mes = 8
+        hoje_ano = 2024
+
+        teste_dia = 2
+        teste_mes = 8
+        teste_ano = 2024
+
+        #1   3   5   7   8  10  12
+        #jan_mar_mai_jul_ago_out_dez = 31
+        #4   6   9  11
+        #abr_jun_set_nov = 30
+        #2
+        #fev = 28 # ou 29
+
+        if (teste_mes == 1 or teste_mes == 3 or teste_mes == 5 or teste_mes == 7 or teste_mes == 8 or teste_mes == 10 or teste_mes == 12) and teste_dia <= 31:
+            dia_mes_valido = True
+        elif (teste_mes == 4 or teste_mes == 6 or teste_mes == 9 or teste_mes == 11) and teste_dia <= 30:
+            dia_mes_valido = True
+        elif teste_mes == 2 and teste_dia < 28:
+            dia_mes_valido = True
+        else:
+            dia_mes_valido = False
+
+        mesmo_ano = False
+        if teste_ano < hoje_ano:
+            print('data ano passada')
+        elif teste_ano > hoje_ano:
+            print('data ano futura')
+        else:
+            print('mesmo ano')
+            mesmo_ano = True
+
+        mesmo_mes = False
+        if mesmo_ano and teste_mes < hoje_mes:
+            print('data mes passada')
+        elif mesmo_ano and teste_mes > hoje_mes:
+            print('data mes futura')
+        elif mesmo_ano and teste_mes == hoje_mes:
+            mesmo_mes = True
+            print('mesmo mes')
+
+        if mesmo_ano and mesmo_mes and (teste_dia < hoje_dia):
+            print('data dia passada')
+        elif mesmo_ano and mesmo_mes and (teste_dia > hoje_dia):
+            print('data dia futuro')
+        elif mesmo_ano and mesmo_mes and (teste_dia == hoje_dia):
+            print('mesmo dia, mesmo mes, mesmo ano')
+        ```
     1. Verifique se uma pessoa pode dirigir. Ela deve ter pelo menos 18 anos e ter passado no exame de direção. Exiba "Pode dirigir" ou "Não pode dirigir".
     1. Verifique se um aluno está aprovado, em recuperação ou reprovado com base em suas notas em três provas e uma prova final. As regras de aprovação são: média >= 7 (Aprovado), média entre 5 e 6.9 (Recuperação), média < 5 (Reprovado).
     1. Verifique se um ano é bissexto. Caso seja, verifique se a data 29/02/ano é válida. Exiba "Data válida" ou "Data inválida".
+
+</details>
+
+## if aninhado
+
+Um `if` aninhado é uma estrutura condicional que está dentro de outro `if`, `elif` ou `else`. Em outras palavras, é um `if` dentro de um `if`. Isso permite criar decisões mais complexas, verificando condições dentro de outras condições.
+
+Veja um exemplo básico :
+
+```python
+if condição1:
+    # código a ser executado se condição1 for verdadeira
+    if condição2:
+        # código a ser executado se condição2 também for verdadeira
+    else:
+        # código a ser executado se condição2 for falsa
+else:
+    # código a ser executado se condição1 for falsa
+```
+
+### if aninhado em dois níveis
+
+Veja um exemplo onde é verificado a idade e, dentro disso, é verificafo a cidadania para determinar se uma pessoa pode votar :
+
+```python
+idade = 20
+cidadania = "brasileira"
+
+if idade >= 18:
+    if cidadania == "brasileira":
+        print("Você pode votar.")
+    else:
+        print("Você não pode votar porque não é cidadão brasileiro.")
+else:
+    print("Você não pode votar porque é menor de idade.")
+```
+
+Neste exemplo, temos duas condições a serem verificadas:
+1. A idade deve ser maior ou igual a 18;
+1. A cidadania deve ser "brasileira";
+
+Se a idade é maior ou igual a 18, o Python verifica a cidadania. Se ambas as condições forem verdadeiras, ele imprime "Você pode votar". Se a idade for menor que 18, ele imprime "Você não pode votar porque é menor de idade".
+
+### if aninhado em três níveis
+
+Veja ver um exemplo mais complexo com três níveis de "if" aninhado :
+
+```python
+idade = 25
+cidadania = "brasileira"
+residencia = "São Paulo"
+
+if idade >= 18:
+    if cidadania == "brasileira":
+        if residencia == "São Paulo":
+            print("Você pode votar em São Paulo.")
+        else:
+            print("Você pode votar, mas não em São Paulo.")
+    else:
+        print("Você não pode votar porque não é cidadão brasileiro.")
+else:
+    print("Você não pode votar porque é menor de idade.")
+```
+
+Neste exemplo, verificamos três condições:
+1. A idade deve ser maior ou igual a 18;
+1. A cidadania deve ser "brasileira";
+1. A residência deve ser "São Paulo";
+
+Se todas as condições forem verdadeiras, ele imprime "Você pode votar em São Paulo". Se a cidadania for "brasileira" mas a residência não for "São Paulo", ele imprime "Você pode votar, mas não em São Paulo". Se a cidadania não for "brasileira", ele imprime "Você não pode votar porque não é cidadão brasileiro". Se a idade for menor que 18, ele imprime "Você não pode votar porque é menor de idade".
+
+### mais exemplos
+
+1. **verificando múltiplas condições aninhadas em uma compra**
+
+```python
+saldo = 1000
+preco_item = 500
+quantidade_em_estoque = 10
+
+if saldo >= preco_item:
+    if quantidade_em_estoque > 0:
+        print("Compra realizada com sucesso!")
+    else:
+        print("Item fora de estoque.")
+else:
+    print("Saldo insuficiente.")
+```
+
+Neste exemplo, a compra só será realizada se houver saldo suficiente e o item estiver em estoque.
+
+2. **verificando aninhamentos para determinar a faixa etária e o período do dia**
+
+```python
+idade = 16
+periodo_do_dia = "tarde"
+
+if idade < 18:
+    if periodo_do_dia == "manhã":
+        print("Você é menor de idade e está na escola de manhã.")
+    elif periodo_do_dia == "tarde":
+        print("Você é menor de idade e está na escola à tarde.")
+    else:
+        print("Você é menor de idade e está em casa à noite.")
+else:
+    if periodo_do_dia == "manhã":
+        print("Você é adulto e está trabalhando de manhã.")
+    elif periodo_do_dia == "tarde":
+        print("Você é adulto e está trabalhando à tarde.")
+    else:
+        print("Você é adulto e está descansando à noite.")
+```
+
+Este exemplo determina a mensagem a ser exibida com base na idade e no período do dia.
+
+## comparando if simples e if aninhado
+
+### exemplo 1: verificação de senha e nome de usuário
+
+**com `if` aninhado**
+
+```python
+usuario = "admin"
+senha = "1234"
+
+if usuario == "admin":
+    if senha == "1234":
+        print("Acesso permitido.")
+    else:
+        print("Senha incorreta.")
+else:
+    print("Usuário não encontrado.")
+```
+
+**sem `if` aninhado**
+
+```python
+usuario = "admin"
+senha = "1234"
+
+if usuario == "admin" and senha == "1234":
+    print("Acesso permitido.")
+elif usuario == "admin":
+    print("Senha incorreta.")
+else:
+    print("Usuário não encontrado.")
+```
+
+### exemplo 2: verificação de temperatura e umidade
+
+**com `if` aninhado**
+
+```python
+temperatura = 30
+umidade = 70
+
+if temperatura > 25:
+    if umidade > 60:
+        print("Está quente e úmido.")
+    else:
+        print("Está quente e seco.")
+else:
+    if umidade > 60:
+        print("Está frio e úmido.")
+    else:
+        print("Está frio e seco.")
+```
+
+**sem `if` aninhado**
+
+```python
+temperatura = 30
+umidade = 70
+
+if temperatura > 25 and umidade > 60:
+    print("Está quente e úmido.")
+elif temperatura > 25 and umidade <= 60:
+    print("Está quente e seco.")
+elif temperatura <= 25 and umidade > 60:
+    print("Está frio e úmido.")
+else:
+    print("Está frio e seco.")
+```
+
+### exemplo 3: verificação de estoque e saldo para compra
+
+**com `if` aninhado**
+
+```python
+saldo = 200
+preco_item = 150
+estoque = 5
+
+if estoque > 0:
+    if saldo >= preco_item:
+        print("Compra realizada com sucesso!")
+    else:
+        print("Saldo insuficiente.")
+else:
+    print("Item fora de estoque.")
+```
+
+**sem `if` aninhado**
+
+```python
+saldo = 200
+preco_item = 150
+estoque = 5
+
+if estoque > 0 and saldo >= preco_item:
+    print("Compra realizada com sucesso!")
+elif estoque > 0:
+    print("Saldo insuficiente.")
+else:
+    print("Item fora de estoque.")
+```
+
+### resumo das comparações
+
+- **if simples**:
+  - Útil para verificar condições diretamente relacionadas.
+  - Pode se tornar complicado com múltiplos níveis de verificação.
+- **if aninhado**:
+  - Clarifica a estrutura das decisões.
+  - Facilita a leitura e a manutenção do código.
+  - Melhora a organização do código para decisões complexas.
+
+Os exemplos mostraram que o uso de `if` aninhado pode tornar o código mais claro e fácil de entender quando múltiplas condições devem ser verificadas, enquanto o `if` simples pode ser mais direto para condições simples e independentes.
+
+<details>
+    <summary>Lista de Exercícios</summary>
+
+Para os exercícios abaixo, use a estrutura de `if` que achar mais conveniente.
+
+1. Exercícios Simples
+    1. Verifique se um número é positivo. Caso seja, verifique se é maior que 10.
+    1. Verifique se um número é negativo. Caso seja, verifique se é menor que -10.
+    1. Verifique se um número é zero. Caso não seja, verifique se é positivo ou negativo.
+    1. Verifique se um número é par. Caso seja, verifique se é maior que 20.
+    1. Verifique se uma pessoa é maior de idade (idade >= 18). Se for, verifique se tem 65 anos ou mais.
+1. Exercícios Intermediários
+    1. Verifique se um número é maior que 10. Caso seja, verifique se é menor que 20.
+    1. Verifique se um número é positivo. Caso seja, verifique se é ímpar.
+    1. Verifique se uma pessoa pode votar (idade >= 16). Se puder, verifique se é obrigatória a votação (idade >= 18 e < 70).
+    1. Verifique se uma string não está vazia. Caso não esteja, verifique se o primeiro caracter é uma vogal.
+    1. Verifique se um número é divisível por 3. Caso seja, verifique se também é divisível por 5.
+1. Exercícios Avançados
+    1. Verifique se a média das notas de um aluno é maior ou igual a 7. Caso seja, verifique se a nota em matemática é maior que 5.
+    1. Verifique se a temperatura está abaixo de 0. Caso esteja, exiba "Congelante". Se não, verifique se está entre 0 e 20, exiba "Frio".
+    1. Verifique se um número é par ou ímpar. Se for par, verifique se é maior que 10. Se for ímpar, verifique se é menor que 5.
+    1. Verifique se um número está entre 1 e 100. Se estiver, verifique se é múltiplo de 10.
+    1. Verifique se a média das notas de um aluno é maior ou igual a 7. Caso seja, exiba "Aprovado". Caso contrário, verifique se está entre 5 e 6.9 e exiba "Recuperação".
+1. Exercícios Complexos
+    1. Verifique se três valores podem formar um triângulo. Caso possam, verifique se é equilátero, isósceles ou escaleno.
+    1. Verifique se uma pessoa pode se aposentar. Ela deve ter pelo menos 65 anos. Se não tiver, verifique se trabalhou por pelo menos 30 anos.
+    1. Verifique se uma data (dia, mês, ano) é válida. Considere anos bissextos. Se o ano for bissexto, verifique se o mês é fevereiro e o dia é 29.
+    1. Verifique se um número é positivo, negativo ou zero. Se for positivo, verifique se é maior que 100. Se for negativo, verifique se é menor que -100.
+    1. Verifique se um aluno passou de ano. As notas finais de três matérias devem ser todas maiores ou iguais a 6. Caso seja, verifique se a média é maior ou igual a 7.
+1. Exercícios Muito Complexos
+    1. Verifique se uma pessoa pode dirigir. Ela deve ter pelo menos 18 anos e ter passado no exame de direção. Caso não tenha 18 anos, verifique se está perto de completar 18 (falta menos de um mês).
+    1. Verifique se um aluno está aprovado, em recuperação ou reprovado com base em suas notas em três provas e uma prova final. A média das três provas deve ser maior ou igual a 7. Caso contrário, verifique se a média com a prova final é maior ou igual a 5.
+    1. Verifique se uma pessoa é elegível para uma promoção. Ela deve ter pelo menos 5 anos de experiência na empresa. Caso não tenha, verifique se tem uma avaliação de desempenho excelente. Se não tiver, verifique se completará 5 anos de experiência em menos de 6 meses.
 
 </details>
