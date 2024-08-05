@@ -6,7 +6,7 @@ Aulas
 
 | Dia | Arquivo |
 | :----: | :----: |
-| 05/08/2024 | [revisão]() |
+| 05/08/2024 | [revisão](1.logica-programacao/revisao-parte-1.md) |
 | 02/08/2024 | [if-elif-else - parte 2](1.logica-programacao/condicionais-if-elif-else.md#if-aninhado) |
 | 01/08/2024 | [Condicionais if-elif-else - parte 1](1.logica-programacao/condicionais-if-elif-else.md) |
 | 31/07/2024 | [Tipos do Python - Texto - parte 2](1.logica-programacao/tipos-python.md#manipulando-strings)<br>[Tipos do Python - Boolean](1.logica-programacao/tipos-python.md#lógico) |
