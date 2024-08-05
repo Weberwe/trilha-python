@@ -770,6 +770,13 @@ numero = 5
 resultado = numero % 2 != 0
 print(resultado)  # Saída: True
 
+# outra forma de verificar se um número é par ou ímpar
+numero = 5
+valor = numero // 2
+valor = valor * 2
+resultado = valor == numero
+print(resultado)
+
 # combinação de operadores and, or e not:
 a = True
 b = False
