@@ -1151,6 +1151,18 @@ else:
     1. Crie uma variável x com o valor 12.5 e uma variável y com o valor 2.5. Imprima a diferença entre x e y e verifique se é maior que 8.
     1. Crie uma variável a com o valor 3.14 e outra variável b com o valor 2. Crie uma variável resultado que armazene a multiplicação de a por b, e imprima o resultado com 3 casas decimais.
     1. Crie uma variável x com o valor 45.9 e outra variável y com o valor 15.1. Imprima o resultado da divisão de x por y, com 4 casas decimais.
+        ```python
+        x = 45.9
+        y = 15.1
+
+        print('x / y', x / y)
+        print('(x/y) * 10000', (x/y)*10000)
+        print('((x/y) * 10000) // 1', ((x/y) * 10000) // 1)
+
+        print('(((x/y)*10000)//1)/10000',(((x/y)*10000)//1)/10000)
+
+        print('x/y * 10000 // 1 / 10000', x/y * 10000 // 1 / 10000)
+        ```
     1. Crie uma variável a com o valor 0.5 e outra variável b com o valor 0.25. Imprima a soma de a e b, multiplicada por 100.
     1. Crie uma variável x com o valor 8.2 e uma variável y com o valor 3.4. Imprima o resultado da multiplicação de x por y e verifique se é menor que 30.
     1. Crie uma variável a com o valor 17 e outra variável b com o valor 3. Crie uma variável resultado que armazene a soma de a com o resto da divisão de a por b. Imprima resultado.
