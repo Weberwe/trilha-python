@@ -8,6 +8,7 @@
 1. [str](#str)
 1. [bool](#bool)
 1. [condicional if-elif-else](#condicional-if-elif-else)
+1. [lista de exercícios](#lista-de-exercícios)
 
 # revisão
 
@@ -118,111 +119,111 @@ Veja abaixo as operações realizadas com os números inteiros :
 a = 5
 b = 3
 resultado = a + b
-print(resultado)  # Saída: 8
+print(resultado)  # saída : 8
 
 # subtração de dois inteiros:
 x = 10
 y = 4
 diferenca = x - y
-print(diferenca)  # Saída: 6
+print(diferenca)  # saída : 6
 
 # multiplicação de dois inteiros:
 largura = 7
 altura = 5
 area = largura * altura
-print(area)  # Saída: 35
+print(area)  # saída : 35
 
 # divisão de dois inteiros (divisão inteira):
 total = 20
 partes = 4
 divisao = total // partes
-print(divisao)  # Saída: 5
+print(divisao)  # saída : 5
 
 # resto da divisão de dois inteiros (módulo):
 numero = 17
 divisor = 3
 resto = numero % divisor
-print(resto)  # Saída: 2
+print(resto)  # saída : 2
 
 # potenciação:
 base = 2
 expoente = 3
 potencia = base ** expoente
-print(potencia)  # Saída: 8
+print(potencia)  # saída : 8
 
 # uso de parênteses para alterar a precedência:
 resultado = (5 + 3) * 2
-print(resultado)  # Saída: 16
+print(resultado)  # saída : 16
 
 # comparação de igualdade:
 idade_joao = 18
 idade_maria = 18
 mesma_idade = idade_joao == idade_maria
-print(mesma_idade)  # Saída: True
+print(mesma_idade)  # saída : True
 
 # comparação de diferença:
 nota1 = 7
 nota2 = 8
 notas_diferentes = nota1 != nota2
-print(notas_diferentes)  # Saída: True
+print(notas_diferentes)  # saída : True
 
 # comparação maior que:
 saldo_banco = 1500
 saldo_minimo = 1000
 acima_do_minimo = saldo_banco > saldo_minimo
-print(acima_do_minimo)  # Saída: True
+print(acima_do_minimo)  # saída : True
 
 # comparação menor que:
 velocidade_carro = 80
 velocidade_limite = 90
 abaixo_limite = velocidade_carro < velocidade_limite
-print(abaixo_limite)  # Saída: True
+print(abaixo_limite)  # saída : True
 
 # comparação maior ou igual a:
 temperatura = 30
 temperatura_minima = 30
 dentro_do_padrao = temperatura >= temperatura_minima
-print(dentro_do_padrao)  # Saída: True
+print(dentro_do_padrao)  # saída : True
 
 # comparação menor ou igual a:
 pessoas_na_fila = 10
 capacidade_maxima = 15
 pode_entrar = pessoas_na_fila <= capacidade_maxima
-print(pode_entrar)  # Saída: True
+print(pode_entrar)  # saída : True
 
 # uso de constante:
 PI = 3.14
 raio = 5
 circunferencia = 2 * PI * raio
-print(circunferencia)  # Saída: 31.400000000000002
+print(circunferencia)  # saída : 31.400000000000002
 
 # soma com variável e constante:
 INCREMENTO = 10
 valor = 25
 novo_valor = valor + INCREMENTO
-print(novo_valor)  # Saída: 35
+print(novo_valor)  # saída : 35
 
 # subtração com variável e constante:
 DESCONTO = 5
 preco_original = 50
 preco_com_desconto = preco_original - DESCONTO
-print(preco_com_desconto)  # Saída: 45
+print(preco_com_desconto)  # saída : 45
 
 # expressão complexa com várias operações:
 resultado = (4 + 5) * 2 - (3 ** 2) // 2
-print(resultado)  # Saída: 11
+print(resultado)  # saída : 11
 
 # divisão com resultado decimal:
 a = 10
 b = 4
 divisao_decimal = a / b
-print(divisao_decimal)  # Saída: 2.5
+print(divisao_decimal)  # saída : 2.5
 
 # uso de variável para armazenar resultado de uma expressão:
 numero1 = 15
 numero2 = 5
 resultado_expressao = (numero1 * 2 + numero2) / 3
-print(resultado_expressao)  # Saída: 11.666666666666666
+print(resultado_expressao)  # saída : 11.666666666666666
 ```
 
 ## float
@@ -236,111 +237,111 @@ Veja abaixo as operações realizadas com os números de ponto flutuante :
 a = 5.2
 b = 3.1
 resultado = a + b
-print(resultado)  # Saída: 8.3
+print(resultado)  # saída : 8.3
 
 # subtração de dois floats:
 x = 10.5
 y = 4.2
 diferenca = x - y
-print(diferenca)  # Saída: 6.3
+print(diferenca)  # saída : 6.3
 
 # multiplicação de dois floats:
 largura = 7.5
 altura = 5.2
 area = largura * altura
-print(area)  # Saída: 39.0
+print(area)  # saída : 39.0
 
 # divisão de dois floats:
 total = 20.0
 partes = 4.0
 divisao = total / partes
-print(divisao)  # Saída: 5.0
+print(divisao)  # saída : 5.0
 
 # resto da divisão de dois floats (módulo):
 numero = 17.5
 divisor = 3.2
 resto = numero % divisor
-print(resto)  # Saída: 1.8999999999999986
+print(resto)  # saída : 1.8999999999999986
 
 # potenciação:
 base = 2.0
 expoente = 3.0
 potencia = base ** expoente
-print(potencia)  # Saída: 8.0
+print(potencia)  # saída : 8.0
 
 # uso de parênteses para alterar a precedência:
 resultado = (5.5 + 3.3) * 2.0
-print(resultado)  # Saída: 17.6
+print(resultado)  # saída : 17.6
 
 # comparação de igualdade:
 preco_produto1 = 18.50
 preco_produto2 = 18.50
 mesmo_preco = preco_produto1 == preco_produto2
-print(mesmo_preco)  # Saída: True
+print(mesmo_preco)  # saída : True
 
 # comparação de diferença:
 nota1 = 7.5
 nota2 = 8.0
 notas_diferentes = nota1 != nota2
-print(notas_diferentes)  # Saída: True
+print(notas_diferentes)  # saída : True
 
 # comparação maior que:
 saldo_banco = 1500.75
 saldo_minimo = 1000.00
 acima_do_minimo = saldo_banco > saldo_minimo
-print(acima_do_minimo)  # Saída: True
+print(acima_do_minimo)  # saída : True
 
 # comparação menor que:
 velocidade_carro = 80.5
 velocidade_limite = 90.0
 abaixo_limite = velocidade_carro < velocidade_limite
-print(abaixo_limite)  # Saída: True
+print(abaixo_limite)  # saída : True
 
 # comparação maior ou igual a:
 temperatura = 30.0
 temperatura_minima = 30.0
 dentro_do_padrao = temperatura >= temperatura_minima
-print(dentro_do_padrao)  # Saída: True
+print(dentro_do_padrao)  # saída : True
 
 # comparação menor ou igual a:
 pessoas_na_fila = 10.5
 capacidade_maxima = 15.0
 pode_entrar = pessoas_na_fila <= capacidade_maxima
-print(pode_entrar)  # Saída: True
+print(pode_entrar)  # saída : True
 
 # uso de constante:
 PI = 3.14
 raio = 5.0
 circunferencia = 2 * PI * raio
-print(circunferencia)  # Saída: 31.400000000000002
+print(circunferencia)  # saída : 31.400000000000002
 
 # soma com variável e constante:
 INCREMENTO = 10.0
 valor = 25.5
 novo_valor = valor + INCREMENTO
-print(novo_valor)  # Saída: 35.5
+print(novo_valor)  # saída : 35.5
 
 # subtração com variável e constante:
 DESCONTO = 5.0
 preco_original = 50.0
 preco_com_desconto = preco_original - DESCONTO
-print(preco_com_desconto)  # Saída: 45.0
+print(preco_com_desconto)  # saída : 45.0
 
 # expressão complexa com várias operações:
 resultado = (4.5 + 5.2) * 2.0 - (3.0 ** 2) // 2.0
-print(resultado)  # Saída: 11.4
+print(resultado)  # saída : 11.4
 
 # divisão com resultado decimal:
 a = 10.0
 b = 4.0
 divisao_decimal = a / b
-print(divisao_decimal)  # Saída: 2.5
+print(divisao_decimal)  # saída : 2.5
 
 # uso de variável para armazenar resultado de uma expressão:
 numero1 = 15.5
 numero2 = 5.2
 resultado_expressao = (numero1 * 2.0 + numero2) / 3.0
-print(resultado_expressao)  # Saída: 12.066666666666668
+print(resultado_expressao)  # saída : 12.066666666666668
 ```
 
 ## combinando int e float
@@ -354,63 +355,63 @@ Veja exemplos :
 a = 5
 b = 3.2
 resultado = a + b
-print(resultado)  # Saída: 8.2
+print(resultado)  # saída : 8.2
 
 # subtração de um float por um inteiro:
 x = 10.5
 y = 4
 diferenca = x - y
-print(diferenca)  # Saída: 6.5
+print(diferenca)  # saída : 6.5
 
 # multiplicação de um inteiro por um float:
 largura = 7
 altura = 5.2
 area = largura * altura
-print(area)  # Saída: 36.4
+print(area)  # saída : 36.4
 
 # divisão de um inteiro por um float:
 total = 20
 partes = 4.0
 divisao = total / partes
-print(divisao)  # Saída: 5.0
+print(divisao)  # saída : 5.0
 
 # divisão de um float e um inteiro (divisão inteira):
 total = 23.4
 partes = 4
 divisao = total // partes
-print(divisao)  # Saída: 5.0
+print(divisao)  # saída : 5.0
 
 # resto da divisão de um inteiro por um float (módulo):
 numero = 17
 divisor = 3.2
 resto = numero % divisor
-print(resto)  # Saída: 1.3999999999999986
+print(resto)  # saída : 1.3999999999999986
 
 # potenciação com base float e expoente inteiro:
 base = 2.5
 expoente = 3
 potencia = base ** expoente
-print(potencia)  # Saída: 15.625
+print(potencia)  # saída : 15.625
 
 # uso de parênteses para alterar a precedência com inteiro e float:
 resultado = (5 + 3.3) * 2
-print(resultado)  # Saída: 16.6
+print(resultado)  # saída : 16.6
 
 # comparação de igualdade entre inteiro e float:
 idade_joao = 18
 idade_maria = 18.0
 mesma_idade = idade_joao == idade_maria
-print(mesma_idade)  # Saída: True
+print(mesma_idade)  # saída : True
 
 # soma de uma constante inteira com uma variável float:
 INCREMENTO = 10
 valor = 25.5
 novo_valor = valor + INCREMENTO
-print(novo_valor)  # Saída: 35.5
+print(novo_valor)  # saída : 35.5
 
 # expressão complexa com inteiros e floats:
 resultado = (4 + 5.5) * 2 - (3 ** 2) // 2.0
-print(resultado)  # Saída: 10.0
+print(resultado)  # saída : 10.0
 ```
 
 ## str
@@ -424,8 +425,8 @@ Por exemplo, para a string "Python", o caractere 'P' está no índice 0, 'y' est
 
 ```python
 texto = "Python"
-print(texto[0])  # Output: P
-print(texto[1])  # Output: y
+print(texto[0])  # saída : P
+print(texto[1])  # saída : y
 ```
 
 Índices negativos são usados para acessar caracteres a partir do final da string. O índice -1 refere-se ao último caractere, -2 ao penúltimo, e assim por diante.
@@ -433,20 +434,23 @@ Por exemplo, para a string "Python", o caractere 'n' está no índice -1 e 'o' e
 
 ```python
 texto = "Python"
-print(texto[-1])  # Output: n
-print(texto[-2])  # Output: o
+print(texto[-1])  # saída : n
+print(texto[-2])  # saída : o
 ```
 
-O fatiamento permite extrair uma parte da string. A sintaxe é texto[início:fim], onde:
-- início é o índice onde o fatiamento começa (inclusivo),
-- fim é o índice onde o fatiamento termina (exclusivo),
+O fatiamento permite extrair uma parte da string. A sintaxe é texto[início:fim:passo], onde:
+- `início` é o índice onde o fatiamento começa (inclusivo),
+- `fim` é o índice onde o fatiamento termina (exclusivo),
+- `passo` é o intervalo entre os caracteres que serão incluídos (opcional).
 
 Se o início ou fim não forem fornecidos, o fatiamento usará o início ou o final da string, respectivamente.
 
 ```python
 texto = "Python"
-print(texto[:3])    # Output: Pyt (do início até o índice 2)
-print(texto[3:])    # Output: hon (do índice 3 até o final)
+print(texto[:3])    # saída : Pyt (do início até o índice 2)
+print(texto[3:])    # saída : hon (do índice 3 até o final)
+print(texto[::2])   # saída : Pto (passo 2, pegando cada segundo caractere)
+print(texto[::-1])   # saída : nohtyP (passo -1, inverte a string)
 ```
 
 Veja alguns exemplos :
@@ -456,41 +460,41 @@ Veja alguns exemplos :
 saudacao = "Olá"
 nome = "Mundo"
 mensagem = saudacao + " " + nome
-print(mensagem)  # Saída: Olá Mundo
+print(mensagem)  # saída : Olá Mundo
 
 # concatenando strings com números:
 parte1 = "Número"
 parte2 = " 42"
 resultado = parte1 + parte2
-print(resultado)  # Saída: Número 42
+print(resultado)  # saída : Número 42
 
 # multiplicação de uma string:
 repeticao = "Ha" * 3
-print(repeticao)  # Saída: HaHaHa
+print(repeticao)  # saída : HaHaHa
 
 # uso do caractere de nova linha \n:
 mensagem = "Primeira linha\nSegunda linha"
 print(mensagem)
-# Saída:
+# saída :
 # Primeira linha
 # Segunda linha
 
 # uso do caractere de tabulação \t:
 mensagem = "Nome:\tJoão"
 print(mensagem)
-# Saída:
+# saída :
 # Nome:    João
 
 # uso da barra invertida \ para escapar caracteres:
 caminho = "C:\\Users\\Nome"
-print(caminho)  # Saída: C:\Users\Nome
+print(caminho)  # saída : C:\Users\Nome
 
 # concatenando com \n:
 linha1 = "Esta é a primeira linha"
 linha2 = "Esta é a segunda linha"
 mensagem = linha1 + "\n" + linha2
 print(mensagem)
-# Saída:
+# saída :
 # Esta é a primeira linha
 # Esta é a segunda linha
 
@@ -499,31 +503,31 @@ chave = "Chave:"
 valor = "12345"
 mensagem = chave + "\t" + valor
 print(mensagem)
-# Saída:
+# saída :
 # Chave:  12345
 
 # uso de aspas simples dentro de uma string com aspas duplas:
 mensagem = "Ela disse: 'Olá!'"
-print(mensagem)  # Saída: Ela disse: 'Olá!'
+print(mensagem)  # saída : Ela disse: 'Olá!'
 
 # uso de aspas duplas dentro de uma string com aspas simples:
 mensagem = 'Ele respondeu: "Bom dia!"'
-print(mensagem)  # Saída: Ele respondeu: "Bom dia!"
+print(mensagem)  # saída : Ele respondeu: "Bom dia!"
 
 # concatenando com variáveis:
 nome = "Ana"
 saudacao = "Bom dia, " + nome + "!"
-print(saudacao)  # Saída: Bom dia, Ana!
+print(saudacao)  # saída : Bom dia, Ana!
 
 # multiplicação de strings com espaços:
 ponto = ". "
 linha = ponto * 10
-print(linha)  # Saída: . . . . . . . . . .
+print(linha)  # saída : . . . . . . . . . .
 
 # uso do caractere de nova linha para formatação:
 lista_compras = "Itens:\n- Maçã\n- Banana\n- Laranja"
 print(lista_compras)
-# Saída:
+# saída :
 # Itens:
 # - Maçã
 # - Banana
@@ -532,27 +536,27 @@ print(lista_compras)
 # uso do caractere de tabulação para formatação:
 tabela = "Produto\tPreço\nMaçã\t1.50\nBanana\t0.75"
 print(tabela)
-# Saída:
+# saída :
 # Produto    Preço
 # Maçã       1.50
 # Banana     0.75
 
 # uso da barra invertida para incluir aspas duplas:
 mensagem = "Ele disse: \"Bom trabalho!\""
-print(mensagem)  # Saída: Ele disse: "Bom trabalho!"
+print(mensagem)  # saída : Ele disse: "Bom trabalho!"
 
 # uso da barra invertida para incluir aspas simples:
 mensagem = 'Ela disse: \'Até logo!\''
-print(mensagem)  # Saída: Ela disse: 'Até logo!'
+print(mensagem)  # saída : Ela disse: 'Até logo!'
 
 # concatenando strings literais:
 mensagem = "Python " + "é " + "divertido!"
-print(mensagem)  # Saída: Python é divertido!
+print(mensagem)  # saída : Python é divertido!
 
 # uso de caracteres especiais em uma string:
 texto = "Linha1\nLinha2\tTabbed\nCaminho: C:\\Usuários\\Nome"
 print(texto)
-# Saída:
+# saída :
 # Linha1
 # Linha2  Tabbed
 # Caminho: C:\Usuários\Nome
@@ -560,27 +564,27 @@ print(texto)
 # concatenando strings com múltiplas linhas:
 mensagem = "Olá,\n" + "Este é um exemplo de mensagem\n" + "com múltiplas linhas."
 print(mensagem)
-# Saída:
+# saída :
 # Olá,
 # Este é um exemplo de mensagem
 # com múltiplas linhas.
 
 # multiplicação de strings para criar um padrão:
 padrao = "AB" * 5
-print(padrao)  # Saída: ABABABABAB
+print(padrao)  # saída : ABABABABAB
 
 # uso de aspas duplas dentro de aspas duplas com escape:
 frase = "Ele disse: \"Isso é incrível!\""
-print(frase)  # Saída: Ele disse: "Isso é incrível!"
+print(frase)  # saída : Ele disse: "Isso é incrível!"
 
 # uso de aspas simples dentro de aspas simples com escape:
 frase = 'Ela respondeu: \'Sim, estou de acordo.\''
-print(frase)  # Saída: Ela respondeu: 'Sim, estou de acordo.'
+print(frase)  # saída : Ela respondeu: 'Sim, estou de acordo.'
 
 # uso de caracteres de nova linha \n em uma string longa:
 mensagem = "Linha 1\nLinha 2\nLinha 3"
 print(mensagem)
-# Saída:
+# saída :
 # Linha 1
 # Linha 2
 # Linha 3
@@ -588,29 +592,29 @@ print(mensagem)
 # uso de tabulação \t para alinhar texto:
 tabela = "Nome\tIdade\tCidade\nAna\t30\tSão Paulo\nCarlos\t25\tRio de Janeiro"
 print(tabela)
-# Saída:
+# saída :
 # Nome    Idade    Cidade
 # Ana     30       São Paulo
 # Carlos  25       Rio de Janeiro
 
 # uso de barra invertida para escapar uma barra invertida:
 caminho = "C:\\Usuários\\Publico"
-print(caminho)  # Saída: C:\Usuários\Publico
+print(caminho)  # saída : C:\Usuários\Publico
 
 # uso de aspas simples dentro de uma string com aspas duplas sem escape:
 mensagem = "O livro se chama 'Python para Iniciantes'"
-print(mensagem)  # Saída: O livro se chama 'Python para Iniciantes'
+print(mensagem)  # saída : O livro se chama 'Python para Iniciantes'
 
 # uso de aspas duplas dentro de uma string com aspas simples sem escape:
 mensagem = 'Ele disse: "Boa sorte!"'
-print(mensagem)  # Saída: Ele disse: "Boa sorte!"
+print(mensagem)  # saída : Ele disse: "Boa sorte!"
 
 # string literal com múltiplas linhas usando aspas triplas:
 mensagem = '''Esta é uma string
 que ocupa múltiplas linhas,
 sem a necessidade de caracteres de nova linha.'''
 print(mensagem)
-# Saída:
+# saída :
 # Esta é uma string
 # que ocupa múltiplas linhas,
 # sem a necessidade de caracteres de nova linha.
@@ -619,65 +623,85 @@ print(mensagem)
 texto = """Ela disse: "Isso é 'fantástico'!"
 E ele respondeu: "Concordo completamente."""
 print(texto)
-# Saída:
+# saída :
 # Ela disse: "Isso é 'fantástico'!"
 # E ele respondeu: "Concordo completamente."
 
 # acessando o primeiro caractere
 texto = "Python"
-print(texto[0])  # Output: P
+print(texto[0])  # saída : P
 
 # acessando o terceiro caractere
 texto = "Python"
-print(texto[2])  # Output: t
+print(texto[2])  # saída : t
 
 # acessando o último caractere
 texto = "Python"
-print(texto[-1])  # Output: n
+print(texto[-1])  # saída : n
 
 # acessando o penúltimo caractere
 texto = "Python"
-print(texto[-2])  # Output: o
+print(texto[-2])  # saída : o
 
 # fatiando os primeiros três caracteres
 texto = "Python"
-print(texto[:3])  # Output: Pyt
+print(texto[:3])  # saída : Pyt
 
 # fatiando os caracteres do índice 2 ao 5
 texto = "Python"
-print(texto[2:6])  # Output: thon
+print(texto[2:6])  # saída : thon
 
 # fatiando a partir do índice 4 até o final
 texto = "Python"
-print(texto[4:])  # Output: hon
+print(texto[4:])  # saída : hon
 
 # fatiando até o índice 4
 texto = "Python"
-print(texto[:4])  # Output: Pyt
+print(texto[:4])  # saída : Pyt
+
+# fatiando com passo de 2 caracteres
+texto = "Python"
+print(texto[::2])  # saída : Pto
+
+# fatiando com passo negativo
+texto = "Python"
+print(texto[::-1])  # saída : nohtyP
+
+# fatiando com passo de 3 caracteres
+texto = "Python"
+print(texto[::3])  # saída : Phn
+
+# fatiando com início e fim específicos
+texto = "Python"
+print(texto[1:5:2])  # saída : ytn
 
 # fatiando uma string com tamanho variável
 texto = "Indexação"
-print(texto[3:7])  # Output: exaç
+print(texto[3:7])  # saída : exaç
 
 # fatiando uma string com caracteres especiais
 texto = "Hello, World!"
-print(texto[7:])  # Output: World!
+print(texto[7:])  # saída : World!
 
 # acessando um caractere em uma string de números
 texto = "123456"
-print(texto[4])  # Output: 5
+print(texto[4])  # saída : 5
 
 # fatiando uma string para pegar caracteres de um espaço em branco
 texto = "Python Programming"
-print(texto[7:11])  # Output: Prog
+print(texto[7:11])  # saída : Prog
 
 # fatiando uma string para pegar caracteres de uma palavra específica
 texto = "A quick brown fox"
-print(texto[2:9])  # Output: quick b
+print(texto[2:9])  # saída : quick b
 
 # fatiando uma string para pegar a última palavra
 texto = "A quick brown fox"
-print(texto[11:])  # Output: brown fox
+print(texto[11:])  # saída : brown fox
+
+# fatiando uma string para pegar caracteres com diferentes passos
+texto = "abcdefghijk"
+print(texto[::4])  # saída : ae
 ```
 
 ## bool
@@ -691,95 +715,95 @@ Veja alguns exemplos :
 a = 5
 b = 5
 resultado = a == b
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação de diferença entre inteiros:
 a = 5
 b = 3
 resultado = a != b
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação maior que entre inteiros:
 a = 10
 b = 5
 resultado = a > b
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação menor que entre inteiros:
 a = 5
 b = 10
 resultado = a < b
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação maior ou igual entre inteiros:
 a = 10
 b = 10
 resultado = a >= b
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação menor ou igual entre inteiros:
 a = 5
 b = 10
 resultado = a <= b
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação de igualdade entre strings:
 palavra1 = "python"
 palavra2 = "python"
 resultado = palavra1 == palavra2
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação de diferença entre strings:
 palavra1 = "python"
 palavra2 = "Python"
 resultado = palavra1 != palavra2
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # uso do operador and (e lógico):
 a = True
 b = False
 resultado = a and b
-print(resultado)  # Saída: False
+print(resultado)  # saída : False
 
 # uso do operador or (ou lógico):
 a = True
 b = False
 resultado = a or b
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # uso do operador not (não lógico):
 a = True
 resultado = not a
-print(resultado)  # Saída: False
+print(resultado)  # saída : False
 
 # combinação de operadores relacionais e lógicos:
 a = 10
 b = 5
 c = 7
 resultado = (a > b) and (c < a)
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação entre float e inteiro:
 a = 10.0
 b = 10
 resultado = a == b
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # comparação de strings com diferentes casos:
 palavra1 = "pythoN"
 palavra2 = "python"
 resultado = palavra1 == palavra2
-print(resultado)  # Saída: False
+print(resultado)  # saída : False
 
 # verificação se um número é par:
 numero = 4
 resultado = numero % 2 == 0
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # verificação se um número é ímpar:
 numero = 5
 resultado = numero % 2 != 0
-print(resultado)  # Saída: True
+print(resultado)  # saída : True
 
 # outra forma de verificar se um número é par ou ímpar
 numero = 5
@@ -793,13 +817,13 @@ a = True
 b = False
 c = True
 resultado = (a and b) or (not c)
-print(resultado)  # Saída: False
+print(resultado)  # saída : False
 
 # comparação entre variáveis booleanas:
 a = True
 b = False
 resultado = a == b
-print(resultado)  # Saída: False
+print(resultado)  # saída : False
 ```
 
 ## condicional if-elif-else
@@ -1101,6 +1125,8 @@ if produto_em_estoque:
 else:
     print("Produto fora de estoque.")
 ```
+
+## lista de exercícios
 
 <details>
 <summary>Lista de Exercícios</summary>
