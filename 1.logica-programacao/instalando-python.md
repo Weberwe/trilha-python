@@ -1,3 +1,8 @@
+Índice Instalando o Python
+
+1. [o que é o python](#o-que-é-o-python)
+1. [como instalar](#como-instalar)
+
 # instalando o python
 
 ## o que é o python

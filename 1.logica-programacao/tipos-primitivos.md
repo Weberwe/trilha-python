@@ -1,6 +1,5 @@
-# tipos primitivos
+Índice Tipos Primitivos
 
-Índice
 1. [informação](#informação)
 1. [constantes](#constantes)
 1. [variáveis](#variáveis)
@@ -10,6 +9,8 @@
 1. [prioridades](#prioridades)
 1. [expressões lógicas](#expressões-lógicas)
 1. [comandos de atribuição](#comandos-de-atribuição)
+
+# tipos primitivos
 
 ## informação
 

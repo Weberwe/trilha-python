@@ -1,8 +1,14 @@
-# Como Baixar e Instalar o VS Code
+Índice Instalando o VS Code
+
+1. [baixando o vs code](#baixando-o-vs-code)
+1. [instalar o vs code](#instalar-o-vs-code)
+1. [extensão do vs code](#extensão-do-vs-code)
+
+# como baixar e instalar o vs code
 
 A seguir há um passo a passo de como baixar e instalar o VS Code.
 
-## Passo 1: Baixando o VS Code
+## baixando o vs code
 
 1. **Abrir o Navegador de Internet:**
     - Clique no ícone do navegador de internet (por exemplo, Google Chrome, Firefox, Edge) na barra de tarefas ou na área de trabalho.
@@ -16,9 +22,9 @@ A seguir há um passo a passo de como baixar e instalar o VS Code.
         - Para as aulas, selecione a versão **User Installer** do Windows.
         - Em sua casa, escolha a versão principal.
 
-## Passo 2: Instalar o VS Code
+## instalar o vs code
 
-### Windows
+### windows
 
 A versão **User Installer** é usada para realizar uma instalação onde o usuário não possui as permissões de administrador na máquina. Ela terá um nome como `VSCodeUserSetup-x64-1.xx.exe`, onde `xx` representa a versão baixada.
 
@@ -59,7 +65,7 @@ A versão **User Installer** é usada para realizar uma instalação onde o usu�
 1. **Finalizar a Instalação:**
    - Marque a opção "Launch Visual Studio Code" (Lançar Visual Studio Code) e clique em "Finish" (Concluir).
 
-### macOS
+### macos
 
 1. **Abrir o Arquivo de Download:**
    - Após o download, localize o arquivo baixado (geralmente na pasta "Downloads").
@@ -69,7 +75,7 @@ A versão **User Installer** é usada para realizar uma instalação onde o usu�
 3. **Abrir o VS Code:**
    - Vá até a pasta "Applications" (Aplicativos) e clique duas vezes no ícone do Visual Studio Code para abrir o aplicativo.
 
-### Linux
+### linux
 
 1. **Dependendo da Distribuição, Utilize o Método Apropriado:**
 
@@ -96,7 +102,7 @@ A versão **User Installer** é usada para realizar uma instalação onde o usu�
 2. **Abrir o VS Code:**
    - Após a instalação, abra o Visual Studio Code pelo menu de aplicativos ou digitando `code` no terminal.
 
-### Dicas Finais
+### dicas finais
 
 - **Tradução para Português:**
   - Abra o VS Code.
@@ -105,18 +111,15 @@ A versão **User Installer** é usada para realizar uma instalação onde o usu�
 
 ----
 
-# Extensão do VS Code
+## extensão do vs code
 
 O VS Code, por si só, é uma ferramente muito poderosa, mas ele pode melhorar.
 
 O programa tem uma funcionalidade chamada de extensões, onde é possível adicionar extensões ao programa de modo que ele funcione melhor para determinados trabalhos.
 
-
-## Extensão do Python
-
 Há uma extensão perfeita para trabalhar com Python no VS Code. Para instalá-la, siga os passos abaixo.
 
-### Instalando a Extensão
+### instalando a extensão
 
 1. **Abrir o VS Code:**
    - Clique no ícone do Visual Studio Code na área de trabalho ou na lista de aplicativos.
@@ -132,7 +135,7 @@ Há uma extensão perfeita para trabalhar com Python no VS Code. Para instalá-l
    - Se a solicitação aparecer, clique em "Select Python Interpreter" (Selecionar Interpretador Python).
    - Escolha o interpretador Python instalado no seu sistema. Se você tiver mais de uma versão do Python instalada, selecione a versão que deseja usar.
 
-### Verificando a Instalação
+### verificando a instalação
 
 1. **Criar um Novo Arquivo Python:**
    - Clique em "File" (Arquivo) > "New File" (Novo Arquivo).

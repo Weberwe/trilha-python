@@ -1,4 +1,14 @@
-# Introdução à Lógica de Programação
+Índice Introdução à Lógica de Programação
+
+1. [o que é lógica](#o-que-é-lógica)
+1. [lógica no dia a dia](#lógica-no-dia-a-dia)
+1. [e a lógica de programação](#e-a-lógica-de-programação)
+1. [o que é um algoritmo](#o-que-é-um-algoritmo)
+1. [algoritmizando a lógica](#algoritmizando-a-lógica)
+1. [resumo](#resumo)
+1. [atividades](#atividades)
+
+# introdução à lógica de programação
 
 ## o que é lógica
 
