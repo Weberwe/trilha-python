@@ -1,8 +1,18 @@
+Índice Tipos Python
+
+1. [números](#números)
+1. [variáveis](#variáveis)
+1. [texto](#texto)
+1. [manipulando strings](#manipulando-strings)
+1. [indexando strings](#indexando-strings)
+1. [dividindo strings](#dividindo-strings)
+1. [lógico](#lógico)
+
 # tipos do python
 
 Veja agora alguns dos tipos do Python.
 
-## Números
+## números
 
 O interpretador funciona como uma calculadora simples. A expressão que for digitada será executada e a resposta será apresentada. Os operadores usados são os mesmos da matemática.
 - `+` para adição;
@@ -95,7 +105,7 @@ Além de `int` e `float`, o Python também suporta outros tipos de números, com
 >>> |
 ```
 
-## Variáveis
+## variáveis
 Nos exemplos acima, todos os valores usados, uma vez que foram calculados, eram perdidos. O resultado da equação `2 ** 7` vai ser mostrado e descartado. É necessário que toda linguagem de programação seja capaz de aceitar, armazenar e nomear dados.
 
 Um programa deve ser capaz de receber dados do teclado (ou de outra parte do seu programa) e associar a um nome aquele dado. Este dado pode ser um valor simples ou múltiplos valores que são associados a um nome. Dados que são associados a um nome e que guarda dado é chamada de *variável*. Pense na variável como uma caixa com um nome do lado de fora dela e que pode colocar o que quiser dentro.
@@ -125,7 +135,7 @@ NameError: name 'numero' is not defined
 
 Com o uso de variáveis, é possível armazenar o valor para usar posteriormente.
 
-### PEP 8 - Variáveis
+### pep 8 - variáveis
 <details>
   <summary>Detalhes</summary>
 
@@ -140,7 +150,7 @@ Por exemplo, é uma péssima prática usar l, O ou I como nome de variáveis. De
 ```
 Fazendo isso, parece que se está tentando salvar o valor 2 no valor zero, o que é impossível.
 
-#### Nomes das Variáveis
+#### nomes das variáveis
 As variáveis devem iniciar com o primeiro caractere sendo uma letra (há outro caractere permitido, mas será visto bem mais tarde). Depois do primeiro, pode-se usar números também. Espaços não são permitidos para os nomes, então é usado o sublinhado `_` para separar as palavras. Variáveis também não podem possuir acentuações ou cedilhas nos nomes.
 
 Lembrando que esse tipo de nomenclatura é conhecida como [*snake_case*](https://www.alura.com.br/artigos/convencoes-nomenclatura-camel-pascal-kebab-snake-case#snake-case).
@@ -176,7 +186,7 @@ SyntaxError: invalid syntax
 >>> |
 ```
 
-#### Nomes Proibidos
+#### nomes proibidos
 O Python possui diversas palavras-chave que não podem ser usadas como nomes de variáveis. Se algum valor for tentado associar a ela, irá levantar um erro de sintaxe :
 
 ```python
@@ -214,7 +224,7 @@ SyntaxError: invalid syntax
 
 </details>
 
-## Exercícios de Números
+## exercícios de números
 
 <details>
   <summary>Lista de Exercícios</summary>
@@ -386,7 +396,7 @@ Para transformar em algoritmo, pode se fazer de várias formas :
 
 </details>
 
-## Texto
+## texto
 
 O Python pode manipular texto (representado pelo tipo `str`, também chamado de `strings`), bem como os números. Isso inclui caracteres `!`, palavras `coelho`, nomes `Paris`, frases `Eu te protejo.`, `Oba! :)` etc.. Eles podem ser colocados entre aspas simples `'...'` ou aspas duplas `"..."` com o mesmo resultado.
 
@@ -425,7 +435,7 @@ linha dois
 >>>
 ```
 
-### Caracteres Especiais
+### caracteres especiais
 
 Os caracteres especiais são uma forma de mandar para a linguagem de programação comandos a serem executados de dentro da string :
 
@@ -481,7 +491,7 @@ print('C:\\usuario\\ted')
 >>> |
 ```
 
-### String Literais
+### string literais
 
 As strings literais podem abranger várias linhas. Uma maneira é usar as aspas triplas: `"""..."""` ou `'''...'''`. O fim das linhas é incluído automaticamente na string, mas é possível evitar isso adicionando uma `\` no final.
 O seguinte exemplo:
@@ -507,7 +517,7 @@ dividida em apenas duas linhas
 >>> |
 ```
 
-## Exercícios de Texto e Print
+## exercícios de texto e print
 
 <details>
   <summary>Lista de Exercícios</summary>
@@ -577,11 +587,11 @@ dividida em apenas duas linhas
 
 </details>
 
-## Manipulando Strings
+## manipulando strings
 
 Strings suportam uma série de operações usando alguns operadores matemáticos.
 
-### Concatenando
+### concatenando
 
 Elas podem ser concatenadas (coladas, "somadas") com o operador `+` ou então apenas deixando um espaço entre elas :
 ```python
@@ -651,7 +661,7 @@ Arnold Schwarzenegger
 >>> |
 ```
 
-### Multiplicando
+### multiplicando
 
 Também é possível usar o operador de multiplicação `*` para manipular as string.
 
@@ -665,7 +675,7 @@ Também é possível usar o operador de multiplicação `*` para manipular as st
 >>> |
 ```
 
-### Combinando os Operadores
+### combinando os operadores
 
 É possível usar ambos os operadores de uma vez :
 ```python
@@ -674,7 +684,7 @@ Também é possível usar o operador de multiplicação `*` para manipular as st
 >>> |
 ```
 
-## Indexando Strings
+## indexando strings
 Uma string nada mais é do que uma sucessão de caracteres. Diferente dos números, onde o valor 2.147.483.648 corresponde a apenas um valor, uma palavra é composta por diversos caracteres. Por causa disso, é possível *indexar* uma string com o primeiro caractere iniciando em `zero`.
 
 Veja abaixo :
@@ -699,7 +709,7 @@ Também é possível usar números negativos e começar a contagem da direita :
 
 Repare que, como -0 é a mesma coisa que 0, os índices negativos iniciam em `-1`.
 
-## Dividindo Strings
+## dividindo strings
 Além de indexar, as strings também podem ser *divididas*. Enquanto indexar é usado para obter um caractere, dividir permite obter uma substring a partir da original.
 
 Veja abaixo :
@@ -819,7 +829,7 @@ IndexError: string index out of range
 
 </details>
 
-## Lógico
+## lógico
 
 O tipo lógico, no Python, é conhecido como **Boolean**, que é representado por `bool`. Ele só pode ter dois valores, `True` e `False`, que são usados para representar a verdade ou falsidade de uma condição
 

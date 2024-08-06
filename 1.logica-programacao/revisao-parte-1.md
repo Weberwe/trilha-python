@@ -1,4 +1,15 @@
-# Revisão
+Índice Revisao - Parte 1
+
+1. [tipos primitivos](#tipos-primitvos)
+1. [variáveis](#variáveis)
+1. [int](#int)
+1. [float](#float)
+1. [combinando int e float](#combinando-int-e-float)
+1. [str](#str)
+1. [bool](#bool)
+1. [condicional if-elif-else](#condicional-if-elif-else)
+
+# revisão
 
 ## tipos primitivos
 

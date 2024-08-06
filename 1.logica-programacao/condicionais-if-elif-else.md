@@ -1,4 +1,14 @@
-# Estruturas Condicionais em Python
+Índice Estruturas Condicionais
+
+1. [estutura sequencial](#estrutura-sequencial)
+1. [if](#if)
+1. [else](#else)
+1. [elif](#elif)
+1. [if aninhado](#if-aninhado)
+1. [comparando if simples e if aninhado](#comparando-if-simples-e-if-aninhado)
+1. [lógico](#lógico)
+
+# estruturas condicionais em python
 
 ## estrutura sequencial
 
@@ -65,7 +75,7 @@ Neste outro exemplo, a condição `idade >= 18` é falsa, pois a variável `idad
 
 ## else
 
-O `else` é usado em conjunto com o `if` para definir o que deve ser feito quando a condição do `if` não é verdadeira. A palavra `else` significa **senão** em inglês. Portanto, estamos dizendo ao computador para fazer algo se a condição do `if` for falsa.
+O `else` é usado em conjunto com o `if` para definir o que deve ser feito quando a condição do `if` não é verdadeira. A palavra `else` significa **senão** em inglês. Portanto, estamos dizendo ao computador para fazer algo se a condição do `if` for falsa. Seu uso é opcional.
 
 Veja sua estrutura básica :
 
@@ -93,7 +103,7 @@ Neste exemplo, a condição `idade >= 18` é falsa, pois a variável `idade` é 
 
 ## elif
 
-Em Python, o `elif` é uma combinação de `else` e `if`, que significa `senão se` em inglês. Ele permite verificar múltiplas condições em uma estrutura condicional, adicionando alternativas ao `if` inicial. Se a condição do `if` for falsa, o Python verifica a condição do `elif`. Você pode usar quantos `elif` precisar para cobrir todas as possibilidades.
+Em Python, o `elif` é uma combinação de `else` e `if`, que significa `senão se` em inglês. Ele permite verificar múltiplas condições em uma estrutura condicional, adicionando alternativas ao `if` inicial. Se a condição do `if` for falsa, o Python verifica a condição do `elif`. Você pode usar quantos `elif` precisar para cobrir todas as possibilidades. Assim como o `else`, o uso do `elif` também é opcional.
 
 Veja sua estrutura básica :
 
