@@ -573,5 +573,22 @@ Para os exercícios abaixo, use a estrutura de `if` que achar mais conveniente.
     1. Verifique se uma pessoa pode dirigir. Ela deve ter pelo menos 18 anos e ter passado no exame de direção. Caso não tenha 18 anos, verifique se está perto de completar 18 (falta menos de um mês).
     1. Verifique se um aluno está aprovado, em recuperação ou reprovado com base em suas notas em três provas e uma prova final. A média das três provas deve ser maior ou igual a 7. Caso contrário, verifique se a média com a prova final é maior ou igual a 5.
     1. Verifique se uma pessoa é elegível para uma promoção. Ela deve ter pelo menos 5 anos de experiência na empresa. Caso não tenha, verifique se tem uma avaliação de desempenho excelente. Se não tiver, verifique se completará 5 anos de experiência em menos de 6 meses.
+        ```python
+        anos_experiencia = 6
+        meses_experiencia = 4
+        aval_desempenho = 'regular'
+
+
+        if anos_experiencia >= 5:
+            print('já pode ser promovido')
+        else:
+            if aval_desempenho == 'excelente':
+                print('tem bom comportamento, pode ser promovido')
+            else:
+                if anos_experiencia >= 4 and anos_experiencia < 5 and meses_experiencia > 6:
+                    print('pode ser promovido')
+                else:
+                    print('vosmecê ainda não pode ser promovido')
+        ```
 
 </details>
