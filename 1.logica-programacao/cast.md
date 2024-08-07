@@ -48,15 +48,15 @@ numero = float(True)
 print(numero)  # saida : 1.0
 
 # convertendo inteiro para string
-texto = float(42)
+texto = str(42)
 print(texto)  # saída : "42"
 
 # convertendo float para string
-texto = float(3.1415)
+texto = str(3.1415)
 print(texto)  # saida : "3.1415"
 
 # convertendo boolean para string
-texto = float(True)
+texto = str(True)
 print(texto)  # saida : "True"
 
 # convertendo inteiro para boolean
@@ -64,15 +64,15 @@ texto = bool(42)
 print(texto)  # saída : True
 
 # convertendo float para boolean
-texto = float(0.0)
+texto = bool(0.0)
 print(texto)  # saida : False
 
 # convertendo string para boolean
-texto = float('Arnold')
+texto = bool('Arnold')
 print(texto)  # saida : True
 
 # convertendo string para boolean
-texto = float('')
+texto = bool('')
 print(texto)  # saida : False
 ```
 
