@@ -1,14 +1,10 @@
-Índice Input e Lista
+Índice Input
 
 * [input](#input)
-* [exercícios inpur](#exercícios-input)
-* [lista](#lista)
-* [str e list](#str-e-list)
-* [exercícios lista](#exercícios-lista)
+* [exercícios input](#exercícios-input)
 
-# input e lista
+# input
 
-## input
 A função `input` do Python é uma ferramenta fundamental para receber dados do usuário durante a execução de um programa. Ela é usada para ler uma linha de texto digitada pelo usuário e pode ser armazenada em uma variável para uso posterior no código.
 
 Quando usada, a função `input` exibe uma mensagem (prompt) ao usuário e pausa a execução do programa até que o usuário digite algo e pressione a tecla Enter, finalizando assim a entrada de dados. **TUDO** o que o usuário digitar é retornado como uma `string`.

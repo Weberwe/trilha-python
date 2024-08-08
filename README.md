@@ -6,8 +6,9 @@ Aulas
 
 | Dia | Arquivo |
 | :----: | :----: |
-| 07/08/2024 | [input](1.logica-programacao/input-lista.md) |
-| 06/08/2024 | [cast](1.logica-programacao/cast.md) | [exercícios](1.logica-programacao/revisao-parte-1.md) |
+| 08/08/2024 | [lista]()<br>[while]() |
+| 07/08/2024 | [input](1.logica-programacao/input.md) |
+| 06/08/2024 | [cast](1.logica-programacao/cast.md)<br>[exercícios](1.logica-programacao/revisao-parte-1.md) |
 | 05/08/2024 | [revisão - parte 1](1.logica-programacao/revisao-parte-1.md) |
 | 02/08/2024 | [if-elif-else - parte 2](1.logica-programacao/condicionais-if-elif-else.md#if-aninhado) |
 | 01/08/2024 | [Condicionais if-elif-else - parte 1](1.logica-programacao/condicionais-if-elif-else.md) |
