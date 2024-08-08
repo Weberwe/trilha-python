@@ -6,7 +6,7 @@ Aulas
 
 | Dia | Arquivo |
 | :----: | :----: |
-| 08/08/2024 | [lista]()<br>[while]() |
+| 08/08/2024 | [lista](1.logica-programacao/lista-while.md)<br>[while]() |
 | 07/08/2024 | [input](1.logica-programacao/input.md) |
 | 06/08/2024 | [cast](1.logica-programacao/cast.md)<br>[exercícios](1.logica-programacao/revisao-parte-1.md) |
 | 05/08/2024 | [revisão - parte 1](1.logica-programacao/revisao-parte-1.md) |
