@@ -91,7 +91,7 @@ Assim como a inserção, há algumas formas de remover um ou mais itens da lista
     Remove a primeira ocorrência de um item específico.
     ```python
     planetas.remove("Plutão")
-    print(frutas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Terra']
+    print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Terra']
     ```
     Se o item removido não estiver na lista, então irá levantar um erro.
 
