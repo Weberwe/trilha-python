@@ -384,7 +384,6 @@ numero = 1
 
 while numero <= 5:
     soma = soma + numero
-    print(f"Adicionando {numero}, soma agora é {soma}")
     print('Adicionando', numero, ', a soma agora é', soma)
     numero = numero + 1
 
