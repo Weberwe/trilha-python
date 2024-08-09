@@ -3,6 +3,8 @@
 * [lista](#lista)
 * [str e list](#str-e-list)
 * [exercícios lista](#exercícios-lista)
+* [while](#while)
+* [exercícios while](#exercícios-while)
 
 # lista e while
 
@@ -393,7 +395,7 @@ A variável `soma` é inicializada com o valor 0 e a variável `numero` é inici
 
 Ao final, é mostrado o valor final da variável `soma`.
 
-### acumulador e contador
+### combinando acumulador e contador
 
 É possível combinar um contador e um acumulador no mesmo loop.
 
