@@ -466,6 +466,16 @@ print('o fatorial de 5 é', produto)
 1. Nível Avançado
     1. Crie um programa que peça ao usuário para digitar números inteiros até que ele digite um número primo. Exiba todos os números digitados até então.
     1. Crie um programa que peça ao usuário para digitar números decimais até que ele digite um número igual a 0. Em seguida, exiba o maior número digitado.
+        ```python
+        pedido = float(input('Digite um decimal : '))
+        maior = pedido
+
+        while pedido != 0:
+            pedido = float(input('Digite um decimal : '))
+            if pedido > maior:
+                maior = pedido
+        print('o maior numero foi :', maior)
+        ```
     1. Crie um programa que peça ao usuário para digitar palavras até que ele digite uma palavra que comece com a letra "z". Em seguida, exiba a palavra mais longa digitada.
     1. Crie um programa que peça ao usuário para digitar valores booleanos (True ou False) até que ele digite "True" três vezes. Exiba a quantidade total de valores digitados.
     1. Crie um programa que peça ao usuário para digitar números inteiros até que ele digite um número negativo. Em seguida, exiba a soma de todos os números digitados.
