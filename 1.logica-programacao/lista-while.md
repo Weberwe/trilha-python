@@ -564,6 +564,30 @@ print('o fatorial de 5 é', produto)
     1. Crie um programa que peça ao usuário para digitar números decimais até que ele digite um número que seja a média de todos os números anteriormente digitados. Exiba o maior e o menor número digitado ao final.
     1. Crie um programa que peça ao usuário para digitar palavras até que ele digite uma palavra que tenha as mesmas letras (em qualquer ordem) que a primeira palavra digitada. Em seguida, exiba a quantidade total de palavras digitadas.
     1. Crie um programa que peça ao usuário para digitar valores booleanos (True ou False) até que ele digite uma sequência de "True", "False", "True", "False". Exiba quantas vezes "True" e "False" foram digitados ao final.
+        ```python
+        cont_true = 0
+        cont_fals = 0
+        parada = '0000'
+        continua = True
+
+        # cond parada TFTF
+        while continua:
+            resposta = bool(input('digite um boolean : '))
+
+            if resposta:
+                cont_true = cont_true + 1
+                parada = parada[1:] + 'T'
+            else:
+                cont_fals = cont_fals + 1
+                parada = parada[1:] + 'F'
+
+            print(parada)
+            if parada == 'TFTF':
+                continua = False
+
+        print('contagem True :', cont_true)
+        print('contagem False :', cont_fals)
+        ```
     1. Crie um programa que peça ao usuário para digitar números inteiros até que a soma dos números digitados seja igual ao produto dos números digitados. Em seguida, exiba todos os números digitados e a soma total.
 1. Nível Muito Complexo com if-elif-else
     1. Crie um programa que peça ao usuário para digitar números inteiros até que ele digite um número que seja divisível pelo número de elementos já digitados. Se o número for maior que 100, adicione-o a uma lista de "números muito grandes". Caso contrário, adicione-o a uma lista de "outros números". Exiba ambas as listas ao final.
