@@ -207,6 +207,19 @@ print(planetas[:3])  # saída : ['Mercúrio', 'Vênus', 'Terra']
         ```
     1. Crie uma lista com três strings. Se a lista contiver a string "Python", exiba "Encontrado". Caso contrário, exiba "Não encontrado".
     1. Crie uma lista com cinco números decimais. Se o terceiro elemento for maior que 2.5, altere o último elemento para 0. Caso contrário, altere o primeiro elemento para 1.
+        ```python
+        lista_dec = [1.1, 1.5, 2.6, 2.1, 5.0]
+        indice = 0
+
+        print(lista_dec)
+
+        if lista_dec[2] > 2.5:
+            lista_dec[-1] = 0
+        else:
+            lista_dec[0] = 1
+
+        print(lista_dec)
+        ```
     1. Crie uma lista com quatro valores booleanos. Se o primeiro elemento for True, altere o segundo elemento para False. Caso contrário, altere o terceiro elemento para True.
     1. Crie uma lista com três strings. Se a lista não contiver a string "Hello", adicione "Hello" no final da lista. Caso contrário, remova o último elemento.
 1. Exercícios Intermediários
@@ -248,11 +261,45 @@ print(planetas[:3])  # saída : ['Mercúrio', 'Vênus', 'Terra']
 1. Exercícios Muito Complexos
     1. Crie uma lista com cinco números inteiros e inverta a ordem dos elementos.
     1. Crie uma lista com quatro strings e remova todas as strings que contêm a letra "a".
+        ```python
+        palavras = ['aula', 'premia', 'sala', 'movel']
+        indice = 0
+
+        while indice < len(palavras):
+
+            if 'a' in palavras[indice]:
+                palavras.pop(indice)
+            else:
+                indice = indice + 1
+
+        print('palavras :', palavras)
+        ```
     1. Crie uma lista com seis números decimais e insira um número aleatório após cada elemento.
     1. Crie uma lista com três valores booleanos e remova todos os valores False.
     1. Crie uma lista com cinco números inteiros e substitua cada elemento pelo seu quadrado.
 1. Exercícios Muito Complexos com if-elif-else
     1. Crie uma lista com cinco números inteiros. Se a lista contiver números negativos, remova todos eles. Caso contrário, adicione -1 no início e no final da lista.
+        ```python
+        numeros = [1, 4, 6, 8, 10]
+
+        indice = 0
+
+        while indice < len(numeros):
+            if numeros[indice] < 0:
+                print('numero negativo :', numeros[indice])
+
+                numeros = []
+
+            print('valor do indice :', indice)
+            indice = indice + 1
+
+        if len(numeros) > 0:
+            numeros.append(-1)
+            numeros.insert(0, -1)
+
+        print('a lista ficou :', numeros)
+        print('fim do programa')
+        ```
     1. Crie uma lista com quatro strings. Se a lista tiver mais de uma string com a letra "e", remova todas essas strings. Caso contrário, adicione "No e" no final da lista.
     1. Crie uma lista com seis números decimais. Se a soma dos números for menor que 10, insira o número 5.5 no meio da lista. Caso contrário, remova o número no meio da lista.
     1. Crie uma lista com três valores booleanos. Se todos os valores forem True, altere o segundo elemento para False. Caso contrário, adicione True no final da lista.
@@ -477,6 +524,21 @@ print('o fatorial de 5 é', produto)
         print('o maior numero foi :', maior)
         ```
     1. Crie um programa que peça ao usuário para digitar palavras até que ele digite uma palavra que comece com a letra "z". Em seguida, exiba a palavra mais longa digitada.
+        ```python
+        print('digite numeros, pare tudo digitando 0')
+
+        numero = float(input('digite um numero : '))
+        maior = numero
+
+        while numero != 0.0:  # numero != 0
+            numero = float(input('digite outro numero : '))
+
+            if numero > maior:
+                maior = numero
+
+        print('o numero eh :', numero)
+        print('o maior eh :', maior)
+        ```
     1. Crie um programa que peça ao usuário para digitar valores booleanos (True ou False) até que ele digite "True" três vezes. Exiba a quantidade total de valores digitados.
     1. Crie um programa que peça ao usuário para digitar números inteiros até que ele digite um número negativo. Em seguida, exiba a soma de todos os números digitados.
 1. Nível Avançado com if-elif-else
