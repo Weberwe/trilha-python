@@ -100,10 +100,10 @@ As notas são passadas usando letras, mas cada uma tem uma pontuação específi
 
 | nota | valor numérico || nota | valor numérico || nota | valor numérico |
 | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
-| A+ | 10.0 a 9.8 || A | 9.7 a 9.4 || A- | 9.3 a 9.0 |
-| B+ | 8.9 a 8.5 || B | 8.4 a 8.0 || B- | 7.9 a 7.5 |
-| C+ | 7.4 a 7.0 || C | 6.9 a 6.5 || C- | 6.4 a 6.0 |
-| D+ | 5.9 a 4.0 || D | 3.9 a 2.1 || D- | 2.0 a 0.1 |
+| A+ | 10.0 || A | 9.7 || A- | 9.3 |
+| B+ | 8.9 || B | 8.4 || B- | 7.9 |
+| C+ | 7.4 || C | 6.9 || C- | 6.4 |
+| D+ | 5.9 || D | 3.9 || D- | 2.0 |
 | F  | 0.0 |
 
 Ele quer que vocês criem um programa que peça o nome do aluno, sua casa, uma disciplina da lista (Transfiguração, Herbologia, Poções, Astronomia, Defesa Contra as Artes das Trevas e Trato das Criaturas Mágicas) e 5 notas do aluno (A, B-, etc). Depois, calcule sua média.

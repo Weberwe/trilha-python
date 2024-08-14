@@ -1,4 +1,4 @@
-# escala = 
+# escala =
 # escalas_convertidas =
 # #Celsius-> kelvin
 # c = k - 273
@@ -19,7 +19,7 @@ numero = float(input('Digite a temperatura :'))
 k_c = (numero - 273)
 k_f= (numero -273) *1.8+32
 c_k= (numero + 273)
-c_f= (numero * 1.8 + 32) 
+c_f= (numero * 1.8 + 32)
 f_c= c =(numero -32)/1.8
 f_k=(numero -32)*(5/9) + 273
 
@@ -36,7 +36,7 @@ elif conversao == k_f:
 elif conversao == c_k:
     print (c_k)
 elif conversao == f_c:
-    print(f_c)    
+    print(f_c)
 elif conversao == c_f:
     print(c_f)
 elif conversao == f_k:
