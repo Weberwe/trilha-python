@@ -8,7 +8,8 @@ Curso com duração de 256 horas, totalizando 39 aulas.
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 01 | 14/08/2024 | [print]() |
+| 02 | 15/08/2024 | [print]()<br>[intercalando e formatando strings]()
+| 01 | 14/08/2024 | [resolução dos desafios](1.logica-programacao/avaliacao/desafio.md) |
 
 ## 1 - Lógica de Programação
 
@@ -31,4 +32,3 @@ Curso com duração de 60 horas, totalizando 15 aulas.
 | 03 | 24/07/2024 | [tipos primitivos - parte 2](1.logica-programacao/tipos-primitivos.md#parênteses) |
 | 02 | 23/07/2024 | [tipos primitivos - parte 1](1.logica-programacao/tipos-primitivos.md) |
 | 01 | 22/07/2024 | [o que é lógica](1.logica-programacao/o-que-eh-logica.md) |
-
