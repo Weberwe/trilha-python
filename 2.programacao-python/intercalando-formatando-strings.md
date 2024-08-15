@@ -1,9 +1,9 @@
 Índice Intercalando e Formatando Strings
 
 1. [introduçao](#introdução)
-1. [intercalando strings com +](#intercalando-strings-com-+)
-1. [operador %](#operador-%)
-1. [str.format](#str.format)
+1. [intercalando strings com +](#intercalando-strings-com-)
+1. [operador %](#operador-)
+1. [str.format](#strformat)
 1. [f-string](#f-string)
 1. [formatando strings](#formatando-strings)
 1. [exercícios](#exercícios)
