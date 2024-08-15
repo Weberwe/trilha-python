@@ -8,7 +8,7 @@ Curso com duração de 256 horas, totalizando 39 aulas.
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 02 | 15/08/2024 | [print]()<br>[intercalando e formatando strings]()
+| 02 | 15/08/2024 | [print](2.programacao-python/print.md)<br>[intercalando e formatando strings](2.programacao-python/intercalando-formatando-strings.md)
 | 01 | 14/08/2024 | [resolução dos desafios](1.logica-programacao/avaliacao/desafio.md) |
 
 ## 1 - Lógica de Programação
