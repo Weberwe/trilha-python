@@ -25,6 +25,8 @@ while casa_1 == casa_2:
 
     if casa_1 not in CASAS or casa_2 not in CASAS:
         print('Digite o nome da casa corretamente!')
+        casa_1 = ''
+        casa_2 = ''
     else:
         if casa_1 == casa_2:
             print('Escolha duas casas diferentes')
@@ -51,7 +53,7 @@ while not fim_partida:
             ponto.append(pont_casa)
             ponto.append(GOL)
         pontuacao.append(ponto)
-
+print(pontuacao)
 # contabilização dos pontos
 i = 0
 pont_casa_1 = 0
