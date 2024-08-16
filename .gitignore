@@ -1,0 +1,8 @@
+# arquivos gerados pelo Python
+__pycache__
+
+# diretório do ambiente virtual
+.venv
+
+# arquivo lixo gerado pelo macos
+.DS_Store

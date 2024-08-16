@@ -27,3 +27,13 @@ Abaixo há uma tabela de atalhos usados no VS Code.
 | atalho | ação |
 | :----: | :----: |
 | <kbd>ctrl</kbd> + <kbd>d</kbd> | seleciona as mesmas palavras |
+
+## Extensões
+
+Abaixo há uma sugestão de extensões para serem usadas no programa.
+
+| extensão | uso |
+| :----: | :----: |
+| Python | Melhora o suporte do VS Code para o Python |
+| vscode-icons | altera os ícones quando abre uma pasta |
+| indent-rainbow | adiciona uma cor diferente a cada indentação |
