@@ -423,7 +423,7 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 
 ## execícios
 
-< details>
+<details>
 <summary>Lista de Exercícios</summary>
 
 ### 1. `str.upper()`
