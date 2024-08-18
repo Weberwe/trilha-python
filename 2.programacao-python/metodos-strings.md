@@ -423,7 +423,7 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 
 ## execícios
 
-<details>
+< details>
 <summary>Lista de Exercícios</summary>
 
 ### 1. `str.upper()`
@@ -527,9 +527,7 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 9. Divida uma string em partes, usando espaços como separador e limitando o número de divisões.
 10. Receba uma frase e divida-a em palavras usando um separador específico, limitando o número de divisões.
 
-### 10
-
-. `str.join(iterable)`
+### 10. `str.join(iterable)`
 1. Crie uma lista de palavras e una-as em uma única string, separando-as por espaços usando `str.join()`.
 2. Receba uma lista de palavras do usuário e una-as em uma única string com hífens como separador.
 3. Una os elementos de uma lista de números em uma string, separando-os por vírgulas.
@@ -595,6 +593,20 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 3. Verifique se a string "Python3" contém apenas letras usando `str.isalpha()`.
 4. Crie uma lista de palavras e verifique se cada uma delas contém apenas letras.
 5. Receba uma string e verifique se ela contém apenas letras, sem espaços ou caracteres especiais.
+    ```python
+    >>> texto = input('Digite um texto qualquer : ')
+    Digite um texto qualquer : aqui tem um texto qualquer
+    >>> texto
+    'aqui tem um texto qualquer'
+    >>>
+    >>> if texto.isalpha():
+    ...     print('o conteúdo dessa variável só tem caracteres alfabéticos')
+    ... else:
+    ...     print('essa string tem outras coisas além dos caracteres alfabéticos')
+    ...
+    essa string tem outras coisas além dos caracteres alfabéticos
+    >>> |
+    ```
 6. Verifique se uma string composta por várias palavras contém apenas letras.
 7. Receba uma frase do usuário e verifique se todas as palavras contêm apenas letras.
 8. Verifique se uma string que contém um nome completo tem apenas letras.
@@ -668,6 +680,12 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 
 ### 22. `str.center(width[, fillchar])`
 1. Crie uma string e centralize-a em uma largura de 20 caracteres, preenchendo os espaços com traços (-).
+    ```python
+    >>> nome = 'Arnold'
+    >>> nome = nome.center(20,'-')
+    >>> print(nome)
+    -------Arnold-------
+    ```
 2. Receba uma palavra do usuário e centralize-a em uma largura de 30 caracteres, usando asteriscos como preenchimento.
 3. Centralize a frase "Python Rocks!" em uma largura de 40 caracteres, preenchendo os espaços com pontos (.).
 4. Crie uma lista de palavras e centralize cada uma delas em uma largura de 15 caracteres, usando traços como preenchimento.
