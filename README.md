@@ -8,6 +8,7 @@ Curso com duração de 256 horas, totalizando 39 aulas.
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 04 | 19/08/2024 | [for](2.programacao-python/for-mais-funcoes.md)<br>[range](2.programacao-python/for-mais-funcoes.md#range)<br>[enumerate](2.programacao-python/for-mais-funcoes.md#enumerate)<br>[zip](2.programacao-python/for-mais-funcoes.md#zip)
 | 03 | 16/08/2024 | [métodos das strings](2.programacao-python/metodos-strings.md) |
 | 02 | 15/08/2024 | [print](2.programacao-python/print.md)<br>[intercalando e formatando strings](2.programacao-python/intercalando-formatando-strings.md)
 | 01 | 14/08/2024 | [resolução dos desafios](1.logica-programacao/avaliacao/desafio.md) |
