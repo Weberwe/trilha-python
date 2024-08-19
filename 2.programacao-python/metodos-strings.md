@@ -435,6 +435,11 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 6. Receba uma frase do usuário e converta apenas a primeira palavra para maiúsculas.
 7. Armazene uma mensagem em uma variável e exiba-a em maiúsculas.
 8. Receba o nome de um filme do usuário e exiba-o em maiúsculas.
+    ```python
+    nome_filme = input('digite o nome de um filme : ')
+
+    print(nome_filme.upper())
+    ```
 9. Converta o título de um livro para maiúsculas e exiba-o.
 
 ### 2. `str.lower()`
@@ -443,7 +448,27 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 3. Converta o nome de uma cidade para minúsculas e exiba-o.
 4. Converta a palavra "PYTHON" para minúsculas e exiba o resultado.
 5. Crie uma lista com várias palavras e converta cada uma para minúsculas, exibindo o resultado.
+    ```python
+    palavras = ['carro', 'Moto', 'Jacarezinho', 'AVIAO']
+
+    i = 0
+
+    while i < len(palavras):
+        print(palavras[i].lower())
+        i = i + 1
+    ```
 6. Receba uma frase do usuário e converta apenas a primeira palavra para minúsculas.
+    ```python
+    frase = input('digite uma frase qualquer : ')
+
+    # valida se recebeu algo
+    if frase:
+        lista = frase.split(' ')
+        lista[0] = lista[0].upper()
+        print(' '.join(lista))
+    else:
+        print('digite algo na proxima vez')
+    ```
 7. Armazene uma mensagem em uma variável e exiba-a em minúsculas.
 8. Receba o nome de um filme do usuário e exiba-o em minúsculas.
 9. Converta o título de um livro para minúsculas e exiba-o.
@@ -454,6 +479,17 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 3. Converta a palavra "python" para "Python" usando `str.capitalize()`.
 4. Crie uma lista com várias palavras e capitalize a primeira letra de cada uma, exibindo o resultado.
 5. Receba uma frase do usuário e capitalize apenas a primeira palavra.
+    ```python
+    frase = input('digite uma frase : ')
+    lista = frase.split(' ')
+
+    lista[0] = lista[0].capitalize()
+
+    frase = ' '.join(lista)
+
+    print(frase)
+
+    ```
 6. Armazene uma mensagem em uma variável e exiba-a com a primeira letra em maiúscula.
 7. Receba o nome de um filme do usuário e exiba-o com a primeira letra em maiúscula.
 8. Capitalize o título de um livro e exiba-o.
@@ -466,6 +502,11 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 4. Crie uma lista de frases e aplique `str.title()` em cada uma, exibindo o resultado.
 5. Receba uma frase do usuário e capitalize a primeira letra de cada palavra.
 6. Armazene uma frase em uma variável e exiba-a com `str.title()`.
+    ```python
+    frase = 'eu sou uma grade frase'
+    print(frase.title())
+
+    ```
 7. Receba o título de um filme e converta-o para `title case`.
 8. Capitalize as palavras de um título de livro e exiba-o.
 9. Receba uma frase e exiba-a com cada palavra iniciada com letra maiúscula.
@@ -480,6 +521,19 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 7. Armazene uma frase com espaços e exiba-a sem os espaços no início e no final.
 8. Receba uma string de texto e remova qualquer pontuação extra no início e no fim.
 9. Receba uma frase do usuário e remova todos os espaços extras e caracteres especiais do início e fim.
+    ```python
+    frase = input('digite uma frase : ')
+
+    frase = frase.strip()
+
+    bichados = '!@#$%&*?'
+    i = 0
+    while i < len(bichados):
+        frase = frase.strip(bichados[i])
+        i = i + 1
+
+    print(frase)
+    ```
 
 ### 6. `str.lstrip()`
 1. Crie uma variável com uma string contendo espaços em branco no início. Use `str.lstrip()` para removê-los.
@@ -513,6 +567,18 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 7. Receba uma frase e substitua apenas as primeiras 3 ocorrências de uma palavra específica.
 8. Crie uma string com várias ocorrências de uma palavra e substitua-a por outra, limitando o número de substituições.
 9. Substitua todos os números em uma string por "#" usando `str.replace()`.
+    ```python
+    frase = 'sou uma 123 grande 123 frase com 1287 diversos nume1230os'
+    print(frase)
+
+    i = 0
+
+    while i  < 10:
+        frase = frase.replace(str(i),'#')
+        i = i + 1
+
+    print(frase)
+    ```
 10. Receba uma frase do usuário e substitua todas as ocorrências de uma letra específica, limitando o número de substituições.
 
 ### 9. `str.split(separator[, maxsplit])`
@@ -523,6 +589,19 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 5. Receba uma string e divida-a em uma lista, limitando o número de divisões para 3.
 6. Divida uma frase em palavras usando um caractere específico como separador.
 7. Crie uma string com números separados por vírgulas e divida-a em uma lista de números.
+    ```python
+    texto = '33,121,11234,0981234,88282'
+    print(texto)
+
+    lista = texto.split(',')
+    print(lista)
+
+    i = 0
+    while i < len(lista):
+        lista[i] = int(lista[i])
+        i = i + 1
+    print(lista)
+    ```
 8. Receba uma frase do usuário e divida-a em palavras, limitando o número de divisões para 2.
 9. Divida uma string em partes, usando espaços como separador e limitando o número de divisões.
 10. Receba uma frase e divida-a em palavras usando um separador específico, limitando o número de divisões.
@@ -535,6 +614,19 @@ As strings em Python são sequências imutáveis de caracteres que possuem vári
 5. Receba uma lista de palavras e una-as em uma string com um caractere específico como separador.
 6. Una os elementos de uma lista de palavras em uma string, separando-os por " - ".
 7. Receba uma lista de nomes e una-os em uma string com vírgulas como separador.
+    ```python
+    lista = []
+
+    count = 5
+    while count > 0:
+        nome = input('digite um nome : ')
+        lista.append(nome)
+        count = count - 1
+
+    print(lista)
+    texto = ','.join(lista)
+    print(texto)
+    ```
 8. Crie uma lista de palavras e una-as em uma string, separando-as por " | ".
 9. Receba uma lista de frases e una-as em uma única string com pontos finais entre elas.
 10. Crie uma lista de números e una-os em uma string com espaços como separador.
