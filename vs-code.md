@@ -32,8 +32,8 @@ Abaixo há uma tabela de atalhos usados no VS Code.
 
 Abaixo há uma sugestão de extensões para serem usadas no programa.
 
-| extensão | uso |
-| :----: | :----: |
-| Python | Melhora o suporte do VS Code para o Python |
-| vscode-icons | altera os ícones quando abre uma pasta |
-| indent-rainbow | adiciona uma cor diferente a cada indentação |
+| extensão | tipo | uso |
+| :----: | :----: | :----: |
+| python | obrigatório | melhora o suporte do vs code para o python |
+| vscode-icons | opcional | altera os ícones quando abre uma pasta |
+| indent-rainbow | opcional | adiciona uma cor diferente a cada indentação |
