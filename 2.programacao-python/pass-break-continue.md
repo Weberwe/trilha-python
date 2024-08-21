@@ -336,6 +336,17 @@ Combinar `break` e `continue` em um loop Python permite um controle granular sob
 1. **Interrupção em Lista de Números**: Crie um loop `for` que percorra uma lista de números de 1 a 10. Use `break` para interromper o loop quando o número 5 for encontrado.
 1. **Busca em String**: Escreva um loop `for` que percorra uma string. Use `break` para parar o loop assim que a letra "a" for encontrada e imprima as letras anteriores.
 1. **Loop com Condição**: Crie um loop `while` que incrementa uma variável `x` começando em 0. Use `break` para parar o loop quando `x` for igual a 10.
+    ```python
+    x = 0
+
+    # while x < 20:
+    while True:
+        if x == 10:
+            break
+        x = x + 1
+
+    print(f'saindo do while com {x = }')
+    ```
 1. **Interrupção em Lista de Strings**: Escreva um loop `for` que percorra uma lista de strings. Use `break` para sair do loop assim que encontrar uma string vazia.
 1. **Número Múltiplo**: Crie um loop `for` que percorra uma lista de números. Use `break` para interromper o loop assim que encontrar um número divisível por 7.
 1. **Interromper com Condicional**: Crie um loop `while` que soma números inteiros a partir de 1. Use `break` para sair do loop assim que a soma ultrapassar 50.

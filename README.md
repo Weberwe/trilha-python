@@ -4,10 +4,13 @@ Repositório com o material de Python para a Trilha 4 - Desenvolvimento Python.
 
 ## 2 - Programação Python
 
-Curso com duração de 256 horas, totalizando 39 aulas.
+Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em ***10/10/2024***.
+
+[avaliação](2.programacao-python/avaliacao.md)
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 06 | 21/08/2024 | [tuplas](2.programacao-python/tuplas.md) |
 | 05 | 20/08/2024 | [pass](2.programacao-python/pass-break-continue.md#pass)<br>[break](2.programacao-python/pass-break-continue.md#break)<br>[continue](2.programacao-python/pass-break-continue.md#continue)<br>[break e continue](2.programacao-python/pass-break-continue.md#break-e-continue) |
 | 04 | 19/08/2024 | [for](2.programacao-python/for-mais-funcoes.md)<br>[range](2.programacao-python/for-mais-funcoes.md#range)<br>[enumerate](2.programacao-python/for-mais-funcoes.md#enumerate)<br>[zip](2.programacao-python/for-mais-funcoes.md#zip)
 | 03 | 16/08/2024 | [métodos das strings](2.programacao-python/metodos-strings.md) |
