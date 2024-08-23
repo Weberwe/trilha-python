@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 08 | 23/08/2024 | [operador ternário](2.programacao-python/opererador-ternario.md) |
 | 07 | 22/08/2024 | [revisão - parte 2](2.programacao-python/revisao-parte-2.md) |
 | 06 | 21/08/2024 | [tuplas](2.programacao-python/tuplas.md) |
 | 05 | 20/08/2024 | [pass](2.programacao-python/pass-break-continue.md#pass)<br>[break](2.programacao-python/pass-break-continue.md#break)<br>[continue](2.programacao-python/pass-break-continue.md#continue)<br>[break e continue](2.programacao-python/pass-break-continue.md#break-e-continue) |
