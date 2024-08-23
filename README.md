@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 07 | 22/08/2024 | [revisão - parte 2](2.programacao-python/revisao-parte-2.md) |
 | 06 | 21/08/2024 | [tuplas](2.programacao-python/tuplas.md) |
 | 05 | 20/08/2024 | [pass](2.programacao-python/pass-break-continue.md#pass)<br>[break](2.programacao-python/pass-break-continue.md#break)<br>[continue](2.programacao-python/pass-break-continue.md#continue)<br>[break e continue](2.programacao-python/pass-break-continue.md#break-e-continue) |
 | 04 | 19/08/2024 | [for](2.programacao-python/for-mais-funcoes.md)<br>[range](2.programacao-python/for-mais-funcoes.md#range)<br>[enumerate](2.programacao-python/for-mais-funcoes.md#enumerate)<br>[zip](2.programacao-python/for-mais-funcoes.md#zip)
@@ -24,8 +25,8 @@ Curso com duração de 60 horas, totalizando 15 aulas.
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
 | 15 | 13/08/2024 | [avaliação](1.logica-programacao/avaliacao/desafio.md) |
-| 14 | 12/08/2024 | [built-in](1.logica-programacao/builtins.md) |
-| 13 | 08/08/2024 | [lista](1.logica-programacao/lista-while.md)<br>[while](1.logica-programacao/lista-while.md#while) |
+| 14 | 12/08/2024 | [built-in](1.logica-programacao/builtins.md)<br>[print()](1.logica-programacao/builtins.md#print)<br>[input()](1.logica-programacao/builtins.md#input)<br>[len()](1.logica-programacao/builtins.md#len)<br>[sum()](1.logica-programacao/builtins.md#sum)<br>[pow()](1.logica-programacao/builtins.md#pow)<br>[max() e min()](1.logica-programacao/builtins.md#max-e-min)<br>[abs()](1.logica-programacao/builtins.md#abs)<br>[round()](1.logica-programacao/builtins.md#round)<br>[type()](1.logica-programacao/builtins.md#type)<br>[isinstance()](1.logica-programacao/builtins.md#isinstance)<br>[ord() e chr()](1.logica-programacao/builtins.md#ord-e-chr)<br>[help()](1.logica-programacao/builtins.md#help)<br>[cast de listas](1.logica-programacao/builtins.md#cast-de-listas) |
+| 13 | 08/08/2024 | [lista](1.logica-programacao/lista-while.md)<br>[criando uma lista](1.logica-programacao/lista-while.md#criando-uma-lista)<br>[acessando itens da lista](1.logica-programacao/lista-while.md#acessando-itens-da-lista)<br>[modificando itens da lista](1.logica-programacao/lista-while.md#modificando-itens-da-lista)<br>[adicionando itens à lista - list.append() e list.insert()](1.logica-programacao/lista-while.md#adicionando-itens-à-lista)<br>[removendo itens da lista - list.remove() list.pop() del](1.logica-programacao/lista-while.md#removendo-itens-da-lista)<br>[str e list](1.logica-programacao/lista-while.md#str-e-list)<br>[comprimento len()](1.logica-programacao/lista-while.md#comprimento)<br>[verificando presença de um item `in`](1.logica-programacao/lista-while.md#verificando-a-presença-de-um-item)<br>[juntando e multiplicando listas](1.logica-programacao/lista-while.md#juntando-e-multiplicando-listas)<br>[fatiamento](1.logica-programacao/lista-while.md#fatiamento)<br>[while](1.logica-programacao/lista-while.md#while)<br>[contador](1.logica-programacao/lista-while.md#contador)<br>[acumulador](1.logica-programacao/lista-while.md#acumulador) |
 | 12 | 07/08/2024 | [input](1.logica-programacao/input.md) |
 | 11 | 06/08/2024 | [cast](1.logica-programacao/cast.md)<br>[exercícios](1.logica-programacao/revisao-parte-1.md) |
 | 10 | 05/08/2024 | [revisão - parte 1](1.logica-programacao/revisao-parte-1.md) |
