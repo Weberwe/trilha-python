@@ -1,18 +1,18 @@
 Índice Tipos Python
 
-1. [números](#números)
+1. [tipos int e float](#tipos-int-e-float)
 1. [variáveis](#variáveis)
-1. [texto](#texto)
+1. [tipo strings](#tipo-strings)
 1. [manipulando strings](#manipulando-strings)
 1. [indexando strings](#indexando-strings)
 1. [dividindo strings](#dividindo-strings)
-1. [lógico](#lógico)
+1. [tipo lógico](#tipo-lógico)
 
 # tipos do python
 
 Veja agora alguns dos tipos do Python.
 
-## números
+## int e float
 
 O interpretador funciona como uma calculadora simples. A expressão que for digitada será executada e a resposta será apresentada. Os operadores usados são os mesmos da matemática.
 - `+` para adição;
@@ -396,7 +396,7 @@ Para transformar em algoritmo, pode se fazer de várias formas :
 
 </details>
 
-## texto
+## tipo strings
 
 O Python pode manipular texto (representado pelo tipo `str`, também chamado de `strings`), bem como os números. Isso inclui caracteres `!`, palavras `coelho`, nomes `Paris`, frases `Eu te protejo.`, `Oba! :)` etc.. Eles podem ser colocados entre aspas simples `'...'` ou aspas duplas `"..."` com o mesmo resultado.
 
@@ -577,7 +577,7 @@ dividida em apenas duas linhas
         valor = 10
         print(valor)
         """
-        print(r'estou na raw string ',texto) 
+        print(r'estou na raw string ',texto)
         '''
     1. Combine raw string com uma string que contenha um bloco de código HTML e imprima-a.
     1. Combine raw string com uma string que contenha um bloco de código CSS e imprima-a.
@@ -591,7 +591,7 @@ dividida em apenas duas linhas
 
 Strings suportam uma série de operações usando alguns operadores matemáticos.
 
-### concatenando
+### concatenando strings
 
 Elas podem ser concatenadas (coladas, "somadas") com o operador `+` ou então apenas deixando um espaço entre elas :
 ```python
@@ -661,7 +661,7 @@ Arnold Schwarzenegger
 >>> |
 ```
 
-### multiplicando
+### multiplicando strings
 
 Também é possível usar o operador de multiplicação `*` para manipular as string.
 
@@ -829,7 +829,7 @@ IndexError: string index out of range
 
 </details>
 
-## lógico
+## tipo lógico
 
 O tipo lógico, no Python, é conhecido como **Boolean**, que é representado por `bool`. Ele só pode ter dois valores, `True` e `False`, que são usados para representar a verdade ou falsidade de uma condição
 

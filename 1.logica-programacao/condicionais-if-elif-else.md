@@ -6,7 +6,6 @@
 1. [elif](#elif)
 1. [if aninhado](#if-aninhado)
 1. [comparando if simples e if aninhado](#comparando-if-simples-e-if-aninhado)
-1. [lógico](#lógico)
 
 # estruturas condicionais em python
 
@@ -592,3 +591,4 @@ Para os exercícios abaixo, use a estrutura de `if` que achar mais conveniente.
         ```
 
 </details>
+
