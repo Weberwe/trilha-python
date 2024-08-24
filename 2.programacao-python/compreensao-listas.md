@@ -274,7 +274,8 @@ Segue abaixo os exemplos mais complexos realizados em aula :
 ...        else:
 ...            tuplas.append(('impar',n))
 ...
->>> [('par', 0), ('par', 20), ('par', 40), ('par', 60), ('par', 80)]
+>>> tuplas
+[('par', 0), ('par', 20), ('par', 40), ('par', 60), ('par', 80)]
 >>>
 >>> # mesma coisa que acima, mas usando compreensao de lista
 >>> # e operador ternário
