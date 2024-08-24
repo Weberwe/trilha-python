@@ -258,14 +258,61 @@ Também é possível adicionar condições :
 - **loops aninhados** : o primeiro loop percorre cada sublista, e o segundo loop percorre cada item dentro das sublistas;
 - **expressão** : cada `item` é adicionado à nova lista plana;
 
+## exemplos aula
+
+Segue abaixo os exemplos mais complexos realizados em aula :
+
+```python
+>>> # iterando sobre uma lista de 100 números,
+>>> # primeiro filtrando pelos múltiplos de 4 E 5
+>>> # depois separando em tuplas de string (par ou impar) e o valor de n
+>>> tuplas = []
+>>> for n in range(100):
+...    if n % 4 == 0 and n % 5 == 0:
+...        if n % 2 == 0:
+...            tuplas.append(('par',n))
+...        else:
+...            tuplas.append(('impar',n))
+...
+>>> [('par', 0), ('par', 20), ('par', 40), ('par', 60), ('par', 80)]
+>>>
+>>> # mesma coisa que acima, mas usando compreensao de lista
+>>> # e operador ternário
+>>> [('par',n) if n % 2 == 0 else ('impar',n) for n in range(100) if n % 4 == 0 and n % 5 == 0]
+[('par', 0), ('par', 20), ('par', 40), ('par', 60), ('par', 80)]
+>>> |
+```
+```python
+>>> mista = [True, 'carlos', 42, 'maria', False, 3.14]
+>>>
+>>> resultado = []
+>>> # filtragem da lista mista, separando apenas o valores dos tipos
+>>> # string e inteiros, depois, se for string deixa em caixa alta
+>>> # se for inteiro, eleva ao quadrado
+>>> for item in mista:
+...     if isinstance(item,str) or isinstance(item,int):
+...         if isinstance(item,str):
+...             resultado.append(item.upper())
+...         else:
+...             resultado.append(item ** 2)
+...
+>>> resultado
+[1, 'CARLOS', 1764, 'MARIA', 0]
+>>>
+>>> # a mesma coisa que acima, mas agora usando compreensão de listas
+>>> # e o operador ternário
+>>> [item.upper() if isinstance(item,str) else item ** 2 for item in mista if isinstance(item,str) or isinstance(item,int)]
+[1, 'CARLOS', 1764, 'MARIA', 0]
+>>> |
+```
 
 ## conclusão
 
 As **compreensões de listas** são uma ferramenta poderosa em Python que permitem escrever código mais compacto e legível. Elas são particularmente úteis para :
 
 - **transformar dados** : aplicando operações a todos os itens de uma sequência;
-- **Filtrar dados** : Selecionando itens que atendem a determinadas condições;
-- **Criar estruturas complexas** : Como listas aninhadas ou dicionários, de forma concisa;
+- **filtrar dados** : Selecionando itens que atendem a determinadas condições;
+- **criar estruturas complexas** : Como listas aninhadas ou dicionários, de forma concisa;
 
 ## exercícios
 
@@ -331,4 +378,3 @@ Exemplo :
     1. **Criação de Tuplas a partir de Listas**: Dada a lista `numeros = [1, 2, 3, 4]`, crie uma nova lista que contenha tuplas, onde cada tupla é composta por um número da lista original e seu quadrado.
 
 </details>
-
