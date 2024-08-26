@@ -12,11 +12,11 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 | :----: | :----: | :----: |
 | 08 | 23/08/2024 | [operador ternário](2.programacao-python/opererador-ternario.md)<br>[compreensão de listas](2.programacao-python/compreensao-listas.md) |
 | 07 | 22/08/2024 | [revisão - parte 2](2.programacao-python/revisao-parte-2.md) |
-| 06 | 21/08/2024 | [tuplas](2.programacao-python/tuplas.md) |
-| 05 | 20/08/2024 | [pass](2.programacao-python/pass-break-continue.md#pass)<br>[break](2.programacao-python/pass-break-continue.md#break)<br>[continue](2.programacao-python/pass-break-continue.md#continue)<br>[break e continue](2.programacao-python/pass-break-continue.md#break-e-continue) |
-| 04 | 19/08/2024 | [for](2.programacao-python/for-mais-funcoes.md)<br>[range](2.programacao-python/for-mais-funcoes.md#range)<br>[enumerate](2.programacao-python/for-mais-funcoes.md#enumerate)<br>[zip](2.programacao-python/for-mais-funcoes.md#zip)
+| 06 | 21/08/2024 | [tipo tupla](2.programacao-python/tipo-tupla.md) |
+| 05 | 20/08/2024 | [pass](2.programacao-python/comando-pass-break-continue.md#pass)<br>[break](2.programacao-python/comando-pass-break-continue.md#break)<br>[continue](2.programacao-python/comando-pass-break-continue.md#continue)<br>[break e continue](2.programacao-python/comando-pass-break-continue.md#break-e-continue) |
+| 04 | 19/08/2024 | [comando for](2.programacao-python/comando-for.md)<br>[função range()](2.programacao-python/funcoes-built-in.md#range)<br>[função enumerate()](2.programacao-python/funcoes-built-in.md#enumerate)<br>[função zip()](2.programacao-python/funcoes-built-in.md#zip)
 | 03 | 16/08/2024 | [métodos das strings](2.programacao-python/metodos-strings.md) |
-| 02 | 15/08/2024 | [print](2.programacao-python/print.md)<br>[intercalando e formatando strings](2.programacao-python/intercalando-formatando-strings.md)
+| 02 | 15/08/2024 | [função print()](2.programacao-python/funcoes-built-in#print.md)<br>[intercalando e formatando strings](2.programacao-python/intercalando-formatando-strings.md)
 | 01 | 14/08/2024 | [resolução dos desafios](1.logica-programacao/avaliacao/desafio.md) |
 
 ## 1 - Lógica de Programação
