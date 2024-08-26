@@ -455,7 +455,7 @@ Veja exemplos de uso
     ```
     No exemplo acima, o terceiro valor de `idades` (22) é ignorado porque `nomes` só tem dois elementos.
 
-1. Zip com Strings :
+1. zip com strings :
     ```python
     >>> letras = 'abc'
     >>> numeros = [1, 2, 3]
@@ -498,4 +498,3 @@ Veja exemplos de uso
 1. Crie três listas de strings e use `zip()` para combinar e imprimir as listas formadas pelos elementos correspondentes.
 
 </details>
-
