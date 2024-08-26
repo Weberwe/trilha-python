@@ -1,4 +1,4 @@
-# tuplas
+# tipo tupla
 
 As **tuplas** (ou *tuples* em inglês) são um tipo de dado em Python que representam uma coleção ordenada de elementos. Assim como as listas, as tuplas podem armazenar múltiplos itens em uma única variável. No entanto, diferentemente das listas, as tuplas são **imutáveis**, ou seja, uma vez criadas, seus valores não podem ser alterados.
 
