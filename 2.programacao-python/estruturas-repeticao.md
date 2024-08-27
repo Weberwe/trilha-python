@@ -511,6 +511,23 @@ No caso do `while`, é necessário controlar explicitamente as condições de pa
     * * * *
     * * * * *
     ```
+    ```python
+    for i in range(0,5):
+        # print(f'{list(range(0,i+1)) = }')
+        for j in range(0, i+1):
+            print('*', end='')
+        print()
+
+
+    i = 0
+    while i < 5:
+        j = 0
+        while j < i+1:
+            print('*', end='')
+            j = j + 1
+        print()
+        i = i + 1
+    ```
     1. dda uma matriz 3x3, crie um programa que soma todos os elementos da matriz usando loops `for` aninhados.
     1. crie uma lista de listas onde cada sublista contém os números de 1 a 5. Use loops `for` aninhados para imprimir todos os elementos.
     1. dada uma matriz 4x4, use loops `for` aninhados para imprimir a diagonal principal (elementos onde o índice da linha é igual ao índice da coluna).
