@@ -921,7 +921,7 @@ Essa funcionalidade é especialmente útil em casos onde você está procurando 
 ## exercícios else
 
 <details>
-<summary>Lista de Exercícios</sumamry>
+<summary>Lista de Exercícios</summary>
 
 1. Dada a lista `numeros = [1, 2, 3, 4, 5]`, crie um loop `for` que percorra a lista e imprima cada número. Use um bloco `else` para imprimir "Loop finalizado" após a conclusão do loop.
 1. Crie um loop `for` que percorra a string `"python"` e imprima cada caractere. No bloco `else`, imprima "Todos os caracteres foram exibidos".
