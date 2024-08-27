@@ -10,7 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 10 | 27/08/2027 | [operação de atribuição composta]()<br>[else em loops]()<br>[tipo dicionário]()<br>[avaliação]() |
+| 10 | 27/08/2027 | [operação de atribuição composta](2.programacao-python/tipos-int-float.md#operação-de-atribuição-composta)<br>[else em loops](2.programacao-python/estruturas-repeticao.md#else-em-loops)<br>[tipo dicionário](2.programacao-python/tipo-dicionario.md)<br>[características](2.programacao-python/tipo-dicionario.md#características)<br>[criando dicionários](2.programacao-python/tipo-dicionario.md#criando-dicionários)<br>[adicionando itens ao dicionário](2.programacao-python/tipo-dicionario.md#adicionando-itens-ao-dicionário)<br>[métodos](2.programacao-python/tipo-dicionario.md#métodos) [keys()](2.programacao-python/tipo-dicionario.md#keys) [values()](2.programacao-python/tipo-dicionario.md#values) [items()](2.programacao-python/tipo-dicionario.md#items)<br>[avaliação](2.programacao-python/avaliacao.md#cpfs-inválidos)<br>[desafio](2.programacao-python/desafio.md) |
 | 09 | 26/08/2024 | [loops aninhados](2.programacao-python/estruturas-repeticao.md#loops-aninhados)<br>[for vs while](2.programacao-python/estruturas-repeticao.md#for-vs-while)<br>[tipo-set](2.programacao-python/tipo-set.md) |
 | 08 | 23/08/2024 | [operador ternário](2.programacao-python/opererador-ternario.md)<br>[compreensão de listas](2.programacao-python/compreensao-listas.md) |
 | 07 | 22/08/2024 | [revisão - parte 2](2.programacao-python/revisao-parte-2.md) |

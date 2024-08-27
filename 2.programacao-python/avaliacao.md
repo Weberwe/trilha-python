@@ -95,29 +95,41 @@ Por exemplo :
 - 111.444.777-35 é válido;
 - 111.444.777-36 é inválido;
 
-### o programa
+## cpfs inválidos
+
+Alguns CPFs podem passar na validação, mas não são considerados inválidos.
+
+São os CPFs com dígitos repetidos, como `111.111.111-11`, `222.222.222-22`, `333.333.333-33`, etc.
+
+Então, seu código deve ignorar os CPFs acima e avisar ao usuário de sua invalidade.
+
+## entrada de dados
+
+Seu programa deverá pedir **vários** CPFs ao usuário.
+
+Os formatos possíveis para um CPF digitado podem ser `XXX.XXX.XXX-YY`, `XXXXXXXXXYY`, `XXX.XXX.XXXYY`, etc. Não podem ser aceitos caracteres alfanuméricos e caracteres especiais, com exceção do ponto `.` e do traço `-`. Para interromper a digitação dos CPFs o usuário precisará digitar `sair` em vez de um CPF.
+
+Após receber o CPF, seu programa deverá mostrar uma das mensagens abaixo :
+- *O CPF digitato está em um formato inválido*, caso tenha sido digitado letras;
+- *O CPF <cpf_digitado> é inválido!*, se os dígitos verificadores forem diferentes dos dois últimos números do CPF;
+- *O CPF <cpf_digitado> é válido!*, se os dígitos verificadores forem iguais dos dois últimos números do CPF;
+
+O campo <cpf_digitado> deverá estar no formato `XXX.XXX.XXX-YY`, independente de como ele foi digitado pelo usuário.
+
+## o que usar
 
 > [!CAUTION]
 > Apenas os conteúdos vistos em aula (que estão neste repositório) são permitidos para a realização do código.
 > Se algum material fora deste repositório for usado, ***`TODO`*** o código será invalidado e o aluno estará sugeito à **recuperação**.
 
-Seu programa, **por enquanto**, deverá pedir apenas um CPF ao usuário.
-
-Os formatos possíveis para um CPF digitado podem ser `XXX.XXX.XXX-YY`, `XXXXXXXXXYY`, `XXX.XXX.XXXYY`, etc. Não podem ser aceitos caracteres alfanuméricos e caracteres especiais, com exceção do ponto `.` e do traço `-`.
-
-Ao final, seu programa deverá mostrar uma das mensagens abaixo :
-- O CPF digitato está em um formato inválido, caso tenha sido digitado letras;
-- O CPF <cpf_digitado> é inválido, se os dígitos verificadores forem diferentes dos dois últimos números do CPF;
-- O CPF <cpf_digitado> é válido, se os dígitos verificadores forem iguais dos dois últimos números do CPF;
-
-O campo <cpf_digitado> deverá estar no formato `XXX.XXX.XXX-YY`, independente do formato digitado pelo usuário.
-
-#### checklist
+## checklist
 
 Abaixo há uma lista de todos os pontos que devem ser realizados.
 Lista essa que irá aumentar quando novos conteúdos forem apresentados em aula.
 
 Lista :
+
+Parte 1
 - [ ] receber um CPF do usuário;
 - [ ] validar o CPF digitado (só pode possuir números, pontos e traço);
 - [ ] mostrar uma mensagem informando se o CPF está em formato inválido;
@@ -128,3 +140,6 @@ Lista :
 - [ ] mostrar o CPF digitado no formato XXX.XXX.XXX-YY;
 - [ ] mostrar uma mensagem informando se o CPF digitado é válido ou inválido;
 
+Parte 2
+- [ ] receber diversos CPFs do usuário sem interromper o programa;
+- [ ] rejeitar CPFs com dígitos iguais;
