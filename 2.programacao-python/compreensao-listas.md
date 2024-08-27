@@ -1,3 +1,12 @@
+Índice
+
+1. [vantagens](#vantagens)
+1. [sintaxe](#sintaxe)
+1. [exemplos](#exemplos)
+1. [exemplos aula](#exemplos-aula)
+1. [conclusão](#conclusão)
+1. [exercícios](#exercícios)
+
 # compreensão de listas
 
 A **compreensão de listas** (*list comprehension*) é uma maneira concisa e elegante de criar listas em Python. Ela permite construir novas listas aplicando uma expressão a cada item de uma sequência existente e, opcionalmente, filtrando itens com base em alguma condição.

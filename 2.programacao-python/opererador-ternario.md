@@ -1,3 +1,11 @@
+Índice
+
+1. [sintaxe](#sintaxe)
+1. [exemplos](#exemplos)
+1. [cuidados](#cuidados)
+1. [comparando](#comparando)
+1. [exercícios](#exercícios)
+
 # operador ternário
 
 O operador ternário em Python é uma forma concisa de escrever uma expressão condicional, permitindo que você atribua um valor a uma variável ou execute uma operação com base em uma condição, tudo em uma única linha de código. Em vez de usar a estrutura tradicional `if-else`, o operador ternário simplifica a sintaxe.

@@ -1,3 +1,11 @@
+Índice
+
+1. [pass](#pass)
+1. [break](#break)
+1. [continue](#continue)
+1. [break e continue](#break-e-continue)
+1. [exercícios](#exercícios)
+
 # pass break continue
 
 ## `pass`

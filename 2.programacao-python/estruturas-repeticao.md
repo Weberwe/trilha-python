@@ -1,3 +1,15 @@
+Índice
+
+1. [while](#while)
+1. [contador e acumulador](#contador-e-acumulador)
+1. [exercícios while](#exercícios-while)
+1. [comando for](#comando-for)
+1. [exercícios for](#exercícios-for)
+1. [loops aninhados](#loops-aninhados)
+1. [exercícios loops aninhados](#exercícios-loops-aninhados)
+1. [for vs while](#for-vs-while)
+1. [exercícios for vs while](#exercícios-for-vs-while)
+
 # estruturas de repetição
 
 ## while
@@ -174,7 +186,7 @@ while numero <= 5:
 print('o fatorial de 5 é', produto)
 ```
 
-## exercícios while
+### exercícios `while`
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -356,10 +368,10 @@ Veja alguns exemplos
 >>> |
 ```
 
+### exercícios `for`
+
 <details>
 <summary>Lista de Exercícios</summary>
-
-### exercícios de `for`
 
 1. Itere sobre uma lista de números e imprima cada número.
 1. Itere sobre uma string e imprima cada caractere.
@@ -485,7 +497,7 @@ No caso do `while`, é necessário controlar explicitamente as condições de pa
 1. O `print(linha[j], end=' ')` imprime cada elemento;
 1. O `print()` no final quebra a linha;
 
-## exercícios
+### exercícios loops aninhados
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -535,7 +547,7 @@ No caso do `while`, é necessário controlar explicitamente as condições de pa
 
 No Python, os loops `for` e `while` são estruturas de repetição que permitem executar um bloco de código várias vezes, mas funcionam de maneiras diferentes.
 
-## loop `for`
+### loop `for`
 
 O loop `for` é utilizado para iterar sobre uma sequência (como uma lista, tupla, string ou range). Ele percorre cada elemento da sequência, um por um, até que todos os elementos tenham sido processados.
 
@@ -548,12 +560,12 @@ O loop `for` é utilizado para iterar sobre uma sequência (como uma lista, tupl
 - **`elemento`** : uma variável que assume o valor de cada item da sequência em cada iteração;
 - **`sequencia`** : a sequência de elementos que será iterada;
 
-### características do `for`
+#### características do `for`
 1. **iteração pré-definida** : o número de iterações é conhecido desde o início, baseado no tamanho da sequência;
 2. **fácil manipulação de sequências** : ideal para trabalhar com listas, strings, tuplas, etc;
 3. **menos propenso a loops infinitos** : como o número de iterações é determinado pela sequência, é menos provável que o loop entre em um estado infinito;
 
-## loop `while`
+### loop `while`
 
 O loop `while` repete um bloco de código enquanto uma condição booleana é verdadeira. Ele é útil quando o número de iterações não é conhecido de antemão, mas depende de uma condição que pode mudar durante a execução do loop.
 
@@ -565,13 +577,13 @@ O loop `while` repete um bloco de código enquanto uma condição booleana é ve
 
 - **`condicao`** : uma expressão que é avaliada antes de cada iteração. Se for `True`, o loop continua; se for `False`, o loop para;
 
-### características do `while`
+#### características do `while`
 1. **iteração não definida** : o número de iterações depende da condição, e pode não ser conhecido antecipadamente;
 2. **flexibilidade** : permite loops mais complexos, onde a condição de término pode depender de várias variáveis;
 3. **propenso a loops infinitos** : se a condição nunca se tornar `false`, o loop continuará indefinidamente;
 
 
-## comparação `for` vs `while`
+### comparação `for` vs `while`
 
 | característica | `for` | `while` |
 | ---- | ---- | ---- |
@@ -590,7 +602,7 @@ O loop `while` repete um bloco de código enquanto uma condição booleana é ve
 - quando o número de iterações não é conhecido antecipadamente e depende de uma condição que pode variar durante a execução.
 - quando é necessário repetir uma ação até que uma determinada condição seja atendida.
 
-## exemplos
+### exemplos
 
 1. iterar uma lista de números e imprimir cada elemento :
     ```python
@@ -732,7 +744,7 @@ O loop `while` repete um bloco de código enquanto uma condição booleana é ve
     >>> |
     ```
 
-## exercícios
+## exercícios for vs while
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -799,5 +811,3 @@ while i < len(frutas):
 1. **imprimir todos os elementos de uma lista de trás para frente**: dada a lista `numeros = [1, 2, 3, 4, 5]`, imprima os elementos começando do último até o primeiro;
 
 </details>
-
-

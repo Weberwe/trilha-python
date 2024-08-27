@@ -1,8 +1,23 @@
+Índice
+
+1. [manipulando a lista](#manipulando-a-lista)
+1. [métodos da lista](#métodos-da-lista)
+    1. [list.append()](#listappend)
+    1. [list.insert()](#listinsert)
+    1. [list.remove()](#listremove)
+    1. [list.pop()](#listpop)
+1. [string e list](#string-e-list)
+1. [exercícios lista](#exercícios-lista)
+
 # lista
 
 Uma lista é uma coleção de itens ordenados e mutáveis. Isso significa que podemos adicionar, remover ou alterar os itens de uma lista após a sua criação. No Python, uma lista é representada por colchetes `[]` e os itens dentro dela são separados por vírgulas. O tipo lista é representado por `list`.
 
-## criando uma lista
+## manipulando a lista
+
+A mainpulação da lista pode ser feita sem usar seus métodos. Veja abaixo algumas formas :
+
+### criando uma lista
 
 Você pode criar uma lista simplesmente colocando uma série de valores entre colchetes.
 
@@ -27,7 +42,7 @@ valor = 42
 lista_mista = [42, nome, 'Schwarzenegger', True, "olá", valor]
 ```
 
-## acessando itens da lista
+### acessando itens da lista
 
 Cada item de uma lista tem uma posição (ou índice). No Python, os índices começam em 0. Isso significa que o primeiro item tem índice 0, o segundo item tem índice 1, e assim por diante.
 
@@ -39,7 +54,7 @@ print('Planeta no índice 2 :', planetas[2])  # saída : Terra
 print('Número no índice 1 :', numeros[1])  # saída : 2
 ```
 
-## modificando itens da lista
+### modificando itens da lista
 
 Como as listas são mutáveis, você pode alterar qualquer item da lista usando o índice:
 
@@ -48,71 +63,62 @@ planetas[2] = 'Saturno'
 print(planetas)  # saída : ['Mercúrio', 'Vênus', 'Saturno', 'Marte']
 ```
 
-## adicionando itens à lista
+## métodos da lista
 
-Há diversas formas de adicionar itens a uma lista.
+### `list.append()`
 
-- **método `append()`** :
+Adiciona um item ao **final** da lista.
 
-    Adiciona um item ao **final** da lista.
-    ```python
-    planetas.append("Plutão")
-    print(planetas)  # saída : ['Mercúrio', 'Vênus', 'Saturno', 'Marte', 'Plutão']
-    ```
+```python
+planetas.append("Plutão")
+print(planetas)  # saída : ['Mercúrio', 'Vênus', 'Saturno', 'Marte', 'Plutão']
+```
 
-- **método `insert()`** :
+### `list.insert()`
 
-    Adiciona um item em uma posição específica.
-    ```python
-    # insere a string "Júpiter" no índice 1 da lista
-    planetas.insert(1, "Júpiter")
-    print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Plutão']
-    ```
-    Se for usado um índice maior que o tamanho da lista, então ele será adicionado ao final dela.
-    ```python
-    planetas.insert(100, "Terra")
-    print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Plutão', 'Terra']
-    ```
+Adiciona um item em uma posição específica.
 
-## removendo itens da lista
+```python
+# insere a string "Júpiter" no índice 1 da lista
+planetas.insert(1, "Júpiter")
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Plutão']
+```
 
-Assim como a inserção, há algumas formas de remover um ou mais itens da lista.
+Se for usado um índice maior que o tamanho da lista, então ele será adicionado ao final dela.
 
-- **método `remove()`** :
+```python
+planetas.insert(100, "Terra")
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Plutão', 'Terra']
+```
 
-    Remove a primeira ocorrência de um item específico.
-    ```python
-    planetas.remove("Plutão")
-    print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Terra']
-    ```
-    Se o item removido não estiver na lista, então irá levantar um erro.
+### `list.remove()`
 
-- **método `pop()`** :
+Remove a primeira ocorrência de um item específico.
 
-    Remove um item pela sua posição (índice) e retorna esse item. Se nenhum índice for fornecido, ele remove o último item.
-    ```python
-    ultimo = planetas.pop()
-    print(ultimo)  # saída : "Terra"
-    print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte']
+```python
+planetas.remove("Plutão")
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte', 'Terra']
+```
 
-    especifico = planetas.pop(2)
-    print(especifico)  # saída : "Vênus"
-    print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Saturno', 'Marte']
-    ```
-    Se o índice passado não existir, então irá ocorrer um erro.
+Se o item removido não estiver na lista, então irá levantar um erro.
 
-- **palavra-chave `del`** :
+### `list.pop()`
 
-    Remove um item pela sua posição ou remove uma fatia (parte) da lista.
-    ```python
-    del planetas[1]
-    print(planetas)  # saída : ['Mercúrio', 'Saturno', 'Marte']
+Remove um item pela sua posição (índice) e retorna esse item. Se nenhum índice for fornecido, ele remove o último item.
 
-    del planetas[1:]
-    print(planetas)  # saída : ['Mercúrio']
-    ```
+```python
+ultimo = planetas.pop()
+print(ultimo)  # saída : "Terra"
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Vênus', 'Saturno', 'Marte']
 
-## str e list
+especifico = planetas.pop(2)
+print(especifico)  # saída : "Vênus"
+print(planetas)  # saída : ['Mercúrio', 'Júpiter', 'Saturno', 'Marte']
+```
+
+Se o índice passado não existir, então irá ocorrer um erro.
+
+## string e list
 
 Strings e listas tem algumas características em comum, como ambas serem compostas de mais de um item. Uma string é composta por um ou mais caracteres, tão somente. Enquanto que uma lista é composta por diferentes tipos.
 
@@ -296,5 +302,3 @@ print(planetas[:3])  # saída : ['Mercúrio', 'Vênus', 'Terra']
     1. Crie uma lista com quatro números inteiros. Se a soma dos elementos for maior que 20, remova todos os números pares. Caso contrário, adicione 2 após cada número ímpar.
 
 </details>
-
-

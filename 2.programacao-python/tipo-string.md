@@ -1,3 +1,46 @@
+Índice
+
+1. [sintaxe](#sintaxe)
+1. [caracteres especiais](#caracteres-especiais)
+1. [string crua](#string-crua)
+1. [string literal](#string-literal)
+1. [exercícios - parte 1](#exercícios---parte-1)
+1. [concatenando strings](#concatenando-strings)
+1. [multiplicando strings](#multiplicando-strings)
+1. [indexando strings](#indexando-strings)
+1. [dividindo strings](#dividindo-strings)
+1. [exercícios - parte 2](#exercícios---parte-2)
+<details>
+<summary>métodos da string</summary>
+
+1. [str.upper()](#strupper)
+1. [str.lower()](#strlower)
+1. [str.capitalize()](#strcapitalize)
+1. [str.title()](#strtitle)
+1. [str.strip()](#strstrip)
+1. [str.lstrip()](#strlstrip)
+1. [str.rstrip()](#strrstrip)
+1. [str.replace()](#strreplace)
+1. [str.split()](#strsplit)
+1. [str.join()](#strjoin)
+1. [str.find()](#strfind)
+1. [str.startswith()](#strstartswith)
+1. [str.endswith()](#strendswith)
+1. [str.isalpha()](#strisalpha)
+1. [str.isdigit()](#strisdigit)
+1. [str.isalnum()](#strisalnum)
+1. [str.isspace()](#strisspace)
+1. [str.isupper()](#strisupper)
+1. [str.islower()](#strislower)
+1. [str.zfill()](#strzfill)
+1. [str.center()](#strcenter)
+1. [str.ljust()](#strljust)
+1. [str.rjust()](#strrjust)
+1. [str.partition()](#strpartition)
+1. [str.rpartition()](#strrpartition)
+
+</details>
+
 # tipo string
 
 O Python pode manipular texto (representado pelo tipo `str`, também chamado de `strings`), bem como os números. Isso inclui caracteres `!`, palavras `coelho`, nomes `Paris`, frases `Eu te protejo.`, `Oba! :)` etc.. Eles podem ser colocados entre aspas simples `'...'` ou aspas duplas `"..."` com o mesmo resultado.
@@ -10,6 +53,8 @@ O Python pode manipular texto (representado pelo tipo `str`, também chamado de 
 >>> '1984'  # dígitos e números entre aspas também são strings
 '1984'
 ```
+
+## sintaxe
 
 Para colocar aspas entre aspas, precisamos "escapá-la", precedendo-as com `\`. Alternativamente, podemos usar o outro tipo de aspas:
 
@@ -121,7 +166,7 @@ dividida em apenas duas linhas
 >>> |
 ```
 
-### exercícios
+## exercícios - parte 1
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -368,6 +413,8 @@ IndexError: string index out of range
 ''
 >>> |
 ```
+
+## exercícios - parte 2
 
 <details>
     <summary>Lista de Exercícios</summary>
@@ -1332,5 +1379,3 @@ print(texto.rpartition('hello'))  # saída : ('', 'hello', ' world')
 10. Receba uma frase do usuário e use `str.partition()` para separar a frase na primeira ocorrência de uma palavra específica.
 
 </details>
-
-

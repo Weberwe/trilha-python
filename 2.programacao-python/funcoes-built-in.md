@@ -1,3 +1,14 @@
+Índice
+
+1. [print()](#print)
+1. [exercícios print()](#exercícios-print)
+1. [range()](#range)
+1. [exercícios range](#exercícios-range)
+1. [enumerate()](#enumerate)
+1. [exercícios enumerate](#exercícios-enumerate)
+1. [zip()](#zip)
+1. [exercícios zip](#exercícios-zip)
+
 # funções built-in
 
 ## `print()`
@@ -78,7 +89,7 @@ Qualquer objeto passado para `print()` é convertido em uma string usando a fun�
 >>> |
 ```
 
-### exercícios
+### exercícios print()
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -244,7 +255,7 @@ Veja alguns exemplos de uso
     >>> |
     ```
 
-### exercícios
+### exercícios range
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -359,7 +370,7 @@ Veja alguns exemplos
     >>> |
     ```
 
-### exercícios
+### exercícios enumerate
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -466,7 +477,7 @@ Veja exemplos de uso
     >>> |
     ```
 
-### exercícios
+### exercícios zip
 
 <details>
 <summary>Lista de Exercícios</summary>
