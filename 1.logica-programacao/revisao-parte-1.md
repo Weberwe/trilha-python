@@ -8,7 +8,7 @@
 1. [str](#str)
 1. [bool](#bool)
 1. [condicional if-elif-else](#condicional-if-elif-else)
-1. [lista de exercícios](#lista-de-exercícios)
+1. [exercícios](#exercícios)
 
 # revisão
 
@@ -1126,7 +1126,7 @@ else:
     print("Produto fora de estoque.")
 ```
 
-## lista de exercícios
+## exercícios
 
 <details>
 <summary>Lista de Exercícios</summary>

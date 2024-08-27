@@ -1,12 +1,29 @@
 Índice
 
+1. [in](#in)
 1. [pass](#pass)
 1. [break](#break)
 1. [continue](#continue)
 1. [break e continue](#break-e-continue)
 1. [exercícios](#exercícios)
 
-# pass break continue
+# comandos built-in
+
+## `in`
+
+Para verificar se um item está em uma lista ou uma string em uma outra string, usa-se a palavra-chave `in` :
+
+```python
+planetas = ["Mercúrio", "Vênus", "Terra", "Marte"]
+sobrenome = 'Schwarzenegger'
+
+print("Marte" in planetas)  # saída : True
+print("Uranus" in planetas)  # saída : False
+
+print('w' in sobrenome)  # saída : True
+print('s' in sobrenome)  # saída : False
+print("gg" in sobrenome)  # saída : True
+```
 
 ## `pass`
 

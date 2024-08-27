@@ -124,35 +124,9 @@ Strings e listas tem algumas características em comum, como ambas serem compost
 
 Por conta disso, elas possuem alguns comportamentos em comum.
 
-### comprimento
-
-Tanto para as strings quanto para as listas, é possível saber o tamanho usando a função `len()`. Veja abaixo :
-
-```python
-planetas = ["Mercúrio", "Vênus", "Terra", "Marte"]
-sobrenome = 'Schwarzenegger'
-
-print(len(planetas))  # saída : 4
-print(len(planetas[2]))  # saída (tamanho da palavra Terra) : 5
-print(len(sobrenome))  # saída : 14
-```
-
-### verificando a presença de um item
-
-Para verificar se um item está em uma lista ou uma string em uma outra string, usa-se a palavra-chave `in` :
-
-```python
-print("Marte" in planetas)  # saída : True
-print("Uranus" in planetas)  # saída : False
-
-print('w' in sobrenome)  # saída : True
-print('s' in sobrenome)  # saída : False
-print("gg" in sobrenome)  # saída : True
-```
-
 ### juntando e multiplicando listas
 
-Assim como nas strings, o operadore `+` é usado para juntar (concatenar) duas listas e o operador `*` é usado para multiplicar o conteúdo de uma lista :
+Assim como nas strings, o operador `+` é usado para juntar (concatenar) duas listas e o operador `*` é usado para multiplicar o conteúdo de uma lista :
 
 ```python
 lista1 = [1, 2, 3]
@@ -174,6 +148,23 @@ print(planetas[1:])  # saída : ['Vênus', 'Terra', 'Marte']
 print(planetas[2:4])  # saída : ['Terra', 'Marte']
 print(planetas[:3])  # saída : ['Mercúrio', 'Vênus', 'Terra']
 ```
+
+## cast de listas
+
+Assim como os outros tipos vistos até agora, o tipo lista também possui uma função capaz de converter outros tipos para lista, embora haja algumas particularidades. Para converter, usa-se a função `list()`.
+
+### `list()`
+A função `list()` é o principal built-in usado para converter (ou "castar") outros tipos de dados em listas. Ela aceita qualquer **iterável** como argumento e retorna uma nova lista contendo os elementos desse iterável.
+
+Quando você converte uma string em uma lista, cada caractere da string se torna um elemento separado na lista.
+
+```python
+sobrenome = 'Schwarzenegger'
+lista = list(sobrenome)
+print(lista)  # saída : ['S', 'c', 'h', 'w', 'a', 'r', 'z', 'e', 'n', 'e', 'g', 'g', 'e', 'r']
+```
+
+Como os tipos `int`, `float`, `bool` não são iteráveis, não é possível converter para uma lista um objeto sozinho desses tipos.
 
 ## exercícios lista
 
