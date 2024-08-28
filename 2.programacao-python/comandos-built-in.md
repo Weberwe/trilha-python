@@ -1,29 +1,344 @@
 Índice
 
 1. [in](#in)
+1. [exercícios in](#exercicios-in)
+1. [del](#del)
+1. [exercícios del](#exercicios-del)
 1. [pass](#pass)
 1. [break](#break)
 1. [continue](#continue)
 1. [break e continue](#break-e-continue)
-1. [exercícios](#exercícios)
+1. [exercícios break e continue](#exercícios-break-e-continue)
 
 # comandos built-in
 
 ## `in`
 
-Para verificar se um item está em uma lista ou uma string em uma outra string, usa-se a palavra-chave `in` :
+O comando `in` do Python é um operador que verifica a existência de um elemento em uma coleção de elementos, como listas, strings, tuplas, dicionários, sets, etc. Ele retorna um valor booleano: `True` se o elemento estiver presente na coleção e `False` caso contrário.
 
 ```python
-planetas = ["Mercúrio", "Vênus", "Terra", "Marte"]
-sobrenome = 'Schwarzenegger'
-
-print("Marte" in planetas)  # saída : True
-print("Uranus" in planetas)  # saída : False
-
-print('w' in sobrenome)  # saída : True
-print('s' in sobrenome)  # saída : False
-print("gg" in sobrenome)  # saída : True
+# sintaxe básica
+elemento in coleção
 ```
+
+- `elemento` : é o item que você deseja verificar se está presente na coleção;
+- `coleção` : é a estrutura de dados onde a verificação será feita;
+
+### exemplos
+
+#### `in` em strings
+
+Quando usado com strings, o `in` verifica se uma substring está presente na string.
+
+```python
+>>> mensagem = "Olá, mundo!"
+>>>
+>>> print('Olá' in mensagem)
+True
+>>> print('mundo' in mensagem)
+True
+>>> print('Python' in mensagem)
+False
+>>> |
+```
+
+- aqui, `Olá` e `mundo` são substrings de `mensagem`, então o resultado é `True`;
+- `Python` não é uma substring de `mensagem`, resultando em `False`;
+
+#### `in` em listas
+
+Em listas, o `in` verifica se o item existe em qualquer posição da lista.
+
+```python
+>>> frutas = ['maçã', 'banana', 'laranja']
+>>>
+>>> print('banana' in frutas)
+True
+>>> print('uva' in frutas)
+False
+>>> |
+```
+
+- no primeiro caso, `banana` está na lista `frutas`, então o resultado é `True`;
+- no segundo caso, `uva` não está na lista, então o resultado é `False`;
+
+#### `in` em tuplas
+
+O funcionamento é semelhante ao das listas.
+
+```python
+>>> numeros = (1, 2, 3, 4)
+>>>
+>>> print(3 in numeros)
+True
+>>> print(5 in numeros)
+False
+>>> |
+```
+
+- `3` está na tupla `numeros`, então o resultado é `True`;
+- `5` não está na tupla, resultando em `False`;
+
+#### `in` em dicionários
+
+Quando aplicado a dicionários, o `in` verifica a presença de uma chave, e não do valor associado a ela.
+
+```python
+>>> aluno = {'nome': 'Ana', 'idade': 21, 'curso': 'Engenharia'}
+>>>
+>>> print('nome' in aluno)
+True
+>>> print('Ana' in aluno)
+False
+>>> |
+```
+
+- `nome` é uma chave no dicionário `aluno`, portanto o resultado é `True`;
+- `Ana` não é uma chave, é um valor, então o resultado é `False`;
+
+#### `in` em sets
+
+Em sets, o `in` verifica a presença de um elemento específico.
+
+```python
+>>> cores = {'vermelho', 'verde', 'azul'}
+>>> print('verde' in cores)
+True
+>>> print('amarelo' in cores)
+False
+>>> |
+```
+
+- `verde` está no set `cores`, então o resultado é `True`;
+- `amarelo` não está, resultando em `False`
+
+### operador `not in`
+
+O operador `not in` é o inverso de `in`. Ele verifica se o elemento **não** está presente na coleção.
+
+```python
+>>> frutas = ['maçã', 'banana', 'laranja']
+>>> print('uva' not in frutas)
+True
+>>> print('banana' not in frutas)
+False
+>>> |
+```
+
+- no primeiro caso, `uva` não está na lista `frutas`, então o resultado é `True`;
+- no segundo caso, `banana` está na lista, então o resultado é `False`;
+
+## exercícios in
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. exercícios com strings
+    1. Verifique se a substring `"Python"` está presente na string `"Eu estou aprendendo Python"` e imprima o resultado.
+    1. Verifique se a letra `"a"` está presente na string `"Hello, World!"` e imprima o resultado.
+    1. Crie uma string `"abcdefg"` e verifique se a letra `"h"` está presente nela. Imprima `True` ou `False`.
+    1. Dada a string `"Programação"`, verifique se a substring `"ção"` está presente. Imprima o resultado.
+    1. Verifique se a palavra `"code"` está na frase `"Escrever código é divertido"`. Imprima o resultado.
+1. exercícios com listas
+    1. Crie uma lista `["maçã", "banana", "laranja"]`. Verifique se `"banana"` está presente na lista e imprima o resultado.
+    1. Dada a lista `[10, 20, 30, 40, 50]`, verifique se o número `25` está na lista e imprima `True` ou `False`.
+    1. Crie uma lista de nomes `["Ana", "Beatriz", "Carlos"]`. Verifique se o nome `"Daniel"` está na lista e imprima o resultado.
+    1. Dada a lista `["cachorro", "gato", "peixe"]`, verifique se `"passarinho"` está presente na lista e imprima o resultado.
+    1. Crie uma lista vazia e verifique se o número `0` está presente nela. Imprima o resultado.
+1. exercícios com tuplas
+    1. Crie uma tupla `(1, 2, 3, 4, 5)` e verifique se o número `3` está presente. Imprima o resultado.
+    1. Dada a tupla `("a", "b", "c", "d")`, verifique se a letra `"e"` está presente na tupla e imprima `True` ou `False`.
+    1. Crie uma tupla com as cores `("vermelho", "verde", "azul")`. Verifique se a cor `"amarelo"` está na tupla e imprima o resultado.
+    1. Verifique se o número `100` está na tupla `(10, 20, 30, 40, 50)` e imprima o resultado.
+    1. Dada a tupla `(7, 14, 21, 28)`, verifique se o número `14` está presente e imprima o resultado.
+1. exercícios com sets
+    1. Crie um set `{"maçã", "banana", "uva"}` e verifique se `"laranja"` está presente no set. Imprima o resultado.
+    1. Dado o set `{1, 3, 5, 7}`, verifique se o número `5` está presente e imprima `True` ou `False`.
+    1. Verifique se o elemento `"Python"` está presente no set `{"Java", "C++", "Python", "JavaScript"}` e imprima o resultado.
+    1. Crie um set com números `{2, 4, 6, 8}` e verifique se o número `10` está no set. Imprima o resultado.
+    1. Dado o set `{"cachorro", "gato", "coelho"}`, verifique se o animal `"cavalo"` está presente e imprima `True` ou `False`.
+1. exercícios com dicionários
+    1. Crie um dicionário `aluno = {"nome": "João", "idade": 20, "curso": "Engenharia"}`. Verifique se a chave `"idade"` está presente no dicionário e imprima o resultado.
+    1. Dado o dicionário `cidades = {"SP": "São Paulo", "RJ": "Rio de Janeiro", "MG": "Belo Horizonte"}`, verifique se a chave `"BA"` está no dicionário e imprima `True` ou `False`.
+    1. Crie um dicionário `carro = {"marca": "Toyota", "modelo": "Corolla", "ano": 2020}`. Verifique se a chave `"cor"` está presente no dicionário e imprima o resultado.
+    1. Dado o dicionário `estoque = {"caneta": 100, "caderno": 50, "borracha": 30}`, verifique se a chave `"lápis"` está presente no dicionário e imprima o resultado.
+    1. Crie um dicionário `pessoa = {"nome": "Ana", "altura": 1.70, "peso": 65}`. Verifique se a chave `"idade"` está presente no dicionário e imprima `True` ou `False`.
+
+</details>
+
+## `del`
+
+O comando `del` do Python é uma instrução usada para remover variáveis, elementos de uma lista, chave-valor de um dicionário, ou até mesmo fatias de listas e elementos em outros tipos de coleção. A instrução `del` também pode ser usada para deletar uma variável inteira da memória, tornando-a indisponível para uso posterior.
+
+```python
+# sintaxe básica
+del objeto
+```
+
+- `objeto` : pode ser uma variável, um elemento de uma coleção, uma fatia de uma lista, ou uma chave de um dicionário;
+
+### exemplos
+
+#### deletando variáveis
+
+É possível usar `del` para remover uma variável completamente, liberando o espaço de memória que ela estava ocupando.
+
+```python
+>>> x = 10
+>>> print(x)
+10
+>>>
+>>> del x
+>>>
+>>> print(x)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'x' is not defined
+>>> |
+```
+
+- depois de `del x`, a variável `x` deixa de existir, e qualquer tentativa de acessá-la resultará em um erro;
+
+#### deletando elementos de uma lista
+
+O comando `del` pode ser usado para remover um elemento específico de uma lista, identificando-o pelo índice.
+
+```python
+>>> frutas = ['maçã', 'banana', 'laranja', 'uva']
+>>>
+>>> print(frutas)
+['maçã', 'banana', 'laranja', 'uva']
+>>>
+>>> del frutas[1]
+>>>
+>>> print(frutas)
+['maçã', 'laranja', 'uva']
+>>> |
+```
+
+- aqui, `del frutas[1]` remove a `banana` da lista, que estava no índice `1`;
+
+#### deletando fatias de uma lista
+
+É possível usar `del` para remover uma fatia (slice) de elementos de uma lista.
+
+```python
+>>> numeros = list(range(1,7,1))
+>>> print(numeros)
+[1, 2, 3, 4, 5, 6]
+>>>
+>>> del numeros[2:5]
+>>>
+>>> print(numeros)
+[1, 2, 6]
+>>> |
+```
+
+- `del numeros[2:5]` remove os elementos nos índices `2`, `3` e `4` da lista original, que correspondem aos números `3`, `4` e `5`;
+
+#### deletando chaves de um dicionário
+
+No caso de dicionários, `del` é usado para remover um par chave-valor.
+
+```python
+>>> aluno = {'nome': 'Ana', 'idade': 21, 'curso': 'Engenharia'}
+>>> print(aluno)
+{'nome': 'Ana', 'idade': 21, 'curso': 'Engenharia'}
+>>>
+>>> del aluno['idade']
+>>>
+>>> print(aluno)
+{'nome': 'Ana', 'curso': 'Engenharia'}
+>>> |
+```
+
+- `del aluno['idade']` remove a chave `idade` e o valor associado a ela do dicionário;
+
+#### deletando elementos de um set
+
+Embora não se possa acessar diretamente um elemento em um set pelo índice (devido à natureza não ordenada dos sets), é possível deletar um set inteiro usando `del`.
+
+```python
+>>> cores = {'vermelho', 'verde', 'azul'}
+>>> print(cores)
+{'vermelho', 'azul', 'verde'}
+>>>
+>>> del cores
+>>> print(cores)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'cores' is not defined
+>>> |
+```
+
+- aqui, `del cores` remove completamente o set `cores` da memória;
+
+### considerações adicionais
+
+- **deletando múltiplas variáveis** : é possível deletar várias variáveis ao mesmo tempo, separando-as por vírgulas;
+    ```python
+    >>> a = 10
+    >>> b = 20
+    >>> c = 30
+    >>>
+    >>> del a, c
+    >>>
+    >>> print(a)
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    NameError: name 'a' is not defined
+    >>>
+    >>> print(b)
+    20
+    >>>
+    >>> print(c)
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    NameError: name 'c' is not defined
+    >>> |
+    ```
+
+- **deletando referências a objetos** : quando se deleta uma variável que se refere a um objeto, como uma lista ou um dicionário, e não há mais referências a esse objeto, ele é removido da memória pelo garbage collector do python;
+
+- **uso em loops e funções** : é possível usar `del` dentro de loops e funções para remover elementos dinamicamente à medida que o programa é executado;
+
+## exercícios del
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. exercícios com variáveis numéricas e strings
+    1. Crie uma variável `x = 10`. Use `del` para deletar a variável `x`. Tente imprimir `x` e observe o que acontece.
+    1. Defina duas variáveis `a = 5` e `b = 10`. Use `del` para deletar ambas as variáveis. Tente imprimir `a` e `b`.
+    1. Crie uma string `frase = "Olá, Mundo!"`. Use `del` para deletar a variável `frase`. Tente imprimir `frase` e observe o resultado.
+    1. Defina uma variável `nome = "Maria"`. Use `del` para deletar a variável. Tente acessar `nome` após deletá-la.
+    1. Crie três variáveis: `num1 = 3`, `num2 = 6`, e `num3 = 9`. Use `del` para deletar `num1` e `num2`. Tente imprimir todas as três variáveis.
+1. exercícios com listas
+    1. Crie uma lista `numeros = [1, 2, 3, 4, 5]`. Use `del` para deletar o terceiro elemento da lista. Imprima a lista resultante.
+    1. Defina uma lista `frutas = ["maçã", "banana", "laranja"]`. Use `del` para deletar o último item da lista. Imprima a lista.
+    1. Crie uma lista `cores = ["vermelho", "azul", "verde", "amarelo"]`. Use `del` para deletar os elementos no índice 1 e 2. Imprima a lista resultante.
+    1. Crie uma lista `alfabeto = ["a", "b", "c", "d", "e", "f"]`. Use `del` para deletar os primeiros dois elementos da lista. Imprima a lista.
+    1. Defina uma lista `itens = ["caneta", "caderno", "borracha"]`. Use `del` para deletar a lista inteira. Tente imprimir `itens` e observe o que acontece.
+    1. Crie uma lista `numeros = [10, 20, 30, 40, 50]`. Use `del` para deletar o elemento no índice `4`. Imprima a lista resultante.
+    1. Dada a lista `animais = ["cachorro", "gato", "passarinho", "peixe"]`, use `del` para deletar o segundo e o terceiro elementos. Imprima a lista.
+    1. Crie uma lista `dias = ["segunda", "terça", "quarta", "quinta", "sexta"]`. Use `del` para deletar os três últimos elementos. Imprima a lista.
+    1. Crie uma lista `meses = ["janeiro", "fevereiro", "março", "abril"]`. Use `del` para deletar o primeiro elemento da lista. Imprima a lista.
+    1. Defina uma lista `numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]`. Use `del` para deletar os elementos nos índices 0 a 4 (inclusive). Imprima a lista resultante.
+1. exercícios com tuplas
+    1. Crie uma tupla `pares = (2, 4, 6, 8, 10)`. Use `del` para deletar a tupla inteira. Tente imprimir `pares`.
+    1. Crie uma tupla `letras = ("a", "b", "c", "d")`. Use `del` para deletar a tupla inteira. Tente acessar `letras` e observe o resultado.
+    1. Defina uma tupla `numeros = (1, 2, 3, 4, 5)`. Use `del` para deletar a variável `numeros`. Tente imprimir `numeros`.
+1. exercícios com sets
+    1. Crie um set `vogais = {"a", "e", "i", "o", "u"}`. Use `del` para deletar o set inteiro. Tente acessar `vogais`.
+    1. Defina um set `numeros = {1, 2, 3, 4, 5}`. Use `del` para deletar o set. Tente imprimir `numeros`.
+    1. Crie um set `cores = {"vermelho", "verde", "azul"}`. Use `del` para deletar o set. Verifique o que acontece ao tentar acessar `cores`.
+1. exercícios com dicionários
+    1. Crie um dicionário `aluno = {"nome": "João", "idade": 20, "curso": "Matemática"}`. Use `del` para deletar a chave `"idade"`. Imprima o dicionário resultante.
+    1. Defina um dicionário `produto = {"nome": "caneta", "preço": 1.50, "estoque": 100}`. Use `del` para deletar a chave `"preço"`. Imprima o dicionário.
+    1. Crie um dicionário `contato = {"nome": "Maria", "telefone": "1234-5678", "email": "maria@gmail.com"}`. Use `del` para deletar a chave `"telefone"`. Imprima o dicionário.
+    1. Dado o dicionário `carro = {"marca": "Ford", "modelo": "Mustang", "ano": 1969}`, use `del` para deletar a chave `"ano"`. Imprima o dicionário resultante.
+
+</details>
 
 ## `pass`
 
@@ -351,7 +666,7 @@ Quando combinado `break` e `continue` em um loop, por exemplo, é possível cria
 
 Combinar `break` e `continue` em um loop Python permite um controle granular sobre o fluxo de execução, permitindo que se pule iterações específicas enquanto também fornece uma maneira de sair completamente do loop quando certas condições são atendidas. Usados juntos, esses comandos podem tornar o código mais eficiente e focado, dependendo das necessidades da aplicação.
 
-## exercícios
+## exercícios break e continue
 
 <details>
 <summary>Lista de Exercícios</summary>
