@@ -179,9 +179,20 @@ Aqui, a string `"banana"` é convertida em um `set`. Como o `set` elimina duplic
     1. Converta a lista `[1, 2, 3, 4, 4, 5]` em um `set` e imprima o resultado.
     1. Dada a tupla `(5, 6, 7, 8, 8, 9)`, converta-a em um `set` e imprima o resultado.
     1. Converta a string `"programming"` em um `set` e imprima os caracteres únicos.
+        ```python
+        palavra = 'programming'
+        palavra_set = set(palavra)
+        print(f'{''.join(list(palavra_set)) = }')
+        ```
     1. Crie um `set` a partir da lista `[‘apple’, ‘banana’, ‘orange’, ‘apple’]` e imprima o resultado.
     1. Converta a tupla `(1, 1, 2, 2, 3, 3)` em um `set` e imprima o resultado.
     1. Dada a string `"abracadabra"`, converta-a em um `set` e imprima os caracteres únicos.
+        ```python
+        palavra = 'abracadabra'
+        palavra_set = set(palavra)
+        for letra in palavra_set:
+            print(f'{letra = }')
+        ```
     1. Crie um `set` com os elementos da lista `[10, 20, 30, 40, 50, 50, 60]`.
     1. Converta a string `"hello world"` em um `set` e imprima os caracteres únicos.
     1. Crie um `set` a partir da tupla `(100, 200, 200, 300, 400)` e imprima o resultado.
