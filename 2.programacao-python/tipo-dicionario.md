@@ -1,3 +1,14 @@
+Índice
+
+1. [características](#características)
+1. [criando dicionários](#criando-dicionários)
+1. [adicionando itens ao dicionário](#adicionando-itens-ao-dicionário)
+1. [métodos](#métodos)
+    1. [dict.keys()](#dictkeys)
+    1. [dict.values()](#dictvalues)
+    1. [dict.items()](#dictitems)
+1. [exercícios](#exercícios)
+
 # tipo dicionário
 
 Um dicionário em Python é uma estrutura de dados que armazena pares de chave-valor, onde cada chave é única e mapeia para um valor. Essa estrutura é semelhante a um mapa ou tabela de associação, onde a chave atua como um identificador que permite acessar seu valor correspondente de forma rápida e eficiente.
@@ -139,7 +150,7 @@ Neste exemplo:
 
 Os métodos `keys()`, `values()` e `items()` dos dicionários em Python são utilizados para acessar diferentes partes do dicionário de forma organizada e eficiente. Esses métodos são muito úteis quando se precisa iterar sobre as chaves, valores ou pares chave-valor de um dicionário.
 
-### `keys()`
+### `dict.keys()`
 
 O método `keys()` retorna uma visão (`view`) das chaves do dicionário. Essa visão é um objeto especial que reflete as chaves atuais do dicionário e pode ser usada para iterar sobre elas. Se o dicionário for modificado (por exemplo, se novas chaves forem adicionadas ou removidas), a visão retornada por `keys()` será automaticamente atualizada.
 
@@ -170,7 +181,7 @@ Neste exemplo:
 - `keys()` retorna um objeto `dict_keys`, que é uma visão das chaves do dicionário.
 - Podemos iterar sobre esse objeto para acessar cada chave.
 
-### `values()`
+### `dict.values()`
 
 O método `values()` retorna uma visão dos valores contidos no dicionário. Assim como o `keys()`, a visão retornada por `values()` reflete qualquer modificação feita no dicionário, mantendo os valores atualizados.
 
@@ -201,7 +212,7 @@ Neste exemplo:
 - `values()` retorna um objeto `dict_values`, que é uma visão dos valores do dicionário.
 - Podemos iterar sobre esse objeto para acessar cada valor armazenado no dicionário.
 
-### `items()`
+### `dict.items()`
 
 O método `items()` retorna uma visão dos pares chave-valor do dicionário, onde cada item é representado por uma tupla. Essa tupla contém a chave como o primeiro elemento e o valor associado como o segundo. Assim como nos outros métodos, a visão retornada por `items()` é dinâmica e reflete qualquer modificação feita no dicionário.
 

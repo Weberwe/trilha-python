@@ -2,7 +2,7 @@
 
 1. [cópia atribuição direta](#cópia-atribuição-direta)
 1. [cópia rasa](#cópia-rasa)
-1. [exercícios cópia rasa](#exercícios-cópia-profunda)
+1. [exercícios cópia rasa](#exercícios-cópia-rasa)
 1. [cópia profunda](#cópia-profunda)
 1. [cópia rasa e profunda em outros tipos](#cópia-rasa-e-profunda-em-outros-tipos)
 
@@ -409,7 +409,8 @@ Tuplas são estruturas de dados imutáveis no Python. Por causa dessa imutabilid
     ```
     **explicação :** a tupla `tupla_copiada` é uma nova referência à mesma tupla imutável. Não há necessidade de cópia rasa ou profunda aqui.
 
-- **cópia profunda :** <!--como tuplas são imutáveis e não podem ser alteradas após a criação, uma cópia profunda não é necessária ou aplicável. se a tupla contém objetos mutáveis (como listas), você ainda precisa considerar o impacto desses objetos na cópia, mas a tupla em si não precisa de uma cópia profunda.-->
+- **cópia profunda :**
+<!--como tuplas são imutáveis e não podem ser alteradas após a criação, uma cópia profunda não é necessária ou aplicável. se a tupla contém objetos mutáveis (como listas), você ainda precisa considerar o impacto desses objetos na cópia, mas a tupla em si não precisa de uma cópia profunda.-->
 
 ### dicionários
 

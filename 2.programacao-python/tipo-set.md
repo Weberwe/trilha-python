@@ -1,3 +1,19 @@
+Índice
+
+1. [criando um set](#criando-um-set)
+1. [métodos do set](#métodos-do-set)
+    1. [set.union()](#setunion)
+    1. [set.intersection()](#setintersection)
+    1. [set.difference()](#setdifference)
+    1. [set.add()](#setadd)
+    1. [set.remove()](#setremove)
+    1. [set.discard()](#setdiscard)
+1. [cast](#cast)
+    1. [convertendo tuplas em set](#1-convertendo-tuplas-em-set)
+    1. [convertendo listas em set](#1-convertendo-listas-em-set)
+    1. [convertendo strings em set](#1-convertendo-strings-em-set)
+1. [exercícios](#exercícios)
+
 # `set`
 
 O tipo `set` no Python é uma coleção de elementos únicos e desordenados. Isso significa que ele não permite elementos duplicados e a ordem dos elementos não é garantida. Os `sets` são úteis quando se precisa garantir que uma coleção de itens não contenha duplicatas ou quando precisa realizar operações matemáticas de conjuntos, como união, interseção e diferença.
@@ -14,7 +30,7 @@ Para criar um `set`, é preciso utilizar as chaves `{}` ou a função `set()` :
 
 Veja abaixo alguns métodos importantes do `set` :
 
-### `union()`
+### `set.union()`
 
 O método `union()` retorna um novo `set` que contém todos os elementos presentes em ambos os conjuntos, sem duplicatas :
 
@@ -30,7 +46,7 @@ O método `union()` retorna um novo `set` que contém todos os elementos present
 
 Aqui, o `union()` combina `set1` e `set2`, resultando em um novo `set` que contém todos os elementos dos dois conjuntos.
 
-### `intersection()`
+### `set.intersection()`
 
 O método `intersection()` retorna um novo `set` contendo apenas os elementos que estão presentes em ambos os conjuntos :
 
@@ -46,7 +62,7 @@ O método `intersection()` retorna um novo `set` contendo apenas os elementos qu
 
 No exemplo, `intersection()` retorna um `set` com os elementos comuns entre `set1` e `set2`.
 
-### `difference()`
+### `set.difference()`
 
 O método `difference()` retorna um novo `set` contendo os elementos que estão no primeiro conjunto, mas não no segundo :
 
@@ -62,7 +78,7 @@ O método `difference()` retorna um novo `set` contendo os elementos que estão 
 
 Aqui, `difference()` retorna os elementos de `set1` que não estão em `set2`.
 
-### `add()`
+### `set.add()`
 
 O método `add()` adiciona um elemento ao `set`. Como `sets` não permitem duplicatas, se o elemento já estiver presente, nada acontece :
 
@@ -80,7 +96,7 @@ O método `add()` adiciona um elemento ao `set`. Como `sets` não permitem dupli
 
 Neste exemplo, o número `4` é adicionado ao `set`, mas quando tentamos adicionar `2` novamente, o `set` permanece inalterado.
 
-### `remove()`
+### `set.remove()`
 
 O método `remove()` remove um elemento específico do `set`. Se o elemento não estiver presente, ele gera um erro (`KeyError`) :
 
@@ -99,7 +115,7 @@ KeyError: 5
 
 Aqui, `remove(2)` retira o `2` do `set`, mas tentar remover o `5`, que não está no `set`, resulta em um erro.
 
-### `discard()`
+### `set.discard()`
 
 O método `discard()` também remove um elemento do `set`, mas se o elemento não estiver presente, ele simplesmente não faz nada e não gera erro :
 
