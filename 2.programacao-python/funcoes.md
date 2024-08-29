@@ -1,3 +1,12 @@
+Índice
+
+1. [comando def](#comando-def)
+1. [argumentos nas funções](#argumentos-nas-funções)
+    1. [argumentos posicionais](#argumentos-posicionais)
+1. [comando return](#comando-return)
+1. [exemplos de aula](#exemplos-de-aula)
+1. [exercícios](#exercícios)
+
 # funções
 
 Uma função é um bloco de código que executa alguma operação. Opcionalmente, uma função pode definir parâmetros de entrada que permitem que os chamadores passem argumentos para a função. Uma função também pode retornar um valor como saída. As funções são úteis para encapsular operações comuns em um só bloco reutilizável, idealmente com um nome que descreve de modo claro o que a função faz.
@@ -317,6 +326,83 @@ None
 
 Neste exemplo, como não há `return` na função, o Python retorna automaticamente `None`.
 
+## exemplos de aula
+
+```python
+def soma_tudo(valor):
+    """essa funcao ira somar todos os valores a partir
+    de zero ate o valor especificado em valor """
+    numeros = list(range(valor))
+    soma = 0
+
+    for num in numeros:
+        soma += num
+
+    print(f'{soma = }')
+
+    return soma
+
+def lista_numeros(valor, limite):
+    """ sempre deixar o valor menor que o limite """
+
+    if valor > limite:
+        print('digite um valor menor que o limite')
+    else:
+        while valor < limite:
+            print(f'{valor = }')
+            valor += 1
+    print('fim do while')
+
+def realiza_operacoes(a, b):
+    print(f'{a + b = }')
+    print(f'{a - b = }')
+    print(f'{a * b = }')
+    print(f'{a / b = }')
+    print(f'{a ** b = }')
+
+def verifica_paridade(valor):
+    if valor % 2 == 0:
+        print('eh par')
+        return
+
+    print("eh impar")
+
+soma_tudo(10)
+soma_tudo(100)
+soma_tudo(1132)
+soma_tudo(14)
+soma_tudo(42)
+soma_tudo(10000)
+
+for i in range(30):
+    soma_tudo(i)
+
+for i in range(20,30):
+    print(f'{i = }',end = ' - ')
+    soma_tudo(i)
+
+print(soma_tudo.__doc__)
+
+realiza_operacoes(1,2)
+realiza_operacoes(11,2)
+realiza_operacoes(4,7)
+
+while True:
+    v1 = int(input(' digite um valor (0 para sair): '))
+    v2 = int(input(' digite outro valor : '))
+
+    if not v1:
+        break
+
+    lista_numeros(v1, v2)
+
+for i in range(2,17,3):
+    resultado = soma_tudo(i)
+
+    print(f'{resultado = }')
+    verifica_paridade(resultado)
+```
+
 ## exercícios
 
 <details>
@@ -379,4 +465,3 @@ Neste exemplo, como não há `return` na função, o Python retorna automaticame
     1. Crie uma função chamada `verificar_palavras_mesma_tamanho` que recebe duas palavras e retorna True se ambas tiverem o mesmo número de caracteres, e False caso contrário.
 
 </details>
-
