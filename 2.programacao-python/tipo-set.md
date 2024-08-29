@@ -5,6 +5,7 @@
     1. [set.union()](#setunion)
     1. [set.intersection()](#setintersection)
     1. [set.difference()](#setdifference)
+    1. [set.symmetric_difference()](#setsymmetric_difference)
     1. [set.add()](#setadd)
     1. [set.remove()](#setremove)
     1. [set.discard()](#setdiscard)
@@ -13,6 +14,8 @@
     1. [convertendo listas em set](#1-convertendo-listas-em-set)
     1. [convertendo strings em set](#1-convertendo-strings-em-set)
 1. [exercícios](#exercícios)
+1. [operadores do set](#operadores-do-set)
+1. [exercícios com operadores](#exercícios-com-operadores)
 
 # `set`
 
@@ -77,6 +80,22 @@ O método `difference()` retorna um novo `set` contendo os elementos que estão 
 ```
 
 Aqui, `difference()` retorna os elementos de `set1` que não estão em `set2`.
+
+### `set.symmetric_difference()`
+
+O método `symmetric_difference()` retorna um novo `set` contendo os elementos que estão no primeiro e no segundo conjunto, mas não são comuns entre eles :
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {2, 3, 4}
+>>>
+>>> resultado = set1.symmetric_difference(set2)
+>>> print(resultado)
+{1, 4}
+>>> |
+```
+
+Aqui, `symmetric_difference()` retorna os elementos de `set1` e `set2` que não são comuns entre eles.
 
 ### `set.add()`
 
@@ -256,5 +275,158 @@ Aqui, a string `"banana"` é convertida em um `set`. Como o `set` elimina duplic
     1. Crie um `set` a partir de uma lista de números e verifique quantos elementos únicos existem.
     1. Dado um `set` de letras, remova todas as vogais (se existirem).
     1. Crie um `set` a partir de uma frase e calcule a quantidade de letras distintas, ignorando espaços e pontuação.
+
+</details>
+
+## operadores do set
+
+Os operadores `|`, `&`, `-` e `^` em Python são usados para realizar operações comuns de teoria dos conjuntos em objetos do tipo `set`.
+
+### operador `|` (união)
+
+O operador `|` é utilizado para realizar a **união** de dois conjuntos. A união de dois conjuntos resulta em um novo conjunto contendo todos os elementos que estão em qualquer um dos conjuntos ou em ambos.
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {3, 4, 5}
+>>>
+>>> resultado = set1 | set2
+>>> print(resultado)
+{1, 2, 3, 4, 5}
+>>> |
+```
+
+**explicação :** a união entre `set1` e `set2` resulta em um conjunto que contém todos os elementos de ambos os conjuntos. Observe que elementos duplicados são incluídos apenas uma vez;
+
+### operador `&` (interseção)
+
+O operador `&` é utilizado para realizar a **interseção** de dois conjuntos. A interseção de dois conjuntos resulta em um novo conjunto contendo apenas os elementos que estão presentes em ambos os conjuntos.
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {3, 4, 5}
+>>>
+>>> resultado = set1 & set2
+>>> print(resultado)
+{3}
+>>> |
+```
+**explicação :** a interseção entre `set1` e `set2` resulta em um conjunto que contém apenas o elemento `3`, que é o único presente em ambos os conjuntos;
+
+### operador `-` (diferença)
+
+O operador `-` é utilizado para realizar a **diferença** entre dois conjuntos. A diferença entre dois conjuntos resulta em um novo conjunto contendo os elementos que estão no primeiro conjunto, mas não no segundo.
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {3, 4, 5}
+>>>
+>>> resultado = set1 - set2
+>>> print(resultado)
+{1, 2}
+>>> |
+```
+**explicação :** a diferença entre `set1` e `set2` resulta em um conjunto que contém os elementos `1` e `2`, que estão em `set1` mas não em `set2`;
+
+### operador `^` (diferença simétrica)
+
+O operador `^` é utilizado para realizar a **diferença simétrica** entre dois conjuntos. A diferença simétrica resulta em um novo conjunto contendo os elementos que estão em um dos conjuntos, mas não em ambos. Em outras palavras, ele exclui os elementos comuns.
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {3, 4, 5}
+>>>
+>>> resultado = set1 ^ set2
+>>> print(resultado)
+{1, 2, 4, 5}
+>>> |
+```
+**explicação :** a diferença simétrica entre `set1` e `set2` resulta em um conjunto que contém os elementos `1`, `2`, `4` e `5`. Esses são os elementos que estão em apenas um dos conjuntos, mas não em ambos;
+
+### atribuição composta dos operadores
+
+Os operadores `|`, `&`, `-` e `^` em Python possuem versões com atribuição composta, que permitem modificar diretamente o conjunto à esquerda do operador.
+
+#### `|=`
+
+A União com Atribuição Composta combina o conjunto à esquerda com o conjunto à direita, e o resultado é armazenado de volta no conjunto à esquerda.
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {3, 4, 5}
+>>>
+>>> set1 |= set2
+>>> print(set1)
+{1, 2, 3, 4, 5}
+>>> |
+```
+
+#### `&=`
+
+A Interseção com Atribuição Composta mantém no conjunto à esquerda apenas os elementos que estão presentes também no conjunto à direita.
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {3, 4, 5}
+>>>
+>>> set1 &= set2
+>>> print(set1)
+{3}
+>>> |
+```
+
+#### `-=`
+
+A Diferença com Atribuição Compost remove do conjunto à esquerda todos os elementos que também estão presentes no conjunto à direita.
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {3, 4, 5}
+>>>
+>>> set1 -= set2
+>>> print(set1)
+{1, 2}
+>>> |
+```
+
+#### `^=`
+
+A Diferença Simétrica com Atribuição Composta atualiza o conjunto à esquerda com os elementos que estão em apenas um dos conjuntos, excluindo os elementos comuns.
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {3, 4, 5}
+>>>
+>>> set1 ^= set2
+>>> print(set1)
+{1, 2, 4, 5}
+>>> |
+```
+
+## exercícios com operadores
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **União Básica**: Crie dois conjuntos `set1 = {1, 2, 3}` e `set2 = {3, 4, 5}`. Utilize o operador `|` para encontrar a união dos dois conjuntos.
+1. **Interseção Básica**: Crie dois conjuntos `set1 = {1, 2, 3}` e `set2 = {3, 4, 5}`. Utilize o operador `&` para encontrar a interseção dos dois conjuntos.
+1. **Diferença Básica**: Crie dois conjuntos `set1 = {1, 2, 3}` e `set2 = {3, 4, 5}`. Utilize o operador `-` para encontrar a diferença entre `set1` e `set2`.
+1. **Diferença Simétrica Básica**: Crie dois conjuntos `set1 = {1, 2, 3}` e `set2 = {3, 4, 5}`. Utilize o operador `^` para encontrar a diferença simétrica entre os dois conjuntos.
+1. **União com Strings**: Crie dois conjuntos de strings: `set1 = {"apple", "banana", "cherry"}` e `set2 = {"banana", "date", "fig"}`. Utilize o operador `|` para unir os dois conjuntos.
+1. **Interseção com Strings**: Usando os mesmos conjuntos do exercício anterior, utilize o operador `&` para encontrar as strings comuns entre `set1` e `set2`.
+1. **Diferença com Strings**: Crie dois conjuntos de strings: `set1 = {"dog", "cat", "mouse"}` e `set2 = {"cat", "horse"}`. Utilize o operador `-` para encontrar os elementos que estão em `set1` mas não em `set2`.
+1. **Diferença Simétrica com Strings**: Usando os conjuntos do exercício anterior, utilize o operador `^` para encontrar os elementos únicos em cada conjunto.
+1. **Operação Combinada**: Crie três conjuntos `A = {1, 2, 3}`, `B = {3, 4, 5}` e `C = {5, 6, 7}`. Encontre a união dos conjuntos `A` e `B`, e depois calcule a diferença com o conjunto `C`.
+1. **Interseção Vazia**: Crie dois conjuntos `set1 = {1, 2, 3}` e `set2 = {4, 5, 6}`. Verifique se a interseção entre eles é vazia.
+1. **União com Conjuntos de Números Flutuantes**: Crie dois conjuntos de números flutuantes `set1 = {1.1, 2.2, 3.3}` e `set2 = {3.3, 4.4, 5.5}`. Utilize o operador `|` para unir os dois conjuntos.
+1. **Interseção com Conjuntos de Números Flutuantes**: Usando os conjuntos do exercício anterior, utilize o operador `&` para encontrar os elementos comuns entre eles.
+1. **Diferença entre Conjuntos Vários**: Crie três conjuntos `A = {1, 2, 3, 4}`, `B = {3, 4, 5, 6}` e `C = {5, 6, 7, 8}`. Encontre a diferença entre `A` e a união de `B` e `C`.
+1. **Diferença Simétrica com Conjuntos Grandes**: Crie dois conjuntos `A` e `B` com 10 números inteiros aleatórios cada. Utilize o operador `^` para encontrar os elementos únicos em ambos os conjuntos.
+1. **Operações Sequenciais**: Crie dois conjuntos `X = {10, 20, 30, 40}` e `Y = {30, 40, 50, 60}`. Primeiro, encontre a interseção entre `X` e `Y`, e depois subtraia essa interseção de `X`.
+1. **Combinação de Operadores**: Crie três conjuntos `P = {2, 4, 6, 8}`, `Q = {4, 8, 12, 16}`, e `R = {8, 16, 24, 32}`. Calcule `(P | Q) & R`.
+1. **Diferença com Listas Convertidas em Sets**: Converta as listas `list1 = [1, 2, 3, 4]` e `list2 = [3, 4, 5, 6]` em conjuntos, e depois encontre a diferença entre `set1` e `set2`.
+1. **Diferença Simétrica de Sets Convertidos de Strings**: Converta as strings `str1 = "hello"` e `str2 = "world"` em conjuntos de caracteres, e utilize o operador `^` para encontrar a diferença simétrica entre os dois conjuntos.
+1. **Verificação de Resultados**: Crie dois conjuntos `set1 = {1, 2, 3, 4}` e `set2 = {2, 4, 6, 8}`. Verifique se o resultado de `set1 ^ set2` é igual a `(set1 | set2) - (set1 & set2)`.
+1. **União de Sets com Elementos Não Repetidos**: Crie dois conjuntos `set1 = {100, 200, 300}` e `set2 = {300, 400, 500}`. Verifique se a união dos conjuntos é igual a um conjunto criado manualmente `{100, 200, 300, 400, 500}`.
 
 </details>
