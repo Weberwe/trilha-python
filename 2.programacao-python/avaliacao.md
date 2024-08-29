@@ -116,6 +116,18 @@ Após receber o CPF, seu programa deverá mostrar uma das mensagens abaixo :
 
 O campo <cpf_digitado> deverá estar no formato `XXX.XXX.XXX-YY`, independente de como ele foi digitado pelo usuário.
 
+## mensagens
+
+Crie mensagens de boas vindas e de encerramento para seu programa.
+
+## otimização
+
+Use funções para otimizar seu programa.
+
+O código de soma dos dígitos do CPF pode ser feito em apenas uma função, assim como o código para validar os dígitos verificadores encontrados.
+
+Seu programa deverá, **por hora**, possuir ao menos 4 funções.
+
 ## o que usar
 
 > [!CAUTION]
@@ -143,3 +155,10 @@ Parte 1
 Parte 2
 - [ ] receber diversos CPFs do usuário sem interromper o programa;
 - [ ] rejeitar CPFs com dígitos iguais;
+
+Parte 3
+- [ ] mensagem de boas vindas;
+- [ ] função para receber o CPF;
+- [ ] função para calcular a soma dos dígitos verificadores (uma função para ambas as somas);
+- [ ] função para realizar os testes dos dígitos verificadores (uma função para ambos os testes);
+- [ ] mensagem ao finalizar;
