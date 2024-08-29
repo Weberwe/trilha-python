@@ -158,7 +158,7 @@ Parte 2
 
 Parte 3
 - [ ] mensagem de boas vindas;
-- [ ] função para receber o CPF;
+- [ ] função para receber e validar o CPF;
 - [ ] função para calcular a soma dos dígitos verificadores (uma função para ambas as somas);
 - [ ] função para realizar os testes dos dígitos verificadores (uma função para ambos os testes);
 - [ ] mensagem ao finalizar;
