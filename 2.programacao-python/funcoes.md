@@ -410,6 +410,12 @@ for i in range(2,17,3):
 
 1. funções sem argumentos
     1. Crie uma função chamada `mostrar_boas_vindas` que imprime "Bem-vindo ao Python!".
+        ```python
+        def mostrar_boas_vindas():
+            print("Bem-vindo ao Python!")
+
+        mostrar_boas_vindas()
+        ```
     1. Defina uma função chamada `exibir_data_atual` que imprime a data atual.
     1. Escreva uma função chamada `mostrar_linha` que imprime uma linha de 40 asteriscos.
     1. Crie uma função chamada `exibir_mensagem_padrao` que imprime uma mensagem motivacional.
