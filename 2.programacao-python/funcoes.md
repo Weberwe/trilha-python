@@ -1,25 +1,59 @@
 Índice
 
+1. [o que uma função?](#o-que-e-uma-funcao)
+1. [por que usar fuções](#por-que-usar-funcoes)
+1. [tipos de funções](#tipos-de-funcoes)
+1. [boas práticas na definição de funções](#boas-praticas-na-definicao-de-funcoes)
 1. [comando def](#comando-def)
-1. [argumentos nas funções](#argumentos-nas-funções)
-    1. [argumentos posicionais](#argumentos-posicionais)
+1. [exercícios de funções](#exercicios-de-funcoes)
+1. [argumentos posicionais](#argumentos-posicionais)
+1. [exercícios argumentos posicionais](#exercícios-argumentos-posicionais)
 1. [comando return](#comando-return)
-1. [exemplos de aula](#exemplos-de-aula)
-1. [exercícios](#exercícios)
+1. [exercícios comando return](#exercícios-comando-return)
+1. [argumentos com valor padrão](#argumentos-com-valor-padrão)
+1. [argumentos nomeados](#argumentos-nomeados)
+1. [exercícios valor padrão e argumentos nomeados](#exercicios-valor-padrao-e-argumentos-nomeados)
 
 # funções
 
-Uma função é um bloco de código que executa alguma operação. Opcionalmente, uma função pode definir parâmetros de entrada que permitem que os chamadores passem argumentos para a função. Uma função também pode retornar um valor como saída. As funções são úteis para encapsular operações comuns em um só bloco reutilizável, idealmente com um nome que descreve de modo claro o que a função faz.
+As funções em Python são blocos de código reutilizáveis que realizam uma tarefa específica. Elas permitem que se organize e modularize o código, facilitando a manutenção, reutilização e a legibilidade.
+
+## o que é uma função?
+
+Uma função em Python é um trecho de código que é definido uma vez e pode ser executado (ou "chamado") quantas vezes for necessário. As funções podem receber entradas (chamadas de parâmetros ou argumentos) e podem retornar saídas (resultado). Elas são uma maneira de agrupar código que realiza uma tarefa específica, o que torna o programa mais estruturado e modular.
+
+## por que usar funções?
+
+- **reutilização de código** : uma função é definida uma vez e é possível usá-la em diferentes partes do programa sem precisar reescrever o código;
+- **modularidade** : funções permitem dividir um programa grande em partes menores e mais manejáveis, cada uma responsável por uma tarefa específica;
+- **facilidade de manutenção** : como o código é organizado em blocos lógicos, ele se torna mais fácil de entender, corrigir e atualizar;
+- **redução de erros** : evitar repetição de código reduz a probabilidade de erros. se for necessário corrigir um bug, só precisará fazer isso em um lugar, na definição da função;
+
+## tipos de funções
+
+O Python, e outras linguagens de programação, podem usar funções de diferentes modos :
+
+- funções sem parâmetros e sem retorno : elas não recebem dados externos e não retornam valores. Elas apenas executam um bloco de código;
+- funções com parâmetros e sem retorno : recebem dados (argumentos) e realizam operações, mas não retornam valores;
+- funções sem parâmetros e com retorno : não recebem dados, mas realizam operações e retornam um valor;
+- funções com parâmetros e com retorno : recebem dados e retornam um valor após realizar operações;
+
+## boas práticas na definição de funções
+
+- **escolha bons nomes para funções e parâmetros** : nomes devem ser descritivos e refletir o propósito da função;
+- **mantenha as funções curtas** : funções devem ser curtas e realizar apenas uma tarefa específica;
+- **documente suas funções** : use docstrings para explicar o que a função faz, quais são seus parâmetros e o que ela retorna;
+- **evite efeitos colaterais** : uma função idealmente deve receber entradas, processá-las e retornar um resultado sem alterar o estado externo;
 
 ## comando `def`
 
 O comando `def` em Python é utilizado para declarar funções. Ele é uma das palavras-chave mais importantes na linguagem, pois permite que se defina blocos de código que podem ser chamados e reutilizados em diferentes partes de um programa.
 
-### **o que é o comando `def`?**
+### o que é o comando `def`?
 
 O `def` é uma abreviação de "define" e é usado para definir uma nova função. Uma função, no contexto da programação, é um bloco de código que realiza uma tarefa específica e pode ser reutilizado sempre que necessário. Quando se usa `def`, se está essencialmente criando um novo comando personalizado que pode ser executado em qualquer ponto do seu código.
 
-### **sintaxe do comando `def`**
+### sintaxe do comando `def`
 
 A sintaxe básica do `def` para criar uma função é a seguinte :
 
@@ -38,9 +72,9 @@ O que é cada parte :
 - **`"""Docstring opcional"""`** : uma string entre três aspas, usada para documentar o que a função faz. Essa parte é opcional, mas é uma boa prática incluí-la;
 - **`corpo_da_funcao`** : este é o bloco de código que define o que a função faz. Esse bloco deve ser indentado (geralmente com quatro espaços) em relação à linha de declaração;
 
-### **exemplo básico de definição de função**
+### exemplo básico de definição de função
 
-Aqui está um exemplo de como definir uma função simples que imprime uma mensagem de saudação :
+Abaixo está um exemplo de como definir uma função simples que imprime uma mensagem de saudação :
 
 ```python
 >>> def saudacao():
@@ -55,7 +89,7 @@ Neste exemplo :
 - **`"""Esta função imprime uma saudação simples."""`** : é uma docstring que descreve a função;
 - **`print("Olá, bem-vindo ao python!")`** : é o corpo da função, que será executado quando a função for chamada;
 
-### **execução do comando `def`**
+### execução do comando `def`
 
 Quando o Python encontra o comando `def` durante a execução do programa, ele não executa imediatamente o código dentro da função. Em vez disso, ele "registra" a função com o nome fornecido, o que significa que a função existe na memória e pode ser chamada posteriormente no código.
 
@@ -79,7 +113,7 @@ Neste exemplo :
 - o python passa pela definição da função `saudacao` e a armazena;
 - a função `saudacao()` é chamada, o que faz com que o código dentro da função seja executado;
 
-### **docstrings e comentários**
+### docstrings e comentários
 
 As docstrings são usadas para documentar funções, tornando o código mais legível e fácil de entender. Elas podem ser acessadas usando a função `help()` ou o atributo `.__doc__` da função.
 
@@ -87,22 +121,39 @@ Exemplo :
 
 ```python
 >>> def multiplicar(a, b):
-...     """Esta função retorna o produto de dois números."""
-...     return a * b
+...     """Esta função mostra o produto de dois números."""
+...     print(f'{a * b = }')
 ...
 >>> print(multiplicar.__doc__)
-Esta função retorna o produto de dois números.
+Esta função mostra o produto de dois números.
 >>> |
 ```
 
-## argumentos nas funções
+## exercícios de funções
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. funções sem argumentos
+    1. Crie uma função chamada `mostrar_boas_vindas` que imprime "Bem-vindo ao Python!".
+    1. Defina uma função chamada `exibir_data_atual` que imprime a data atual.
+    1. Escreva uma função chamada `mostrar_linha` que imprime uma linha de 40 asteriscos.
+    1. Crie uma função chamada `exibir_mensagem_padrao` que imprime uma mensagem motivacional.
+    1. Defina uma função chamada `mostrar_nota_maxima` que imprime a nota máxima possível em um exame.
+    1. Crie uma função chamada `imprimir_autor` que imprime o nome do autor de um livro fictício.
+    1. Escreva uma função chamada `exibir_versao_software` que imprime a versão atual de um software.
+    1. Crie uma função chamada `mostrar_horario` que imprime o horário atual.
+    1. Defina uma função chamada `exibir_pi` que imprime o valor de π (pi).
+    1. Escreva uma função chamada `mostrar_linguagem_programacao` que imprime "Python" como a linguagem de programação favorita.
+
+</details>
+
+## argumentos posicionais
 
 Em Python, funções podem aceitar entradas na forma de **parâmetros**. Quando uma função é definida, pode-se especificar os parâmetros, que atuam como variáveis que recebem valores quando a função é chamada. Esses valores são chamados de **argumentos**.
 
 - **parâmetros** são os nomes usados na definição da função;
 - **argumentos** são os valores que você passa para a função quando a chama;
-
-### argumentos posicionais
 
 **Argumentos posicionais** são a maneira mais comum de passar valores para uma função. Eles são chamados de "posicionais" porque os valores passados são associados aos parâmetros com base na posição.
 
@@ -110,7 +161,7 @@ Exemplo básico :
 
 ```python
 >>> def soma(a, b):
-...     return a + b
+...     print(f'{a + b = }')
 ...
 >>> |
 ```
@@ -122,18 +173,17 @@ Aqui :
 Chamando a função :
 
 ```python
->>> resultado = soma(3, 5)
->>> print(resultado)
-8
+>>> soma(3, 5)
+a + b = 8
 >>> |
 ```
 
 Neste exemplo :
 - **`3`** é o primeiro argumento, que é mapeado para o parâmetro `a`;
 - **`5`** é o segundo argumento, que é mapeado para o parâmetro `b`;
-- a função retorna a soma dos dois valores, `8`, que é armazenada em `resultado`;
+- a função mostra a soma dos dois valores, `8`;
 
-#### **como funciona a ordem dos argumentos?**
+### como funciona a ordem dos argumentos?
 
 A ordem dos argumentos é crucial em funções que utilizam parâmetros posicionais. O Python associa cada argumento ao seu respectivo parâmetro pela ordem em que são fornecidos. Se inverter a ordem dos argumentos, os valores atribuídos aos parâmetros mudam.
 
@@ -141,26 +191,23 @@ Exemplo :
 
 ```python
 >>> def dividir(dividendo, divisor):
-...     return dividendo / divisor
+...     print(f'{dividendo / divisor = }')
 ...
 >>>
->>> resultado1 = dividir(10, 2)
->>> resultado2 = dividir(2, 10)
->>>
->>> print(resultado1)
-5.0
->>> print(resultado2)
-0.2
+>>> dividir(10, 2)
+dividendo / divisor = 5.0
+>>> dividir(2, 10)
+dividendo / divisor = 0.2
 >>> |
 ```
 
 Aqui :
-- em **`resultado1 = dividir(10, 2)`**, `10` é mapeado para `dividendo` e `2` é mapeado para `divisor`.
-- em **`resultado2 = dividir(2, 10)`**, `2` é mapeado para `dividendo` e `10` é mapeado para `divisor`.
+- em **`resultado1 = dividir(10, 2)`**, `10` é mapeado para `dividendo` e `2` é mapeado para `divisor`;
+- em **`resultado2 = dividir(2, 10)`**, `2` é mapeado para `dividendo` e `10` é mapeado para `divisor`;
 
 A ordem dos argumentos influencia diretamente o resultado da operação.
 
-#### **número de argumentos e parâmetros**
+### número de argumentos e parâmetros
 
 A função deve ser chamada com o mesmo número de argumentos que o número de parâmetros definidos, ou o Python levantará um erro.
 
@@ -168,9 +215,9 @@ Exemplo :
 
 ```python
 >>> def multiplicar(a, b, c):
-...     return a * b * c
+...     print(f'{a * b * c = }')
 ...
->>> # multiplicar(2, 3)
+>>> multiplicar(2, 3)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: multiplicar() missing 1 required positional argument: 'c'
@@ -180,24 +227,43 @@ TypeError: multiplicar() missing 1 required positional argument: 'c'
 Neste exemplo :
 - A função `multiplicar` espera três argumentos. Se for fornecido menos ou mais, o Python levantará um erro `TypeError`;
 
-### **quando usar argumentos posicionais**
+### quando usar argumentos posicionais
 
 Os argumentos posicionais são ideais quando :
 - a ordem dos argumentos faz sentido para a operação da função;
 - todos os parâmetros devem ser fornecidos para a função operar corretamente;
 - a clareza do código é mantida quando os argumentos são passados em uma ordem específica;
 
+## exercícios argumentos posicionais
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. funções com argumentos posicionais (sem valor padrão)
+    1. Crie uma função chamada `saudacao` que recebe um nome e imprime uma saudação personalizada.
+    1. Escreva uma função chamada `calcular_area_retangulo` que recebe a largura e a altura de um retângulo e imprima a área.
+    1. Defina uma função chamada `calcular_perimetro` que recebe o comprimento e a largura de um retângulo e imprima o perímetro.
+    1. Crie uma função chamada `multiplicar_numeros` que recebe dois números e imprima o produto deles.
+    1. Escreva uma função chamada `converter_para_dolar` que recebe um valor em reais e a taxa de câmbio, e imprima o valor convertido para dólares.
+    1. Crie uma função chamada `calcular_velocidade_media` que recebe a distância e o tempo, e imprima a velocidade média.
+    1. Defina uma função chamada `calcular_desconto` que recebe o preço original e a porcentagem de desconto, e imprima o valor com desconto aplicado.
+    1. Crie uma função chamada `exibir_nome_completo` que recebe o primeiro e o último nome de uma pessoa, e imprime o nome completo.
+    1. Escreva uma função chamada `calcular_media` que recebe três notas e imprima a média aritmética.
+    1. Crie uma função chamada `calcular_volume_cilindro` que recebe o raio e a altura de um cilindro, e imprima o volume.
+
+</details>
+
 ## comando `return`
 
 O comando `return` em Python é utilizado dentro de funções para indicar que a função deve devolver um valor ao ponto onde foi chamada. Quando uma função atinge o `return`, ela termina imediatamente sua execução e o controle do programa retorna para o código que chamou a função. Esse valor retornado pode ser usado, armazenado em uma variável, ou mesmo ignorado.
 
-### **o que é o comando `return`?**
+### o que é o comando `return`?
 
 O `return` é uma palavra-chave em Python que serve para duas finalidades principais :
 - **encerrar a execução da função** : quando o `return` é executado, a função para de executar, mesmo que haja código após o `return`;
 - **retornar um valor** : o `return` pode devolver um valor específico, que pode ser utilizado no código que chamou a função;
 
-### **como o `return` funciona em funções?**
+### como o `return` funciona em funções?
 
 Quando uma função tem um `return`, ela se comporta de forma diferente de uma função que apenas executa código sem `return`. Com `return`, a função pode fornecer resultados que podem ser armazenados e usados posteriormente.
 
@@ -211,18 +277,18 @@ Exemplo simples :
 >>> # chamando a função
 >>> resultado = soma(3, 5)
 >>> print(resultado)
-*
+8
 >>> |
 ```
 
 Aqui, a função `soma` aceita dois argumentos `a` e `b`, e retorna a soma deles.
 
 Neste exemplo :
-- **`soma(3, 5)`**: chama a função e passa os valores 3 e 5 como argumentos;
-- **`return a + b`**: calcula a soma de 3 e 5, que é 8, e retorna esse valor;
-- **`resultado = soma(3, 5)`**: armazena o valor retornado, 8, na variável `resultado`;
+- **`soma(3, 5)`** : chama a função e passa os valores 3 e 5 como argumentos;
+- **`return a + b`** : calcula a soma de 3 e 5, que é 8, e retorna esse valor;
+- **`resultado = soma(3, 5)`** : armazena o valor retornado, 8, na variável `resultado`;
 
-### **funções com `return` sem valor específico**
+### funções com `return` sem valor específico
 
 Se `return` for utilizado sem nenhum valor, ele simplesmente encerra a função, mas não retorna nenhum dado. Essa prática é mais comum para indicar o fim prematuro de uma função, dependendo de uma condição específica.
 
@@ -245,7 +311,7 @@ Exemplo :
 
 Aqui, quando o número é par, a função imprime que o número é par e usa `return` para encerrar a função. Quando o número é ímpar, o código continua até o próximo `print`.
 
-### **retornando múltiplos valores**
+### retornando múltiplos valores
 
 Python permite que retorne múltiplos valores de uma função, utilizando uma vírgula para separá-los. Esses valores são retornados como uma tupla.
 
@@ -268,7 +334,7 @@ Neste exemplo :
 - **`return soma, diferenca`** : retorna dois valores, `soma` e `diferenca`;
 - **`resultado_soma, resultado_diferenca = operacoes(10, 5)`** : os valores retornados são desembrulhados em duas variáveis;
 
-### **retornando estruturas de dados**
+### retornando estruturas de dados
 
 Funções podem retornar qualquer tipo de dado, incluindo listas, dicionários, tuplas, etc.
 
@@ -284,7 +350,7 @@ Exemplo :
 >>> |
 ```
 
-### **comportamento de `return` dentro de laços e condicionais**
+### comportamento de `return` dentro de laços e condicionais
 
 O `return` pode ser usado dentro de laços (`for`, `while`) ou condicionais (`if`, `else`). Ao ser executado, o `return` imediatamente encerra a função, mesmo que ainda existam laços ou código após o `return`.
 
@@ -307,7 +373,7 @@ Neste exemplo:
 - se o número `alvo` for encontrado na lista, a função retorna `true` e para a execução;
 - se o laço terminar sem encontrar o `alvo`, a função retorna `false`;
 
-### **retorno implícito de `None`**
+### retorno implícito de `None`
 
 Se uma função não tiver um `return` explícito, ou se o `return` não especificar um valor, a função retorna `None` por padrão.
 
@@ -326,116 +392,11 @@ None
 
 Neste exemplo, como não há `return` na função, o Python retorna automaticamente `None`.
 
-## exemplos de aula
-
-```python
-def soma_tudo(valor):
-    """essa funcao ira somar todos os valores a partir
-    de zero ate o valor especificado em valor """
-    numeros = list(range(valor))
-    soma = 0
-
-    for num in numeros:
-        soma += num
-
-    print(f'{soma = }')
-
-    return soma
-
-def lista_numeros(valor, limite):
-    """ sempre deixar o valor menor que o limite """
-
-    if valor > limite:
-        print('digite um valor menor que o limite')
-    else:
-        while valor < limite:
-            print(f'{valor = }')
-            valor += 1
-    print('fim do while')
-
-def realiza_operacoes(a, b):
-    print(f'{a + b = }')
-    print(f'{a - b = }')
-    print(f'{a * b = }')
-    print(f'{a / b = }')
-    print(f'{a ** b = }')
-
-def verifica_paridade(valor):
-    if valor % 2 == 0:
-        print('eh par')
-        return
-
-    print("eh impar")
-
-soma_tudo(10)
-soma_tudo(100)
-soma_tudo(1132)
-soma_tudo(14)
-soma_tudo(42)
-soma_tudo(10000)
-
-for i in range(30):
-    soma_tudo(i)
-
-for i in range(20,30):
-    print(f'{i = }',end = ' - ')
-    soma_tudo(i)
-
-print(soma_tudo.__doc__)
-
-realiza_operacoes(1,2)
-realiza_operacoes(11,2)
-realiza_operacoes(4,7)
-
-while True:
-    v1 = int(input(' digite um valor (0 para sair): '))
-    v2 = int(input(' digite outro valor : '))
-
-    if not v1:
-        break
-
-    lista_numeros(v1, v2)
-
-for i in range(2,17,3):
-    resultado = soma_tudo(i)
-
-    print(f'{resultado = }')
-    verifica_paridade(resultado)
-```
-
-## exercícios
+## exercícios comando return
 
 <details>
 <summary>Lista de Exercícios</summary>
 
-1. funções sem argumentos
-    1. Crie uma função chamada `mostrar_boas_vindas` que imprime "Bem-vindo ao Python!".
-        ```python
-        def mostrar_boas_vindas():
-            print("Bem-vindo ao Python!")
-
-        mostrar_boas_vindas()
-        ```
-    1. Defina uma função chamada `exibir_data_atual` que imprime a data atual.
-    1. Escreva uma função chamada `mostrar_linha` que imprime uma linha de 40 asteriscos.
-    1. Crie uma função chamada `exibir_mensagem_padrao` que imprime uma mensagem motivacional.
-    1. Defina uma função chamada `mostrar_nota_maxima` que imprime a nota máxima possível em um exame.
-    1. Crie uma função chamada `imprimir_autor` que imprime o nome do autor de um livro fictício.
-    1. Escreva uma função chamada `exibir_versao_software` que imprime a versão atual de um software.
-    1. Crie uma função chamada `mostrar_horario` que imprime o horário atual.
-    1. Defina uma função chamada `exibir_pi` que imprime o valor de π (pi).
-    1. Escreva uma função chamada `mostrar_linguagem_programacao` que imprime "Python" como a linguagem de programação favorita.
-1. funções com argumentos posicionais (sem valor padrão)
-    1. Crie uma função chamada `saudacao` que recebe um nome e imprime uma saudação personalizada.
-    1. Escreva uma função chamada `calcular_area_retangulo` que recebe a largura e a altura de um retângulo e retorna a área.
-    1. Defina uma função chamada `calcular_perimetro` que recebe o comprimento e a largura de um retângulo e retorna o perímetro.
-    1. Crie uma função chamada `multiplicar_numeros` que recebe dois números e retorna o produto deles.
-    1. Escreva uma função chamada `converter_para_dolar` que recebe um valor em reais e a taxa de câmbio, e retorna o valor convertido para dólares.
-    1. Crie uma função chamada `calcular_velocidade_media` que recebe a distância e o tempo, e retorna a velocidade média.
-    1. Defina uma função chamada `calcular_desconto` que recebe o preço original e a porcentagem de desconto, e retorna o valor com desconto aplicado.
-    1. Crie uma função chamada `exibir_nome_completo` que recebe o primeiro e o último nome de uma pessoa, e imprime o nome completo.
-    1. Escreva uma função chamada `calcular_media` que recebe três notas e retorna a média aritmética.
-    1. Crie uma função chamada `calcular_volume_cilindro` que recebe o raio e a altura de um cilindro, e retorna o volume.
 1. funções com retorno de um ou mais valores
     1. Defina uma função chamada `calcular_soma_e_produto` que recebe dois números e retorna a soma e o produto deles.
     1. Escreva uma função chamada `converter_temperatura` que recebe uma temperatura em Celsius e retorna a temperatura em Fahrenheit e Kelvin.
@@ -463,6 +424,15 @@ for i in range(2,17,3):
     1. Defina uma função chamada `verificar_par` que recebe um número e retorna True se o número for par, e False se for ímpar.
     1. Escreva uma função chamada `verificar_palindromo` que recebe uma palavra e retorna True se a palavra for um palíndromo, e False caso contrário.
     1. Crie uma função chamada `verificar_maioridade` que recebe a idade de uma pessoa e retorna True se a pessoa for maior de idade, e False caso contrário.
+    ```python
+    def verificar_maioridade(idade):
+        if idade >= 18:
+            return False
+        return True
+
+    print(verificar_maioridade(20))
+    print(verificar_maioridade(10))
+    ```
     1. Defina uma função chamada `verificar_letra` que recebe uma string e uma letra, e retorna True se a letra estiver na string, e False caso contrário.
     1. Escreva uma função chamada `verificar_substring` que recebe duas strings, e retorna True se a segunda string for uma substring da primeira, e False caso contrário.
     1. Crie uma função chamada `verificar_numero_primo` que recebe um número e retorna True se o número for primo, e False caso contrário.
@@ -471,3 +441,401 @@ for i in range(2,17,3):
     1. Crie uma função chamada `verificar_palavras_mesma_tamanho` que recebe duas palavras e retorna True se ambas tiverem o mesmo número de caracteres, e False caso contrário.
 
 </details>
+
+## argumentos com valor padrão
+
+No Python, ao definir uma função, é possível atribuir valores padrão a alguns dos parâmetros. Isso permite que a função seja chamada sem a necessidade de fornecer explicitamente um valor para esses parâmetros, usando um valor predefinido caso o argumento não seja passado.
+
+### o conceito de argumentos com valor padrão
+
+Quando uma função é definida, é possível especificar valores padrão para um ou mais parâmetros. Esses valores são usados automaticamente se não fornecer um argumento correspondente quando chamar a função. Isso torna as funções mais flexíveis e fáceis de usar.
+
+Veja um exemplo simples :
+
+```python
+>>> def saudar(nome, mensagem="Olá!"):
+...     print(f"{mensagem} {nome}")
+...
+>>> |
+```
+
+Aqui, o parâmetro `mensagem` tem um valor padrão de `"Olá!"`. Isso significa que pode-se chamar a função `saudar` de duas maneiras diferentes:
+
+1. **passando ambos os argumentos**:
+
+```python
+>>> saudar("João", "Bem-vindo")
+Bem-vindo João
+>>> |
+```
+
+2. **usando o valor padrão para `mensagem`**:
+
+```python
+>>> saudar("João")
+Olá! João
+>>> |
+```
+
+No segundo caso, como nenhum valor foi passado para `mensagem`, o valor padrão `"Olá!"` foi utilizado.
+
+### vantagens dos argumentos com valor padrão
+
+Os argumentos com valor padrão oferecem diversas vantagens, incluindo maior flexibilidade e simplicidade na chamada de funções.
+
+#### 1. simplificação de chamada
+
+Em funções com muitos parâmetros, os valores padrão permitem que o usuário da função forneça apenas os argumentos que são realmente necessários, simplificando a chamada.
+
+#### 2. redução de erros
+
+Ao fornecer valores padrão para parâmetros comuns, é possível evitar erros que ocorrem quando os usuários esquecem de passar um argumento importante.
+
+#### 3. manutenção facilitada
+
+Funções com valores padrão são mais fáceis de manter e atualizar, pois pode-se alterar os padrões para refletir mudanças nas necessidades sem exigir que todas as chamadas à função sejam modificadas.
+
+### regras e comportamentos de argumentos com valor padrão
+
+Existem algumas regras importantes e comportamentos a serem considerados ao usar valores padrão:
+
+#### 1. ordem dos argumentos
+
+Os argumentos com valor padrão devem vir após os argumentos sem valor padrão na definição da função. Isso porque o Python precisa saber quais argumentos são obrigatórios e quais são opcionais.
+
+**Exemplo Correto**:
+
+```python
+>>> def conectar(host, porta=8080):
+...     print(f"Conectando a {host} na porta {porta}")
+...
+>>> |
+```
+
+**Exemplo Incorreto**:
+
+```python
+>>> def conectar(porta=8080, host):
+...     print(f"Conectando a {host} na porta {porta}")
+...
+>>> |
+```
+
+Este exemplo resultará em um erro de sintaxe porque um argumento obrigatório (`host`) vem após um argumento opcional (`porta`).
+
+#### 2. argumentos com valor padrão e argumentos nomeados
+
+Quando se define uma função com valores padrão, pode-se usar tanto argumentos posicionais quanto nomeados ao chamá-la.
+
+```python
+>>> def criar_conta(nome, tipo="Padrão", saldo_inicial=0):
+...     print(f"Conta criada para {nome} do tipo {tipo} com saldo inicial de {saldo_inicial}")
+...
+>>> |
+```
+
+Essa função pode ser chamada de várias maneiras :
+
+- **usando apenas argumentos posicionais** :
+
+```python
+>>> criar_conta("Maria", "Premium", 1000)
+```
+
+- **misturando argumentos posicionais e nomeados** :
+
+```python
+>>> criar_conta("Carlos", saldo_inicial=500)
+```
+
+Aqui, o valor de `saldo_inicial` foi alterado, mas o valor padrão de `tipo` foi mantido.
+
+- **usando apenas argumentos nomeados** :
+
+```python
+>>> criar_conta(nome="Ana", saldo_inicial=250)
+```
+
+#### 3. avaliação de valores padrão
+
+Os valores padrão dos argumentos são avaliados apenas uma vez, no momento em que a função é definida. Isso significa que se o valor padrão for um objeto mutável (como uma lista ou dicionário), ele será compartilhado entre todas as chamadas da função, o que pode levar a comportamentos inesperados.
+
+**exemplo de comportamento inesperado**:
+
+```python
+>>> def adicionar_item(item, lista=[]):
+...     lista.append(item)
+...     return lista
+...
+>>> print(adicionar_item("maçã"))
+['maçã']
+>>> print(adicionar_item("banana"))
+['maçã', 'banana']
+>>> |
+```
+
+Aqui, o valor padrão da lista foi modificado entre as chamadas, porque a lista é um objeto mutável e é compartilhada entre as chamadas da função. Para evitar esse problema, uma prática comum é usar `None` como valor padrão e, em seguida, criar uma nova lista dentro da função, se necessário:
+
+```python
+>>> def adicionar_item(item, lista=None):
+...     if lista is None:
+...         lista = []
+...     lista.append(item)
+...     return lista
+...
+>>> print(adicionar_item("maçã"))
+['maçã']
+>>> print(adicionar_item("banana"))
+['banana']
+```
+
+##### 4. usando `None` como valor padrão
+
+Usar `None` como valor padrão é uma prática comum para argumentos que podem ter valores dinâmicos ou que devem ser inicializados dentro da função:
+
+```python
+>>> def conectar(host, porta=None):
+...     if porta is None:
+...         porta = 8080
+...
+...     print(f"Conectando a {host} na porta {porta}")
+```
+
+Neste exemplo, `porta` só será definido como `8080` se não for fornecido um valor ao chamar a função.
+
+### exemplos práticos e comuns
+
+Vamos ver alguns exemplos práticos onde os valores padrão são extremamente úteis.
+
+#### 1. configurações de funções
+
+Funções que lidam com configurações geralmente usam valores padrão para tornar a função mais versátil:
+
+```python
+>>> def configurar_banco_de_dados(host="localhost", usuario="root", senha=""):
+...     print(f"Conectando ao banco de dados em {host} com o usuário {usuario}")
+...
+>>> |
+```
+
+Essa função pode ser chamada sem argumentos se quiser usar as configurações padrão:
+
+```python
+>>> configurar_banco_de_dados()
+Conectando ao banco de dados localhost com o usuário root
+>>> |
+```
+
+#### 2. funções com múltiplos cenários
+
+Funções que podem ser usadas em múltiplos cenários podem ter valores padrão para tornar seu uso mais simples:
+
+```python
+>>> def calcular_preco(valor, desconto=0, taxa=0.1):
+...     preco_final = valor - (valor * desconto) + (valor * taxa)
+...     return preco_final
+...
+>>> print(calcular_preco(100))
+110.0
+>>> print(calcular_preco(100, desconto=0.2))
+90.0
+>>> |
+```
+
+Neste exemplo, o desconto e a taxa são opcionais, permitindo que a função seja usada em diferentes contextos sem exigir que todos os argumentos sejam sempre fornecidos.
+
+## argumentos nomeados
+
+No Python, funções podem receber argumentos de várias formas, e uma das mais flexíveis é o uso de **argumentos nomeados** (também conhecidos como **argumentos keyword**). Esse tipo de argumento permite que se especifique quais valores deseja passar para parâmetros específicos, utilizando o nome do parâmetro.
+
+### o básico dos argumentos nomeados
+
+Quando uma função é definida, é possível criar parâmetros que receberão valores quando a função for chamada. Esses parâmetros podem ser passados de duas maneiras:
+
+- **argumentos posicionais** : os valores são passados na ordem em que os parâmetros foram definidos na função;
+- **argumentos nomeados** : os valores são passados utilizando o nome do parâmetro, o que permite maior flexibilidade na ordem dos argumentos;
+
+Veja um exemplo básico :
+
+```python
+>>> def saudar(nome, mensagem):
+...     print(f"Olá, {nome}! {mensagem}")
+...
+>>> saudar("João", "Bem-vindo ao nosso curso!")
+Olá, João! Bem-vindo ao nosso curso!
+>>> |
+```
+
+No exemplo acima, `"João"` é o valor para o parâmetro `nome` e `"Bem-vindo ao nosso curso!"` é o valor para o parâmetro `mensagem`. Esses valores são passados de forma posicional, ou seja, na ordem em que os parâmetros foram definidos na função.
+
+Agora, veja o mesmo exemplo usando argumentos nomeados:
+
+```python
+>>> saudar(nome="João", mensagem="Bem-vindo ao nosso curso!")
+Olá, João! Bem-vindo ao nosso curso!
+>>> |
+```
+
+Aqui, estamos explicitamente dizendo que `nome` deve receber o valor `"João"` e `mensagem` deve receber `"Bem-vindo ao nosso curso!"`. A ordem dos argumentos não importa mais:
+
+```python
+>>> saudar(mensagem="Bem-vindo ao nosso curso!", nome="João")
+Olá, João! Bem-vindo ao nosso curso!
+>>> |
+```
+
+Esse código produzirá o mesmo resultado, independentemente da ordem.
+
+### vantagens dos argumentos nomeados
+
+Os argumentos nomeados oferecem várias vantagens, especialmente em funções com muitos parâmetros ou com parâmetros que têm valores padrão.
+
+#### clareza
+
+Quando argumentos nomeados são usados, o código se torna mais legível, pois é claro qual valor está sendo passado para qual parâmetro. Considere a função abaixo:
+
+```python
+>>> def criar_usuario(nome, idade, ativo=True, admin=False):
+...     print(f"Usuário: {nome}, Idade: {idade}, Ativo: {ativo}, Admin: {admin}")
+...
+>>> |
+```
+
+É possível chamar assim essa função :
+
+```python
+>>> criar_usuario("Maria", 28, False, True)
+Usuário: Maria, Idade: 28, Ativo: False, Admin: True
+>>> |
+```
+
+Esse código funciona, mas não é imediatamente óbvio o que cada `True` ou `False` representa. Usando argumentos nomeados, fica muito mais claro:
+
+```python
+>>> criar_usuario(nome="Maria", idade=28, ativo=False, admin=True)
+Usuário: Maria, Idade: 28, Ativo: False, Admin: True
+>>> |
+```
+
+#### flexibilidade
+
+Outra vantagem é a flexibilidade. Em funções com muitos parâmetros, pode-se especificar apenas os que deseja alterar, sem se preocupar com a ordem ou ter que passar valores para todos os parâmetros.
+
+Considere a função `criar_usuario` novamente:
+
+```python
+>>> criar_usuario(nome="Carlos", idade=30)
+Usuário: Carlos, Idade: 30, Ativo: True, Admin: False
+>>> |
+```
+
+Aqui, `ativo` e `admin` usarão seus valores padrão (`True` e `False`, respectivamente), e apenas `nome` e `idade` foram explicitamente definidos.
+
+### combinando argumentos posicionais e nomeados
+
+É possível combinar argumentos posicionais e nomeados em uma única chamada de função, mas existem algumas regras a seguir:
+
+1. **argumentos posicionais devem vir antes dos argumentos nomeados**;
+1. **argumentos nomeados podem vir em qualquer ordem, desde que não sejam duplicados com argumentos posicionais**;
+
+Exemplo:
+
+```python
+>>> criar_usuario("Ana", 22, admin=True)
+Usuário: Ana, Idade: 22, Ativo: True, Admin: True
+>>> |
+```
+
+Neste exemplo, `nome` e `idade` são passados como argumentos posicionais, enquanto `admin` é um argumento nomeado.
+
+### erros comuns e considerações
+
+- **duplicação de argumentos** : se tentar passar o mesmo argumento tanto posicionalmente quanto nomeado, o python levantará um erro:
+
+```python
+>>> criar_usuario("Pedro", 35, nome="João")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: criar_usuario() got multiple values for argument 'nome'
+>>> |
+```
+
+- **argumentos faltando**: se esquecer de passar um argumento obrigatório (sem valor padrão), o python levantará um erro indicando que o argumento está faltando:
+
+```python
+>>> criar_usuario(idade=25, admin=True)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: criar_usuario() missing 1 required positional argument: 'nome'
+>>> |
+```
+
+### funções com muitos parâmetros e argumentos nomeados
+
+Funções que recebem muitos parâmetros se beneficiam particularmente dos argumentos nomeados. Em APIs ou bibliotecas complexas, essa prática é comum para garantir que o código do usuário final seja mais legível e menos propenso a erros.
+
+Imagine uma função que configura uma conexão de banco de dados:
+
+```python
+>>> def configurar_conexao(host, porta, usuario, senha, usar_ssl=False, timeout=30):
+...     print(f"Conectando ao banco em {host}:{porta} como {usuario} com SSL={usar_ssl} e timeout={timeout}")
+...
+>>>
+```
+
+Aqui, o uso de argumentos nomeados facilita muito a chamada dessa função:
+
+```python
+>>> configurar_conexao(
+...     host="localhost",
+...     porta=5432,
+...     usuario="admin",
+...     senha="senha123",
+...     usar_ssl=True,
+...     timeout=10
+... )
+Conectando ao banco em localhost:5432 como admin com SSL=True e timeout=10
+>>> |
+```
+
+## exercícios valor padrão e argumentos nomeados
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios Básicos
+    1. Crie uma função `saudar` que receba um nome e uma mensagem de saudação com valor padrão `"Olá!"`. Chame a função passando apenas o nome.
+    1. Modifique a função `saudar` do exercício anterior para permitir que o usuário passe uma mensagem personalizada além do nome.
+    1. Crie uma função `exibir_informacoes` que receba o nome de uma pessoa, idade (com valor padrão de 25 anos) e cidade (com valor padrão `"São Paulo"`). Chame a função sem passar a cidade.
+    1. Crie uma função `calcular_desconto` que receba o valor de um produto e um desconto com valor padrão de 10%. Calcule o valor final do produto após aplicar o desconto.
+    1. Crie uma função `mostrar_mensagem` que receba uma mensagem e um número de repetições (com valor padrão de 1). A função deve imprimir a mensagem o número de vezes especificado.
+1. Exercícios Intermediários
+    1. Crie uma função `criar_usuario` que receba `nome`, `idade` (valor padrão 18) e `ativo` (valor padrão True). A função deve imprimir os detalhes do usuário.
+    1. Crie uma função `imprimir_lista` que receba uma lista e um separador (com valor padrão de vírgula). A função deve imprimir os elementos da lista separados pelo separador especificado.
+    1. Crie uma função `conectar` que receba `host`, `porta` (com valor padrão 8080) e `usar_ssl` (com valor padrão False). A função deve imprimir as informações da conexão.
+    1. Crie uma função `calcular_imposto` que receba o valor de um produto e uma taxa de imposto (com valor padrão de 5%). A função deve retornar o valor final do produto com o imposto aplicado.
+    1. Crie uma função `formar_grupo` que receba uma lista de nomes e um número máximo de membros (com valor padrão de 5). A função deve dividir a lista de nomes em grupos do tamanho especificado.
+    1. Crie uma função `calcular_media` que receba uma lista de notas e um parâmetro `peso` com valor padrão de 1. A função deve calcular e retornar a média ponderada das notas.
+    1. Crie uma função `definir_cor` que receba um parâmetro `cor` com valor padrão `"azul"`. A função deve imprimir a cor definida.
+    1. Crie uma função `enviar_email` que receba `destinatario`, `assunto` (com valor padrão `"Sem Assunto"`) e `corpo` (com valor padrão `"Sem Corpo"`). A função deve simular o envio de um e-mail.
+    1. Crie uma função `calcular_preco` que receba o preço de um produto e uma taxa de desconto (com valor padrão de 10%). A função deve retornar o preço final após o desconto.
+    1. Crie uma função `configurar_sistema` que receba `idioma` (com valor padrão `"Português"`) e `tema` (com valor padrão `"Claro"`). A função deve imprimir as configurações do sistema.
+1. Exercícios Avançados
+    1. Crie uma função `gerar_senha` que receba um comprimento e um caractere opcional (com valor padrão `None`). Se o caractere não for `None`, a senha gerada deve conter apenas esse caractere repetido o número de vezes especificado pelo comprimento.
+    1. Crie uma função `formatar_texto` que receba um texto e um tamanho máximo (com valor padrão de 80 caracteres). A função deve truncar o texto se ele ultrapassar o tamanho máximo.
+    1. Crie uma função `encontrar_maior` que receba uma lista de números e um valor mínimo opcional (com valor padrão `None`). A função deve retornar o maior número na lista maior que o valor mínimo, se especificado.
+    1. Crie uma função `ordenar_lista` que receba uma lista e um parâmetro `reversa` com valor padrão `False`. A função deve ordenar a lista de forma crescente ou decrescente, dependendo do valor de `reversa`.
+    1. Crie uma função `converter_temperatura` que receba uma temperatura e uma escala (`Celsius` ou `Fahrenheit`) com valor padrão `"Celsius"`. A função deve converter a temperatura para a outra escala.
+    1. Crie uma função `contar_palavras` que receba um texto e um parâmetro `ignorar_case` (com valor padrão `True`). A função deve retornar a contagem de palavras, ignorando a diferença entre maiúsculas e minúsculas, se `ignorar_case` for True.
+    1. Crie uma função `calcular_potencia` que receba uma base e um expoente (com valor padrão 2). A função deve retornar o resultado da base elevada ao expoente.
+    1. Crie uma função `dividir_numero` que receba um número e um divisor (com valor padrão 1). A função deve retornar o quociente da divisão, mas levantar uma exceção se o divisor for 0.
+    1. Crie uma função `criar_dicionario` que receba uma lista de chaves e um valor padrão (com valor padrão `None`). A função deve retornar um dicionário onde todas as chaves possuem o valor padrão.
+    1. Crie uma função `substituir_vogais` que receba um texto e uma vogal (com valor padrão `"a"`). A função deve substituir todas as vogais no texto pela vogal especificada.
+1. Exercícios de Desafios
+    1. Crie uma função `soma_acumulada` que receba uma lista de números e um valor inicial (com valor padrão 0). A função deve retornar a soma acumulada de todos os números na lista, iniciando pelo valor inicial.
+    1. Crie uma função `filtrar_palavras` que receba uma lista de palavras e um comprimento mínimo (com valor padrão 3). A função deve retornar uma nova lista contendo apenas as palavras com o comprimento igual ou maior que o mínimo.
+    1. Crie uma função `calcular_fatorial` que receba um número e um parâmetro `mostrar_passos` (com valor padrão `False`). A função deve calcular e retornar o fatorial do número, mostrando os passos se `mostrar_passos` for True.
+    1. Crie uma função `multiplicar_lista` que receba uma lista de números e um fator de multiplicação (com valor padrão 2). A função deve retornar uma nova lista com todos os elementos multiplicados pelo fator.
+    1. Crie uma função `atualizar_configuracoes` que receba um dicionário de configurações e atualize valores usando argumentos nomeados com valores padrão. A função deve retornar o dicionário atualizado.
+
+<details>
