@@ -6,6 +6,10 @@
     1. [set.intersection()](#setintersection)
     1. [set.difference()](#setdifference)
     1. [set.symmetric_difference()](#setsymmetric_difference)
+    1. [set.copy()](#setcopy)
+    1. [set.issubset()](#setissubset)
+    1. [set.issuperset()](#setissuperset)
+    1. [set.isdisjoint()](#setisdisjoint)
     1. [set.add()](#setadd)
     1. [set.remove()](#setremove)
     1. [set.discard()](#setdiscard)
@@ -151,6 +155,75 @@ O método `discard()` também remove um elemento do `set`, mas se o elemento nã
 ```
 
 No exemplo acima, `discard(2)` remove o `2`, mas quando tentamos `discard(5)`, nada acontece, e o `set` permanece o mesmo.
+
+### `set.copy()`
+
+O método `copy()` cria uma cópia superficial do conjunto, retornando um novo conjunto que contém os mesmos elementos do original. A cópia é independente, ou seja, alterações no conjunto copiado não afetam o conjunto original, e vice-versa:
+
+```python
+>>> set1 = {1, 2, 3}
+>>>
+>>> copia = set1.copy()
+>>> print(copia)
+{1, 2, 3}
+>>>
+>>> set1.add(4)
+>>> print(set1)
+{1, 2, 3, 4}
+>>> print(copia)
+{1, 2, 3}
+>>> |
+```
+
+Aqui, `copy()` cria uma cópia de `set1` chamada `copia`. Quando `set1` é modificado com a adição do elemento `4`, a cópia (`copia`) permanece inalterada, demonstrando que são conjuntos distintos.
+
+### `set.issubset()`
+
+O método `issubset()` verifica se todos os elementos de um conjunto estão presentes em outro conjunto. Ele retorna `True` se o conjunto é um subconjunto do conjunto passado como argumento, caso contrário, retorna `False`:
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {1, 2, 3, 4, 5}
+>>>
+>>> resultado = set1.issubset(set2)
+>>> print(resultado)
+True
+>>> |
+```
+
+Aqui, `issubset()` retorna `True` porque todos os elementos de `set1` estão presentes em `set2`.
+
+### `set.issuperset()`
+
+O método `issuperset()` verifica se todos os elementos de outro conjunto estão presentes no conjunto. Ele retorna `True` se o conjunto contém todos os elementos do conjunto passado como argumento, caso contrário, retorna `False`:
+
+```python
+>>> set1 = {1, 2, 3, 4, 5}
+>>> set2 = {1, 2, 3}
+>>>
+>>> resultado = set1.issuperset(set2)
+>>> print(resultado)
+True
+>>> |
+```
+
+Aqui, `issuperset()` retorna `True` porque `set1` contém todos os elementos de `set2`.
+
+### `set.isdisjoint()`
+
+O método `isdisjoint()` verifica se dois conjuntos não possuem nenhum elemento em comum. Ele retorna `True` se os conjuntos não compartilham nenhum elemento, caso contrário, retorna `False`:
+
+```python
+>>> set1 = {1, 2, 3}
+>>> set2 = {4, 5, 6}
+>>>
+>>> resultado = set1.isdisjoint(set2)
+>>> print(resultado)
+True
+>>> |
+```
+
+Aqui, `isdisjoint()` retorna `True` porque `set1` e `set2` não têm elementos em comum.
 
 ## cast
 
