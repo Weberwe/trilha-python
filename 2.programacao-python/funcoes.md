@@ -16,7 +16,7 @@
 1. [empacotamento e desempacotamento nas funções](#empacotamento-e-desempacotamento-nas-funções)
     1. [`*args`](#args)
     1. [`**kwargs`](#kwargs)
-1. [exercícios `args` `kwargs`](#exercício-args-kwargs)
+1. [exercícios `args` `kwargs`](#exercícios-args-kwargs)
 1. [exemplos](#exemplos)
     1. [funções com parâmetros posicionais](#funções-com-parâmetros-posicionais)
     1. [funções com parâmetros posicionais e parâmetros com valores padrão](#funções-com-parâmetros-posicionais-e-parâmetros-com-valores-padrão)
