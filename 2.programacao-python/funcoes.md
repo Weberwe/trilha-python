@@ -16,6 +16,7 @@
 1. [empacotamento e desempacotamento nas funções](#empacotamento-e-desempacotamento-nas-funções)
     1. [`*args`](#args)
     1. [`**kwargs`](#kwargs)
+1. [exercícios `args` `kwargs`](#exercício-args-kwargs)
 1. [exemplos](#exemplos)
     1. [funções com parâmetros posicionais](#funções-com-parâmetros-posicionais)
     1. [funções com parâmetros posicionais e parâmetros com valores padrão](#funções-com-parâmetros-posicionais-e-parâmetros-com-valores-padrão)
@@ -1068,7 +1069,7 @@ Registro_completo: True
 1. **modificação de `kwargs` :** na função `criar_usuario_personalizado`, o dicionário `kwargs` é modificado ao adicionar um novo par `chave=valor`;
 2. **repassando `kwargs` :** o dicionário modificado é desempacotado e passado para a função `registrar_usuario`;
 
-## exercícios
+## exercícios `args` `kwargs`
 
 <details>
 <summary>Lista de Exercícios</summary>
