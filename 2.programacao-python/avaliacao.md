@@ -124,9 +124,13 @@ Crie mensagens de boas vindas e de encerramento para seu programa.
 
 Use funções para otimizar seu programa.
 
-O código de soma dos dígitos do CPF pode ser feito em apenas uma função, assim como o código para validar os dígitos verificadores encontrados.
+Embora o código da soma dos dígitos do CPF e da validação dos dígitos verificadores possa ser feito em uma função cada, isso não será obrigatório para seu programa. Crie funções para deixar seu programa organizado e mais eficiente.
 
 Seu programa deverá, **por hora**, possuir ao menos 4 funções.
+
+### módulos
+
+Para melhor organização do software, organize seu programa em ao menos 2 módulos. Um deles conterá as funções e variáveis de seu programa e o outro será o módulo principal, que ficará responsável pela execução do programa, chamado de `main.py`.
 
 ## o que usar
 
@@ -162,3 +166,8 @@ Parte 3
 - [ ] função para calcular a soma dos dígitos verificadores (uma função para ambas as somas);
 - [ ] função para realizar os testes dos dígitos verificadores (uma função para ambos os testes);
 - [ ] mensagem ao finalizar;
+
+Parte 4
+- [ ] organize seu programa em ao menos dois módulos;
+- [ ] um módulo será de auxiliar, onde terá as funções e variáveis;
+- [ ] o outro será o principal e deverá ser chamado de `main.py`, onde o programa será executado;
