@@ -338,6 +338,24 @@ Raiz quadrada de 16: 4.0
     1. Crie um módulo chamado `utilidades.py` com uma função `menor(a, b)` e uma variável `pi`. No seu script principal, importe o módulo completo e imprima o valor de `pi` e o resultado de `menor(10, 20)`.
     1. Crie um módulo chamado `strings.py` com uma função `concatena(s1, s2)` que retorna a concatenação de duas strings. No seu script principal, importe o módulo completo e use a função para concatenar as strings `"Olá"` e `"Mundo"`.
     1. Crie um módulo chamado `calculos.py` com uma função `fatorial(n)` que retorna o fatorial de um número. No seu script principal, importe o módulo completo e calcule o fatorial de `5`.
+        ```python
+        # main.py
+        import calculos as calc
+
+        calc.fatorial(5)
+
+        # calculos.py
+        def fatorial(n):
+            resultado = 1
+
+            while n > 0:
+                print(f'{n = }, {resultado = }')
+                resultado *= n  # resultado = resultado * n
+                n -= 1  # n = n - 1
+
+            print(f'{n = }')
+            print(f'{resultado = }')
+        ```
     1. Crie um módulo chamado `data.py` com uma função `data_atual()` que retorna a data atual no formato `"YYYY-MM-DD"`. No seu script principal, importe o módulo completo e exiba a data atual.
 1. Exercícios de `from ... import`
     1. Crie um módulo chamado `matematica_basica.py` com funções `soma(a, b)`, `subtracao(a, b)`, e `multiplicacao(a, b)`. No seu script principal, importe apenas a função `soma` e utilize-a para somar `8` e `12`.
@@ -360,6 +378,44 @@ Raiz quadrada de 16: 4.0
 1. Exercícios Combinados
     1. Crie um módulo chamado `financeiro.py` com funções `calcular_juros(principal, taxa, tempo)` e `calcular_investimento(principal, taxa, tempo)`. No seu script principal, importe `calcular_juros` como `juros` e `calcular_investimento` como `investimento`, e calcule o investimento inicial de `1000` com taxa de `5%` ao longo de `2` anos.
     1. Crie um módulo chamado `analise.py` com funções `media_lista(lista)` e `desvio_padrao(lista)`. No seu script principal, importe `desvio_padrao` como `desvio` e calcule o desvio padrão da lista `[2, 4, 4, 4, 5, 5, 7, 9]`.
+        ```python
+        # main.py
+        from funcoes import desvio_padrao as desvio
+
+        lista = [2, 4, 4, 4, 5, 5, 7, 9]
+        desvio(lista)
+
+        # analise.py
+        def media_lista(lista):
+            tamanho = len(lista)
+
+            soma = 0
+            for valor in lista:
+                soma += valor
+
+            media = soma / tamanho
+
+            return media
+
+        def desvio_padrao(lista):
+
+            print(f'{lista = }')
+            media = media_lista(lista)
+            print(f'{media = }')
+
+            difer_elem = []
+
+            for valor in lista:
+                diferenca = valor - media
+                quadrado = diferenca ** 2
+                difer_elem.append(quadrado)
+
+            media_quad = media_lista(difer_elem)
+            print(f'{media_quad = }')
+            desvio_padrao = media_quad ** (1/2)
+
+            print(f'o desvio da lista eh : {desvio_padrao = }')
+        ```
     1. Crie um módulo chamado `comparacao.py` com funções `maior(a, b)` e `menor(a, b)`. No seu script principal, importe `menor` como `encontrar_menor` e calcule o menor entre `8` e `12`.
     1. Crie um módulo chamado `geometria.py` com funções `volume_cubo(lado)` e `volume_esfera(raio)`. No seu script principal, importe `volume_cubo` como `volume_c` e `volume_esfera` como `volume_e`, e calcule o volume de um cubo com lado `3` e uma esfera com raio `4`.
     1. Crie um módulo chamado `dados.py` com funções `criar_lista(tamanho)` e `criar_dicionario(chaves, valores)`. No seu script principal, importe `criar_lista` como `criar_lista_dados` e `criar_dicionario` como `criar_dict`, e crie uma lista com `5` elementos e um dicionário com as chaves `['a', 'b']` e valores `[1, 2]`.
