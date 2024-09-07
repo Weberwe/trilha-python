@@ -335,6 +335,20 @@ Raiz quadrada de 16: 4.0
 
 1. Exercícios de `import`
     1. Crie um módulo chamado `matematica.py` que contenha funções `soma(a, b)` e `multiplicacao(a, b)`. No seu script principal, importe o módulo completo e use as funções para calcular `soma(5, 3)` e `multiplicacao(4, 6)`.
+        ```python
+        # main.py
+        import matematica
+
+        print(f'{matematica.soma(5, 3) = }')
+        print(f'{matematica.multiplicacao(4, 6) = }')
+
+        # matematica.py
+        def soma(a, b):
+            return a + b
+
+        def multiplicacao(a, b):
+            return a * b
+        ```
     1. Crie um módulo chamado `utilidades.py` com uma função `menor(a, b)` e uma variável `pi`. No seu script principal, importe o módulo completo e imprima o valor de `pi` e o resultado de `menor(10, 20)`.
     1. Crie um módulo chamado `strings.py` com uma função `concatena(s1, s2)` que retorna a concatenação de duas strings. No seu script principal, importe o módulo completo e use a função para concatenar as strings `"Olá"` e `"Mundo"`.
     1. Crie um módulo chamado `calculos.py` com uma função `fatorial(n)` que retorna o fatorial de um número. No seu script principal, importe o módulo completo e calcule o fatorial de `5`.
@@ -357,6 +371,16 @@ Raiz quadrada de 16: 4.0
             print(f'{resultado = }')
         ```
     1. Crie um módulo chamado `data.py` com uma função `data_atual()` que retorna a data atual no formato `"YYYY-MM-DD"`. No seu script principal, importe o módulo completo e exiba a data atual.
+        ```python
+        # main.py
+        import data
+
+        print(f'{data.data_atual() = }')
+
+        # data.py
+        def data_atual():
+            return "2024-09-03"
+        ```
 1. Exercícios de `from ... import`
     1. Crie um módulo chamado `matematica_basica.py` com funções `soma(a, b)`, `subtracao(a, b)`, e `multiplicacao(a, b)`. No seu script principal, importe apenas a função `soma` e utilize-a para somar `8` e `12`.
     1. Crie um módulo chamado `strings_avancadas.py` com funções `capitalizar(s)` e `inverter(s)`. No seu script principal, importe a função `inverter` e use-a para inverter a string `"Python"`.
