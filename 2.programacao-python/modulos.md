@@ -9,19 +9,44 @@
     1. [`sys.getsizeof`](#sysgetsizeof)
     1. [`sys.version` e `sys.version_info`](#sysversion-e-sysversion_info)
 1. [exercícios módulo `sys`](#exercícios-módulo-sys)
+1. [módulo `os`](#módulo-os)
+    1. [`os.name`](#osname)
+    1. [`os.getenv()` e `os.environ`](#osgetenv-e-osenviron)
+    1. [`os.getcwd()` e `os.chdir`](#osgetcwd-e-oschdir)
+    1. [`os.listdir()`](#oslistdir)
+    1. [`os.mkdir()` e `os.makedirs()`](#osmodir-e-osmakedirs)
+    1. [`os.remove()` e `os.rmdir()`](#osremove-e-osrmdir)
+    1. [`os.rename()`](#osrename)
+    1. [`os.path`](#ospath)
+    1. [`os.system()`](#ossystem)
+    1. [`os.popen()`](#ospopen)
+1. [exercícios módulo `os`](#exercícios-módulo-os)
 1. [módulo `random`](#módulo-random)
     1. [`random.random()`](#randomrandom)
-    1. [`random.uniform()`](#randomuniform)
-    1. [`random.randint()`](#randomrandint)
-    1. [`random.randrange()`](#randomrandrange)
-    1. [`random.choice()`](#randomchoice)
-    1. [`random.choices()`](#randomchoices)
-    1. [`random.sample()`](#randomsample)
-    1. [`random.shuffle()`](#randomshuffle)
+    1. [`random.uniform(a, b)`](#randomuniformab)
+    1. [`random.randint(a, b)`](#randomrandintab)
+    1. [`random.randrange(start, stop, step)`](#randomrandrangestartstopstep)
+    1. [`random.choice(seq)`](#randomchoiceseq)
+    1. [`random.choices(population, k=1)`](#randomchoicespopulatiok)
+    1. [`random.sample(population, k)`](#randomsamplepopulationk)
+    1. [`random.shuffle(seq)`](#randomshuffleseq)
     1. [`random.seed()`](#randomseed)
-    1. [`random.gauss()`](#randomgauss)
-    1. [`random.betavariate()`](#randombetavariate)
+    1. [`random.gauss(mu, sigma)`](#randomgaussmusgima)
+    1. [`random.betavariate(alpha, beta)`](#randombetavariatealphabeta)
 1. [exercícios módulo `random`](#exercícios-módulo-random)
+1. [módulo `time`](#módulo-time)
+    1.[`time.time()`](#timetime)
+    1.[`time.sleep(segundos)`](#timesleepsegundos)
+    1.[`time.localtime([segundos])`](#timelocaltimesegundos)
+    1.[`time.strftime(formato[, struct_time])`](#timestrftimeformatostruct_time)
+    1.[`time.gmtime([segundos])`](#timegmtimesegundos)
+    1.[`time.mktime(t)`](#timemktimet)
+    1.[`time.asctime([struct_time])`](#timeasctimestruct_time)
+    1.[`time.ctime([segundos])`](#timectimesegundos)
+    1.[`time.perf_counter()`](#timeperf_counter)
+    1.[`time.monotonic()`](#timemonotonic)
+    1.[`time.process_time()`](#timeprocess_time)
+1. [exercícios módulo `time`](#exercícios-módulo-time)
 
 # módulos
 
@@ -240,22 +265,319 @@ if sys.version_info[0] == 3:
 1. Limite o recursão máxima do Python para 100 chamadas. Utilize `sys.setrecursionlimit(100)` e faça um programa para verificar o novo limite.
 1. Imprima o limite máximo de recursão atual do Python. Utilize `sys.getrecursionlimit()` para exibir o limite.
 1. Implemente uma função recursiva para calcular o fatorial e teste os limites de recursão. Use `sys.getrecursionlimit()` e ajuste o limite para testar diferentes profundidades de recursão.
-<!--1. Desvie a saída padrão para um arquivo. Utilize `sys.stdout` para redirecionar a saída para um arquivo ao invés do console.
-1. Desvie a saída de erro padrão para um arquivo. Utilize `sys.stderr` para redirecionar as mensagens de erro para um arquivo.
-1. Escreva um programa que simule a entrada de dados redirecionando `sys.stdin`. Redirecione a entrada padrão para um arquivo e leia seus valores usando `sys.stdin`.-->
 1. Verifique se o sistema tem suporte para Unicode. Utilize `sys.maxunicode` para verificar a maior representação de Unicode disponível no sistema.
 1. Calcule e mostre o número máximo de objetos que podem ser armazenados em uma variável. Utilize `sys.maxsize` para exibir o maior número que o Python consegue manipular.
-<!--1. Crie um contador que exiba em qual byte o programa está. Use `sys.byteorder` para mostrar a ordem de bytes do sistema (little-endian ou big-endian).
-1. Monitore a saída de erro com uma mensagem personalizada quando ocorre uma exceção. Utilize `sys.exc_info()` para capturar detalhes da última exceção gerada.
-1. Faça um loop que utilize `sys.stdin` para capturar múltiplas entradas e imprimir na tela. Use `sys.stdin.read()` para capturar entradas de uma fonte como um arquivo e as exiba em tela.
-1. Simule uma mensagem de erro personalizada e redirecione-a para um arquivo de log. Redirecione `sys.stderr` para um arquivo e escreva mensagens de erro personalizadas.-->
 1. Escreva um programa que imprima a saída de um número grande e identifique como ele é representado no sistema. Utilize `sys.float_info` para exibir os detalhes de representação de números em ponto flutuante.
 1. Crie um programa que exiba o nome do arquivo atualmente sendo executado. Utilize `sys.argv[0]` para exibir o nome do script Python em execução.
-<!--1. Interrompa a execução do programa após um determinado número de segundos. Use `sys.exit()` em conjunto com `time.sleep()` para interromper após um intervalo.-->
 1. Exiba o tamanho máximo de um número inteiro suportado pelo sistema. Utilize `sys.maxsize` para mostrar o maior número de inteiro que o Python suporta.
-<!--1. Crie um programa que manipule exceções e exiba detalhes usando `sys.exc_info()`. Use `sys.exc_info()` para capturar e exibir detalhes da exceção levantada.
-1. Implemente um programa que exiba informações sobre o ambiente de execução atual. Utilize `sys.implementation` para mostrar detalhes sobre a implementação do interpretador.-->
 1. Capture e exiba o status final do interpretador Python antes da saída. Use `sys.flags` para exibir os diferentes sinais e flags que controlam o comportamento do interpretador.
+
+</details>
+
+## módulo `os`
+
+O módulo `os` do Python fornece várias funcionalidades para interagir com o sistema operacional de maneira independente da plataforma. Isso significa que ele funciona tanto no Windows, quanto no Linux ou macOS, facilitando operações como manipulação de arquivos, diretórios, variáveis de ambiente, e muito mais.
+
+### `os.name`
+
+O `os.name` retorna uma string que indica o nome do sistema operacional no qual o código está sendo executado. Dependendo do sistema, a string pode ser:
+- `'posix'` para sistemas como Linux e macOS;
+- `'nt'` para sistemas Windows;
+
+**exemplo** :
+
+```python
+# main.py
+import os
+
+print(f"Sistema operacional: {os.name}")
+
+if os.name == 'nt':
+    print("Este código está sendo executado no Windows.")
+else:
+    print("Este código está sendo executado em um sistema tipo Unix (Linux ou macOS).")
+```
+
+### `os.getenv()` e `os.environ`
+
+O `os.getenv()` permite acessar variáveis de ambiente, enquanto `os.environ` é um dicionário que contém todas as variáveis de ambiente do sistema.
+
+**exemplo** 1 : acessando uma variável de ambiente
+
+```python
+# main.py
+import os
+
+# acessa a variável de ambiente path
+path = os.getenv('PATH')
+print(f"Variável PATH: {path}")
+```
+
+**exemplo** 2 : listando todas as variáveis de ambiente
+
+```python
+# main.py
+import os
+
+# imprime todas as variáveis de ambiente
+for chave, valor in os.environ.items():
+    print(f"{chave}: {valor}")
+```
+
+**exemplo** 3: definindo uma variável de ambiente temporária
+
+```python
+# main.py
+import os
+
+# Define uma variável de ambiente temporária
+os.environ['MINHA_VARIAVEL'] = 'valor_exemplo'
+
+# Verifica se foi definida
+print(f"MINHA_VARIAVEL: {os.getenv('MINHA_VARIAVEL')}")
+```
+
+### `os.getcwd()` e `os.chdir()`
+
+O `os.getcwd()` retorna o diretório de trabalho atual (onde o script está sendo executado), e `os.chdir()` altera o diretório de trabalho para outro especificado.
+
+**exemplo** 1 : obtendo o diretório atual
+
+```python
+# main.py
+import os
+
+# obtém o diretório de trabalho atual
+diretorio_atual = os.getcwd()
+print(f"Diretório atual: {diretorio_atual}")
+```
+
+**exemplo** 2 : mudando o diretório atual
+
+```python
+# main.py
+import os
+
+# muda o diretório de trabalho para "/home/user" (ou outro caminho válido no seu sistema)
+os.chdir("/home/user")
+
+# Verifica o diretório atual após a mudança
+print(f"Novo diretório atual: {os.getcwd()}")
+```
+
+### `os.listdir()`
+
+O `os.listdir()` retorna uma lista de todos os arquivos e diretórios em um determinado caminho.
+
+**exemplo** :
+
+```python
+# main.py
+import os
+
+# Lista todos os arquivos e diretórios no diretório atual
+arquivos = os.listdir()
+print("Arquivos e diretórios no diretório atual:")
+for arquivo in arquivos:
+    print(arquivo)
+```
+
+Também é possível passar um caminho específico :
+
+```python
+# main.py
+import os
+
+# lista arquivos em um diretório específico
+arquivos = os.listdir("/home/user")
+print("Arquivos no diretório /home/user:")
+for arquivo in arquivos:
+    print(arquivo)
+```
+
+### `os.mkdir()` e `os.makedirs()`
+
+- `os.mkdir()` cria um único diretório;
+- `os.makedirs()` cria um diretório, incluindo todos os diretórios intermediários, se necessário;
+
+**exemplo** 1 : criando um único diretório
+
+```python
+# main.py
+import os
+
+# cria um diretório chamado "novo_diretorio" no diretório atual
+os.mkdir("novo_diretorio")
+print("Diretório 'novo_diretorio' criado.")
+```
+
+**exemplo** 2 : criando diretórios intermediários
+
+```python
+# main.py
+import os
+
+# cria o diretório "dir1/dir2/dir3", incluindo todos os diretórios intermediários
+os.makedirs("dir1/dir2/dir3")
+print("Diretórios 'dir1/dir2/dir3' criados.")
+```
+
+### `os.remove()` e `os.rmdir()`
+
+- `os.remove()` exclui um arquivo;
+- `os.rmdir()` exclui um diretório vazio;
+
+**exemplo** 1 : excluindo um arquivo
+
+```python
+# main.py
+import os
+
+# remove um arquivo chamado "arquivo.txt"
+os.remove("arquivo.txt")
+print("Arquivo 'arquivo.txt' removido.")
+```
+
+**exemplo** 2 : excluindo um diretório vazio
+
+```python
+# main.py
+import os
+
+# remove um diretório vazio chamado "meu_diretorio"
+os.rmdir("meu_diretorio")
+print("Diretório 'meu_diretorio' removido.")
+```
+
+### `os.rename()`
+
+O `os.rename()` renomeia um arquivo ou diretório.
+
+**exemplo** :
+
+```python
+# main.py
+import os
+
+# renomeia o arquivo "arquivo_velho.txt" para "arquivo_novo.txt"
+os.rename("arquivo_velho.txt", "arquivo_novo.txt")
+print("Arquivo renomeado para 'arquivo_novo.txt'.")
+```
+
+### `os.path`
+
+O módulo `os` também contém o submódulo `os.path`, que oferece várias funções para manipulação de caminhos de arquivos.
+
+**exemplo** 1 : verificando se um arquivo ou diretório existe
+
+```python
+# main.py
+import os
+
+# Verifica se o arquivo "meu_arquivo.txt" existe
+if os.path.exists("meu_arquivo.txt"):
+    print("O arquivo 'meu_arquivo.txt' existe.")
+else:
+    print("O arquivo 'meu_arquivo.txt' não existe.")
+```
+
+**exemplo** 2 : verificando se é um arquivo ou um diretório
+
+```python
+# main.py
+import os
+
+caminho = "meu_arquivo.txt"
+
+if os.path.isfile(caminho):
+    print(f"{caminho} é um arquivo.")
+elif os.path.isdir(caminho):
+    print(f"{caminho} é um diretório.")
+else:
+    print(f"{caminho} não é um arquivo nem um diretório.")
+```
+
+**exemplo** 3 : unindo partes de um caminho
+
+```python
+# main.py
+import os
+
+# junta diferentes partes de um caminho
+caminho_completo = os.path.join("/home/user", "documentos", "arquivo.txt")
+print(f"Caminho completo: {caminho_completo}")
+```
+
+### `os.system()`
+
+O `os.system()` executa comandos diretamente no sistema operacional, como se fosse executado no terminal.
+
+**exemplo** :
+
+```python
+# main.py
+import os
+
+# Executa o comando 'ls' no Linux/macOS ou 'dir' no Windows
+os.system("ls")  # Use "dir" no Windows
+```
+
+Esse comando executa a listagem de arquivos no diretório atual (o comando específico varia conforme o sistema operacional).
+
+### `os.popen()`
+
+Enquanto `os.system()` executa um comando sem capturar a saída, `os.popen()` permite capturar a saída do comando.
+
+**exemplo** :
+
+```python
+# main.py
+import os
+
+# executa o comando 'ls' e captura sua saída
+comando = os.popen("ls")  # Use "dir" no Windows
+saida = comando.read()
+
+# exibe a saída capturada
+print("Saída do comando:")
+print(saida)
+```
+
+## exerícios módulo `os`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Liste todos os arquivos e diretórios do diretório atual. Utilize `os.listdir()` para listar o conteúdo do diretório atual.
+1. Crie um novo diretório chamado `novo_diretorio` no diretório atual. Use `os.mkdir()` para criar o diretório.
+1. Altere o diretório de trabalho atual para o diretório `novo_diretorio`. Utilize `os.chdir()` para alterar o diretório de trabalho.
+1. Mostre o caminho completo do diretório de trabalho atual. Use `os.getcwd()` para obter o diretório atual.
+1. Remova o diretório `novo_diretorio`. Utilize `os.rmdir()` para remover o diretório criado.
+1. Crie um diretório aninhado chamado `pasta1/pasta2/pasta3`. Use `os.makedirs()` para criar a estrutura de diretórios.
+1. Remova os diretórios aninhados `pasta1/pasta2/pasta3`. Utilize `os.removedirs()` para remover a árvore de diretórios.
+1. Renomeie um arquivo ou diretório. Crie um arquivo ou diretório e renomeie-o usando `os.rename()`.
+1. Obtenha informações sobre um arquivo, como seu tamanho e data de modificação. Utilize `os.stat()` para exibir informações detalhadas de um arquivo.
+1. Verifique se um arquivo ou diretório existe. Use `os.path.exists()` para verificar se um arquivo ou diretório existe.
+1. Verifique se o caminho é um diretório. Utilize `os.path.isdir()` para verificar se o caminho fornecido é um diretório.
+1. Verifique se o caminho é um arquivo. Use `os.path.isfile()` para verificar se o caminho fornecido é um arquivo.
+1. Obtenha o nome do diretório de um caminho fornecido. Utilize `os.path.dirname()` para extrair o diretório de um caminho.
+1. Obtenha o nome do arquivo de um caminho fornecido. Use `os.path.basename()` para extrair o nome do arquivo de um caminho.
+1. Separe a extensão do nome de um arquivo. Utilize `os.path.splitext()` para separar o nome e a extensão de um arquivo.
+1. Junte dois caminhos de forma adequada ao sistema operacional. Use `os.path.join()` para combinar dois caminhos.
+1. Obtenha o caminho absoluto de um arquivo. Utilize `os.path.abspath()` para converter um caminho relativo em absoluto.
+1. Descubra o tamanho de um arquivo em bytes. Use `os.path.getsize()` para obter o tamanho de um arquivo.
+1. Obtenha o nome de usuário que está executando o programa. Utilize `os.getlogin()` para exibir o nome do usuário atual.
+1. Obtenha o ID do processo atual. Use `os.getpid()` para obter o ID do processo em execução.
+1. Obtenha o ID do processo pai. Utilize `os.getppid()` para obter o ID do processo pai.
+1. Defina uma nova variável de ambiente e exiba seu valor. Use `os.environ` para definir uma nova variável de ambiente e depois acesse seu valor.
+1. Exiba todas as variáveis de ambiente do sistema. Utilize `os.environ` para listar todas as variáveis de ambiente.
+1. Remova uma variável de ambiente do sistema. Use `os.environ.pop()` para remover uma variável de ambiente.
+1. Execute um comando do sistema operacional usando Python. Utilize `os.system()` para executar um comando, como listar arquivos (`ls` ou `dir`).
+1. Obtenha o caminho do diretório inicial do usuário. Use `os.path.expanduser('~')` para obter o diretório inicial do usuário.
+1. Obtenha o separador de diretórios do sistema operacional atual. Utilize `os.sep` para exibir o separador de diretórios (`/` no Linux/Mac, `\` no Windows).
+1. Obtenha o caminho do dispositivo null do sistema operacional. Use `os.devnull` para obter o caminho para o dispositivo null (`/dev/null` no Unix, `NUL` no Windows).
+1. Suspenda a execução do programa por 5 segundos. Utilize `os.sleep(5)` para pausar a execução por 5 segundos.
+1. Obtenha uma lista de todos os drives disponíveis no sistema (apenas Windows). Use `os.listdir()` com as letras dos drives e filtre os que estão disponíveis no sistema (Windows).
 
 </details>
 
@@ -531,22 +853,261 @@ Saída típica :
 1. Implemente uma função que retorna um número aleatório ímpar entre 1 e 50. Use `random.choice(range(1, 51, 2))`.
 1. Crie um programa que simule o embaralhamento de um baralho de cartas (semelhante ao exercício 20). Utilize `random.shuffle()` para embaralhar as cartas.
 1. Gere uma lista de 10 números aleatórios entre 1 e 100 e encontre o maior valor. Use `random.randint()` para gerar a lista e `max()` para encontrar o maior valor.
-<!--1. Implemente uma função que retorne um número aleatório com distribuição exponencial. Utilize `random.expovariate()`.-->
 1. Simule um jogo de dados em que 5 dados são lançados e o jogador ganha se a soma for maior que 18. Use `random.randint(1, 6)` em um loop e calcule a soma.
 1. Crie uma função que simule uma rodada de "pedra, papel e tesoura" entre dois jogadores. Utilize `random.choice(['pedra', 'papel', 'tesoura'])` para cada jogador.
 1. Simule a escolha de um elemento de uma lista ponderada, onde alguns elementos têm mais chances de serem escolhidos. Use `random.choices()` com pesos fornecidos.
 1. Implemente uma função que retorne uma lista de 5 números aleatórios inteiros entre 10 e 100. Utilize `random.randint(10, 100)` em um loop ou `random.sample()`.
-<!--1. Crie uma senha aleatória de 12 caracteres usando letras, números e símbolos especiais. Use `random.choices(string.ascii_letters + string.digits + string.punctuation, k=12)`.
-1. Simule a escolha de um produto de uma lista de produtos, onde cada produto tem uma chance diferente de ser escolhido. Utilize `random.choices()` com pesos para os produtos.-->
 1. Implemente um jogo simples de adivinhação onde o programa gera um número entre 1 e 20 e o usuário tem que adivinhar. Utilize `random.randint(1, 20)` para gerar o número e peça ao usuário para adivinhar.
 1. Gere uma lista de 5 números de ponto flutuante entre 0 e 10 e calcule o valor mínimo. Utilize `random.uniform(0, 10)` e `min()` para encontrar o menor valor.
-<!--1. Crie uma função que simule o sorteio de um número entre 1 e 1000 com uma probabilidade de 1% de ganhar. Use `random.random()` para calcular a chance.-->
 1. Implemente um jogo de "cara ou coroa" onde o usuário pode jogar quantas vezes quiser. Use `random.choice(['cara', 'coroa'])`.
 1. Crie uma função que gere uma lista de 5 números aleatórios entre 0 e 1 e retorne o maior valor. Utilize `random.random()` em um loop e `max()` para o maior valor.
 1. Simule a distribuição de cartas em um jogo de pôquer para 4 jogadores. Use `random.sample()` para distribuir as cartas de um baralho.
-<!--1. Implemente uma função que retorne um número inteiro aleatório com distribuição geométrica. Utilize `random.geometric()`.-->
 1. Crie uma função que retorne uma letra aleatória (maiúscula ou minúscula). Use `random.choice(string.ascii_letters)`.
 1. Simule o lançamento de uma moeda 1000 vezes e conte quantas vezes deu "cara". Use `random.choice()` em um loop.
 1. Gere uma sequência aleatória de 20 números inteiros entre 0 e 100 e calcule a média. Utilize `random.randint(0, 100)` e `sum()` para calcular a média.
+
+</details>
+
+## módulo `time`
+
+O módulo `time` do Python oferece várias funções para trabalhar com tempo, como a manipulação de horas, minutos, segundos, e funções para medir o tempo que uma ação leva para ser concluída. Ele é muito utilizado para calcular a duração de eventos, fazer pausas (delays) no código, além de obter e manipular o tempo no formato de segundos desde a *"época"* (epoch), que geralmente é 1º de janeiro de 1970 no sistema UNIX.
+
+### `time.time()`
+
+Essa função retorna o número de segundos desde a *"época"*, ou seja, um número do tipo *float* que representa o tempo em segundos.  A *"época"* (epoch) é o ponto de referência para a contagem do tempo. No Unix, a *epoch* é definida como meia-noite (00:00:00) de 1 de janeiro de 1970.
+
+**exemplo :**
+```python
+import time
+segundos = time.time()
+print(f"Segundos desde 1º de janeiro de 1970: {segundos}")
+```
+
+### `time.sleep(segundos)`
+
+Essa função faz com que o programa pause ou "durma" por um determinado número de segundos. É útil em casos onde se deseja que o código aguarde um certo tempo antes de prosseguir.
+
+**exemplo :**
+```python
+import time
+print("Esperando 5 segundos...")
+time.sleep(5)
+print("Fim da espera.")
+```
+
+### `time.localtime([segundos])`
+
+Essa função converte o tempo dado em segundos desde a *epoch* em um objeto de tempo local (`struct_time`). Se nenhum argumento for fornecido, ela utiliza o tempo atual (retornado por `time.time()`). O objeto `struct_time` tem vários atributos como `tm_year` (ano), `tm_mon` (mês), `tm_mday` (dia do mês), `tm_hour` (hora), etc.
+
+**exemplo :**
+```python
+import time
+tempo_atual = time.localtime()
+print(f"Ano atual: {tempo_atual.tm_year}")
+print(f"Mês atual: {tempo_atual.tm_mon}")
+print(f"Dia atual: {tempo_atual.tm_mday}")
+```
+
+### `time.strftime(formato[, struct_time])`
+
+Converte um objeto `struct_time` em uma string formatada, de acordo com a especificação de formato fornecida. Por exemplo, `%Y` para ano completo, `%m` para mês, `%d` para dia do mês, `%H` para hora (formato 24h), `%M` para minutos, `%S` para segundos.
+
+Mais Formatos [aqui](https://docs.python.org/3/library/time.html#time.strftime)
+
+**exemplo :**
+```python
+import time
+tempo_atual = time.localtime()
+formato = time.strftime("%Y-%m-%d %H:%M:%S", tempo_atual)
+print(f"Data e hora formatada: {formato}")
+```
+
+### `time.gmtime([segundos])`
+
+Semelhante a `time.localtime()`, mas retorna o tempo no fuso horário UTC (Tempo Universal Coordenado), em vez do fuso horário local.
+
+**exemplo :**
+```python
+import time
+tempo_utc = time.gmtime()
+print(f"Ano atual (UTC): {tempo_utc.tm_year}")
+```
+
+### `time.mktime(t)`
+
+Faz o inverso de `time.localtime()` ou `time.gmtime()`, convertendo uma estrutura de tempo (`struct_time`) em segundos desde a *epoch*.
+
+**exemplo :**
+```python
+import time
+tempo_local = time.localtime()
+segundos = time.mktime(tempo_local)
+print(f"Segundos desde a epoch para a hora local: {segundos}")
+```
+
+### `time.asctime([struct_time])`
+
+Converte um objeto `struct_time` em uma string no formato: `'Dia_sem Mês Dia Hora:Min:Seg Ano'`. Se não for fornecido nenhum argumento, usa o tempo local.
+
+**exemplo :**
+```python
+import time
+print(time.asctime())  # Exemplo de saída: 'Tue Sep  6 10:05:12 2024'
+```
+
+### `time.ctime([segundos])`
+
+Converte o tempo, em segundos desde a epoch, em uma string legível. Se nenhum argumento for passado, usa o tempo atual.
+
+**exemplo :**
+```python
+import time
+print(time.ctime())  # Exemplo de saída: 'Tue Sep  6 10:05:12 2024'
+```
+
+### `time.perf_counter()`
+
+Retorna o valor de um temporizador de alta resolução, medido em segundos. É útil para medir o tempo de execução de trechos de código.
+
+**exemplo :**
+```python
+import time
+inicio = time.perf_counter()
+time.sleep(2)
+fim = time.perf_counter()
+print(f"Tempo decorrido: {fim - inicio} segundos")
+```
+
+### `time.monotonic()`
+
+Similar a `time.perf_counter()`, mas este temporizador não pode ser ajustado para frente ou para trás (não é afetado por mudanças no relógio do sistema).
+
+**exemplo :**
+```python
+import time
+inicio = time.monotonic()
+time.sleep(1)
+fim = time.monotonic()
+print(f"Tempo decorrido: {fim - inicio} segundos")
+```
+
+### `time.process_time()`
+
+Retorna o tempo de CPU usado pelo processo atual, em segundos.
+
+**exemplo :**
+```python
+import time
+inicio = time.process_time()
+# Simulando um processo que consome CPU
+for i in range(1000000):
+    pass
+fim = time.process_time()
+print(f"Tempo de CPU usado: {fim - inicio} segundos")
+```
+
+---
+
+### exemplos práticos do módulo `time`
+
+#### exemplo de contagem regressiva
+
+Use `time.sleep()` para implementar uma contagem regressiva.
+
+```python
+import time
+
+def contagem_regressiva(segundos):
+    while segundos:
+        mins, secs = divmod(segundos, 60)
+        timer = '{:02d}:{:02d}'.format(mins, secs)
+        print(timer, end="\r")
+        time.sleep(1)
+        segundos -= 1
+    print("Tempo esgotado!")
+
+contagem_regressiva(10)
+```
+
+#### medição do tempo de execução de uma função
+
+Usando `time.perf_counter()` para medir quanto tempo uma função leva para ser executada.
+
+```python
+import time
+
+def funcao_lenta():
+    print("Executando uma função lenta...")
+    time.sleep(3)
+    print("Função concluída.")
+
+inicio = time.perf_counter()
+funcao_lenta()
+fim = time.perf_counter()
+
+print(f"A função demorou {fim - inicio:.2f} segundos para ser executada.")
+```
+
+#### imprimindo a data e hora atual formatada
+
+Usando `time.strftime()` para formatar a hora em um formato legível.
+
+```python
+import time
+
+agora = time.localtime()
+formato = time.strftime("%A, %d de %B de %Y, %H:%M:%S", agora)
+print(f"Data e hora atual: {formato}")
+```
+
+#### medindo o tempo de cpu usado por um processo
+
+Usando `time.process_time()` para ver quanto tempo de CPU foi utilizado.
+
+```python
+import time
+
+inicio = time.process_time()
+for i in range(10000000):
+    pass
+fim = time.process_time()
+
+print(f"Tempo de CPU usado: {fim - inicio:.4f} segundos")
+```
+
+## exercícios módulo `time`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exibindo o Tempo Atual. Use a função `time.time()` para exibir a quantidade de segundos desde o "Epoch" (01/01/1970).
+1. Exibindo o Tempo em Formato Estruturado. Use a função `time.gmtime()` para exibir a data e hora atual no formato UTC (tempo universal coordenado).
+1. Formatando o Tempo Local. Utilize a função `time.localtime()` para exibir a data e hora local. Em seguida, formate essa saída para mostrar apenas o ano, mês e dia.
+1. Formatando uma Data Customizada. Use `time.strftime()` para formatar a data atual no formato `"Ano-Mês-Dia Hora:Minuto:Segundo"`.
+1. Convertendo uma String de Data para um Struct_time. Utilize a função `time.strptime()` para converter a string `"12/09/2024 14:30:00"` para um objeto `struct_time`.
+1. Exibindo Apenas o Ano Atual. Use a função `time.localtime()` para obter o ano atual e exibi-lo.
+1. Medição de Tempo de Execução de Código. Crie um script que utilize `time.time()` para medir quanto tempo demora para executar um loop que itera 1 milhão de vezes.
+1. Pausando a Execução do Programa. Use `time.sleep()` para pausar a execução do programa por 5 segundos.
+1. Imprimindo um Relógio Simples. Crie um loop que utilize `time.sleep()` e `time.localtime()` para imprimir a hora atual a cada segundo, como um relógio simples.
+1. Calculando a Diferença Entre Duas Datas. Use a função `time.mktime()` para calcular a diferença em segundos entre duas datas fornecidas.
+1. Convertendo Tempo UTC para Tempo Local. Use a função `time.gmtime()` para pegar o tempo atual em UTC e, em seguida, converta para a hora local usando `time.localtime()`.
+1. Exibindo o Tempo em Milissegundos. Modifique o programa para exibir o tempo atual em milissegundos usando `time.time()`.
+1. Gerando um Timestamp Customizado. Crie um timestamp customizado para a data `01/01/2020 00:00:00` usando `time.mktime()`.
+1. Exibindo a Data Atual em Diferentes Formatos. Use `time.strftime()` para exibir a data atual em três formatos diferentes (como "dd-mm-aaaa", "aaaa/mm/dd", etc.).
+1. Validando uma Data a Partir de uma String. Use `time.strptime()` para validar se a string `"30/02/2020"` é uma data válida.
+1. Verificando se é Horário de Verão. Use a função `time.localtime()` para verificar se o horário atual está em horário de verão (DST).
+1. Simulando uma Contagem Regressiva. Crie um script que faça uma contagem regressiva de 10 segundos usando `time.sleep()`.
+1. Comparando Duas Datas. Use `time.mktime()` para comparar duas datas fornecidas e determine qual é a mais recente.
+1. Exibindo o Dia da Semana Atual. Utilize `time.localtime()` para determinar o dia da semana (onde 0 é segunda-feira e 6 é domingo).
+1. Calculando o Tempo Restante para o Próximo Ano. Calcule quantos segundos faltam para o início do próximo ano (01/01/2025 00:00:00) a partir da data e hora atual.
+1. Imprimindo a Data e Hora de 7 Dias Atrás. Use `time.time()` e `time.localtime()` para calcular e exibir a data e hora de 7 dias atrás.
+1. Formatando o Tempo para Horário Completo e Amigável. Use `time.strftime()` para formatar a hora atual no formato `"12-hour:minute AM/PM"`.
+1. Convertendo uma Data e Hora para o Timestamp. Crie uma data e hora arbitrária, como `"25/12/2024 15:00:00"`, e converta para o timestamp usando `time.mktime()`.
+1. Exibindo o Mês Atual. Extraia e exiba o mês atual usando `time.localtime()`.
+1. Implementando um Temporizador de 10 Segundos. Crie um programa que avise o usuário após 10 segundos, utilizando `time.sleep()`.
+1. Calculando o Intervalo de Tempo Entre Duas Execuções. Crie um programa que execute duas funções e calcule o intervalo de tempo entre elas usando `time.perf_counter()`.
+1. Convertendo uma Hora UTC para Horário Local. Pegue a hora UTC usando `time.gmtime()` e converta para a hora local usando `time.localtime()`.
+1. Exibindo o Tempo de Início do Script. Use `time.ctime()` para exibir o horário em que o script foi iniciado.
+1. Exibindo a Data Atual em Diferentes Idiomas. Use `time.strftime()` e altere as configurações de idioma do sistema para exibir a data atual em diferentes idiomas (pode ser feito manualmente no sistema operacional).
 
 </details>

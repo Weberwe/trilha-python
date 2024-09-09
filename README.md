@@ -10,7 +10,8 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 17 | 06/09/2024 | [recursão](2.programacao-python/recursao.md)<br>[módulo `sys`](2.programacao-python/modulos.md#módulo-sys) [módulo `random`](2.programacao-python/modulos.md#módulo-random)
+| 18 | 09/09/2024 | [arquivos](2.programacao-python/arquivos.md)<br>[módulo `os`](2.programacao-python/modulos.md#módulo-os) [módulo `time`](2.programacao-python/modulos.md#módulo-time) |
+| 17 | 06/09/2024 | [recursão](2.programacao-python/recursao.md)<br>[módulo `sys`](2.programacao-python/modulos.md#módulo-sys) [módulo `random`](2.programacao-python/modulos.md#módulo-random) |
 | 16 | 05/09/2024 | acompanhamento da [avaliação](2.programacao-python/avaliacao.md) |
 | 15 | 04/09/2024 | [empacotamento e desempacotamento](2.programacao-python/empacotamento-desempacotamento.md)<br>[`*args`](2.programacao-python/funcoes.md#args) [`**kwargs`](2.programacao-python/funcoes.md#kwargs) |
 | 14 | 03/09/2024 | comandos<br>[`import`](2.programacao-python/comandos-from-import-as.md#comando-import) [`from` e `as`](2.programacao-python/comandos-from-import-as.md#comandos-from-e-as)<br>[`namespaces`](2.programacao-python/comando-global-namespaces.md)<br>[avaliação](2.programacao-python/avaliacao.md#módulos) |
