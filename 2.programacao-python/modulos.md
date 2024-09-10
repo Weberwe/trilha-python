@@ -8,6 +8,12 @@
     - [exercícios módulo `random`](#exercícios-módulo-random)
 1. [módulo `time`](#módulo-time)
     - [exercícios módulo `time`](#exercícios-módulo-time)
+1. [módulo `string`](#módulo-string)
+    - [exercícios módulo `string`](#exercícios-módulo-string)
+1. [módulo `math`](#módulo-math)
+    - [exercícios módulo `math`](#exercícios-módulo-math)
+1. [módulo `json`](#módulo-json)
+    - [exercícios módulo `json`](#exercícios-módulo-json)
 
 # módulos
 
@@ -599,7 +605,7 @@ Saída típica :
 Número aleatório entre 0 e 1: 0.573019845657438
 ```
 
-### `random.uniform(a, b)`
+### `random.uniform()`
 
 A função `uniform(a, b)` gera um número de ponto flutuante entre os valores `a` e `b`, incluindo ambos os limites.
 
@@ -618,7 +624,7 @@ Saída típica :
 Número aleatório entre 10 e 20: 15.678921305495
 ```
 
-### `random.randint(a, b)`
+### `random.randint()`
 
 A função `randint(a, b)` gera um número inteiro aleatório entre `a` e `b`, incluindo ambos os limites.
 
@@ -637,7 +643,7 @@ Saída típica :
 Número inteiro aleatório entre 1 e 6: 4
 ```
 
-### `random.randrange(start, stop, step)`
+### `random.randrange()`
 
 A função `randrange(start, stop, step)` gera um número inteiro aleatório no intervalo de `start` até `stop - 1`, com um incremento de `step`.
 
@@ -658,7 +664,7 @@ Número aleatório par entre 0 e 10: 4
 
 Aqui, o valor gerado será um número par entre 0 e 8 (pois o `stop` é 10, mas o intervalo é até 9, e os números são gerados de 2 em 2).
 
-### `random.choice(seq)`
+### `random.choice()`
 
 A função `choice(seq)` escolhe aleatoriamente um item de uma sequência, como uma lista, tupla ou string.
 
@@ -678,7 +684,7 @@ Saída típica :
 Escolha aleatória: papel
 ```
 
-### `random.choices(population, k=1)`
+### `random.choices()`
 
 A função `choices(population, k)` retorna uma lista com `k` elementos escolhidos aleatoriamente de uma população, permitindo repetições.
 
@@ -698,7 +704,7 @@ Saída típica :
 Escolhas aleatórias: ['azul', 'verde', 'azul']
 ```
 
-### `random.sample(population, k)`
+### `random.sample()`
 
 A função `sample(population, k)` retorna uma lista com `k` elementos escolhidos aleatoriamente de uma população, sem repetições.
 
@@ -718,7 +724,7 @@ Saída típica :
 Números sorteados: [12, 8, 42, 33, 19, 7]
 ```
 
-### `random.shuffle(seq)`
+### `random.shuffle()`
 
 A função `shuffle(seq)` embaralha os itens de uma lista in-place, ou seja, a própria lista é modificada.
 
@@ -758,7 +764,7 @@ Saída (sempre a mesma com `seed(10)`) :
 0.4288890546751146
 ```
 
-### `random.gauss(mu, sigma)`
+### `random.gauss()`
 
 A função `gauss(mu, sigma)` gera números aleatórios seguindo uma distribuição normal (ou gaussiana). O parâmetro `mu` é a média da distribuição, e `sigma` é o desvio padrão.
 
@@ -784,7 +790,7 @@ Saída típica :
 -0.19738118153188115
 ```
 
-### `random.betavariate(alpha, beta)`
+### `random.betavariate()`
 
 A função `betavariate(alpha, beta)` gera números seguindo uma distribuição beta, onde `alpha` e `beta` são parâmetros da distribuição.
 
@@ -894,7 +900,7 @@ print(f"Segundos desde 1º de janeiro de 1970: {segundos}")
 
 ### `time.sleep(segundos)`
 
-Essa função faz com que o programa pause ou "durma" por um determinado número de segundos. É útil em casos onde se deseja que o código aguarde um certo tempo antes de prosseguir.
+A função `sleep(seconds)` faz com que o programa pause ou "durma" por um determinado número de segundos. É útil em casos onde se deseja que o código aguarde um certo tempo antes de prosseguir.
 
 **exemplo :**
 ```python
@@ -904,9 +910,9 @@ time.sleep(5)
 print("Fim da espera.")
 ```
 
-### `time.localtime([segundos])`
+### `time.localtime()`
 
-Essa função converte o tempo dado em segundos desde a *epoch* em um objeto de tempo local (`struct_time`). Se nenhum argumento for fornecido, ela utiliza o tempo atual (retornado por `time.time()`). O objeto `struct_time` tem vários atributos como `tm_year` (ano), `tm_mon` (mês), `tm_mday` (dia do mês), `tm_hour` (hora), etc.
+A função `localtime([seconds])` converte o tempo dado em segundos desde a *epoch* em um objeto de tempo local (`struct_time`). Se nenhum argumento for fornecido, ela utiliza o tempo atual (retornado por `time.time()`). O objeto `struct_time` tem vários atributos como `tm_year` (ano), `tm_mon` (mês), `tm_mday` (dia do mês), `tm_hour` (hora), etc.
 
 **exemplo :**
 ```python
@@ -917,9 +923,9 @@ print(f"Mês atual: {tempo_atual.tm_mon}")
 print(f"Dia atual: {tempo_atual.tm_mday}")
 ```
 
-### `time.strftime(formato[, struct_time])`
+### `time.strftime()`
 
-Converte um objeto `struct_time` em uma string formatada, de acordo com a especificação de formato fornecida. Por exemplo, `%Y` para ano completo, `%m` para mês, `%d` para dia do mês, `%H` para hora (formato 24h), `%M` para minutos, `%S` para segundos.
+A função `strftime(formato[, struct_time])` converte um objeto `struct_time` em uma string formatada, de acordo com a especificação de formato fornecida. Por exemplo, `%Y` para ano completo, `%m` para mês, `%d` para dia do mês, `%H` para hora (formato 24h), `%M` para minutos, `%S` para segundos.
 
 Mais Formatos [aqui](https://docs.python.org/3/library/time.html#time.strftime)
 
@@ -931,9 +937,9 @@ formato = time.strftime("%Y-%m-%d %H:%M:%S", tempo_atual)
 print(f"Data e hora formatada: {formato}")
 ```
 
-### `time.gmtime([segundos])`
+### `time.gmtime()`
 
-Semelhante a `time.localtime()`, mas retorna o tempo no fuso horário UTC (Tempo Universal Coordenado), em vez do fuso horário local.
+Semelhante a `time.localtime()`, a função `gmtime([seconds])` retorna o tempo no fuso horário UTC (Tempo Universal Coordenado), em vez do fuso horário local.
 
 **exemplo :**
 ```python
@@ -942,9 +948,9 @@ tempo_utc = time.gmtime()
 print(f"Ano atual (UTC): {tempo_utc.tm_year}")
 ```
 
-### `time.mktime(t)`
+### `time.mktime()`
 
-Faz o inverso de `time.localtime()` ou `time.gmtime()`, convertendo uma estrutura de tempo (`struct_time`) em segundos desde a *epoch*.
+A função `mktime(t)` faz o inverso de `time.localtime()` ou `time.gmtime()`, convertendo uma estrutura de tempo (`struct_time`) em segundos desde a *epoch*.
 
 **exemplo :**
 ```python
@@ -954,9 +960,9 @@ segundos = time.mktime(tempo_local)
 print(f"Segundos desde a epoch para a hora local: {segundos}")
 ```
 
-### `time.asctime([struct_time])`
+### `time.asctime()`
 
-Converte um objeto `struct_time` em uma string no formato: `'Dia_sem Mês Dia Hora:Min:Seg Ano'`. Se não for fornecido nenhum argumento, usa o tempo local.
+A função `asctime([struct_time])` converte um objeto `struct_time` em uma string no formato: `'Dia_sem Mês Dia Hora:Min:Seg Ano'`. Se não for fornecido nenhum argumento, usa o tempo local.
 
 **exemplo :**
 ```python
@@ -964,9 +970,9 @@ import time
 print(time.asctime())  # Exemplo de saída: 'Tue Sep  6 10:05:12 2024'
 ```
 
-### `time.ctime([segundos])`
+### `time.ctime()`
 
-Converte o tempo, em segundos desde a epoch, em uma string legível. Se nenhum argumento for passado, usa o tempo atual.
+A função `ctime([segundos])` converte o tempo, em segundos desde a epoch, em uma string legível. Se nenhum argumento for passado, usa o tempo atual.
 
 **exemplo :**
 ```python
@@ -976,7 +982,7 @@ print(time.ctime())  # Exemplo de saída: 'Tue Sep  6 10:05:12 2024'
 
 ### `time.perf_counter()`
 
-Retorna o valor de um temporizador de alta resolução, medido em segundos. É útil para medir o tempo de execução de trechos de código.
+A função `perf_counter()` retorna o valor de um temporizador de alta resolução, medido em segundos. É útil para medir o tempo de execução de trechos de código.
 
 **exemplo :**
 ```python
@@ -989,7 +995,7 @@ print(f"Tempo decorrido: {fim - inicio} segundos")
 
 ### `time.monotonic()`
 
-Similar a `time.perf_counter()`, mas este temporizador não pode ser ajustado para frente ou para trás (não é afetado por mudanças no relógio do sistema).
+A função `monotonic()` é similar a `time.perf_counter()`, mas este temporizador não pode ser ajustado para frente ou para trás (não é afetado por mudanças no relógio do sistema).
 
 **exemplo :**
 ```python
@@ -1002,7 +1008,7 @@ print(f"Tempo decorrido: {fim - inicio} segundos")
 
 ### `time.process_time()`
 
-Retorna o tempo de CPU usado pelo processo atual, em segundos.
+A função `process_time()` retorna o tempo de CPU usado pelo processo atual, em segundos.
 
 **exemplo :**
 ```python
@@ -1118,5 +1124,699 @@ print(f"Tempo de CPU usado: {fim - inicio:.4f} segundos")
 1. Convertendo uma Hora UTC para Horário Local. Pegue a hora UTC usando `time.gmtime()` e converta para a hora local usando `time.localtime()`.
 1. Exibindo o Tempo de Início do Script. Use `time.ctime()` para exibir o horário em que o script foi iniciado.
 1. Exibindo a Data Atual em Diferentes Idiomas. Use `time.strftime()` e altere as configurações de idioma do sistema para exibir a data atual em diferentes idiomas (pode ser feito manualmente no sistema operacional).
+
+</details>
+
+## módulo `string`
+
+O módulo `string` do Python fornece constantes e funções úteis para manipular strings, principalmente quando se trabalha com caracteres e conjuntos de caracteres predefinidos. Ele ajuda a tornar operações comuns mais simples e legíveis, fornecendo acesso a letras, dígitos, pontuações, espaços em branco, e métodos úteis para formatação de strings.
+
+1. [`string.ascii_letters`](#stringascii_letters)
+1. [`string.ascii_lowercase`](#stringascii_lowercase)
+1. [`string.ascii_uppercase`](#stringascii_uppercase)
+1. [`string.digits`](#stringdigits)
+1. [`string.hexdigits`](#stringhexdigits)
+1. [`string.octdigits`](#stringoctdigits)
+1. [`string.punctuation`](#stringpunctuation)
+1. [`string.whitespace`](#stringwhitespace)
+1. [`string.printable`](#stringprintable)
+1. [`string.capwords`](#stringcapwordss-sepnone)
+1. [exemplos práticos do módulo `string`](#exemplos-práticos-do-módulo-string)
+1. [índice](#índice)
+
+### `string.ascii_letters`
+
+Contém todas as letras maiúsculas e minúsculas do alfabeto em inglês, combinando `ascii_lowercase` (minúsculas) e `ascii_uppercase` (maiúsculas). Útil quando se deseja gerar uma sequência de letras ou validar se um caractere é uma letra.
+
+**exemplo :**
+```python
+import string
+print(string.ascii_letters)  # Saída: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+```
+
+### `string.ascii_lowercase`
+
+Contém todas as letras minúsculas do alfabeto em inglês (`'abcdefghijklmnopqrstuvwxyz'`). Ideal para operações que envolvem apenas letras minúsculas.
+
+**exemplo :**
+```python
+import string
+print(string.ascii_lowercase)  # Saída: 'abcdefghijklmnopqrstuvwxyz'
+```
+
+### `string.ascii_uppercase`
+
+Contém todas as letras maiúsculas do alfabeto em inglês (`'ABCDEFGHIJKLMNOPQRSTUVWXYZ'`). Útil para operações que envolvem apenas letras maiúsculas.
+
+**exemplo :**
+```python
+import string
+print(string.ascii_uppercase)  # Saída: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+```
+
+### `string.digits`
+
+Contém todos os dígitos decimais de 0 a 9 (`'0123456789'`). Muito útil para validar ou gerar números.
+
+**exemplo :**
+```python
+import string
+print(string.digits)  # Saída: '0123456789'
+```
+
+### `string.hexdigits`
+
+Contém todos os dígitos hexadecimais, incluindo os números de 0 a 9 e as letras de A a F (tanto maiúsculas quanto minúsculas). A sequência é `'0123456789abcdefABCDEF'`. Usado em conversões ou validações de números hexadecimais.
+
+**exemplo :**
+```python
+import string
+print(string.hexdigits)  # Saída: '0123456789abcdefABCDEF'
+```
+
+### `string.octdigits`
+
+Contém todos os dígitos octais, de 0 a 7 (`'01234567'`). Ideal para trabalhar com números no sistema octal.
+
+**exemplo :**
+```python
+import string
+print(string.octdigits)  # Saída: '01234567'
+```
+
+### `string.punctuation`
+
+Contém todos os caracteres de pontuação comuns, como `!`, `@`, `#`, etc. Útil para remover ou validar a presença de pontuação em uma string.
+
+**exemplo :**
+```python
+import string
+print(string.punctuation)  # Saída: '!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~'
+```
+
+### `string.whitespace`
+
+Contém todos os caracteres que são considerados espaço em branco, como o espaço (`' '`), tabulação (`'\t'`), nova linha (`'\n'`), etc. Excelente para tarefas de limpeza de strings.
+
+**exemplo :**
+```python
+import string
+print(repr(string.whitespace))  # Saída: ' \t\n\r\x0b\x0c'
+```
+
+### `string.printable`
+
+Contém todos os caracteres imprimíveis, que são a união de letras, dígitos, pontuação e espaços em branco. Ideal para validar se uma string contém apenas caracteres que podem ser impressos.
+
+**exemplo :**
+```python
+import string
+print(string.printable)  # Saída: todos os caracteres imprimíveis
+```
+
+### `string.capwords(s, sep=None)`
+
+Essa função converte uma string de forma que a primeira letra de cada palavra seja maiúscula (capitaliza a string). Ela é semelhante ao método `str.title()`, mas usa o espaço como separador por padrão. Caso você passe um separador (como vírgula ou ponto), a função usa esse separador para detectar as palavras.
+
+**exemplo :**
+```python
+import string
+frase = "olá mundo, python é incrível"
+print(string.capwords(frase))  # Saída: 'Olá Mundo, Python É Incrível'
+```
+
+---
+
+### exemplos práticos do módulo `string`
+
+#### gerar uma senha aleatória
+
+Usando os caracteres disponíveis em `string.ascii_letters`, `string.digits` e `string.punctuation` para criar uma senha aleatória.
+
+**exemplo :**
+```python
+import string
+import random
+
+def gerar_senha(tamanho=8):
+    caracteres = string.ascii_letters + string.digits + string.punctuation
+    senha = ''.join(random.choice(caracteres) for _ in range(tamanho))
+    return senha
+
+senha = gerar_senha(12)
+print(f"Senha gerada: {senha}")
+```
+
+#### validar se uma string é alfabética
+
+Verificar se uma string contém apenas letras utilizando `string.ascii_letters`.
+
+**exemplo :**
+```python
+import string
+
+def eh_alfabetica(texto):
+    for caractere in texto:
+        if caractere not in string.ascii_letters:
+            return False
+    return True
+
+print(eh_alfabetica("Python"))  # Saída: True
+print(eh_alfabetica("Python3"))  # Saída: False
+```
+
+#### remover pontuação de uma string
+
+Utilizando `string.punctuation` para remover todos os sinais de pontuação de uma frase.
+
+**exemplo :**
+```python
+import string
+
+def remover_pontuacao(texto):
+    return ''.join(caractere for caractere in texto if caractere not in string.punctuation)
+
+frase = "Olá, mundo! Python é incrível."
+frase_sem_pontuacao = remover_pontuacao(frase)
+print(frase_sem_pontuacao)  # Saída: 'Olá mundo Python é incrível'
+```
+
+#### verificar se uma string contém apenas caracteres imprimíveis
+
+Verificar se uma string contém apenas caracteres que podem ser impressos utilizando `string.printable`.
+
+**exemplo :**
+```python
+import string
+
+def eh_imprimivel(texto):
+    return all(caractere in string.printable for caractere in texto)
+
+print(eh_imprimivel("Python 3.10!"))  # Saída: True
+print(eh_imprimivel("Texto\nNão Imprimível"))  # Saída: True (nova linha ainda é considerada imprimível)
+```
+
+#### capitalize todas as palavras de uma string
+
+Utilizando `string.capwords()` para transformar a primeira letra de cada palavra em maiúscula.
+
+**exemplo :**
+```python
+import string
+
+frase = "python é uma linguagem incrível"
+frase_capitalizada = string.capwords(frase)
+print(frase_capitalizada)  # Saída: 'Python É Uma Linguagem Incrível'
+```
+
+## exercícios módulo `string`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exibindo o Alfabeto Minúsculo. Use `string.ascii_lowercase` para exibir todas as letras minúsculas do alfabeto inglês.
+1. Exibindo o Alfabeto Maiúsculo. Use `string.ascii_uppercase` para exibir todas as letras maiúsculas do alfabeto inglês.
+1. Exibindo Todos os Dígitos. Use `string.digits` para exibir todos os dígitos (de 0 a 9).
+1. Exibindo Caracteres Hexadecimais. Use `string.hexdigits` para exibir todos os caracteres válidos em um número hexadecimal.
+1. Exibindo Caracteres Octais. Use `string.octdigits` para exibir todos os dígitos válidos em um número octal.
+1. Exibindo Símbolos de Pontuação. Use `string.punctuation` para exibir todos os símbolos de pontuação.
+1. Exibindo Todos os Caracteres Imprimíveis. Use `string.printable` para exibir todos os caracteres imprimíveis.
+1. Exibindo os Caracteres de Espaçamento. Use `string.whitespace` para exibir todos os caracteres considerados espaço em branco (espaços, tabulações, etc.).
+1. Verificando se uma String é Alfanumérica. Crie uma função que verifique se uma string contém apenas caracteres alfanuméricos utilizando `string.ascii_letters` e `string.digits`.
+1. Convertendo uma String para Maiúscula. Utilize `string.ascii_uppercase` para criar uma função que converta qualquer string para letras maiúsculas.
+1. Convertendo uma String para Minúscula. Use `string.ascii_lowercase` para criar uma função que converta qualquer string para letras minúsculas.
+1. Removendo Pontuação de uma String. Crie uma função que remova todos os símbolos de pontuação de uma string utilizando `string.punctuation`.
+1. Substituindo Espaços por Underlines. Use `string.whitespace` para substituir todos os espaços de uma string por underscores (`_`).
+1. Gerando uma Senha Aleatória. Use `string.ascii_letters` e `string.digits` para gerar uma senha aleatória de 8 caracteres.
+1. Verificando se uma String é Hexadecimal. Crie uma função que verifique se uma string contém apenas caracteres válidos para um número hexadecimal, usando `string.hexdigits`.
+1. Removendo Dígitos de uma String. Crie uma função que remova todos os dígitos de uma string utilizando `string.digits`.
+1. Verificando se uma String é uma Palavra. Crie uma função que verifique se uma string contém apenas letras (maiúsculas ou minúsculas), usando `string.ascii_letters`.
+1. Formatando uma String de Forma Capitalizada. Utilize `string.capwords()` para capitalizar cada palavra de uma frase.
+1. Gerando um Identificador de Produto. Crie uma função que gere um identificador de produto aleatório, contendo letras e números, utilizando `string.ascii_uppercase` e `string.digits`.
+1. Gerando um Nome de Arquivo Seguro. Crie uma função que remova qualquer caractere especial de uma string, exceto letras, números e underscore, utilizando `string.ascii_letters`, `string.digits` e `'_`.
+1. Contando o Número de Dígitos em uma String. Crie uma função que conte quantos dígitos existem em uma string usando `string.digits`.
+1. Validando um Identificador. Crie uma função que valide se um identificador contém apenas letras, números e underscores utilizando `string.ascii_letters`, `string.digits`, e `'_'`.
+1. Separando Palavras de uma Frase. Utilize `string.whitespace` para separar as palavras de uma frase em uma lista, ignorando os espaços em branco.
+1. Gerando uma Frase sem Espaços. Crie uma função que remova todos os espaços de uma frase utilizando `string.whitespace`.
+1. Gerando um Token de Sessão Aleatório. Crie uma função que gere um token aleatório de 16 caracteres utilizando `string.printable`.
+1. Formatando um Texto em Blocos de 4 Dígitos. Crie uma função que pegue uma sequência de números e formate em blocos de 4 dígitos separados por hífens (ex.: "1234-5678-9012").
+1. Verificando se uma String é uma Data Válida. Crie uma função que verifique se uma string contém uma data no formato "dd/mm/yyyy" usando `string.digits` e `string.punctuation`.
+1. Criando uma String de Números Sequenciais. Crie uma função que gere uma string contendo todos os números de 0 a 9 em sequência usando `string.digits`.
+1. Convertendo um Texto para Código Morse. Crie uma função que converta uma string para código Morse, utilizando `string.ascii_uppercase` e `string.digits` para mapear os caracteres.
+1. Formatando uma String com Pontuação e Espaçamento. Utilize `string.capwords()` para formatar uma frase, ajustando os espaços em branco e a capitalização de cada palavra.
+1. Criando uma Função de Busca de Palavras. Crie uma função que receba um texto e uma palavra e retorne quantas vezes a palavra aparece no texto, ignorando a pontuação com `string.punctuation`.
+1. Verificando se uma String é um Número Binário. Crie uma função que verifique se uma string contém apenas os caracteres '0' e '1', utilizando `string.digits`.
+1. Formatando um Texto para Ficar Legível. Use `string.capwords()` para formatar um texto inteiro, capitalizando as primeiras letras de cada palavra.
+1. Gerando uma String de Símbolos Aleatórios. Crie uma função que gere uma string de 10 caracteres contendo apenas símbolos de `string.punctuation`.
+1. Verificando se uma String é Imprimível. Crie uma função que verifique se todos os caracteres de uma string são imprimíveis, utilizando `string.printable`.
+1. Contando Caracteres Não Imprimíveis em uma String. Crie uma função que conte quantos caracteres não imprimíveis existem em uma string, utilizando `string.printable`.
+1. Gerando uma Senha Segura. Crie uma função que gere uma senha aleatória contendo letras maiúsculas, minúsculas, números e símbolos, utilizando `string.ascii_letters`, `string.digits`, e `string.punctuation`.
+1. Verificando se uma Senha é Segura. Crie uma função que verifique se uma senha contém pelo menos uma letra maiúscula, uma minúscula, um número e um símbolo de pontuação.
+1. Contando a Frequência de Letras em uma String. Crie uma função que conte quantas vezes cada letra aparece em uma string utilizando `string.ascii_lowercase` ou `string.ascii_uppercase`.
+1. Gerando uma Sequência de Caracteres Alternados. Crie uma função que gere uma string alternando entre letras maiúsculas e minúsculas, utilizando `string.ascii_uppercase` e `string.ascii_lowercase`.
+1. Verificando Caracteres Permitidos em Identificadores. Crie uma função que verifique se uma string é um identificador válido (apenas letras, números e underscores), utilizando `string.ascii_letters` e `string.digits`.
+1. Removendo Pontuação e Espaços de uma String. Crie uma função que remova todos os espaços e pontuações de uma string, utilizando `string.whitespace` e `string.punctuation`.
+1. Verificando se uma String Contém Apenas Letras e Espaços. Crie uma função que verifique se uma string contém apenas letras e espaços, utilizando `string.ascii_letters` e `string.whitespace`.
+1. Gerando uma Chave de Produto Aleatória. Crie uma função que gere uma chave de produto no formato "ABCD-EFGH-IJKL", utilizando `string.ascii_uppercase` e `string.digits`.
+1. Formatando um Número de Cartão de Crédito. Crie uma função que formate um número de cartão de crédito no formato "XXXX-XXXX-XXXX-XXXX", usando `string.digits`.
+1. Verificando se uma String Contém Apenas Caracteres de Controle. Crie uma função que verifique se uma string contém apenas caracteres de controle (não imprimíveis), utilizando `string.whitespace` e verificando com `string.printable`.
+1. Substituindo Dígitos por Palavras. Crie uma função que substitua cada dígito em uma string pela respectiva palavra (ex.: "1" por "um", "2" por "dois"), utilizando `string.digits`.
+1. Gerando um Código de Desconto Aleatório. Crie uma função que gere um código de desconto de 8 caracteres, utilizando letras maiúsculas e números, com `string.ascii_uppercase` e `string.digits`.
+1. Validando um Nome de Usuário. Crie uma função que valide um nome de usuário, verificando se contém apenas letras, números e underscores, utilizando `string.ascii_letters` e `string.digits`.
+1. Contando Caracteres de Espaçamento. Crie uma função que conte quantos caracteres de espaçamento existem em uma string, utilizando `string.whitespace`.
+
+</details>
+
+## módulo `math`
+
+O módulo `math` do Python é uma biblioteca padrão que fornece funções matemáticas básicas e avançadas. Ele inclui uma série de operações que vão desde funções trigonométricas, logaritmos, até manipulações de números de ponto flutuante e constantes matemáticas. O `math` é particularmente útil em cálculos científicos e estatísticos.
+
+1. [constantes matemáticas](#constantes-matemáticas)
+1. [funções aritméticas](#funções-aritméticas)
+1. [funções exponenciais e logarítmicas](#funções-exponenciais-e-logarítmicas)
+1. [funções trigonométricas](#funções-trigonométricas)
+1. [funções hiperbólicas](#funções-hiperbólicas)
+1. [funções de arredondamento](#funções-de-arredondamento)
+1. [funções de comparação](#funções-de-comparação)
+1. [exemplos práticos do módulo `math`](#exemplos-práticos-do-módulo-math)
+1. [índice](#índice)
+
+### constantes matemáticas
+
+- `math.pi` : representa o valor de π (aproximadamente 3.14159);
+- `math.e` : representa o valor da constante de euler (aproximadamente 2.71828);
+- `math.inf` : representa o valor de infinito;
+- `math.nan` : representa um valor que não é um número (not a number);
+
+```python
+import math
+
+print(math.pi)  # 3.141592653589793
+print(math.e)   # 2.718281828459045
+print(math.inf)  # inf
+print(math.nan)  # nan
+```
+
+### funções aritméticas
+
+- `math.ceil(x)` : retorna o menor número inteiro maior ou igual a `x`;
+- `math.floor(x)` : retorna o maior número inteiro menor ou igual a `x`;
+- `math.fabs(x)` : retorna o valor absoluto de `x`;
+- `math.factorial(x)` : retorna o fatorial de `x` (x!);
+- `math.gcd(x, y)` : calcula o maior divisor comum entre `x` e `y`;
+
+```python
+print(math.ceil(4.3))    # 5
+print(math.floor(4.7))   # 4
+print(math.fabs(-5.4))   # 5.4
+print(math.factorial(5)) # 120
+print(math.gcd(60, 48))  # 12
+```
+
+### funções exponenciais e logarítmicas
+
+- `math.exp(x)` : retorna `e` elevado à potência de `x` (e^x);
+- `math.log(x)` : retorna o logaritmo natural de `x` (base `e`);
+- `math.log10(x)` : retorna o logaritmo de base 10 de `x`;
+- `math.pow(x, y)` : retorna `x` elevado à potência de `y` (x^y);
+- `math.sqrt(x)` : retorna a raiz quadrada de `x`;
+
+```python
+print(math.exp(1))        # 2.718281828459045 (valor de e)
+print(math.log(10))       # 2.302585092994046 (logaritmo natural)
+print(math.log10(1000))   # 3.0 (log de base 10)
+print(math.pow(2, 3))     # 8.0 (2^3)
+print(math.sqrt(25))      # 5.0 (raiz quadrada de 25)
+```
+
+### funções trigonométricas
+
+- `math.sin(x)` : retorna o seno de `x` (em radianos);
+- `math.cos(x)` : retorna o cosseno de `x` (em radianos);
+- `math.tan(x)` : retorna a tangente de `x` (em radianos);
+- `math.degrees(x)` : converte o valor de `x` de radianos para graus;
+- `math.radians(x)` : converte o valor de `x` de graus para radianos;
+
+```python
+angle = math.radians(90)  # convertendo 90 graus para radianos
+print(math.sin(angle))    # 1.0 (seno de 90 graus)
+
+print(math.degrees(math.pi))  # 180.0 (π radianos é igual a 180 graus)
+```
+
+### funções hiperbólicas
+
+- `math.sinh(x)` : retorna o seno hiperbólico de `x`;
+- `math.cosh(x)` : retorna o cosseno hiperbólico de `x`;
+- `math.tanh(x)` : retorna a tangente hiperbólica de `x`;
+
+```python
+print(math.sinh(1))  # 1.1752011936438014
+print(math.cosh(1))  # 1.5430806348152437
+print(math.tanh(1))  # 0.7615941559557649
+```
+
+### funções de arredondamento
+
+- `math.trunc(x)` : remove a parte decimal de `x`, retornando apenas a parte inteira;
+- `math.modf(x)` : retorna a parte fracionária e a parte inteira de `x` como uma tupla;
+
+```python
+print(math.trunc(4.8))    # 4
+print(math.modf(4.8))     # (0.7999999999999998, 4.0)
+```
+
+### funções de comparação
+
+- `math.isfinite(x)` : retorna `true` se `x` for um número finito;
+- `math.isinf(x)` : retorna `true` se `x` for infinito;
+- `math.isnan(x)` : retorna `true` se `x` não for um número (nan);
+
+```python
+print(math.isfinite(100))   # True
+print(math.isinf(math.inf)) # True
+print(math.isnan(float('nan'))) # True
+```
+
+### exemplos práticos do módulo `math`
+
+#### calculando a hipotenusa de um triângulo retângulo
+
+Imagine que se conheça os dois catetos de um triângulo retângulo e deseja calcular a hipotenusa. A fórmula da hipotenusa é dada por:
+
+> hipotenusa = (cateto1 ** 2 +  cateto2 ** 2) ** (1/2)
+
+Será usada a fórmula `math.sqrt()` para calcular a raiz quadrada.
+
+```python
+import math
+
+cateto1 = 3
+cateto2 = 4
+
+hipotenusa = math.sqrt(math.pow(cateto1, 2) + math.pow(cateto2, 2))
+print(f"A hipotenusa do triângulo é: {hipotenusa}")
+```
+
+**Saída** :
+```
+A hipotenusa do triângulo é: 5.0
+```
+
+#### calculando o logaritmo de base 10 de um número
+
+```python
+import math
+
+numero = 1000
+logaritmo = math.log10(numero)
+print(f"O logaritmo de base 10 de {numero} é {logaritmo}")
+```
+
+**Saída** :
+```
+O logaritmo de base 10 de 1000 é 3.0
+```
+
+#### convertendo ângulos de graus para radianos
+
+Muitos cálculos trigonométricos usam ângulos em radianos. Pode-se converter facilmente graus para radianos com `math.radians()`.
+
+```python
+import math
+
+graus = 180
+radianos = math.radians(graus)
+print(f"{graus} graus são {radianos} radianos")
+```
+
+**Saída** :
+```
+180 graus são 3.141592653589793 radianos
+```
+
+#### gerando números aleatórios com a distribuição normal
+
+Em muitos casos, pode-se desejar gerar números com base em uma distribuição normal. Isso pode ser feito com `random.gauss()`, mas a biblioteca `math` fornece as funções de probabilidade que pode-se usar para esses cálculos.
+
+```python
+import math
+
+mu = 0   # média
+sigma = 1  # desvio padrão
+valores = [math.exp(mu + sigma * x) for x in range(-3, 4)]
+print(valores)
+```
+
+## exercícios módulo `math`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios de Funções Aritméticas
+    1. **Arredondamento para Cima** : Dado um número decimal, use `math.ceil()` para arredondá-lo para o próximo número inteiro.
+    1. **Arredondamento para Baixo** : Dado um número decimal, use `math.floor()` para arredondá-lo para o número inteiro anterior.
+    1. **Valor Absoluto** : Use `math.fabs()` para encontrar o valor absoluto de um número negativo.
+    1. **Fatorial** : Dado um número inteiro `n`, calcule o fatorial de `n` usando `math.factorial()`.
+    1. **Maior Divisor Comum** : Use `math.gcd()` para encontrar o maior divisor comum entre dois números inteiros.
+    1. **Divisão e Módulo** : Dado um número decimal, use `math.modf()` para separá-lo em parte inteira e parte fracionária.
+    1. **Truncamento** : Dado um número decimal, use `math.trunc()` para remover a parte decimal.
+    1. **Comparação de Valores** : Use `math.isclose()` para comparar dois números com precisão definida (tolerância).
+1. Exercícios de Funções Exponenciais e Logarítmicas
+    1. **Exponencial** : Use `math.exp()` para calcular o valor de `e` elevado a uma potência.
+    1. **Potenciação** : Calcule `x` elevado à potência de `y` usando `math.pow()`.
+    1. **Raiz Quadrada** : Dado um número positivo, calcule sua raiz quadrada usando `math.sqrt()`.
+    1. **Logaritmo Natural** : Dado um número `n`, calcule o logaritmo natural (base `e`) de `n` usando `math.log()`.
+    1. **Logaritmo de Base 10** : Use `math.log10()` para calcular o logaritmo de um número na base 10.
+    1. **Logaritmo com Base Arbitrária** : Dado um número `n` e uma base `b`, calcule o logaritmo de `n` na base `b` usando `math.log(x, base)`.
+    1. **Crescimento Exponencial** : Escreva uma função que calcule o crescimento exponencial de uma população usando `math.exp()`.
+1. Exercícios de Funções Trigonométricas
+    1. **Cálculo de Seno** : Dado um ângulo em radianos, calcule o seno do ângulo usando `math.sin()`.
+    1. **Cálculo de Cosseno** : Dado um ângulo em radianos, calcule o cosseno do ângulo usando `math.cos()`.
+    1. **Cálculo de Tangente** : Dado um ângulo em radianos, calcule a tangente do ângulo usando `math.tan()`.
+    1. **Converta Graus para Radianos** : Dado um valor em graus, use `math.radians()` para convertê-lo em radianos.
+    1. **Converta Radianos para Graus** : Dado um valor em radianos, use `math.degrees()` para convertê-lo em graus.
+    1. **Arco Seno** : Use `math.asin()` para encontrar o arco seno de um valor.
+    1. **Arco Cosseno** : Use `math.acos()` para encontrar o arco cosseno de um valor.
+    1. **Arco Tangente** : Use `math.atan()` para encontrar o arco tangente de um valor.
+    1. **Identidade Trigonométrica** : Verifique a identidade trigonométrica `sin^2(x) + cos^2(x) = 1` para um valor `x`.
+1. Exercícios de Funções Hiperbólicas
+    1. **Seno Hiperbólico** : Dado um valor `x`, calcule o seno hiperbólico usando `math.sinh()`.
+    1. **Cosseno Hiperbólico** : Dado um valor `x`, calcule o cosseno hiperbólico usando `math.cosh()`.
+    1. **Tangente Hiperbólica** : Dado um valor `x`, calcule a tangente hiperbólica usando `math.tanh()`.
+1. Exercícios de Funções de Comparação
+    1. **Verificar se um Número é Finito** : Use `math.isfinite()` para verificar se um número é finito.
+    1. **Verificar se um Número é Infinito** : Use `math.isinf()` para verificar se um número é infinito.
+    1. **Verificar se um Valor é NaN (Not a Number)** : Use `math.isnan()` para verificar se um valor não é um número.
+    1. **Verificar Proximidade entre Números** : Use `math.isclose()` para verificar se dois números são aproximadamente iguais com uma certa tolerância.
+1. Exercícios com Constantes
+    1. **Valor de Pi** : Calcule a circunferência de um círculo dado seu raio usando `math.pi`.
+    1. **Valor de e** : Use a constante `math.e` para calcular o valor de `e` elevado à potência de um número.
+    1. **Cálculo com Infinito** : Use `math.inf` para verificar o comportamento de operações com valores infinitos.
+    1. **Comparando Infinito com Números Finitos** : Verifique se `math.inf` é maior que um número muito grande.
+1. Exercícios de Funções Estatísticas
+    1. **Cálculo de Média** : Dada uma lista de números, calcule a média aritmética.
+    1. **Cálculo de Variância** : Dada uma lista de números, calcule a variância dos valores.
+    1. **Cálculo do Desvio Padrão** : Dada uma lista de números, calcule o desvio padrão dos valores.
+1. Exercícios de Aplicações Práticas
+    1. **Calculando a Hipotenusa** : Use `math.hypot()` para calcular a hipotenusa de um triângulo retângulo, dado os valores dos catetos.
+    1. **Distância Euclidiana** : Dado dois pontos `(x1, y1)` e `(x2, y2)` no plano cartesiano, calcule a distância euclidiana entre eles usando `math.hypot()`.
+    1. **Cálculo de Juros Compostos** : Escreva uma função que calcule o montante total após `n` anos com juros compostos, utilizando `math.pow()`.
+    1. **Cálculo de Probabilidade Normal** : Use `math.erf()` para calcular a função de distribuição cumulativa de uma variável com distribuição normal.
+    1. **Aproximação de Pi com Série de Leibniz** : Use uma fórmula matemática para aproximar o valor de `pi` somando os primeiros `n` termos da série de Leibniz.
+    1. **Conversão de Coordenadas Polares para Cartesianas** : Dado um raio `r` e um ângulo `theta` em radianos, converta para coordenadas cartesianas usando funções trigonométricas.
+    1. **Conversão de Coordenadas Cartesianas para Polares** : Dado um ponto `(x, y)` no plano cartesiano, converta para coordenadas polares usando `math.atan2()`.
+    1. **Cálculo de Volume de uma Esfera** : Calcule o volume de uma esfera dado seu raio, usando a fórmula `4/3 * π * r^3`.
+    1. **Equação Quadrática** : Dada uma equação quadrática `ax^2 + bx + c = 0`, calcule as raízes usando a fórmula de Bhaskara e `math.sqrt()`.
+    1. **Resolvendo uma Equação Exponencial** : Resolva uma equação exponencial do tipo `e^x = y` usando `math.log()`.
+    1. **Cálculo de Proporção** : Dada uma proporção, use `math.log()` para resolver uma equação de proporções entre duas variáveis.
+    1. **Aproximação Linear** : Dado um conjunto de pontos, escreva um programa que calcule a melhor linha reta que aproxima os pontos (método dos mínimos quadrados).
+
+</details>
+
+## módulo `json`
+
+O módulo `json` do Python é utilizado para trabalhar com dados no formato JSON (JavaScript Object Notation). O JSON é um formato de intercâmbio de dados amplamente utilizado, especialmente em APIs web, porque é simples e fácil de ler para humanos e máquinas. Com o módulo `json`, é possível converter dados entre objetos Python e strings JSON, o que é conhecido como **serialização** e **desserialização**.
+
+1. [dumping e loading](#dumping-e-loading)
+1. [`json.dumps()`](#jsondumps)
+1. [`json.loads()`](#jsonloads)
+1. [`json.dump()`](#jsondump)
+1. [`json.load()`](#jsonload)
+1. [índice](#índice)
+
+### dumping e loading
+
+- **serialização (dumping)** : converte objetos Python (listas, dicionários, etc.) em uma string JSON;
+- **desserialização (loading)** : converte uma string JSON em objetos Python (tipicamente dicionários e listas);
+
+### `json.dumps()`
+
+Essa função **serializa** um objeto Python em uma string JSON. É usada quando se deseja converter um objeto Python (como um dicionário) em uma string JSON que pode ser armazenada ou enviada para uma API.
+
+- **sintaxe** : `json.dumps(obj, *, skipkeys=False, ensure_ascii=True, indent=None, separators=None, default=None, sort_keys=False)`
+
+    - `obj` : o objeto Python a ser convertido;
+    - `skipkeys` : se `True`, chaves não suportadas (como tuplas) são ignoradas;
+    - `ensure_ascii` : se `True`, a string resultante conterá apenas caracteres ASCII;
+    - `indent` : especifica o número de espaços usados para formatar a saída (em formato indentado);
+    - `sort_keys` : se `True`, as chaves dos dicionários serão ordenadas;
+
+**Exemplo**
+```python
+import json
+
+dados = {
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo",
+    "habilidades": ["Python", "C++", "JavaScript"]
+}
+
+json_string = json.dumps(dados, indent=4)  # serializa e adiciona indentação
+print(json_string)
+```
+
+**Saída**
+```json
+{
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo",
+    "habilidades": [
+        "Python",
+        "C++",
+        "JavaScript"
+    ]
+}
+```
+
+### `json.loads()`
+
+Essa função **desserializa** uma string JSON em um objeto Python. É usada para interpretar dados JSON (geralmente recebidos de uma API) como dicionários, listas e outros objetos Python.
+
+- **sintaxe** : `json.loads(s, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None)`
+
+    - `s`: a string JSON que será convertida;
+    - `object_hook`: uma função que pode ser usada para modificar o comportamento da desserialização;
+
+**Exemplo**
+```python
+import json
+
+json_string = '{"nome": "João", "idade": 30, "cidade": "São Paulo", "habilidades": ["Python", "C++", "JavaScript"]}'
+dados = json.loads(json_string)
+
+print(dados)
+```
+
+**Saída**
+```python
+{
+    'nome': 'João',
+    'idade': 30,
+    'cidade': 'São Paulo',
+    'habilidades': ['Python', 'C++', 'JavaScript']
+}
+```
+
+### `json.dump()`
+
+Essa função é semelhante a `json.dumps()`, mas em vez de converter um objeto em uma string JSON, ela grava o JSON diretamente em um arquivo.
+
+- **sintaxe** : `json.dump(obj, fp, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False)`
+
+    - `obj` : o objeto Python que será convertido;
+    - `fp` : o objeto de arquivo onde os dados JSON serão gravados;
+
+**Exemplo**
+```python
+import json
+
+dados = {
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo",
+    "habilidades": ["Python", "C++", "JavaScript"]
+}
+
+with open('dados.json', 'w') as arquivo:
+    json.dump(dados, arquivo, indent=4)
+```
+
+Nesse exemplo, o dicionário `dados` é gravado em um arquivo chamado `dados.json` com formatação indentada.
+
+### `json.load()`
+
+Essa função lê dados JSON de um arquivo e os converte em um objeto Python.
+
+- **sintaxe** : `json.load(fp, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None)`
+
+    - `fp` : o arquivo contendo os dados JSON;
+
+**Exemplo**
+```python
+import json
+
+with open('dados.json', 'r') as arquivo:
+    dados = json.load(arquivo)
+
+print(dados)
+```
+
+Aqui, o conteúdo do arquivo `dados.json` será carregado em um dicionário Python.
+
+---
+
+## exercícios módulo `json`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios para o Método `json.dumps()`
+    1. **Serialização Simples** : Converta um dicionário Python simples contendo informações de uma pessoa (nome, idade, cidade) em uma string JSON usando `json.dumps()`.
+    1. **Lista de Números** : Converta uma lista de números inteiros em uma string JSON usando `json.dumps()`.
+    1. **Indentação na Serialização** : Serialize um dicionário Python com o parâmetro `indent=4` para formatar o JSON de maneira legível.
+    1. **Serializar com Chaves Ordenadas** : Serialize um dicionário e utilize o parâmetro `sort_keys=True` para garantir que as chaves fiquem em ordem alfabética no JSON.
+    1. **Serializar com Caracteres Especiais** : Serialize um dicionário que contém caracteres especiais (acentos, símbolos) e use o parâmetro `ensure_ascii=False` para manter os caracteres como estão.
+    1. **Serialização de Tupla** : Tente serializar uma tupla de números e veja como ela é convertida para JSON.
+    1. **Ignorar Chaves Inválidas** : Tente serializar um dicionário que contenha uma chave inválida (como uma tupla) e use o parâmetro `skipkeys=True` para ignorar as chaves inválidas.
+    1. **Serializar Objetos Aninhados** : Serialize um dicionário que contenha outros dicionários e listas aninhados, usando `json.dumps()`.
+    1. **Serializar com Separadores Personalizados** : Use o parâmetro `separators` em `json.dumps()` para personalizar os separadores entre os elementos (exemplo: `', '` para separar os itens da lista e `': '` para separar chaves e valores).
+1. Exercícios para o Método `json.loads()`
+    1. **Desserializar uma String JSON Simples** : Dada uma string JSON contendo informações de um produto (nome, preço, quantidade), use `json.loads()` para convertê-la em um dicionário Python.
+    1. **Desserializar Lista** : Converta uma string JSON contendo uma lista de números em uma lista Python usando `json.loads()`.
+    1. **Desserializar uma Lista de Dicionários** : Dada uma string JSON contendo uma lista de dicionários com informações de vários estudantes, use `json.loads()` para convertê-la em uma lista de dicionários Python.
+    1. **Erro ao Desserializar** : Dada uma string JSON com erro de sintaxe, tente usá-la com `json.loads()` e capture o erro `JSONDecodeError` adequadamente.
+    1. **Desserializar Números com Vírgula Flutuante** : Converta uma string JSON contendo números decimais (como `2.5`, `3.14`) em uma lista de números Python.
+    1. **Verificar Tipo após Desserializar** : Após desserializar uma string JSON, verifique o tipo dos dados retornados (exemplo: verificar se é um dicionário ou lista).
+    1. **Desserializar Booleanos** : Converta uma string JSON que contenha valores booleanos (`true`, `false`) em um dicionário Python usando `json.loads()`.
+    1. **Desserializar Null** : Use `json.loads()` para converter uma string JSON que contenha `null` e verifique como o Python representa esse valor.
+1. Exercícios para o Método `json.dump()`
+    1. **Serialização para Arquivo** : Converta um dicionário Python para JSON e grave o resultado em um arquivo `dados.json` usando `json.dump()`.
+    1. **Salvar Lista em Arquivo** : Salve uma lista de strings como JSON em um arquivo usando `json.dump()`.
+    1. **Gravar JSON Formatado** : Converta um dicionário Python em JSON e grave no arquivo `formatado.json` com indentação de 4 espaços para facilitar a leitura.
+    1. **Serializar com Separadores Personalizados** : Use o parâmetro `separators` ao gravar JSON em um arquivo para ajustar os separadores entre chaves e valores.
+    1. **Ignorar Chaves Inválidas em Arquivo** : Grave um dicionário em um arquivo, ignorando chaves inválidas (como tuplas), utilizando o parâmetro `skipkeys=True`.
+    1. **Serializar com Ordenação de Chaves** : Grave um dicionário em um arquivo JSON, ordenando as chaves de forma alfabética com o parâmetro `sort_keys=True`.
+    1. **Escrever Múltiplos Objetos em um Arquivo** : Serialize e grave dois objetos Python em um único arquivo JSON (por exemplo, dois dicionários separados por linhas).
+    1. **Gravação de JSON com Unicode** : Grave um dicionário com caracteres Unicode em um arquivo, sem que eles sejam escapados, utilizando o parâmetro `ensure_ascii=False`.
+    1. **Gravar JSON em Modo de Acrescentar (Append)** : Abra um arquivo JSON existente e adicione mais dados (um novo dicionário) ao final do arquivo, sem sobrescrever o conteúdo original.
+1. Exercícios para o Método `json.load()`
+    1. **Ler um Arquivo JSON Simples** : Crie um arquivo JSON com informações de uma pessoa e use `json.load()` para carregá-lo como um dicionário Python.
+    1. **Ler Lista de Números** : Crie um arquivo JSON contendo uma lista de números inteiros e use `json.load()` para carregá-los em uma lista Python.
+    1. **Ler Arquivo JSON Formatado** : Abra um arquivo JSON que contenha dados com indentação e carregue-o usando `json.load()`.
+    1. **Tratar Erro ao Ler Arquivo JSON Inválido** : Tente ler um arquivo com JSON inválido e trate o erro `JSONDecodeError` corretamente.
+    1. **Ler JSON de Arquivo Grande** : Crie um arquivo JSON com milhares de linhas e use `json.load()` para carregá-lo. Verifique o tempo de execução.
+    1. **Modificar e Regravar JSON Lido** : Após carregar um arquivo JSON como um dicionário Python, modifique os valores e grave as mudanças de volta no arquivo usando `json.dump()`.
+    1. **Ler Arquivo com Booleanos** : Crie um arquivo JSON que contenha valores booleanos (`true`, `false`) e carregue-o em um dicionário Python.
+    1. **Ler Arquivo com Valor Nulo** : Crie um arquivo JSON com valores `null` e use `json.load()` para carregá-lo e verificar como esses valores são representados em Python.
+    1. **Ler Dados JSON Aninhados** : Crie um arquivo JSON que contenha um dicionário com outros dicionários e listas aninhadas, e use `json.load()` para carregá-lo.
+    1. **Ler e Comparar Tipos** : Após carregar um arquivo JSON com `json.load()`, verifique se o tipo dos dados lidos corresponde ao tipo esperado (exemplo: lista, dicionário).
+1. Exercícios Combinando `json.dumps()`, `json.loads()`, `json.dump()`, `json.load()`
+    1. **Serializar e Desserializar Ciclo** : Converta um dicionário em JSON usando `json.dumps()`, depois use `json.loads()` para reverter a string JSON de volta para um dicionário.
+    1. **Gravar e Ler de Arquivo** : Use `json.dump()` para gravar um dicionário em um arquivo e, em seguida, use `json.load()` para ler esse arquivo de volta para um objeto Python.
+    1. **Manipulação Completa de JSON em Arquivo** : Serialize um objeto Python com `json.dumps()`, grave-o em um arquivo usando `json.dump()`, depois carregue-o do arquivo usando `json.load()` e faça uma alteração no objeto, finalizando com a regravação do arquivo.
+    1. **Conversão e Verificação** : Converta uma lista de números em JSON, grave em um arquivo, leia novamente com `json.load()` e verifique se a lista lida é idêntica à original.
 
 </details>
