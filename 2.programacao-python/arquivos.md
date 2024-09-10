@@ -744,11 +744,13 @@ Neste código :
 É também possível abrir múltiplos arquivos ao mesmo tempo usando um único comando `with` :
 
 ```python
-with open('arquivo1.txt', 'r') as arquivo1, open('arquivo2.txt', 'w') as arquivo2:
-    # Lendo do primeiro arquivo
-    conteudo = arquivo1.read()
-    # Escrevendo no segundo arquivo
-    arquivo2.write(conteudo)
+with open('arquivo1.txt', 'r') as origem, open('arquivo2.txt', 'w') as destino:
+    # lendo do primeiro arquivo, origem
+    conteudo = origem.read()
+    # alterando o conteúdo original
+    conteudo += 'novo texto'
+    # escrevendo no segundo arquivo, destino
+    destino.write(conteudo)
 ```
 
 Aqui :
