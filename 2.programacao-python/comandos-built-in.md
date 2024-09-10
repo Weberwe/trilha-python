@@ -1,16 +1,20 @@
 Índice
 
-1. [in](#in)
-1. [exercícios in](#exercicios-in)
-1. [del](#del)
-1. [exercícios del](#exercicios-del)
-1. [pass](#pass)
-1. [break](#break)
-1. [continue](#continue)
-1. [break e continue](#break-e-continue)
-1. [exercícios break e continue](#exercícios-break-e-continue)
+1. [`in`](#in)
+1. [exercícios `in`](#exercicios-in)
+1. [`del`](#del)
+1. [exercícios `del`](#exercicios-del)
+1. [`pass`](#pass)
+1. [`break`](#break)
+1. [`continue`](#continue)
+1. [`break` e `continue`](#break-e-continue)
+1. [exercícios `break` e `continue`](#exercícios-break-e-continue)
+1. [`assert`](#assert)
+1. [exercícios `assert`](#exercicios-assert)
 
 # comandos built-in
+
+Comandos built-in do Python são funções e tipos de dados que estão disponíveis diretamente na linguagem, sem a necessidade de importar módulos adicionais. Eles fazem parte da biblioteca padrão e oferecem funcionalidades básicas essenciais para a programação.
 
 ## `in`
 
@@ -128,7 +132,7 @@ False
 - no primeiro caso, `uva` não está na lista `frutas`, então o resultado é `True`;
 - no segundo caso, `banana` está na lista, então o resultado é `False`;
 
-## exercícios in
+## exercícios `in`
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -302,7 +306,7 @@ NameError: name 'cores' is not defined
 
 - **uso em loops e funções** : é possível usar `del` dentro de loops e funções para remover elementos dinamicamente à medida que o programa é executado;
 
-## exercícios del
+## exercícios `del`
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -666,7 +670,7 @@ Quando combinado `break` e `continue` em um loop, por exemplo, é possível cria
 
 Combinar `break` e `continue` em um loop Python permite um controle granular sobre o fluxo de execução, permitindo que se pule iterações específicas enquanto também fornece uma maneira de sair completamente do loop quando certas condições são atendidas. Usados juntos, esses comandos podem tornar o código mais eficiente e focado, dependendo das necessidades da aplicação.
 
-## exercícios break e continue
+## exercícios `break` e `continue`
 
 <details>
 <summary>Lista de Exercícios</summary>
@@ -750,5 +754,356 @@ Combinar `break` e `continue` em um loop Python permite um controle granular sob
 18. **Busca em String**: Escreva um loop `for` que percorra uma string. Use `continue` para pular os caracteres que não são dígitos e `break` para sair do loop ao encontrar dois dígitos consecutivos.
 19. **Filtro em Listas**: Crie um loop `for` que percorra uma lista de listas de números. Use `continue` para pular listas que contêm números negativos e `break` para sair do loop ao encontrar uma lista com apenas números positivos.
 20. **Verificação de Caracteres**: Escreva um loop `while` que percorra uma string. Use `continue` para pular os caracteres que não são letras maiúsculas e `break` para sair do loop ao encontrar três letras maiúsculas consecutivas.
+
+</details>
+
+## `assert`
+
+O comando `assert` no Python é utilizado para realizar verificações (ou *assertions*) em um programa. Ele é geralmente utilizado durante o desenvolvimento para garantir que certas condições lógicas sejam verdadeiras. Se a condição que está sendo verificada pelo `assert` for falsa, uma exceção do tipo `AssertionError` será levantada, interrompendo a execução do programa. Caso a condição seja verdadeira, o programa continua a ser executado normalmente.
+
+A sintaxe básica do `assert` é:
+
+```python
+assert <condição>, <mensagem opcional>
+```
+
+- `<condição>` : uma expressão que será avaliada. Se ela for avaliada como `True`, o `assert` não faz nada e a execução do programa continua. Se for `False`, um `AssertionError` será levantado;
+- `<mensagem opcional>` : uma mensagem que será exibida juntamente com o `AssertionError`, explicando o motivo do erro. Ela é opcional, mas útil para ajudar a entender o que deu errado;
+
+- **Exemplo**
+
+```python
+x = 5
+assert x > 0, "x deve ser maior que zero"
+```
+
+Neste exemplo, o programa continua normalmente, já que `x > 0` é `True`. No entanto, se `x` fosse um número menor ou igual a zero, o Python levantaria um `AssertionError` com a mensagem "x deve ser maior que zero".
+
+### como funciona
+
+Quando o comando `assert` é executado, ele faz o seguinte :
+
+1. Avalia a expressão condicional;
+1. Se a condição for `True`, o programa segue normalmente;
+1. Se a condição for `False`, um `AssertionError` é lançado, e a execução do programa é interrompida a menos que a exceção seja tratada por um bloco `try-except`;
+
+- **Exemplo**
+
+```python
+def divide(a, b):
+    assert b != 0, "O divisor não pode ser zero."
+    return a / b
+
+print(divide(10, 2))  # saída: 5.0
+print(divide(10, 0))  # lança um AssertionError com a mensagem: "O divisor não pode ser zero."
+```
+
+### por que usar
+
+1. **Verificação durante o desenvolvimento** : o `assert` é útil para verificar suposições que o programador faz enquanto desenvolve o código. Se uma suposição falhar, o `AssertionError` ajuda a detectar o erro rapidamente;
+
+1. **Depuração e testes** : durante o desenvolvimento ou testes, você pode usar o `assert` para verificar o comportamento esperado de funções ou trechos de código. Ele serve como uma medida de segurança para garantir que certas condições lógicas sejam sempre verdadeiras;
+
+1. **Evitar erros lógicos** : ele ajuda a capturar erros lógicos ou situações inesperadas antes que eles causem maiores problemas no código;
+
+### quando não usar
+
+1. **Validação de entrada do usuário** : o `assert` não deve ser usado para validar entradas de usuários ou para condições que devem ser tratadas em tempo de execução. Isso ocorre porque, se o código for executado com otimizações (com a flag `-O`), os `assert` são removidos e não executados, o que poderia deixar o programa vulnerável;
+
+1. **Verificações críticas de runtime** : se a verificação for fundamental para a segurança ou estabilidade do código, como garantir que um arquivo existe antes de ser lido, deve-se usar um bloco `if-else` e lançar exceções adequadas, em vez de confiar no `assert`;
+
+Exemplo de uso inadequado para validar entradas :
+
+```python
+def validar_idade(idade):
+    assert idade >= 18, "Idade deve ser maior ou igual a 18."
+```
+
+Neste caso, o `assert` não é a melhor escolha para validar a idade do usuário, pois se o programa for executado com a otimização (usando `python -O`), o `assert` não será executado, deixando o código vulnerável. O correto seria:
+
+```python
+def validar_idade(idade):
+    if idade < 18:
+        raise ValueError("Idade deve ser maior ou igual a 18.")
+```
+
+### como é tratado
+
+Quando o Python é executado com a flag `-O` (modo otimizado), todas as instruções `assert` são ignoradas. Isso significa que elas não serão executadas e não terão impacto no programa. Portanto, o `assert` é útil durante o desenvolvimento, mas não deve ser confiado em ambientes de produção.
+
+### exemplo de como o `assert` funciona com `-O`
+
+Normalmente:
+
+```python
+x = 5
+assert x == 10, "x deve ser igual a 10"
+```
+
+Isso lançaria um `AssertionError` com a mensagem "x deve ser igual a 10". No entanto, se o código for executado com a otimização (`python -O script.py`), o `assert` é removido, e o programa continua sem levantar erro.
+
+### exemplo prático
+
+Imagine que se está criando uma função para verificar se uma lista está ordenada. Durante o desenvolvimento, pode-se usar `assert` para garantir que a lista seja corretamente ordenada.
+
+```python
+def verificar_ordenacao(lista):
+    for i in range(len(lista) - 1):
+        assert lista[i] <= lista[i + 1], "A lista não está ordenada."
+    return True
+
+# Testando
+verificar_ordenacao([1, 2, 3, 4])  # Não levanta erro
+verificar_ordenacao([1, 3, 2, 4])  # Lança AssertionError: "A lista não está ordenada."
+```
+
+### exemplos de usos corretos e incorretos
+
+#### em funções
+
+- **uso correto para verificar pré-condições**
+
+Pode-se usar o `assert` para garantir que uma função receba os parâmetros corretos:
+
+```python
+def calcular_raiz_quadrada(x):
+    assert x >= 0, "O número deve ser maior ou igual a zero"
+    return x ** 0.5
+
+print(calcular_raiz_quadrada(9))  # Saída: 3.0
+print(calcular_raiz_quadrada(-1))  # Lança AssertionError: "O número deve ser maior ou igual a zero"
+```
+
+Aqui, o `assert` garante que a função não tente calcular a raiz quadrada de um número negativo, o que não faz sentido matematicamente.
+
+- **uso incorreto para validação de parâmetros de entrada**
+
+Se estiver validando parâmetros de entrada de usuários, o `assert` não é a melhor escolha, já que pode ser desativado no modo otimizado.
+
+```python
+def verificar_idade(idade):
+    assert idade >= 18, "Idade inválida para este serviço"
+
+# Não recomendado para validação de dados de entrada.
+```
+
+Em vez disso, deve-se usar um `if` e levantar uma exceção apropriada, como `ValueError`:
+
+```python
+def verificar_idade(idade):
+    if idade < 18:
+        raise ValueError("Idade inválida para este serviço")
+```
+
+#### em loops
+
+- **verificando a consistência de dados em um loop**
+
+Pode-se usar `assert` para garantir que um valor seja crescente ao longo de um loop:
+
+```python
+def verificar_ordenacao(lista):
+    for i in range(len(lista) - 1):
+        assert lista[i] <= lista[i + 1], f"Lista não está ordenada: {lista[i]} > {lista[i+1]}"
+
+verificar_ordenacao([1, 2, 3, 4])  # Não gera erro
+verificar_ordenacao([1, 3, 2, 4])  # Lança AssertionError: "Lista não está ordenada: 3 > 2"
+```
+
+Aqui, o `assert` garante que a lista está ordenada enquanto percorre o loop. Se houver um erro, ele interrompe o programa e informa onde a ordem foi quebrada.
+
+- **uso incorreto no lugar de um controle de fluxo normal**
+
+Não é uma boa prática usar `assert` para substituir controles de fluxo como `break` ou `return` em loops.
+
+```python
+def buscar_valor(lista, valor):
+    for item in lista:
+        assert item != valor, "Valor encontrado!"  # NÃO recomendado
+```
+
+Em vez disso, o correto seria:
+
+```python
+def buscar_valor(lista, valor):
+    for item in lista:
+        if item == valor:
+            return True
+    return False
+```
+
+#### em condicionais
+
+- **verificando uma condição lógica crítica**
+
+```python
+def dividir(a, b):
+    assert b != 0, "Divisor não pode ser zero!"
+    return a / b
+
+print(dividir(10, 2))  # Saída: 5.0
+print(dividir(10, 0))  # Lança AssertionError: "Divisor não pode ser zero!"
+```
+
+Aqui, o `assert` é utilizado para garantir que não haja uma tentativa de divisão por zero.
+
+- **não usar `assert` para controle de erro crítico**
+
+```python
+def verificar_positivo(numero):
+    assert numero > 0, "Número deve ser positivo!"
+    # Não recomendado, pois no modo otimizado pode ser ignorado
+```
+
+Para algo crítico, como validar entradas, use estruturas de controle normais:
+
+```python
+def verificar_positivo(numero):
+    if numero <= 0:
+        raise ValueError("Número deve ser positivo!")
+```
+
+<!--
+#### em classes
+
+- **garantindo consistência de atributos em uma classe**
+
+O `assert` pode ser usado para garantir que os atributos de uma classe estejam corretos após a inicialização:
+
+```python
+class Retangulo:
+    def __init__(self, largura, altura):
+        assert largura > 0 and altura > 0, "Largura e altura devem ser maiores que zero"
+        self.largura = largura
+        self.altura = altura
+
+    def area(self):
+        return self.largura * self.altura
+
+r = Retangulo(5, 10)  # Funciona normalmente
+r = Retangulo(-5, 10)  # Lança AssertionError: "Largura e altura devem ser maiores que zero"
+```
+
+Aqui, o `assert` garante que nenhum retângulo seja criado com dimensões inválidas.
+
+- **não usar `assert` para validação de dados do usuário ao criar objetos**
+
+Novamente, se os dados estão vindo de uma fonte externa (usuário, por exemplo), não é recomendado usar `assert`:
+
+```python
+class Retangulo:
+    def __init__(self, largura, altura):
+        assert largura > 0, "Largura inválida!"  # Não recomendado para entrada de dados
+```
+
+O correto seria usar verificações explícitas e lançar exceções adequadas:
+
+```python
+class Retangulo:
+    def __init__(self, largura, altura):
+        if largura <= 0 or altura <= 0:
+            raise ValueError("Largura e altura devem ser maiores que zero")
+```
+-->
+
+#### em módulos e importações
+
+- **verificando importações**
+
+O `assert` pode ser usado para garantir que módulos importantes sejam importados corretamente:
+
+```python
+try:
+    import numpy as np
+except ImportError:
+    np = None
+
+assert np is not None, "Módulo numpy não está instalado"
+```
+
+Aqui, o `assert` assegura que o módulo `numpy` está disponível antes de continuar a execução do programa.
+
+#### em testes
+
+- **testes automatizados**
+
+O `assert` é muito útil em testes automatizados, para garantir que uma função retorne os valores esperados:
+
+```python
+def somar(a, b):
+    return a + b
+
+# testes
+assert somar(2, 3) == 5, "A soma de 2 e 3 deve ser 5"
+assert somar(-1, 1) == 0, "A soma de -1 e 1 deve ser 0"
+```
+
+Esses testes ajudam a garantir que o comportamento da função está correto. Se algo falhar, o `AssertionError` informará o erro.
+
+- **uso incorreto para lidar com erros esperados**
+
+Se está verificando se uma função lança uma exceção, o `assert` pode não ser a melhor escolha. Por exemplo:
+
+```python
+def dividir(a, b):
+    return a / b
+
+try:
+    dividir(10, 0)
+except ZeroDivisionError:
+    pass
+else:
+    assert False, "Deveria ter levantado ZeroDivisionError"
+```
+
+Aqui, a maneira correta seria utilizar um framework de testes como `unittest` ou `pytest`, que têm funcionalidades adequadas para verificar exceções.
+
+### resumo
+
+**Quando usar `assert`:**
+- Para verificar suposições durante o desenvolvimento (não em produção).
+- Para garantir a consistência de dados e condições lógicas internas.
+- Em testes automatizados, onde se deseja garantir que determinadas condições sejam verdadeiras.
+
+**Quando não usar `assert`:**
+- Para validar entradas do usuário ou outras condições que devem ser garantidas em produção.
+- Para substituir controles de fluxo ou verificar erros críticos.
+- Em verificações que podem afetar a segurança ou integridade de um sistema, especialmente porque `assert` é desabilitado no modo otimizado (`-O`).
+
+## exercícios `assert`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Verificando valores**: Escreva um código que recebe um número `x` e usa `assert` para garantir que `x` seja positivo.
+1. **Divisão por zero**: Crie uma função `dividir(a, b)` que divide `a` por `b` e usa `assert` para garantir que `b` não seja zero.
+1. **Comprimento da string**: Escreva um código que recebe uma string `s` e usa `assert` para garantir que a string tenha pelo menos 5 caracteres.
+1. **Lista vazia**: Crie uma função que verifica se uma lista `lst` está vazia e, se sim, lança uma exceção usando `assert`.
+1. **Soma de números positivos**: Escreva uma função `soma_positivos(a, b)` que soma dois números e usa `assert` para garantir que ambos sejam positivos.
+1. **Raiz quadrada de número positivo**: Crie uma função `raiz_quadrada(x)` que calcula a raiz quadrada de um número. Use `assert` para garantir que `x` é positivo.
+1. **Maior que zero em loop**: Escreva uma função que percorra uma lista de números e use `assert` para garantir que todos os números sejam maiores que zero.
+1. **Garantindo a ordem de uma lista**: Crie uma função `verificar_ordenacao(lista)` que usa `assert` para garantir que todos os elementos da lista estão em ordem crescente.
+1. **Validação de ano**: Escreva uma função que receba um ano e use `assert` para garantir que o ano seja maior que 0.
+1. **Fatorial de um número**: Crie uma função `fatorial(n)` que calcula o fatorial de `n` e usa `assert` para garantir que `n` seja maior ou igual a zero.
+1. **Média de notas**: Escreva uma função que recebe uma lista de notas e usa `assert` para garantir que todas as notas estão entre 0 e 10.
+1. **Índice válido em lista**: Escreva uma função que usa `assert` para garantir que um índice fornecido está dentro dos limites de uma lista.
+1. **Número ímpar**: Escreva uma função que recebe um número e usa `assert` para garantir que o número é ímpar.
+1. **Verificando a soma de uma lista**: Crie uma função que recebe uma lista de números e usa `assert` para garantir que a soma de todos os elementos da lista é maior que 100.
+1. **Verificando divisibilidade**: Escreva uma função que recebe dois números e usa `assert` para garantir que o primeiro número é divisível pelo segundo.
+1. **Todos pares**: Escreva uma função que percorre uma lista e usa `assert` para garantir que todos os números são pares.
+1. **Número dentro de intervalo**: Crie uma função que recebe um número e usa `assert` para garantir que o número está no intervalo entre 10 e 20.
+1. **Tamanho da lista**: Escreva uma função que usa `assert` para garantir que uma lista tenha pelo menos 3 elementos.
+1. **Soma de inteiros**: Escreva uma função que recebe dois valores e usa `assert` para garantir que ambos são inteiros antes de somá-los.
+1. **Divisão de números pares**: Escreva uma função que recebe dois números e usa `assert` para garantir que ambos são pares antes de realizar a divisão.
+1. **Verificação de senha**: Crie uma função `verificar_senha(senha)` que usa `assert` para garantir que a senha tenha pelo menos 8 caracteres.
+1. **Números diferentes**: Escreva uma função que recebe dois números e usa `assert` para garantir que eles são diferentes.
+1. **Palavra com letra específica**: Escreva uma função que usa `assert` para garantir que uma string contém a letra 'a' pelo menos uma vez.
+1. **Lista de strings não vazias**: Crie uma função que percorra uma lista de strings e use `assert` para garantir que nenhuma das strings é vazia.
+1. **Produto de lista não zero**: Escreva uma função que percorra uma lista de números e usa `assert` para garantir que o produto de todos os números não seja zero.
+1. **Números na sequência**: Crie uma função que recebe uma lista de números e usa `assert` para garantir que a sequência dos números seja crescente ou decrescente.
+1. **Valores maiores que 10**: Escreva uma função que usa `assert` para garantir que todos os valores em uma lista são maiores que 10.
+1. **Verificação de vogais**: Escreva uma função que usa `assert` para garantir que uma string contém pelo menos uma vogal.
+1. **Intervalo fechado**: Crie uma função que recebe dois números e usa `assert` para garantir que o segundo número é maior que o primeiro.
+1. **Verificando múltiplos de 3**: Escreva uma função que percorra uma lista de números e use `assert` para garantir que todos os números são múltiplos de 3.
 
 </details>

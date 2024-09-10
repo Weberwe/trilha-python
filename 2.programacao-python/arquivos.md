@@ -1,3 +1,24 @@
+Índice
+
+1. [pontos importantes](#pontos-importantes)
+1. [`open()`](#open)
+1. [modos do `open()`](#modos-do-open)
+1. [métodos do arquivo](#métodos-do-arquivo)
+    1. [`read()`](#read)
+    1. [`readline()`](#readline)
+    1. [`readlines()`](#readlines)
+    1. [`readline()` vs `readlines()`](#readline-vs-readlines)
+    1. [`write()`](#write)
+    1. [`writelines()`](#writelines)
+1. [`close()`](#close)
+1. [exercícios de arquivos](#exercícios-de-arquivos)
+1. [`with`](#with)
+    1. [funcionamento](#funcionamento)
+    1. [vantagens](#vantagens)
+    1. [exemplos de `with` com `open()`](#exemplos-de-with-com-open)
+    1. [múltiplos arquivos com `with`](#múltiplos-arquivos-com-with)
+1. [exercícios com `with`](#exercícios-com-with)
+
 # arquivos
 
 O processo de leitura de arquivos no Python envolve abrir um arquivo, ler seu conteúdo e, em seguida, fechá-lo. Python oferece diferentes modos de leitura, como `r` para leitura, `w` para escrita, e `a` para adicionar conteúdo. O processo é realizado por meio da função `open()`, que retorna um objeto de arquivo, usado para manipular o conteúdo.
@@ -627,5 +648,138 @@ Quando trabalha com arquivos grandes ou abre muitos arquivos em sequência, o fe
     1. Escreva um programa que cria um arquivo `historico.txt` e usa `writelines()` para adicionar três eventos, cada evento em uma linha separada.
     1. Crie um programa que abre o arquivo `receitas.txt` e usa `writelines()` para adicionar três receitas, cada receita em uma linha separada.
     1. Crie um arquivo `projetos.txt` e use `writelines()` para adicionar os títulos de três projetos de uma lista, cada título em uma linha.
+
+</details>
+
+## `with`
+
+O comando `with` em Python é uma forma conveniente e segura de gerenciar recursos que precisam ser abertos e fechados, como arquivos, conexões de rede ou bloqueios em threads. Quando usado com a função `open()`, ele simplifica a manipulação de arquivos, garantindo que o arquivo seja fechado automaticamente, mesmo que ocorra uma exceção durante a execução do código.
+
+### funcionamento
+
+O comando `with` funciona usando o **gerenciamento de contexto**, que envolve a invocação de dois métodos especiais de um objeto: `__enter__()` e `__exit__()`. O método `__enter__()` é chamado quando o bloco `with` é iniciado, e o método `__exit__()` é chamado quando o bloco `with` é encerrado, seja de forma normal ou por uma exceção. No caso de arquivos, o método `__exit__()` fecha o arquivo automaticamente.
+
+Veja sua sintaxe :
+
+```python
+with open('arquivo.txt', 'modo') as variavel_arquivo:
+    # operações de leitura ou escrita
+    variavel_arquivo.write("Escrevendo algo no arquivo.")
+```
+
+- **`open('arquivo.txt', 'modo')`** : abre o arquivo `arquivo.txt` no modo especificado (por exemplo, leitura `'r'`, escrita `'w'`, etc.);
+- **`as variavel_arquivo`** : atribui o objeto de arquivo a uma variável (neste caso, `variavel_arquivo`) para que se possa manipulá-lo dentro do bloco `with`;
+- **bloco de código** : o código dentro do bloco `with` pode realizar operações com o arquivo; após o final do bloco, o arquivo é fechado automaticamente;
+
+### vantagens
+
+O camando `with` tem algumas vantagens quando se trabalha com arquivos :
+
+1. **gerenciamento automático de recursos** : o `with` garante que o arquivo seja fechado corretamente, mesmo que haja um erro ou exceção dentro do bloco de código;
+2. **código mais conciso e legível** : não é necessário chamar `arquivo.close()`, pois isso é tratado automaticamente;
+
+- **exemplos de `with` com `open()`**
+
+#### leitura de um arquivo
+
+```python
+with open('exemplo.txt', 'r') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+```
+
+Aqui :
+- o arquivo `exemplo.txt` é aberto no modo de leitura (`'r'`);
+- o conteúdo do arquivo é lido com `arquivo.read()`;
+- ao sair do bloco `with`, o arquivo é fechado automaticamente, mesmo que ocorra um erro ao ler o conteúdo;
+
+#### escrita em um arquivo
+
+```python
+with open('exemplo.txt', 'w') as arquivo:
+    arquivo.write("Escrevendo no arquivo usando 'with'.\n")
+    arquivo.write("Outra linha de exemplo.\n")
+```
+
+Neste exemplo :
+- o arquivo é aberto no modo de escrita (`'w'`), e duas linhas são escritas nele;
+- o arquivo será fechado automaticamente ao sair do bloco, garantindo que os dados sejam gravados corretamente;
+
+#### leitura linha por linha:
+
+```python
+with open('exemplo.txt', 'r') as arquivo:
+    for linha in arquivo:
+        print(linha, end='')
+```
+
+Aqui :
+- o arquivo é aberto para leitura;
+- um laço `for` percorre cada linha do arquivo e a imprime;
+- como o arquivo é um iterável, é possível ler linha por linha sem carregar todo o conteúdo na memória ao mesmo tempo;
+
+<!--
+### tratamento de exceções
+
+O uso do `with` com arquivos também garante o fechamento correto mesmo que haja exceções durante a manipulação do arquivo.
+
+Por exemplo :
+```python
+try:
+    with open('exemplo.txt', 'r') as arquivo:
+        conteudo = arquivo.read()
+        # Suponha que ocorra um erro aqui
+        raise ValueError("Um erro ocorreu!")
+except ValueError as e:
+    print(f"Erro: {e}")
+```
+
+Neste código :
+- o arquivo será fechado automaticamente, mesmo que o erro ocorra durante a leitura;
+- o `try-except` captura o erro, mas o recurso de fechar o arquivo continua garantido;
+-->
+
+### múltiplos arquivos com `with`
+
+É também possível abrir múltiplos arquivos ao mesmo tempo usando um único comando `with` :
+
+```python
+with open('arquivo1.txt', 'r') as arquivo1, open('arquivo2.txt', 'w') as arquivo2:
+    # Lendo do primeiro arquivo
+    conteudo = arquivo1.read()
+    # Escrevendo no segundo arquivo
+    arquivo2.write(conteudo)
+```
+
+Aqui :
+- o arquivo `arquivo1.txt` é aberto no modo de leitura, e `arquivo2.txt` no modo de escrita;
+- o conteúdo do primeiro arquivo é lido e escrito no segundo arquivo;
+- ambos os arquivos são fechados automaticamente ao final do bloco `with`;
+
+## exercícios com `with`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie um arquivo chamado `saudacao.txt` e use o comando `with` para abrir o arquivo e escrever a frase "Olá, bem-vindo ao Python!" nele. Após isso, exiba o conteúdo do arquivo no terminal.
+1. Crie um arquivo `poema.txt` e use o comando `with` para escrever três estrofes de um poema. Depois, use o `with` novamente para abrir e ler o conteúdo do arquivo e exibir no terminal.
+1. Escreva um programa que abra um arquivo chamado `dados.txt` usando o comando `with` e leia as primeiras 30 letras do arquivo, exibindo-as no terminal.
+1. Crie um arquivo `compras.txt` com uma lista de compras. Use o comando `with` para adicionar dois novos itens no final do arquivo e depois leia todo o conteúdo, exibindo-o no terminal.
+1. Crie um arquivo `log.txt` e, em um loop, registre a hora atual do sistema cinco vezes (uma vez por linha), usando o comando `with`.
+1. Crie um arquivo `tarefas.txt` e adicione cinco tarefas diárias usando o comando `with`. Em seguida, leia e exiba todo o conteúdo do arquivo no terminal.
+1. Escreva um programa que crie ou abra um arquivo `notas.txt` e adicione as notas de três matérias usando o comando `with`. Depois, use o `with` para abrir e ler o arquivo, exibindo as notas.
+1. Crie um arquivo `frutas.txt` e use o comando `with` para escrever o nome de cinco frutas. Em seguida, leia e exiba todo o conteúdo do arquivo no terminal.
+1. Escreva um programa que usa o comando `with` para criar um arquivo `mensagem.txt` e adicionar uma mensagem de boas-vindas. Depois, leia o conteúdo do arquivo e conte quantos caracteres a mensagem possui.
+1. Crie um arquivo `historico.txt` e, com o uso do comando `with`, adicione três eventos históricos. Depois, leia todo o conteúdo e exiba apenas o primeiro evento.
+1. Crie um arquivo `nomes.txt` com nomes de pessoas, cada um em uma linha. Use o comando `with` para ler os nomes e armazená-los em uma lista, depois exiba a lista no terminal.
+1. Escreva um programa que crie um arquivo `diario.txt` e adicione uma entrada de diário com a data e um texto. Depois, use o comando `with` para exibir o conteúdo da última linha do arquivo.
+1. Crie um arquivo `receitas.txt` e escreva três receitas curtas usando o comando `with`. Em seguida, use `with` novamente para ler e exibir todas as receitas.
+1. Crie um arquivo `contatos.txt` e adicione três contatos (nome e telefone). Depois, use o comando `with` para ler o conteúdo e exibir apenas os números de telefone.
+1. Crie um arquivo `projetos.txt` e use o comando `with` para escrever os títulos de três projetos. Depois, leia o arquivo e exiba o título do segundo projeto.
+1. Crie um arquivo `endereco.txt` e escreva seu endereço completo usando o comando `with`. Em seguida, leia o arquivo e exiba o número da casa.
+1. Crie um arquivo `planos.txt` e adicione três planos para o futuro. Em seguida, use o comando `with` para ler e exibir os planos, um por um.
+1. Crie um arquivo `musicas.txt` e adicione o nome de cinco músicas favoritas. Depois, use o comando `with` para ler o arquivo e exibir a quantidade de músicas armazenadas.
+1. Crie um arquivo `alunos.txt` e adicione o nome de cinco alunos. Em seguida, use o comando `with` para ler o arquivo e exibir todos os nomes em maiúsculas.
+1. Crie um arquivo `historico_vendas.txt` e use o comando `with` para adicionar os valores de vendas de uma semana. Depois, leia o arquivo e exiba o valor total somando todas as vendas.
 
 </details>
