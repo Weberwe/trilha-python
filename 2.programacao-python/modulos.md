@@ -1,58 +1,28 @@
-Índice
+# índice
 
 1. [módulo `sys`](#módulo-sys)
-    1. [`sys.argv`](#sysargv)
-    1. [`sys.exit`](#sysexit)
-    1. [`sys.path`](#syspath)
-    1. [`sys.stdin` `sys.stdout` `sys.stderr`](#sysstdin-sysstdout-sysstderr)
-    1. [`sys.platform`](#sysplatform)
-    1. [`sys.getsizeof`](#sysgetsizeof)
-    1. [`sys.version` e `sys.version_info`](#sysversion-e-sysversion_info)
-1. [exercícios módulo `sys`](#exercícios-módulo-sys)
+    - [exercícios módulo `sys`](#exercícios-módulo-sys)
 1. [módulo `os`](#módulo-os)
-    1. [`os.name`](#osname)
-    1. [`os.getenv()` e `os.environ`](#osgetenv-e-osenviron)
-    1. [`os.getcwd()` e `os.chdir`](#osgetcwd-e-oschdir)
-    1. [`os.listdir()`](#oslistdir)
-    1. [`os.mkdir()` e `os.makedirs()`](#osmodir-e-osmakedirs)
-    1. [`os.remove()` e `os.rmdir()`](#osremove-e-osrmdir)
-    1. [`os.rename()`](#osrename)
-    1. [`os.path`](#ospath)
-    1. [`os.system()`](#ossystem)
-    1. [`os.popen()`](#ospopen)
-1. [exercícios módulo `os`](#exercícios-módulo-os)
+    - [exercícios módulo `os`](#exercícios-módulo-os)
 1. [módulo `random`](#módulo-random)
-    1. [`random.random()`](#randomrandom)
-    1. [`random.uniform(a, b)`](#randomuniformab)
-    1. [`random.randint(a, b)`](#randomrandintab)
-    1. [`random.randrange(start, stop, step)`](#randomrandrangestartstopstep)
-    1. [`random.choice(seq)`](#randomchoiceseq)
-    1. [`random.choices(population, k=1)`](#randomchoicespopulatiok)
-    1. [`random.sample(population, k)`](#randomsamplepopulationk)
-    1. [`random.shuffle(seq)`](#randomshuffleseq)
-    1. [`random.seed()`](#randomseed)
-    1. [`random.gauss(mu, sigma)`](#randomgaussmusgima)
-    1. [`random.betavariate(alpha, beta)`](#randombetavariatealphabeta)
-1. [exercícios módulo `random`](#exercícios-módulo-random)
+    - [exercícios módulo `random`](#exercícios-módulo-random)
 1. [módulo `time`](#módulo-time)
-    1.[`time.time()`](#timetime)
-    1.[`time.sleep(segundos)`](#timesleepsegundos)
-    1.[`time.localtime([segundos])`](#timelocaltimesegundos)
-    1.[`time.strftime(formato[, struct_time])`](#timestrftimeformatostruct_time)
-    1.[`time.gmtime([segundos])`](#timegmtimesegundos)
-    1.[`time.mktime(t)`](#timemktimet)
-    1.[`time.asctime([struct_time])`](#timeasctimestruct_time)
-    1.[`time.ctime([segundos])`](#timectimesegundos)
-    1.[`time.perf_counter()`](#timeperf_counter)
-    1.[`time.monotonic()`](#timemonotonic)
-    1.[`time.process_time()`](#timeprocess_time)
-1. [exercícios módulo `time`](#exercícios-módulo-time)
+    - [exercícios módulo `time`](#exercícios-módulo-time)
 
 # módulos
 
 ## módulo `sys`
 
 O módulo `sys` em Python é um dos módulos built-in que fornecem funções e variáveis usadas para manipular diferentes partes do ambiente de execução do Python. Esse módulo é essencial para interagir com o sistema e o interpretador do Python.
+
+1. [`sys.argv`](#sysargv)
+1. [`sys.exit`](#sysexit)
+1. [`sys.path`](#syspath)
+1. [`sys.stdin` `sys.stdout` `sys.stderr`](#sysstdin-sysstdout-sysstderr)
+1. [`sys.platform`](#sysplatform)
+1. [`sys.getsizeof`](#sysgetsizeof)
+1. [`sys.version` e `sys.version_info`](#sysversion-e-sysversion_info)
+1. [índice](#índice)
 
 ### `sys.argv`
 
@@ -277,6 +247,18 @@ if sys.version_info[0] == 3:
 ## módulo `os`
 
 O módulo `os` do Python fornece várias funcionalidades para interagir com o sistema operacional de maneira independente da plataforma. Isso significa que ele funciona tanto no Windows, quanto no Linux ou macOS, facilitando operações como manipulação de arquivos, diretórios, variáveis de ambiente, e muito mais.
+
+1. [`os.name`](#osname)
+1. [`os.getenv()` e `os.environ`](#osgetenv-e-osenviron)
+1. [`os.getcwd()` e `os.chdir`](#osgetcwd-e-oschdir)
+1. [`os.listdir()`](#oslistdir)
+1. [`os.mkdir()` e `os.makedirs()`](#osmodir-e-osmakedirs)
+1. [`os.remove()` e `os.rmdir()`](#osremove-e-osrmdir)
+1. [`os.rename()`](#osrename)
+1. [`os.path`](#ospath)
+1. [`os.system()`](#ossystem)
+1. [`os.popen()`](#ospopen)
+1. [índice](#índice)
 
 ### `os.name`
 
@@ -585,6 +567,19 @@ print(saida)
 
 O módulo `random` do Python é utilizado para gerar números aleatórios e realizar operações aleatórias, como escolher itens de uma lista, embaralhar elementos e gerar números em diferentes intervalos. Ele é amplamente utilizado em várias aplicações, como simulações, jogos, amostragem e mais.
 
+1. [`random.random()`](#randomrandom)
+1. [`random.uniform()`](#randomuniform)
+1. [`random.randint()`](#randomrandint)
+1. [`random.randrange()`](#randomrandrange)
+1. [`random.choice()`](#randomchoice)
+1. [`random.choices()`](#randomchoices)
+1. [`random.sample()`](#randomsample)
+1. [`random.shuffle()`](#randomshuffle)
+1. [`random.seed()`](#randomseed)
+1. [`random.gauss()`](#randomgauss)
+1. [`random.betavariate()`](#randombetavariate)
+1. [índice](#índice)
+
 ### `random.random()`
 
 A função `random()` gera um número de ponto flutuante (decimal) entre 0.0 e 1.0, incluindo 0, mas excluindo 1.
@@ -871,6 +866,20 @@ Saída típica :
 ## módulo `time`
 
 O módulo `time` do Python oferece várias funções para trabalhar com tempo, como a manipulação de horas, minutos, segundos, e funções para medir o tempo que uma ação leva para ser concluída. Ele é muito utilizado para calcular a duração de eventos, fazer pausas (delays) no código, além de obter e manipular o tempo no formato de segundos desde a *"época"* (epoch), que geralmente é 1º de janeiro de 1970 no sistema UNIX.
+
+1. [`time.time()`](#timetime)
+1. [`time.sleep()`](#timesleep)
+1. [`time.localtime()`](#timelocaltime)
+1. [`time.strftime()`](#timestrftime)
+1. [`time.gmtime([])`](#timegmtime)
+1. [`time.mktime(t)`](#timemktimet)
+1. [`time.asctime([struct_time])`](#timeasctimestruct_time)
+1. [`time.ctime([])`](#timectime)
+1. [`time.perf_counter()`](#timeperf_counter)
+1. [`time.monotonic()`](#timemonotonic)
+1. [`time.process_time()`](#timeprocess_time)
+1. [exemplos práticos do módulo `time`](#exemplos-práticos-do-módulo-time)
+1. [índice](#índice)
 
 ### `time.time()`
 

@@ -130,3 +130,9 @@ Crie uma calculadora de números romanos.
         - calculo = {'valor_1': '-C', 'valor_2': 'X', 'operacao': '-', 'resposta': '-CX'}
     - modelo de divisão :
         - calculo = {'valor_1': 'XI', 'valor_2': 'III', 'operacao': '/', 'resposta': 'III', 'resto': 'II'}
+
+## funções do Python
+
+O Python possui diversas funções built-in que facilitam o trabalho. Embora ajudem, é interessante tentar replicar o comportamento delas para entender como funciona e, também, para praticar.
+Então, recrie as seguintes funções :
+- `sum()`, `len()`, `pow()`, `max()`, `min()`, `abs()`, `round()`, `range()`, `divmod()`
