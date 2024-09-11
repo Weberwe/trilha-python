@@ -20,6 +20,8 @@
 1. [exercícios enumerate](#exercícios-enumerate)
 1. [zip()](#zip)
 1. [exercícios zip](#exercícios-zip)
+1. [`dir()`](#dir)
+1. [exercícios `dir()`](#exercícios-dir)
 
 # funções built-in
 
@@ -694,5 +696,87 @@ Veja exemplos de uso
 1. Crie duas listas de números e use `zip()` para encontrar o maior número em cada par.
 1. Use `zip()` para combinar uma lista de palavras com uma lista de números e imprimir as palavras repetidas de acordo com os números.
 1. Crie três listas de strings e use `zip()` para combinar e imprimir as listas formadas pelos elementos correspondentes.
+
+</details>
+
+## `dir()`
+
+A função `dir()` em Python é uma ferramenta útil para inspecionar os atributos e métodos de um objeto. Quando se usa `dir()` com um objeto específico, ela retorna uma lista de nomes de atributos e métodos disponíveis para esse objeto. Se chamar `dir()` sem argumentos, ela retorna uma lista dos nomes no escopo atual.
+
+Veja alguns exemplos abaixo :
+
+### usando `dir()` com um objeto específico
+
+Quando se passa um objeto para `dir()`, ela lista todos os atributos e métodos que o objeto possui. Por exemplo:
+
+```python
+# Exemplo com uma string
+s = "hello"
+print(dir(s))
+```
+
+Saída:
+```
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'istitle', 'isupper', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'swapcase', 'title', 'upper', 'zfill']
+```
+
+Essa lista inclui métodos especiais (aqueles com duplo sublinhado, como `__add__` e `__str__`) e métodos normais (como `capitalize` e `split`).
+
+### usando `dir()` sem argumentos
+
+Quando `dir()` é chamada sem argumentos, ela retorna uma lista de nomes no escopo atual. Isso inclui nomes de variáveis, funções e outros objetos definidos no escopo:
+
+```python
+# Definindo algumas variáveis e funções
+x = 10
+
+def greet(name):
+    return f"Hello, {name}"
+
+# Usando dir() sem argumentos
+print(dir())
+```
+
+Saída (depende do que está definido no escopo):
+```
+['__builtins__', '__doc__', '__import__', 'greet', 'x']
+```
+
+### usando `dir()` com módulos
+
+Também pode-se usar `dir()` para ver quais atributos e funções estão disponíveis em um módulo:
+
+```python
+import math
+print(dir(math))
+```
+
+Saída:
+```
+['__builtins__', '__doc__', '__getattr__', '__getattribute__', '__hash__', '__loader__', '__name__', '__package__', '__spec__', '__store__', '__spec__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'comb', 'copysign', 'cos', 'cosh', 'dist', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'log2', 'modf', 'nextafter', 'pi', 'pow', 'prod', 'radians', 'remainder', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc']
+```
+
+A lista inclui funções matemáticas como `sqrt`, `sin`, e constantes como `pi`.
+
+## exercícios `dir()`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Listando Atributos de uma String** : Crie uma string `s = "Python"` e use `dir(s)` para listar todos os atributos e métodos disponíveis para a string.
+1. **Explorando Listas** : Defina uma lista `my_list = [1, 2, 3, 4]` e use `dir(my_list)` para ver quais métodos e atributos estão disponíveis para listas.
+1. **Funções no Escopo Atual** : Defina uma função `def example_func(): pass` e depois use `dir()` para listar os nomes no escopo atual. O que aparece na lista?
+1. **Atributos de um Dicionário** : Crie um dicionário `my_dict = {'key': 'value'}` e use `dir(my_dict)` para listar os métodos e atributos disponíveis para dicionários.
+1. **Módulo `math`** : Importe o módulo `math` e use `dir(math)` para listar todas as funções e constantes disponíveis nesse módulo.
+1. **Explorando um Objeto de Classe** : Crie uma classe simples `class MyClass: pass` e crie uma instância `obj = MyClass()`. Use `dir(obj)` para listar os atributos e métodos da instância.
+1. **Métodos de um Conjunto** : Defina um conjunto `my_set = {1, 2, 3}` e use `dir(my_set)` para listar os métodos e atributos disponíveis para conjuntos.
+1. **Atributos de um Inteiro** : Crie uma variável `x = 5` e use `dir(x)` para ver quais métodos e atributos estão disponíveis para números inteiros.
+1. **Objetos de Função** : Defina uma função `def sample(): return "test"` e use `dir(sample)` para listar os atributos e métodos da função.
+1. **Checando Atributos de um Módulo Personalizado** : Crie um módulo personalizado com uma função e uma variável global e depois use `dir()` para listar o que está disponível no módulo.
+1. **Explorando o Módulo `time`** : Importe o módulo `time` e use `dir(time)` para listar todos os atributos e métodos disponíveis.
+1. **Checando o Escopo Local** : Defina várias variáveis e funções em um escopo local e use `dir()` dentro de uma função para listar os nomes definidos no escopo local.
+1. **Atributos de um Objeto `None`** : Use `dir(None)` para ver quais métodos e atributos estão disponíveis para o objeto `None`.
+1. **Métodos de uma Tupla** : Defina uma tupla `my_tuple = (1, 2, 3)` e use `dir(my_tuple)` para listar os métodos e atributos disponíveis para tuplas.
+1. **Inspecionando o Objeto `__builtins__`** : Use `dir(__builtins__)` para listar todos os nomes disponíveis no módulo `builtins`, que contém funções e exceções integradas do Python.
 
 </details>

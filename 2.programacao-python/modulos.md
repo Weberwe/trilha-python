@@ -14,6 +14,10 @@
     - [exercícios módulo `math`](#exercícios-módulo-math)
 1. [módulo `json`](#módulo-json)
     - [exercícios módulo `json`](#exercícios-módulo-json)
+1. [variável `__name__`](#variável-__name__)
+    1. [exercícios `__name__`](#exercícios-name)
+1. [`wildcards`](#wildcards)
+    1. [exercícios wildcards](#exercícios-wildcards)
 
 # módulos
 
@@ -1818,5 +1822,215 @@ Aqui, o conteúdo do arquivo `dados.json` será carregado em um dicionário Pyth
     1. **Gravar e Ler de Arquivo** : Use `json.dump()` para gravar um dicionário em um arquivo e, em seguida, use `json.load()` para ler esse arquivo de volta para um objeto Python.
     1. **Manipulação Completa de JSON em Arquivo** : Serialize um objeto Python com `json.dumps()`, grave-o em um arquivo usando `json.dump()`, depois carregue-o do arquivo usando `json.load()` e faça uma alteração no objeto, finalizando com a regravação do arquivo.
     1. **Conversão e Verificação** : Converta uma lista de números em JSON, grave em um arquivo, leia novamente com `json.load()` e verifique se a lista lida é idêntica à original.
+
+</details>
+
+## variável `__name__ `
+
+No Python, a variável especial `__name__` é uma variável interna definida automaticamente pelo interpretador sempre que um módulo é executado. Ela é usada para identificar o contexto em que um módulo Python está sendo executado, e seu valor pode mudar dependendo de como o módulo é utilizado.
+
+### como funciona
+
+Existem duas situações principais em que a variável `__name__` pode assumir valores diferentes:
+
+1. **quando o módulo é executado diretamente** :
+    - se o arquivo Python é executado diretamente (por exemplo, chamando o script diretamente pelo terminal ou pelo Python), o valor da variável `__name__` será `"__main__"`;
+    - isso significa que o código do arquivo está sendo executado como o programa principal;
+
+1. **quando o módulo é importado** :
+    - se o arquivo Python é importado em outro arquivo como um módulo, a variável `__name__` recebe o nome do próprio módulo;
+    - o nome do módulo é o nome do arquivo sem a extensão `.py`;
+
+- **Exemplo**
+
+Considere o seguinte código num arquivo chamado `funcoes.py`:
+
+```python
+# funcoes.py
+def exibe_texto():
+    print('Esta função foi chamada')
+    print(f'{__name__ = }')
+
+if __name__ == "__main__":
+    exibe_texto()
+```
+
+- executando diretamente o arquivo `funcoes.py`
+
+Quando se executa o arquivo diretamente (por exemplo, com o comando `python funcoes.py`), a variável `__name__` terá o valor `"__main__"`. Portanto, a saída será:
+
+```
+Esta função foi chamada
+__name__ = '__main__'
+```
+
+- importando o módulo em outro arquivo
+
+Agora, suponha que se tenha outro arquivo, chamado `main.py`, que importa o módulo `funcoes.py`:
+
+```python
+# main.py
+import funcoes
+
+funcoes.exibe_texto()
+```
+
+Ao executar `main.py`, a variável `__name__` no arquivo `funcoes.py` terá o valor `"funcoes"` (o nome do módulo). Isso ocorre porque `funcoes.py` está sendo importado como um módulo e não está sendo executado diretamente. A saída será:
+
+```
+Esta função foi chamada
+__name__ = 'funcoes'
+```
+
+### usos comum
+
+O principal motivo para usar a condição `if __name__ == "__main__":` em um script Python é para separar o código que deve ser executado apenas quando o módulo é executado diretamente daquele que deve ser executado quando o módulo é importado.
+
+Essa prática é especialmente útil quando se deseja que um arquivo Python possa ser usado tanto como um script executável quanto como um módulo que pode ser importado por outros scripts sem que o código dentro da condição `if __name__ == "__main__":` seja executado automaticamente.
+
+#### executar código de teste ou funcionalidade principal
+
+Um arquivo Python pode ter múltiplas funções e classes. Ao usar `if __name__ == "__main__":`, pode-se escrever uma **função principal** ou blocos de teste que só serão executados quando o arquivo for rodado diretamente, sem interferir no comportamento quando o arquivo é importado como módulo em outro script.
+
+- **Exemplo**
+
+```python
+# calculadora.py
+
+def soma(a, b):
+    return a + b
+
+def subtracao(a, b):
+    return a - b
+
+if __name__ == "__main__":
+    # testando a função quando o arquivo é executado diretamente
+    print(soma(10, 5))  # saída: 15
+    print(subtracao(10, 5))  # saída: 5
+```
+
+Aqui, ao rodar `python calculadora.py`, as funções `soma` e `subtracao` serão testadas, mas quando esse módulo for importado em outro arquivo, como `import calculadora`, esses testes não serão executados.
+
+#### reaproveitar código como biblioteca
+
+Ao dividir seu código em módulos reutilizáveis, pode-se evitar que blocos de código de execução (como testes ou configurações específicas) sejam executados quando esses módulos são importados em outro lugar. Isso permite o reaproveitamento de funções e classes sem efeitos colaterais indesejados.
+
+Por exemplo, se alguém quiser usar apenas a função `soma()` do arquivo `calculadora.py`, ela poderá importá-la sem executar os testes:
+
+```python
+from calculadora import soma
+resultado = soma(3, 4)
+```
+
+### vantagens
+
+#### modularidade
+
+Ao usar essa abordagem, consegue-se manter o código organizado e modular. Isso facilita a criação de bibliotecas ou pacotes onde várias partes do código podem ser importadas e reutilizadas em diferentes scripts, sem executar blocos de teste ou de configuração que são específicos para execução direta.
+
+#### facilita o teste e depuração
+
+É comum usar o bloco `if __name__ == "__main__":` para rodar uma série de testes simples ou demonstrações de como as funções do arquivo funcionam. Isso facilita a verificação rápida do comportamento de um módulo enquanto ele está sendo desenvolvido, sem a necessidade de escrever scripts de teste separados. Além disso, a integração com bibliotecas de testes como `unittest` se torna mais natural.
+
+#### reaproveitamento de código
+
+Como mencionado anteriormente, essa técnica possibilita que o mesmo arquivo seja usado de duas maneiras:
+- como um **script executável** que pode rodar diretamente, com funcionalidades testáveis;
+- como uma **biblioteca de funções ou classes** que pode ser importada sem rodar o código fora do escopo pretendido;
+
+#### flexibilidade em aplicações mais complexas
+
+Em programas mais complexos, pode-se usar esse padrão para definir comportamentos diferentes para quando o módulo é executado diretamente ou quando é importado em outro contexto. Por exemplo, pode-se ter um arquivo que tanto pode ser um módulo importável quanto um aplicativo completo, dependendo de como ele é invocado.
+
+## exercícios `__name__`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Exercício básico 1** : Crie um arquivo Python que tenha uma função chamada `saudacao()`, que imprima "Olá, mundo!". Use `if __name__ == "__main__":` para chamar essa função somente se o arquivo for executado diretamente.
+1. **Exercício básico 2** : Crie um arquivo com uma função `soma(a, b)` que retorna a soma de dois números. Use `if __name__ == "__main__":` para testar essa função, imprimindo o resultado da soma de 3 e 4.
+1. **Exercício de importação 1** : Crie dois arquivos Python. No primeiro, crie uma função `multiplica(a, b)` que retorna a multiplicação de dois números. No segundo arquivo, importe essa função e use-a sem executar nenhum código adicional do primeiro arquivo.
+1. **Exercício de importação 2** : No arquivo principal, crie uma função `subtrai(a, b)` e, usando `if __name__ == "__main__":`, teste essa função. Depois, importe essa função em outro arquivo e teste-a novamente.
+1. **Executar diretamente** : Crie um arquivo Python que defina uma função `imprime_lista(lista)` que imprime cada elemento de uma lista. Use `if __name__ == "__main__":` para testar a função com uma lista de números de 1 a 5.
+1. **Evitar execução ao importar** : Crie um arquivo com uma função `imprime_ola()` que imprime "Olá!". No mesmo arquivo, use `if __name__ == "__main__":` para testar a função. Em outro arquivo, importe a função `imprime_ola()` e certifique-se de que nada mais seja executado ao importá-la.
+1. **Múltiplas funções** : Crie um arquivo com duas funções: `dobro(n)` que retorna o dobro de um número e `triplo(n)` que retorna o triplo. Teste ambas as funções no bloco `if __name__ == "__main__":` com os números 2 e 3.
+1. **Executar código adicional ao rodar diretamente** : Crie uma função `imprime_nome(nome)` que imprime "Olá, [nome]!". No bloco `if __name__ == "__main__":`, adicione um código que recebe o nome do usuário usando `input()` e o passe para a função `imprime_nome()`.
+1. **Teste condicional** : Crie uma função `verifica_par(n)` que retorna `True` se um número for par e `False` se for ímpar. No bloco `if __name__ == "__main__":`, teste a função com o número 10 e imprima o resultado.
+1. **Definição de constantes** : Crie um arquivo que defina uma constante `PI = 3.14`. No bloco `if __name__ == "__main__":`, calcule a área de um círculo com raio 5 e imprima o resultado.
+1. **Importar e executar código** : Crie dois arquivos. No primeiro, crie uma função `quadrado(n)` que retorna o quadrado de um número e teste-a no bloco `if __name__ == "__main__":`. No segundo, importe e teste a função `quadrado()` sem executar o código adicional do primeiro arquivo.
+1. **Verificação de strings** : Crie uma função `verifica_palindromo(palavra)` que retorna `True` se uma palavra for um palíndromo (mesma palavra lida de trás para frente). Use o bloco `if __name__ == "__main__":` para testar a função com a palavra "ana".
+1. **Conversão de temperaturas** : Crie duas funções: `celsius_para_fahrenheit(c)` e `fahrenheit_para_celsius(f)`. Use o bloco `if __name__ == "__main__":` para testar as duas funções convertendo 100°C para Fahrenheit e 212°F para Celsius.
+1. **Sequência de Fibonacci** : Crie uma função `fibonacci(n)` que imprime os primeiros `n` números da sequência de Fibonacci. No bloco `if __name__ == "__main__":`, peça ao usuário um número e imprima a sequência correspondente.
+1. **Tabuada** : Crie uma função `tabuada(n)` que imprime a tabuada de multiplicação de 1 até 10 para o número `n`. No bloco `if __name__ == "__main__":`, peça ao usuário para digitar um número e imprima a tabuada desse número.
+1. **Cálculo de fatorial** : Crie uma função `fatorial(n)` que calcula o fatorial de um número. Use o bloco `if __name__ == "__main__":` para testar a função com o número 5 e imprimir o resultado.
+1. **Maior número de uma lista** : Crie uma função `maior_numero(lista)` que retorna o maior número de uma lista. No bloco `if __name__ == "__main__":`, crie uma lista de números e teste a função.
+1. **Contagem de caracteres** : Crie uma função `conta_caracteres(string)` que retorna o número de caracteres em uma string. Teste essa função no bloco `if __name__ == "__main__":` com a string "Python".
+1. **Média de uma lista** : Crie uma função `media(lista)` que retorna a média dos elementos de uma lista. Teste essa função no bloco `if __name__ == "__main__":` com uma lista de 5 números.
+1. **Concatenação de strings** : Crie uma função `concatena_strings(s1, s2)` que retorna a concatenação de duas strings. No bloco `if __name__ == "__main__":`, peça ao usuário para digitar duas palavras e imprima a concatenação delas.
+
+</details>
+
+## wildcards
+
+O uso de **wildcards** (`*`) ao importar módulos em Python, como em `from módulo import *`, permite que todas as funções, classes, e variáveis públicas do módulo sejam importadas de uma só vez, sem que seja necessário especificar explicitamente quais elementos você deseja importar.
+
+### vantagens
+
+1. **simplicidade** : facilita a importação quando você precisa de muitos elementos de um módulo, sem a necessidade de listar individualmente cada função ou classe;
+
+    ```python
+    from math import *
+
+    print(sqrt(16))  # Não precisa especificar 'math.sqrt'
+    ```
+
+1. **conveniente em scripts curtos ou exploração interativa** : em ambientes interativos como o jupyter notebook, é prático quando você quer explorar rapidamente um módulo sem se preocupar com nomes específicos;
+
+---
+
+### desvantagens
+
+1. **colisões de nomes** : ao importar tudo de um módulo, pode-se acabar sobrescrevendo funções ou variáveis que têm o mesmo nome em outros módulos ou no escopo atual do seu código, o que pode gerar erros difíceis de detectar;
+
+    ```python
+    from math import *
+    from cmath import *
+
+    print(sqrt(-1))  # De qual módulo 'sqrt' está sendo chamado?
+    ```
+
+1. **reduz a legibilidade** : quando se usa `import *`, fica difícil para outros desenvolvedores (e até para você mesmo) saber de onde vêm certas funções ou variáveis, especialmente em projetos grandes;
+
+1. **carga desnecessária** : pode-se acabar importando funções ou variáveis que não são utilizadas, o que pode resultar em uma maior utilização de memória;
+
+### por que usar?
+
+- se está escrevendo scripts curtos, testes rápidos ou scripts de automação simples, o uso de `import *` pode ser conveniente para economizar tempo e tornar o código mais curto;
+- em ambientes interativos, como no jupyter ou repl, o uso pode acelerar a experimentação;
+
+### por que não usar?
+
+- em projetos maiores ou bibliotecas, o uso de `import *` é desaconselhado porque reduz a clareza do código e aumenta o risco de colisão de nomes;
+- torna a manutenção e depuração mais complicadas, especialmente quando múltiplos módulos estão envolvidos;
+
+### alternativa recomendada
+
+Se sabe exatamente quais funções ou classes deseja utilizar, é preferível importar apenas o necessário:
+
+```python
+from math import sqrt, pi
+```
+
+## exercícios wildcards
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. `from math import *` : Calcule a raiz quadrada de 49 e o logaritmo natural de 20.
+1. `from random import *` : Gere 10 números aleatórios entre 1 e 100 e calcule a média.
+1. `from time import *` : Exiba a data e a hora atual, e faça o código esperar 5 segundos antes de continuar.
+1. `from os import *` : Crie um novo diretório chamado "exercicios" no sistema de arquivos atual.
+1. `from sys import *` : Exiba o caminho do interpretador Python que está sendo usado.
+1. `from json import *` : Converta um dicionário Python em uma string JSON e depois reconverta para um dicionário.
 
 </details>
