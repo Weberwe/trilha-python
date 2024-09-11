@@ -4,6 +4,8 @@
 
 Abaixo há uma tabela de atalhos usados no VS Code.
 
+[link com atalhos](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+
 ### Comandos Básicos
 
 | atalho | ação |
