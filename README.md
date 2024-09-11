@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 20 | 11/09/2024 | [função `dir()`](2.programacao-python/funcoes-built-in.md#dir)<br>[variável `__name__`](2.programacao-python/modulos.md#variável-__name__)<br>[wildcards](2.programacao-python/modulos.md#wildcards) |
 | 19 | 10/09/2024 | [módulo `string`](2.programacao-python/modulos.md#módulo-string) [módulo `math`](2.programacao-python/modulos.md#módulo-math) [módulo `json`](2.programacao-python/modulos.md#módulo-json)<br>[comando `with`](2.programacao-python/arquivos.md#with) [comando `assert`](2.programacao-python/comandos-built-in.md#assert) |
 | 18 | 09/09/2024 | [arquivos](2.programacao-python/arquivos.md)<br>[módulo `os`](2.programacao-python/modulos.md#módulo-os) [módulo `time`](2.programacao-python/modulos.md#módulo-time) |
 | 17 | 06/09/2024 | [recursão](2.programacao-python/recursao.md)<br>[módulo `sys`](2.programacao-python/modulos.md#módulo-sys) [módulo `random`](2.programacao-python/modulos.md#módulo-random) |
