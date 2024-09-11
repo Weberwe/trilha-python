@@ -14,8 +14,8 @@
     - [exercícios módulo `math`](#exercícios-módulo-math)
 1. [módulo `json`](#módulo-json)
     - [exercícios módulo `json`](#exercícios-módulo-json)
-1. [variável `__name__`](#variável-__name__)
-    1. [exercícios `__name__`](#exercícios-name)
+1. [variável `__name__`](#variável-__name__-)
+    1. [exercícios `__name__`](#exercícios-__name__)
 1. [`wildcards`](#wildcards)
     1. [exercícios wildcards](#exercícios-wildcards)
 
