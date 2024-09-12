@@ -785,3 +785,166 @@ Aqui :
 1. Crie um arquivo `historico_vendas.txt` e use o comando `with` para adicionar os valores de vendas de uma semana. Depois, leia o arquivo e exiba o valor total somando todas as vendas.
 
 </details>
+
+## encoding
+
+O **encoding** (ou codificação) é a forma como os caracteres são convertidos em bytes para serem armazenados em arquivos ou transmitidos em redes. Quando se com arquivos de texto no Python, o **encoding** determina como o conteúdo textual será interpretado e convertido entre **strings** (internamente manipuladas como Unicode no Python) e **bytes** (armazenados em disco).
+
+### conceito
+
+Um **encoding** é um mapeamento entre caracteres (como letras, números e símbolos) e uma representação binária (bytes). Alguns encodings comuns incluem:
+
+- **UTF-8** : um encoding muito usado para a web e arquivos de texto em geral. Ele usa entre 1 e 4 bytes para representar um caractere. É compatível com o ASCII (que usa 1 byte por caractere);
+- **ASCII** : um encoding básico que utiliza 1 byte para representar 128 caracteres, mas não é adequado para caracteres não-ingleses ou símbolos especiais;
+- **UTF-16** e **UTF-32** : usam 2 e 4 bytes, respectivamente, para representar caracteres. Esses encodings são mais compactos em representações de alguns caracteres Unicode, mas são menos comuns para arquivos de texto gerais;
+- **ISO-8859-1** (ou Latin-1) : um encoding de 1 byte que representa caracteres da Europa Ocidental. Pode ser útil ao lidar com arquivos mais antigos;
+
+### encoding ao abrir arquivos
+
+Quando se trabalha com **arquivos de texto**, deve-se especificar o encoding correto ao abrir o arquivo para garantir que o Python leia e escreva os dados corretamente. Se o encoding não for especificado corretamente, pode resultar em erros como `UnicodeDecodeError` ou a leitura incorreta de caracteres.
+
+### como especificar o encoding
+
+Ao abrir arquivos de texto usando a função `open()` no Python, pode-se (e deve) especificar o encoding correto através do parâmetro `encoding`.
+
+```python
+# abrindo um arquivo com encoding específico
+with open('arquivo.txt', 'r', encoding='utf-8') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+```
+
+### principais encodings usados no Python
+
+#### UTF-8 (padrão recomendado)
+
+O **UTF-8** é o encoding padrão para arquivos de texto no Python moderno, especialmente se o arquivo contiver caracteres de várias línguas e scripts.
+
+- **Exemplo** : Abrindo e escrevendo um arquivo em UTF-8.
+
+```python
+# Escrevendo em um arquivo com UTF-8
+with open('arquivo_utf8.txt', 'w', encoding='utf-8') as arquivo:
+    arquivo.write('Olá, Mundo!!')
+
+# Lendo um arquivo em UTF-8
+with open('arquivo_utf8.txt', 'r', encoding='utf-8') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+```
+
+#### ISO-8859-1 (Latin-1)
+
+O **ISO-8859-1** (também conhecido como **Latin-1**) é um encoding de 1 byte usado para representar caracteres da Europa Ocidental. Embora não suporte todos os caracteres Unicode, ele pode ser útil para arquivos mais antigos ou sistemas que não precisam de suporte para outros idiomas.
+
+- **Exemplo** : Usando Latin-1 para abrir um arquivo.
+
+```python
+# Lendo um arquivo com encoding Latin-1
+with open('arquivo_latin1.txt', 'r', encoding='iso-8859-1') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+```
+
+#### ASCII
+
+O **ASCII** é um encoding mais limitado, que só suporta caracteres básicos do inglês (números, letras e símbolos simples). Como só usa 1 byte por caractere, ele é útil para arquivos simples, mas inadequado para textos em outros idiomas.
+
+- **Exemplo** : Usando o encoding ASCII.
+
+```python
+# Escrevendo e lendo um arquivo com encoding ASCII
+with open('arquivo_ascii.txt', 'w', encoding='ascii') as arquivo:
+    arquivo.write('Hello, World!')
+
+with open('arquivo_ascii.txt', 'r', encoding='ascii') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+```
+
+### problemas comuns com encoding
+
+#### UnicodeDecodeError
+
+Esse erro ocorre quando se tenta ler um arquivo com um encoding errado ou sem especificar o encoding corretamente.
+
+```python
+with open('arquivo_utf8.txt', 'r', encoding='ascii') as arquivo:
+    conteudo = arquivo.read()  # Isso gerará um UnicodeDecodeError
+```
+
+Neste exemplo, o arquivo foi escrito usando **UTF-8**, mas estamos tentando lê-lo usando **ASCII**, que não suporta a maioria dos caracteres Unicode, resultando no erro.
+
+#### codificação de caracteres especiais
+
+Quando o arquivo contém caracteres que não estão no conjunto básico do encoding que se está usando, esses caracteres podem aparecer corrompidos ou resultar em erro.
+
+```python
+# Usando o encoding errado
+with open('arquivo_latin1.txt', 'r', encoding='utf-8') as arquivo:
+    conteudo = arquivo.read()  # Pode exibir caracteres incorretos
+```
+
+Neste caso, um arquivo em **Latin-1** está sendo lido com **UTF-8**, o que pode causar problemas na interpretação de alguns caracteres.
+
+### definindo o encoding correto ao criar ou ler arquivos
+
+1. **verifique o encoding do arquivo original** : se estiver lidando com arquivos que não foram criados por você, tente identificar o encoding correto. Ferramentas como editores de texto avançados ou bibliotecas externas podem ajudar a determinar isso;
+
+2. **use sempre utf-8 para novos arquivos** : se estiver criando arquivos de texto, é recomendável sempre usar **utf-8**, pois ele é amplamente suportado e lida bem com a maioria dos caracteres;
+
+3. **mantenha o encoding consistente** : ao escrever e ler o mesmo arquivo, use o mesmo encoding em ambas as operações; isso evita problemas de conversão incorreta de caracteres;
+
+### exemplos
+
+#### especificando o encoding ao escrever e ler arquivos
+
+```python
+# Escrevendo um arquivo com UTF-8
+with open('mensagem.txt', 'w', encoding='utf-8') as arquivo:
+    arquivo.write('Este é um texto com acentuação e caracteres especiais: ç, ã, ê.')
+
+# Lendo o arquivo com o mesmo encoding
+with open('mensagem.txt', 'r', encoding='utf-8') as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
+```
+
+#### lendo um arquivo com encoding incorreto
+
+```python
+# Tentando abrir um arquivo UTF-8 com Latin-1 (resultado incorreto)
+with open('mensagem.txt', 'r', encoding='iso-8859-1') as arquivo:
+    conteudo = arquivo.read()  # Isso pode exibir caracteres corrompidos
+    print(conteudo)
+```
+
+## exercícios encoding
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios de Arquivos de Texto com Encoding
+    1. Escreva um arquivo de texto `mensagem_utf8.txt` usando o encoding **UTF-8** e armazene a frase "Olá, Mundo!". Em seguida, leia o arquivo e exiba o conteúdo no terminal.
+    1. Crie um arquivo de texto `mensagem_ascii.txt` usando o encoding **ASCII** e armazene a frase "Hello, World!". Depois, tente ler esse arquivo com o encoding **UTF-8** e observe o que acontece.
+    1. Escreva um arquivo `caracteres_especiais.txt` em **ISO-8859-1** e armazene uma frase com caracteres especiais, como "Ação, Café, São Paulo". Em seguida, leia o arquivo com o encoding correto e exiba a frase.
+    1. Escreva um arquivo `frase_latin1.txt` usando **ISO-8859-1** e armazene uma frase em português com acentuação. Leia o arquivo com **UTF-8** e veja o resultado. Depois, corrija o encoding e leia novamente.
+    1. Crie um arquivo `nomes_utf16.txt` usando o encoding **UTF-16** e armazene os nomes "Alice", "Bob" e "Carlos". Leia o arquivo com o encoding **UTF-16** e exiba os nomes no terminal.
+    1. Abra o arquivo `nomes_utf16.txt` com o encoding **UTF-8** e veja o que acontece. Em seguida, corrija o código para usar o encoding correto e leia os nomes novamente.
+    1. Escreva um arquivo de texto `alfabeto.txt` em **ASCII** e armazene o alfabeto de A a Z. Leia o arquivo e exiba o conteúdo no terminal.
+    1. Crie um arquivo `numeros.txt` com o encoding **UTF-8** e armazene os números de 1 a 10, cada número em uma linha. Em seguida, leia o arquivo e exiba os números.
+    1. Crie um arquivo `frase_utf32.txt` com o encoding **UTF-32** e armazene a frase "Python é divertido!". Leia o arquivo com o encoding correto e exiba o conteúdo.
+    1. Escreva um arquivo `mistura.txt` com o encoding **UTF-8** e armazene uma combinação de caracteres de diferentes idiomas (por exemplo, "Olá", "你好", "Hello"). Leia o arquivo e exiba o conteúdo.
+1. Exercícios de Arquivos JSON com Encoding
+    1. Crie um dicionário Python com informações sobre uma pessoa (nome, idade, cidade). Salve-o em um arquivo JSON `pessoa.json` com o encoding **UTF-8**.
+    1. Leia o arquivo `pessoa.json` criado no exercício anterior, decodificando-o com **UTF-8**, e exiba as informações da pessoa.
+    1. Crie um dicionário contendo uma lista de frutas e seus preços. Salve o dicionário em um arquivo JSON `frutas.json` com o encoding **ISO-8859-1**.
+    1. Abra o arquivo `frutas.json` com o encoding **ISO-8859-1** e leia o conteúdo, exibindo a lista de frutas e preços no terminal.
+    1. Crie um arquivo JSON `dados_usuarios.json` com uma lista de dicionários, onde cada dicionário representa um usuário com as chaves: "nome", "idade", "email". Escreva o arquivo usando **UTF-8**.
+    1. Leia o arquivo `dados_usuarios.json` criado no exercício anterior, e exiba a lista de usuários no terminal.
+    1. Crie um dicionário Python com uma lista de frases em diferentes idiomas (português, inglês, chinês). Salve o dicionário em um arquivo JSON `frases.json` com o encoding **UTF-16**.
+    1. Leia o arquivo JSON `frases.json` criado no exercício anterior com o encoding **UTF-16** e exiba as frases no terminal.
+    1. Crie um arquivo JSON `configuracoes.json` com configurações de sistema (por exemplo, tema, idioma, notificações). Salve o arquivo com o encoding **UTF-8**.
+    1. Leia o arquivo `configuracoes.json` e atualize uma das configurações. Em seguida, salve novamente o arquivo com o mesmo encoding.
+
+</details>
