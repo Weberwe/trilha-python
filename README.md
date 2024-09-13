@@ -10,7 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 22 | 13/09/2024 | [`except` genérico](2.programacao-python/tratamento-erros.md#except-genérico)<br>[notação `json`](2.programacao-python/javascript-object-notation.md)<br>[classes](2.programacao-python/programacao-orientada-objetos.md) |
+| 22 | 13/09/2024 | [`except` genérico](2.programacao-python/tratamento-erros.md#except-genérico)<br>[notação `json`](2.programacao-python/javascript-object-notation.md)<br>[classes](2.programacao-python/programacao-orientada-objetos.md)<br>[avaliação](2.programacao-python/avaliacao.md) |
 | 21 | 12/09/2024 | [`encoding`](2.programacao-python/arquivos.md#encoding)<br>[comandos `try` e `except`](2.programacao-python/tratamento-erros.md#blocos-try-e-except) |
 | 20 | 11/09/2024 | [função `dir()`](2.programacao-python/funcoes-built-in.md#dir)<br>[variável `__name__`](2.programacao-python/modulos.md#variável-__name__-)<br>[wildcards](2.programacao-python/modulos.md#wildcards)<br>[operador `walrus`](2.programacao-python/operador-walrus.md) |
 | 19 | 10/09/2024 | [módulo `string`](2.programacao-python/modulos.md#módulo-string) [módulo `math`](2.programacao-python/modulos.md#módulo-math) [módulo `json`](2.programacao-python/modulos.md#módulo-json)<br>[comando `with`](2.programacao-python/arquivos.md#with) [comando `assert`](2.programacao-python/comandos-built-in.md#assert) |

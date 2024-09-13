@@ -85,40 +85,50 @@ No exemplo, subtraindo 11 do resto resultará em :
 
 Logo, `5` é o segundo dígito verificador.
 
-### testando
+### validando os dígitos
 
 Agora que ambos os dígitos são conhecidos (`3` e `5`), é possível validar o CPF.
 
-Para isso, é necessário comparar os dígitos primeiro e segundo com o CPF a ser validado, o `111.444.777-35` deste exemplo. Se o primeiro dígito for igual ao penúltimo número do CPF e o segundo dígito for igual ao último número do CPF, então ele é válido. Se qualquer um deles for diferente, então o CPF é inválido.
+Para isso, é necessário comparar os dígitos primeiro e segundo encontrados com o CPF a ser validado, o `111.444.777-35` deste exemplo. Se o primeiro dígito for igual ao penúltimo número do CPF e o segundo dígito for igual ao último número do CPF, então ele é válido. Se qualquer um deles for diferente, então o CPF é inválido.
 
 Por exemplo :
 - 111.444.777-35 é válido;
 - 111.444.777-36 é inválido;
+- 111.444.777-45 é inválido;
 
-## cpfs inválidos
+## cpfs sempre inválidos
 
-Alguns CPFs podem passar na validação, mas não são considerados inválidos.
+Embora a validação funcione para todos os CPFs no formato esperado, alguns CPFs bem específicos são considerados **sempre** inválidos
 
-São os CPFs com dígitos repetidos, como `111.111.111-11`, `222.222.222-22`, `333.333.333-33`, etc.
+São aqueles com dígitos repetidos, isto é, é composto de apenas um dígito repetido 11 vezes. Por exemplo :
+- `111.111.111-11`
+- `222.222.222-22`
+- `333.333.333-33`,
+- etc
 
-Então, seu código deve ignorar os CPFs acima e avisar ao usuário de sua invalidade.
+Então, seu algoritmo deverá ignorar os CPFs com o padrão acima e avisar ao usuário de sua invalidade.
 
 ## entrada de dados
 
-Seu programa deverá pedir **vários** CPFs ao usuário.
+É muito importante para um validador de CPF ser capaz de receber o CPF do usuário e então retornar uma forma de aviso quando à sua validade.
+
+Então,seu programa deverá pedir **vários** CPFs ao usuário.
 
 Os formatos possíveis para um CPF digitado podem ser `XXX.XXX.XXX-YY`, `XXXXXXXXXYY`, `XXX.XXX.XXXYY`, etc. Não podem ser aceitos caracteres alfanuméricos e caracteres especiais, com exceção do ponto `.` e do traço `-`. Para interromper a digitação dos CPFs o usuário precisará digitar `sair` em vez de um CPF.
 
-Após receber o CPF, seu programa deverá mostrar uma das mensagens abaixo :
-- *O CPF digitato está em um formato inválido*, caso tenha sido digitado letras;
-- *O CPF <cpf_digitado> é inválido!*, se os dígitos verificadores forem diferentes dos dois últimos números do CPF;
-- *O CPF <cpf_digitado> é válido!*, se os dígitos verificadores forem iguais dos dois últimos números do CPF;
+Após receber o CPF, seu programa deverá mostrar se o que foi digitado é válido ou inválido.
+
+Alguns exemplos de mensagens :
+- *O CPF digitato está em um formato inválido*;
+- *Não digite letras no CPF*;
+- *O CPF <cpf_digitado> é inválido!*, se ao menos um dos dígitos verificadores forem diferentes dos dois últimos números do CPF;
+- *O CPF <cpf_digitado> é válido!*, se ambos os dígitos verificadores forem iguais dos dois últimos números do CPF;
 
 O campo <cpf_digitado> deverá estar no formato `XXX.XXX.XXX-YY`, independente de como ele foi digitado pelo usuário.
 
 ## mensagens
 
-Crie mensagens de boas vindas e de encerramento para seu programa.
+Crie mensagens de boas vindas e de encerramento para seu programa. É sempre bom ser educado.
 
 ## otimização
 
@@ -130,13 +140,13 @@ Seu programa deverá, **por hora**, possuir ao menos 4 funções.
 
 ## módulos
 
-Para melhor organização do software, organize seu programa em ao menos 2 módulos. Um deles conterá as funções e variáveis de seu programa e o outro será o módulo principal, que ficará responsável pela execução do programa, chamado de `main.py`.
+Para melhor organização do software, organize seu programa em ao menos 2 módulos. Um deles conterá as funções e variáveis de seu programa e o outro será o módulo principal, que ficará responsável pela execução do programa, chamado de `main.py`. Ele irá realizar o `import` do módulo auxiliar.
 
 ## testes
 
 Para que um programa funcione corretamente, é necessário que haja uma bateria de testes. Para isso, o uso da variável `__name__` dentro de um módulo é imprescindível.
 
-Crie uma lista de testes com diversos CPFs inválidos e válido para serem realizados quando o módulo auxiliar for chamado diretamente.
+Crie uma lista de testes com diversos CPFs inválidos e válido para serem realizados quando o módulo auxiliar for chamado diretamente. Realize testes com todas as funções do seu código. Exiba mensagens informando quando o teste ocorrer conforme o esperado e quando acontece um erro imprevisto.
 
 ## tratando erros
 
@@ -210,12 +220,12 @@ Parte 3
 - [ ] mensagem ao finalizar;
 
 Parte 4
-- [ ] organização do código em ao menos dois módulos;
+- [ ] organização do código em pelo menos dois módulos;
 - [ ] um módulo será de auxiliar, onde terá as funções e variáveis;
 - [ ] o outro será o principal e deverá ser chamado de `main.py`, onde o programa será executado;
 
 Parte 5
-- [ ] use da variável `__name__` para casos de teste no módulo auxiliar;
+- [ ] use da variável `__name__` para casos de teste nos módulos auxiliares;
 - [ ] uso dos blocos `try` e `except`;
 - [ ] criação e armazenamento dos CPFs inválidos em `erros.log`;
 - [ ] criação e armazenamento dos CPFs válidos em `validos.json`;
