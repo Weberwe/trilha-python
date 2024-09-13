@@ -128,9 +128,51 @@ Embora o código da soma dos dígitos do CPF e da validação dos dígitos verif
 
 Seu programa deverá, **por hora**, possuir ao menos 4 funções.
 
-### módulos
+## módulos
 
 Para melhor organização do software, organize seu programa em ao menos 2 módulos. Um deles conterá as funções e variáveis de seu programa e o outro será o módulo principal, que ficará responsável pela execução do programa, chamado de `main.py`.
+
+## testes
+
+Para que um programa funcione corretamente, é necessário que haja uma bateria de testes. Para isso, o uso da variável `__name__` dentro de um módulo é imprescindível.
+
+Crie uma lista de testes com diversos CPFs inválidos e válido para serem realizados quando o módulo auxiliar for chamado diretamente.
+
+## tratando erros
+
+Acontece muito de ocorrer uma interrupção da execução do programa por culpa de um erro imprevisto. Para evitar isso, use os comandos `try` e `except` para evitar que a execução seja interrompida.
+
+Seu programa deverá executar e jamais ser interrompido por um erro inesperado. Use exceções **`específicas`** para bloquear as interrupções.
+
+## arquivos
+
+Arquivos são uma forma eficiente de armazenar informações por tempo indeterminado. Por conta disso, é necessário que sejam criados registros das tentativas de validação do CPF.
+
+Seu programa deverá ter dois arquivos distintos.
+- `erros.log` : o arquivo será responsável por armazenar o CPF digitado pelo usuário e uma mensagem sucinta informando o motido dele ter sido invalidado, conforme o exemplo;
+
+    exemplos :
+    ```log
+    asdf : caracter inválido
+    111.444.777-315 : tamanho inválido
+    123.456.799-87 : 1º dígito inválido
+    111.444777-15 : 1º dígito inválido
+    111.444.777-36 : 2º dígito inválido
+    111.111.111-11 : dígitos repetidos
+    ```
+
+- `validos.json` : o arquivo será responsável por armazenar os CPFs validados e que tiveram seus dois dígitos verificados e aprovados, conforme o exemplo;
+
+    exemplo :
+    ```json
+    {
+      [
+        {"cpf_digitado": "111444.777-35","digito_1": 3,"digito_2": 5,"cpf_formatado": "111.444.777-35"},
+        {"cpf_digitado": "111.444.777-35","digito_1": 3,"digito_2": 5,  "cpf_formatado": "111.444.777-35"},
+        {"cpf_digitado": "11144477735","digito_1": 3,"digito_2": 5,"cpf_formatado": "111.444.777-35"}
+      ]
+    }
+    ```
 
 ## o que usar
 
@@ -168,6 +210,12 @@ Parte 3
 - [ ] mensagem ao finalizar;
 
 Parte 4
-- [ ] organize seu programa em ao menos dois módulos;
+- [ ] organização do código em ao menos dois módulos;
 - [ ] um módulo será de auxiliar, onde terá as funções e variáveis;
 - [ ] o outro será o principal e deverá ser chamado de `main.py`, onde o programa será executado;
+
+Parte 5
+- [ ] use da variável `__name__` para casos de teste no módulo auxiliar;
+- [ ] uso dos blocos `try` e `except`;
+- [ ] criação e armazenamento dos CPFs inválidos em `erros.log`;
+- [ ] criação e armazenamento dos CPFs válidos em `validos.json`;
