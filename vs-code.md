@@ -4,7 +4,7 @@
 
 Abaixo há uma tabela de atalhos usados no VS Code.
 
-<kbd>[</kbd>link com atalhos<kbd>](</kbd>https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+[link com atalhos](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
 
 ### Geral
 
