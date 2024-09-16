@@ -11,6 +11,8 @@
 1. [exercícios `break` e `continue`](#exercícios-break-e-continue)
 1. [`assert`](#assert)
 1. [exercícios `assert`](#exercicios-assert)
+1. [`yield`](#yield)
+1. [exercícios `yield`](#exercícios-yield)
 
 # comandos built-in
 
@@ -1105,5 +1107,199 @@ Aqui, a maneira correta seria utilizar um framework de testes como `unittest` ou
 1. **Verificação de vogais**: Escreva uma função que usa `assert` para garantir que uma string contém pelo menos uma vogal.
 1. **Intervalo fechado**: Crie uma função que recebe dois números e usa `assert` para garantir que o segundo número é maior que o primeiro.
 1. **Verificando múltiplos de 3**: Escreva uma função que percorra uma lista de números e use `assert` para garantir que todos os números são múltiplos de 3.
+
+</details>
+
+## `yield`
+
+O comando `yield` no Python é uma palavra-chave que transforma uma função comum em um gerador. Um gerador é uma função que produz uma sequência de valores ao invés de retornar todos os valores de uma vez como faz a função `return`. Em vez disso, a função com `yield` "pausa" sua execução e retorna um valor temporário a cada chamada. Quando a função é chamada novamente, a execução continua de onde parou, até atingir o fim da função ou encontrar outro `yield`.
+
+### como funciona
+
+O `yield` permite que uma função retorne valores de forma incremental sem perder o estado intermediário entre as iterações. Cada vez que o `yield` é chamado, a função é interrompida e o controle é passado de volta para o chamador. Quando o chamador pede o próximo valor (geralmente por meio de um loop ou da função `next()`), a função continua sua execução exatamente de onde parou.
+
+**Exemplo**
+
+```python
+def contador(limit):
+    n = 0
+    while n < limit:
+        yield n  # Pausa e retorna o valor atual de n
+        n += 1
+
+# Usando o gerador
+for num in contador(5):
+    print(num)
+```
+**Saída**
+
+```
+0
+1
+2
+3
+4
+```
+
+Nesse exemplo, a função contador gera números de 0 até limit - 1. Cada vez que a função encontra o `yield`, ela pausa e retorna o valor atual de `n`. Quando a função é chamada de novo, a execução continua do ponto em que foi interrompida, incrementando o valor de `n`.
+
+### `yield` vs `return`
+
+- `return` finaliza a execução da função e retorna um valor (ou vários valores de uma vez em uma lista, tupla, etc.). Uma vez que uma função retorna, ela perde seu estado;
+- `yield` pausa a execução da função e lembra do estado atual, podendo ser retomada a partir desse ponto;
+
+**Exemplo com `return`**
+
+```python
+def retorna_lista():
+    return [0, 1, 2, 3, 4]
+
+for num in retorna_lista():
+    print(num)
+```
+
+Neste caso, a função `retorna_lista` retorna todos os valores de uma vez, o que pode ser ineficiente se a lista for muito grande.
+
+**Exemplo com `yield`**
+
+```python
+def gera_numeros():
+    for i in range(5):
+        yield i
+
+for num in gera_numeros():
+    print(num)
+```
+
+Aqui, os valores são gerados um de cada vez, economizando memória.
+
+### para que serve
+
+O `yield` é útil quando se deseja criar iteradores personalizados ou quando quer lidar com grandes volumes de dados sem carregar tudo na memória de uma vez. Ele permite:
+
+- **eficiência de memória** : ao gerar grandes volumes de dados, como números em sequência ou linhas de um arquivo muito grande, o `yield` permite trabalhar com esses dados aos poucos, sem precisar carregá-los todos na memória;
+
+- **manutenção de estado** : o `yield` mantém o estado interno da função entre as execuções, possibilitando a criação de iteradores personalizados sem precisar de variáveis externas;
+
+**Exemplo de leitura de um arquivo grande**
+
+```python
+def ler_arquivo_em_pedacos(arquivo, tamanho_bloco):
+    with open(arquivo, 'r') as f:
+        while True:
+            bloco = f.read(tamanho_bloco)
+            if not bloco:
+                break
+            yield bloco
+
+# usando o gerador
+for bloco in ler_arquivo_em_pedacos('arquivo_grande.txt', 1024):
+    print(bloco)
+```
+
+Aqui, em vez de ler o arquivo inteiro de uma vez (o que pode ser inviável para arquivos grandes), ele lê pedaços de 1024 bytes e vai processando bloco por bloco.
+
+### vantagens
+
+- **eficiência de memória** : como o `yield` retorna um valor por vez, ele não precisa armazenar todos os valores na memória. Isso é particularmente útil ao trabalhar com grandes coleções de dados ou streams de dados contínuos.
+
+- **código mais limpo** : facilita a criação de iteradores personalizados sem precisar implementar manualmente o protocolo de iterador (usando `__iter__()` e `__next__()`).
+
+- **lazy evaluation** : o `yield` gera valores sob demanda, o que pode evitar o cálculo desnecessário de valores futuros que talvez nunca sejam usados;
+
+### desvantagens
+
+- **dificuldade de depuração** : como o `yield` pausa a execução da função e mantém o estado, o fluxo de execução pode ser mais difícil de seguir e depurar, especialmente em casos complexos;
+
+- **fica limitado ao contexto** : como o `yield` mantém o estado da função, não pode ser usado diretamente em situações onde se precisa de todos os resultados ao mesmo tempo (como enviar dados para uma API que requer tudo de uma vez);
+
+- **perda de flexibilidade** : uma função com `yield` não pode retornar valores diretamente como uma função normal com `return`; portanto, ela só pode ser usada dentro do contexto de iteração';
+
+**Exemplo de uso incorreto**
+
+```python
+def minha_funcao():
+    if True:
+        yield 1
+    return 2
+
+# Tentando usar o gerador
+print(list(minha_funcao()))
+```
+
+**Saída**
+
+```
+1
+```
+
+Aqui, `return` 2 é ignorado, pois a função foi transformada em um gerador. O `yield` transforma a função em um gerador, então o `return` no meio de uma função com `yield` só termina o gerador (e não retorna o valor 2).
+
+### como não usar
+
+- não use `yield` se precisa de todos os resultados imediatamente. Nesse caso, é mais apropriado usar `return` com uma lista ou outro tipo de coleção;
+- não tente usar `yield` em contextos onde os valores gerados precisam ser reutilizados várias vezes. O gerador é consumido uma vez e não pode ser resetado automaticamente;
+
+**Exemplo sequência Fibonacci com `yield`**
+
+```python
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+# Usando o gerador Fibonacci
+fib_gen = fibonacci()
+for _ in range(10):
+    print(next(fib_gen))
+```
+
+**Saída**
+
+```
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+```
+
+Aqui, foi criado um gerador infinito que gera a sequência de Fibonacci, e o código que o consome pode decidir quantos valores ele quer, sem gerar a sequência inteira de uma vez;
+
+## exercícios `yield`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios Básicos:
+    1. **Contador Simples** : Crie uma função geradora chamada `meu_contador` que usa `yield` para contar de 0 até 9.
+    1. **Intervalo de Números** : Modifique o exercício anterior para aceitar dois parâmetros (`inicio` e `fim`) e gerar números de `inicio` até `fim-1`.
+    1. **Pares e Ímpares** : Crie um gerador chamado `pares_ate` que gere números pares até um número fornecido como argumento.
+    1. **Letras do Alfabeto** : Crie uma função geradora chamada `alfabeto` que gere as letras de 'a' até 'z' usando o `yield`.
+    1. **Sequência Fibonacci** : Escreva uma função geradora chamada `fibonacci` que gere a sequência de Fibonacci até um limite fornecido.
+1. Exercícios Intermediários:
+    1. **Quadrados Perfeitos** : Crie um gerador que gere os quadrados perfeitos (1, 4, 9, 16, etc.) até um número limite.
+    1. **Gerador de Potências de 2** : Escreva uma função que gera potências de 2 até uma potência máxima especificada como argumento.
+    1. **Gerador de Fatorial** : Escreva um gerador que calcule o fatorial de números de 1 a n (onde n é passado como argumento).
+    1. **Número Primo** : Crie uma função geradora chamada `primos` que gere números primos até um valor limite fornecido.
+    1. **Múltiplos de 3 e 5** : Crie um gerador que retorna números múltiplos de 3 e 5 até um valor limite.
+1. Exercícios Avançados:
+    1. **Gerador de Strings** : Escreva um gerador chamado `gerador_strings` que receba uma lista de strings e retorne uma string por vez até a lista estar vazia.
+    1. **Caminhar por Lista** : Crie um gerador que receba uma lista e produza os elementos dessa lista um por vez, permitindo pausar e retomar o processo.
+    1. **Gerador de Data** : Escreva um gerador que, dado um intervalo de datas (por exemplo, de '2024-01-01' a '2024-01-10'), gere cada data do intervalo.
+    1. **Leitura em Blocos** : Escreva um gerador que leia um arquivo de texto em blocos de 1024 bytes e retorne o conteúdo de cada bloco até o fim do arquivo.
+    1. **Série Harmônica** : Crie um gerador que produza os termos da série harmônica \( H_n = 1 + \frac{1}{2} + \frac{1}{3} + \ldots \frac{1}{n} \), onde `n` é passado como limite.
+1. Exercícios de Aplicação:
+    1. **Números Aleatórios** : Escreva um gerador que gere números aleatórios dentro de um intervalo definido e limite o número de números gerados.
+    1. **Texto em Palavras** : Escreva um gerador que receba um texto e retorne uma palavra de cada vez.
+    1. **Caminhada Aleatória (Random Walk)** : Crie um gerador que simule uma caminhada aleatória unidimensional (por exemplo, +1 ou -1 a cada passo) e gere a posição atual a cada iteração.
+    1. **Iterador Personalizado** : Crie um gerador que receba uma lista de números e retorne o dobro de cada número a cada iteração.
+    1. **Caminho de Arquivos** : Escreva um gerador que percorra um diretório e retorne o caminho completo de cada arquivo encontrado.
 
 </details>

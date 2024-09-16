@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 23 | 16/09/2024 | [comando `yield`](2.programacao-python/comandos-built-in.md#yield)<br>[métodos mágicos](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos)<br>[método `__str__()`](2.programacao-python/programacao-orientada-objetos.md#método-__str__) [métodos `__repr()__`](2.programacao-python/programacao-orientada-objetos.md#método-__repr__) |
 | 22 | 13/09/2024 | [`except` genérico](2.programacao-python/tratamento-erros.md#except-genérico)<br>[notação `json`](2.programacao-python/javascript-object-notation.md)<br>[classes](2.programacao-python/programacao-orientada-objetos.md)<br>[avaliação - parte 5](2.programacao-python/avaliacao.md) |
 | 21 | 12/09/2024 | [`encoding`](2.programacao-python/arquivos.md#encoding)<br>[comandos `try` e `except`](2.programacao-python/tratamento-erros.md#blocos-try-e-except) |
 | 20 | 11/09/2024 | [função `dir()`](2.programacao-python/funcoes-built-in.md#dir)<br>[variável `__name__`](2.programacao-python/modulos.md#variável-__name__-)<br>[wildcards](2.programacao-python/modulos.md#wildcards)<br>[operador `walrus`](2.programacao-python/operador-walrus.md) |

@@ -1,3 +1,20 @@
+Índice
+
+1. [principais conceitos da poo](#principais-conceitos-da-poo)
+1. [benefícios da poo](#benefícios-da-poo)
+1. [comando `class`](#comando-class)
+1. [método `__init__`](#método-__init__)
+1. [atributos](#atributos)
+    1. [atributos de instância](#atributos-de-instância)
+    1. [atributos de classe](#atributos-de-classe)
+1. [métodos de instância](#métodos-de-instância)
+1. [exercícios](#exercícios)
+1. [métodos mágicos](#métodos-mágicos)
+1. [método `__str__`](#método-__str__)
+1. [método `__repr__`](#método-__repr__)
+1. [`__str__` vs `__repr__`](#__str__-vs-__repr__)
+1. [exercícios `__str__` e `__repr__`](#exercícios-__str__-e-__repr__)
+
 # programação orientada a objetos
 
 A **Programação Orientada a Objetos (POO)** é um paradigma de desenvolvimento de software que organiza o código em torno de **objetos**, em vez de funções e procedimentos. Esses objetos são instâncias de **classes** (representações abstratas de entidades do mundo real ou de conceitos dentro do sistema), que encapsulam tanto os **dados** (atributos) quanto as **funções** (métodos) que operam sobre esses dados.
@@ -450,5 +467,160 @@ Os métodos de **classe** e **estátivco** serão vistos posteriormente.
     1. **Método com Condicionais e Modificações** : Crie uma classe `Aluno` com os atributos `nome`, `notas` (uma lista de notas) e `media`. Adicione um método `calcular_media` que calcule a média das notas e defina se o aluno está aprovado ou não (média >= 7).
     1. **Método que Reconfigura um Atributo** : Crie uma classe `Veiculo` com o atributo `velocidade`. Adicione um método `ajustar_velocidade` que defina um novo valor para a velocidade e exiba a nova velocidade.
     1. **Método que Lida com Atributos Dinâmicos** : Crie uma classe `Cachorro` com os atributos `nome` e `energia`. Adicione métodos `brincar` (que reduz a energia) e `descansar` (que aumenta a energia), com o valor de energia nunca podendo ser menor que 0 ou maior que 100.
+
+</details>
+
+## métodos mágicos
+
+**Métodos mágicos**, também conhecidos como **métodos dunder** (double underscore ou “duplo sublinhado”) em Python, são funções especiais que têm nomes com dois underscores no início e no fim, como `__init__`, `__str__`, `__len__`, entre outros. Esses métodos permitem que se defina comportamentos especiais para suas classes e instâncias, personalizando como os objetos se comportam em diferentes situações, como ao serem criados, comparados, adicionados, multiplicados, ou quando se tenta acessá-los de maneira específica.
+
+A principal função desses métodos é permitir a **sobrecarga de operadores** (como `+`, `-`, `*`, `==`) e comportamentos integrados, ou seja, definir o que acontece quando se tenta utilizar operadores ou funções nativas em suas classes personalizadas. Eles também são usados em casos mais comuns, como :
+
+- inicialização de objetos (`__init__`);
+- representação de objetos como strings (`__str__`, `__repr__`);
+- comparação entre objetos (`__eq__`, `__lt__`, etc.);
+- implementação de coleções customizadas (`__getitem__`, `__setitem__`, etc.);
+
+Esses métodos são automaticamente invocados em várias situações. Eles são um dos pilares da programação orientada a objetos em Python, proporcionando flexibilidade e personalização ao comportamento de objetos.
+
+## método `__str__`
+
+O método `__str__` é utilizado para **definir uma representação "legível" ou amigável** de um objeto. Esse método é chamado automaticamente quando usamos a função `print()` ou `str()` em uma instância de uma classe. A ideia por trás de `__str__` é gerar uma saída que seja útil para o **usuário final**, tornando o objeto mais fácil de entender.
+
+**Exemplo**
+
+```python
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    def __str__(self):
+        return f'{self.nome} tem {self.idade} anos.'
+
+# criação de uma instância
+pessoa1 = Pessoa("João", 30)
+
+# utilizando print(), que chama __str__
+print(pessoa1)  # saída : João tem 30 anos.
+```
+
+Neste exemplo, o método `__str__` foi implementado para que, quando a instância `pessoa1` for impressa, a saída seja uma frase legível para o usuário. Essa frase foi projetada para ser amigável e facilmente compreendida.
+
+## método `__repr__`
+
+O método `__repr__` é utilizado para fornecer uma **representação oficial e mais técnica do objeto**, muitas vezes com o objetivo de ser usada para **depuração** (debugging). A convenção é que `__repr__` tente retornar uma string que, se possível, possa ser utilizada para **recriar** o objeto (ou ao menos fornecer informações detalhadas sobre ele). Seu propósito principal é fornecer uma representação precisa para desenvolvedores.
+
+**Exemplo**
+
+```python
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    def __repr__(self):
+        return f'Pessoa(nome={self.nome!r}, idade={self.idade!r})'
+
+# Criação de uma instância
+pessoa1 = Pessoa("João", 30)
+
+# Chamando diretamente __repr__
+print(repr(pessoa1))  # Saída: Pessoa(nome='João', idade=30)
+```
+
+Aqui, o método `__repr__` foi implementado para exibir os valores exatos dos atributos `nome` e `idade`, permitindo que a saída fosse mais detalhada e útil para entender o estado interno do objeto. Isso ajuda em depuração e, se possível, até recriar a instância de maneira precisa.
+
+Dentro de uma `f-string` (formatted string literal), o `!r` é um especificador de formato que instrui o interpretador a usar a função `repr()` no valor da variável que o precede. Em outras palavras, ele garante que a representação da string do valor seja a mesma que seria obtida se chamasse explicitamente `repr()` nesse valor
+
+## `__str__` vs `__repr__`
+
+### finalidade
+
+- **`__str__`** : é voltado para o usuário final, como ao exibir relatórios ou mensagens de log que os usuários verão. O foco está em fornecer uma saída legível e amigável. Ele pode omitir detalhes técnicos e ser mais descritivo;
+- **`__repr__`** : é voltado para desenvolvedores. A intenção é fornecer uma representação detalhada e técnica do objeto, idealmente uma que possa ser usada para recriar o objeto. A saída de `__repr__` deve ser mais exata e explícita, especialmente em depuração;
+
+### chamadas automáticas
+
+- **`__str__`** : é chamado quando a função `print()` ou `str()` é usada;
+- **`__repr__`** : é chamado quando você usa `repr()`, ou quando se simplesmente digita o nome da instância no prompt do interpretador Python. Se `__str__` não estiver definido, o Python usará `__repr__` como fallback, enquanto o contrário não é verdadeiro (ou seja, se `__repr__` não for definido, Python não utiliza `__str__` para depuração).;
+
+### recriação do objeto
+
+- **`__str__`** : não precisa, e geralmente não deve, tentar recriar o objeto. Seu objetivo é apenas fornecer uma descrição;
+- **`__repr__`** : idealmente, a string retornada por `__repr__` deve conter informações suficientes para recriar o objeto;
+
+### exemplo comparativo
+
+Veja a classe `Carro` implementar ambos os métodos para comparar como eles funcionam
+
+```python
+class Carro:
+    def __init__(self, marca, modelo, ano):
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+
+    def __str__(self):
+        return f"{self.marca} {self.modelo} ({self.ano})"
+
+    def __repr__(self):
+        return f"Carro(marca={self.marca!r}, modelo={self.modelo!r}, ano={self.ano!r})"
+
+# criando uma instância
+carro1 = Carro("Toyota", "Corolla", 2020)
+
+# usando print(), que chama __str__
+print(carro1)  # saída : Toyota Corolla (2020)
+
+# usando repr(), que chama __repr__
+print(repr(carro1))  # saída : Carro(marca='Toyota', modelo='Corolla', ano=2020)
+```
+
+**Explicação**
+
+- **`__str__`** : a saída `Toyota Corolla (2020)` é concisa e legível. Ela não se preocupa com o fato de que os valores de `marca`, `modelo` e `ano` são strings. Isso é o que um usuário final esperaria ver ao visualizar as informações do carro.
+
+- **`__repr__`** : a saída `Carro(marca='Toyota', modelo='Corolla', ano=2020)` é mais técnica. Ela exibe os valores dos atributos entre aspas e no formato de uma chamada de construtor, facilitando o entendimento do estado interno do objeto. Essa saída seria útil para um desenvolvedor que está inspecionando o objeto durante a depuração.
+
+### em suma
+
+- **`__str__`**:
+    - imprimir informações para o usuário final;
+    - gerar relatórios;
+    - criar uma saída amigável para logs ou interfaces de usuário;
+
+- **`__repr__`**:
+    - durante a depuração, para ver os detalhes técnicos do objeto;
+    - para testar como os atributos de uma instância foram configurados;
+    - em ambientes de desenvolvimento, como ao inspecionar o objeto no terminal do python;
+
+## exercícios `__str__` e `__repr__`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. 10 Exercícios para o Método `__str__`
+    1. Crie uma classe `Livro` que tenha os atributos `titulo`, `autor` e `ano_publicacao`. Implemente o método `__str__` para que ele retorne uma string no formato: `"Título: <titulo>, Autor: <autor>, Ano: <ano_publicacao>"`. Crie instâncias dessa classe e use `print()` para exibir as informações.
+    1. Crie uma classe `Produto` com os atributos `nome` e `preco`. Implemente o método `__str__` para que retorne uma string que diga: `"Produto: <nome>, Preço: R$ <preco>"`. Crie pelo menos 3 instâncias dessa classe e exiba as informações de cada produto usando `print()`.
+    1. Faça uma classe `Pessoa` com os atributos `nome`, `idade` e `cidade`. No método `__str__`, mostre uma frase que inclua esses atributos em um formato legível. Instancie a classe e use `print()` para mostrar o resultado.
+    1. Crie uma classe `Veiculo` com os atributos `marca`, `modelo` e `ano`. Implemente o método `__str__` para que a saída seja algo como: `"Veículo: <marca> <modelo> - Ano: <ano>"`. Crie algumas instâncias e teste a saída.
+    1. Crie uma classe `ContaBancaria` que possua os atributos `titular` e `saldo`. Implemente o método `__str__` para exibir: `"Conta de <titular>, Saldo: R$ <saldo>"`. Use instâncias dessa classe com o comando `print()`.
+    1. Crie uma classe `Filme` com os atributos `titulo`, `diretor` e `ano_lancamento`. No método `__str__`, mostre uma frase no formato: `"Filme: <titulo> (Dirigido por <diretor> - <ano_lancamento>)"`. Instancie e teste a classe.
+    1. Crie uma classe `Jogo` com os atributos `nome`, `plataforma` e `genero`. Implemente o método `__str__` para que a saída seja no formato: `"Jogo: <nome> - Plataforma: <plataforma> - Gênero: <genero>"`. Crie objetos e exiba as informações usando `print()`.
+    1. Faça uma classe `Aluno` com os atributos `nome`, `matricula` e `curso`. Implemente o método `__str__` para exibir as informações em uma frase completa. Crie alguns objetos e exiba-os.
+    1. Crie uma classe `Cidade` com os atributos `nome`, `estado` e `populacao`. Use o método `__str__` para gerar uma string no formato: `"Cidade: <nome>, Estado: <estado>, População: <populacao>"`. Instancie e teste.
+    1. Crie uma classe `Carro` com os atributos `marca`, `modelo` e `cor`. No método `__str__`, exiba a seguinte mensagem: `"Carro: <marca> <modelo> na cor <cor>"`. Crie instâncias e teste com o `print()`.
+1. 10 Exercícios para o Método `__repr__`
+    1. Crie uma classe `Livro` com os atributos `titulo`, `autor` e `ano_publicacao`. Implemente o método `__repr__` para retornar: `"Livro(titulo='<titulo>', autor='<autor>', ano_publicacao=<ano_publicacao>)"`. Crie instâncias e chame `repr()` para testar.
+    1. Faça uma classe `Produto` com os atributos `nome` e `preco`. Implemente o método `__repr__` para retornar uma string que reproduza a criação do objeto, como: `"Produto(nome='<nome>', preco=<preco>)"`. Teste no terminal do Python.
+    1. Crie uma classe `Pessoa` com os atributos `nome`, `idade` e `cidade`. Implemente o método `__repr__` de forma que ele retorne uma string no formato: `"Pessoa(nome='<nome>', idade=<idade>, cidade='<cidade>')"`. Teste com o comando `repr()`.
+    1. Crie uma classe `ContaBancaria` com os atributos `titular` e `saldo`. No método `__repr__`, retorne: `"ContaBancaria(titular='<titular>', saldo=<saldo>)"`. Instancie e teste no terminal chamando `repr()`.
+    1. Crie uma classe `Carro` com os atributos `marca`, `modelo` e `ano`. Implemente o método `__repr__` de forma que retorne a seguinte string: `"Carro(marca='<marca>', modelo='<modelo>', ano=<ano>)"`. Use `repr()` para verificar.
+    1. Crie uma classe `Filme` com os atributos `titulo`, `diretor` e `ano_lancamento`. No método `__repr__`, retorne algo como: `"Filme(titulo='<titulo>', diretor='<diretor>', ano_lancamento=<ano_lancamento>)"`. Teste no terminal chamando `repr()`.
+    1. Faça uma classe `Aluno` com os atributos `nome`, `matricula` e `curso`. No método `__repr__`, exiba algo no formato: `"Aluno(nome='<nome>', matricula='<matricula>', curso='<curso>')"`. Instancie objetos e teste com `repr()`.
+    1. Crie uma classe `Jogo` com os atributos `nome`, `plataforma` e `genero`. No método `__repr__`, retorne algo como: `"Jogo(nome='<nome>', plataforma='<plataforma>', genero='<genero>')"`. Teste o método `repr()`.
+    1. Crie uma classe `Cidade` com os atributos `nome`, `estado` e `populacao`. Implemente o método `__repr__` para retornar: `"Cidade(nome='<nome>', estado='<estado>', populacao=<populacao>)"`. Teste o método.
+    1. Crie uma classe `Empresa` com os atributos `nome`, `fundacao` e `localizacao`. No método `__repr__`, retorne: `"Empresa(nome='<nome>', fundacao=<fundacao>, localizacao='<localizacao>')"`. Crie instâncias e chame `repr()`.
 
 </details>
