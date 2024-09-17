@@ -1294,7 +1294,6 @@ Aqui, foi criado um gerador infinito que gera a sequência de Fibonacci, e o có
     1. **Caminhar por Lista** : Crie um gerador que receba uma lista e produza os elementos dessa lista um por vez, permitindo pausar e retomar o processo.
     1. **Gerador de Data** : Escreva um gerador que, dado um intervalo de datas (por exemplo, de '2024-01-01' a '2024-01-10'), gere cada data do intervalo.
     1. **Leitura em Blocos** : Escreva um gerador que leia um arquivo de texto em blocos de 1024 bytes e retorne o conteúdo de cada bloco até o fim do arquivo.
-    1. **Série Harmônica** : Crie um gerador que produza os termos da série harmônica \( H_n = 1 + \frac{1}{2} + \frac{1}{3} + \ldots \frac{1}{n} \), onde `n` é passado como limite.
 1. Exercícios de Aplicação:
     1. **Números Aleatórios** : Escreva um gerador que gere números aleatórios dentro de um intervalo definido e limite o número de números gerados.
     1. **Texto em Palavras** : Escreva um gerador que receba um texto e retorne uma palavra de cada vez.
