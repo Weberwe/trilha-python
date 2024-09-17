@@ -624,3 +624,456 @@ print(repr(carro1))  # saída : Carro(marca='Toyota', modelo='Corolla', ano=2020
     1. Crie uma classe `Empresa` com os atributos `nome`, `fundacao` e `localizacao`. No método `__repr__`, retorne: `"Empresa(nome='<nome>', fundacao=<fundacao>, localizacao='<localizacao>')"`. Crie instâncias e chame `repr()`.
 
 </details>
+
+## métodos mágicos de operadores aritméticos
+
+Os métodos mágicos dos operadores aritméticos permitem que se defina como os objetos de uma classe personalizada devem se comportar quando são envolvidos em operações matemáticas, como adição, subtração, multiplicação, etc. Esses métodos são chamados **sobrecarga de operadores** (operator overloading), já que permitem redefinir o comportamento de operadores padrão (como `+`, `-`, `*`, etc.) para tipos definidos pelo usuário.
+
+Uma lista completa deles pode ser encontrada [aqui](https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types).
+
+### lista de alguns métodos mágicos aritméticos
+
+- `__add__(self, other)` : adição (`+`)
+- `__sub__(self, other)` : subtração (`-`)
+- `__mul__(self, other)` : multiplicação (`*`)
+- `__truediv__(self, other)` : divisão (`/`)
+- `__floordiv__(self, other)` : divisão inteira (`//`)
+- `__mod__(self, other)` : módulo (resto da divisão) (`%`)
+- `__pow__(self, other)` : exponenciação (`**`)
+
+Observe que todos esses métodos recebem um segundo argumento chamado `other`. Na maioria dos casos, esse argumento deve ser do mesmo tipo que `self` ou um tipo compatível. Se esse não for o caso, pode-se levantar um erro.
+
+### `__add__()`
+
+O método `__add__(self, other)` define o comportamento para o operador `+`. Ele é chamado quando se tenta adicionar dois objetos.
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __add__(self, outro):
+        print('__add__ chamado')
+        return Numero(self.valor + outro.valor)
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+# criando dois objetos
+num1 = Numero(10)
+num2 = Numero(20)
+
+# usando o operador de adição
+soma = num1 + num2
+# __add__ chamado
+print(soma)
+# saída :
+# Numero(30)
+```
+
+Neste exemplo, `__add__` define o comportamento do operador `+` para a classe `Numero`, retornando um novo objeto `Numero` com o valor somado.
+
+### `__sub__()`
+
+O método `__sub__(self, other)` define o comportamento para o operador de subtração (`-`).
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __sub__(self, outro):
+        print('__sub__ chamado')
+        return Numero(self.valor - outro.valor)
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+num1 = Numero(30)
+num2 = Numero(10)
+
+subtracao = num1 - num2
+# __sub__ chamado
+print(subtracao)
+# saída :
+# Numero(20)
+```
+
+### `__mul__()`
+
+O método `__mul__(self, other)` define o comportamento para a multiplicação (`*`).
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __mul__(self, outro):
+        print('__mul__ chamado')
+        return Numero(self.valor * outro.valor)
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+num1 = Numero(5)
+num2 = Numero(3)
+
+multiplicacao = num1 * num2
+# __mul__ chamado
+print(multiplicacao)
+# saída :
+# Numero(15)
+```
+
+### `__truediv__()`
+
+O método `__truediv__(self, other)` define o comportamento para a divisão (`/`).
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __truediv__(self, outro):
+        print('__truediv__ chamado')
+        return Numero(self.valor / outro.valor)
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+num1 = Numero(10)
+num2 = Numero(2)
+
+divisao = num1 / num2
+# __truediv__ chamado
+print(divisao)
+# saída :
+# Numero(5.0)
+```
+
+### `__floordiv__()`
+
+O método `__floordiv(self, other)` define o comportamento para a divisão inteira (`//`).
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __floordiv__(self, outro):
+        print('__floordiv__ chamado')
+        return Numero(self.valor // outro.valor)
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+num1 = Numero(10)
+num2 = Numero(3)
+
+divisao_inteira = num1 // num2
+# __floordiv__ chamado
+print(divisao_inteira)
+# saída :
+# Numero(3.0)
+```
+
+### `__mod__()`
+
+O método `__mod__(self, other)` define o comportamento para o operador de módulo (`%`), que retorna o resto da divisão.
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __mod__(self, outro):
+        print('__mod__ chamado')
+        return Numero(self.valor % outro.valor)
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+num1 = Numero(10)
+num2 = Numero(3)
+
+modulo = num1 % num2
+# __mod__ chamado
+print(modulo)  # Saída: Numero(1)
+# saída :
+# Numero(1)
+```
+
+### `__pow__()`
+
+O método `__pow__(self, other[, modulo])` define o comportamento para a exponenciação (`**`).
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __pow__(self, outro, modulo=None):
+        print('__pow__ chamado')
+        if modulo is None:
+            return Numero(self.valor ** outro.valor)
+        return Numero(pow(self.valor, outro, modulo))
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+num1 = Numero(2)
+num2 = Numero(3)
+
+exponenciacao = num1 ** num2
+# __pow__ chamado
+print(exponenciacao)
+# saída :
+# Numero(8)
+```
+
+### operadores reflexivos
+
+Os operadores reflexivos são usados quando o objeto à esquerda da operação não pode realizar a operação e, portanto, o Python tenta chamar a operação inversa no objeto à direita.
+
+- **`__radd__(self, other)`** : reflexivo da adição
+- **`__rsub__(self, other)`** : reflexivo da subtração
+- **`__rmul__(self, other)`** : reflexivo da multiplicação
+- **`__rtruediv__(self, other)`** : reflexivo da divisão
+- **`__rfloordiv__(self, other)`** : reflexivo da divisão inteira
+- **`__rmod__(self, other)`** : reflexivo do módulo (resto da divisão)
+- **`__rpow__(self, other[, modulo])`** : reflexivo da exponenciação
+
+Esses métodos são úteis quando se deseja permitir que operações entre objetos de tipos diferentes sejam realizadas corretamente.
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __add__(self, outro):
+        print('__add__ chamado')
+        return Numero(self.valor + outro.valor)
+
+    def __radd__(self, outro):
+        print("__radd__ chamado")
+        return Numero(self.valor + outro)
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+# criando dois objetos
+num1 = Numero(10)
+num2 = Numero(20)
+
+# usando o operador de adição
+soma = num1 + num2
+# __add__ chamado
+print(soma)
+# saída :
+# Numero(30)
+
+# usando um objeto do tipo inteiro
+soma = 2 + num1
+# __radd__ chamado
+print(soma)
+# saída :
+# Numero(12)
+```
+
+---
+
+### operadores in-place
+
+Os **operadores in-place** são utilizados para modificar o objeto à esquerda em vez de criar um novo. Eles correspondem aos operadores como `+=`, `-=`, `*=`, etc.
+
+- `__iadd__(self, other)` para `self += other`
+- `__isub__(self, other)` para `self -= other`
+- `__imul__(self, other)` para `self *= other`
+- `__itruediv__(self, other)` para `self /= other`
+- `__ifloordiv__(self, other)` para `self //= other`
+- `__imod__(self, other)` para `self %= other`
+- `__ipow__(self, other[, modulo])` para `self **= other`
+
+**Exemplo**
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __add__(self, outro):
+        print('__add__ chamado')
+        return Numero(self.valor + outro.valor)
+
+    def __iadd__(self, outro):
+        print('__iadd__ chamado')
+        self.valor += outro
+        return self
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+num = Numero(10)
+num += 5  # modifica o próprio objeto em vez de criar um novo
+# __iadd__ chamado
+print(num)  # saída : Numero(15)
+```
+
+Neste exemplo, o operador `+=` modifica o valor de `num` diretamente, graças à implementação do método `__iadd__`. Sem ele, a operação `+=` criaria um novo objeto ao invés de modificar o existente.
+
+### exemplo completo
+
+Abaixo há um exemplo completo da aplicação dos três métodos mágicos da soma. O mesmo raciocínio pode ser feito para os demais operadores.
+
+```python
+class Numero:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __add__(self, outro):
+        print('__add__ chamado')
+        if isinstance(outro, Numero):
+            return Numero(self.valor + outro.valor)
+        elif isinstance(outro, int | float):
+            return Numero(self.valor + outro)
+        else:
+            raise TypeError("operação de tipo não suportado para +")
+
+    def __radd__(self, outro):
+        print("__radd__ chamado")
+        return self.__add__(outro)
+
+    def __iadd__(self, outro):
+        print('__iadd__ chamado')
+        self.valor += outro
+        return self
+
+    def __repr__(self):
+        return f"Numero({self.valor})"
+
+# criando dois objetos
+num1 = Numero(10)
+num2 = Numero(20)
+
+soma = num1 + num2
+# __add__ chamado
+print(soma, end='\n\n')  # saída : Numero(30)
+
+soma = 2 + num1
+# __radd__ chamado
+# __add__ chamado
+print(soma, end='\n\n')  # saída : Numero(12)
+
+num1 += 5
+# __iadd__ chamado
+print(num1, end='\n\n')  # saída : Numero(15)
+
+num1 += num2
+# __iadd__ chamado
+# __radd__ chamado
+# __add__ chamado
+print(num1, end='\n\n')  # saída : Numero(30)
+```
+
+- Repare nas 3 chamadas quando é feita a operação `num1 += num2`.
+
+## exercícios métodos mágicos operadores aritméticos
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios para `__add__`, `__radd__`, e `__iadd__`
+    1. Crie uma classe `Numero` que implemente o método mágico `__add__` para somar dois objetos dessa classe.
+    1. Modifique a classe `Numero` para que também possa somar um número inteiro ou float a um objeto `Numero` utilizando `__add__`.
+    1. Implemente o método mágico `__radd__` na classe `Numero` para permitir que a adição funcione quando um número é somado a um objeto `Numero`.
+    1. Crie dois objetos da classe `Numero` e realize a soma utilizando o operador `+`. Observe a saída.
+    1. Teste a classe `Numero` somando um número inteiro a um objeto `Numero`. Verifique se `__radd__` foi chamado corretamente.
+    1. Modifique a classe `Numero` para implementar o método `__iadd__` e permita que o operador `+=` modifique o objeto original.
+    1. Crie um objeto `Numero` e utilize o operador `+=` para adicionar um valor a ele. Verifique se o objeto foi modificado corretamente.
+    1. Tente somar dois objetos `Numero` e atribuí-los diretamente a um deles usando o operador `+=`. Verifique o resultado.
+    1. Crie uma classe `Fracao` que implemente os métodos `__add__`, `__radd__` e `__iadd__` para somar frações.
+    1. Teste a classe `Fracao` somando frações e utilizando o operador `+=` para modificar o objeto original.
+1. Exercícios para `__sub__`, `__rsub__`, e `__isub__`
+    1. Crie uma classe `Numero` que implemente o método mágico `__sub__` para subtrair dois objetos da classe.
+    1. Modifique a classe `Numero` para que também possa subtrair um número inteiro ou float de um objeto `Numero` utilizando `__sub__`.
+    1. Implemente o método mágico `__rsub__` na classe `Numero` para permitir que a subtração funcione quando um número é subtraído de um objeto `Numero`.
+    1. Crie dois objetos da classe `Numero` e realize a subtração utilizando o operador `-`. Observe a saída.
+    1. Teste a classe `Numero` subtraindo um número inteiro de um objeto `Numero`. Verifique se `__rsub__` foi chamado corretamente.
+    1. Modifique a classe `Numero` para implementar o método `__isub__` e permita que o operador `-=` modifique o objeto original.
+    1. Crie um objeto `Numero` e utilize o operador `-=` para subtrair um valor dele. Verifique se o objeto foi modificado corretamente.
+    1. Tente subtrair dois objetos `Numero` e atribuí-los diretamente a um deles usando o operador `-=`. Verifique o resultado.
+    1. Crie uma classe `Fracao` que implemente os métodos `__sub__`, `__rsub__` e `__isub__` para subtrair frações.
+    1. Teste a classe `Fracao` subtraindo frações e utilizando o operador `-=` para modificar o objeto original.
+1. Exercícios para `__mul__`, `__rmul__`, e `__imul__`
+    1. Crie uma classe `Numero` que implemente o método mágico `__mul__` para multiplicar dois objetos dessa classe.
+    1. Modifique a classe `Numero` para que também possa multiplicar um número inteiro ou float a um objeto `Numero` utilizando `__mul__`.
+    1. Implemente o método mágico `__rmul__` na classe `Numero` para permitir que a multiplicação funcione quando um número é multiplicado por um objeto `Numero`.
+    1. Crie dois objetos da classe `Numero` e realize a multiplicação utilizando o operador `*`. Observe a saída.
+    1. Teste a classe `Numero` multiplicando um número inteiro a um objeto `Numero`. Verifique se `__rmul__` foi chamado corretamente.
+    1. Modifique a classe `Numero` para implementar o método `__imul__` e permita que o operador `*=` modifique o objeto original.
+    1. Crie um objeto `Numero` e utilize o operador `*=` para multiplicá-lo por um valor. Verifique se o objeto foi modificado corretamente.
+    1. Tente multiplicar dois objetos `Numero` e atribuí-los diretamente a um deles usando o operador `*=`. Verifique o resultado.
+    1. Crie uma classe `Fracao` que implemente os métodos `__mul__`, `__rmul__` e `__imul__` para multiplicar frações.
+    1. Teste a classe `Fracao` multiplicando frações e utilizando o operador `*=` para modificar o objeto original.
+1. Exercícios para `__truediv__`, `__rtruediv__`, e `__itruediv__`
+    1. Crie uma classe `Numero` que implemente o método mágico `__truediv__` para dividir dois objetos dessa classe.
+    1. Modifique a classe `Numero` para que também possa dividir um número inteiro ou float por um objeto `Numero` utilizando `__truediv__`.
+    1. Implemente o método mágico `__rtruediv__` na classe `Numero` para permitir que a divisão funcione quando um número é dividido por um objeto `Numero`.
+    1. Crie dois objetos da classe `Numero` e realize a divisão utilizando o operador `/`. Observe a saída.
+    1. Teste a classe `Numero` dividindo um número inteiro por um objeto `Numero`. Verifique se `__rtruediv__` foi chamado corretamente.
+    1. Modifique a classe `Numero` para implementar o método `__itruediv__` e permita que o operador `/=` modifique o objeto original.
+    1. Crie um objeto `Numero` e utilize o operador `/=` para dividi-lo por um valor. Verifique se o objeto foi modificado corretamente.
+    1. Tente dividir dois objetos `Numero` e atribuí-los diretamente a um deles usando o operador `/=`. Verifique o resultado.
+    1. Crie uma classe `Fracao` que implemente os métodos `__truediv__`, `__rtruediv__` e `__itruediv__` para dividir frações.
+    1. Teste a classe `Fracao` dividindo frações e utilizando o operador `/=` para modificar o objeto original.
+1. Exercícios para `__floordiv__`, `__rfloordiv__`, e `__ifloordiv__`
+    1. Crie uma classe `Numero` que implemente o método mágico `__floordiv__` para realizar divisão inteira entre dois objetos dessa classe.
+    1. Modifique a classe `Numero` para que também possa realizar divisão inteira entre um número inteiro ou float e um objeto `Numero` utilizando `__floordiv__`.
+    1. Implemente o método mágico `__rfloordiv__` na classe `Numero` para permitir que a divisão inteira funcione quando um número inteiro é dividido por um objeto `Numero`.
+    1. Crie dois objetos da classe `Numero` e realize a divisão inteira utilizando o operador `//`. Observe a saída.
+    1. Teste a classe `Numero` dividindo um número inteiro por um objeto `Numero` usando divisão inteira. Verifique se `__rfloordiv__` foi chamado corretamente.
+    1. Modifique a classe `Numero` para implementar o método `__ifloordiv__` e permita que o operador `//=` modifique o objeto original.
+    1. Crie um objeto `Numero` e utilize o operador `//=` para realizar divisão inteira nele. Verifique se o objeto foi modificado corretamente.
+    1. Tente realizar a divisão inteira entre dois objetos `Numero` e atribuí-los diretamente a um deles usando o operador `//=`. Verifique o resultado.
+    1. Crie uma classe `Fracao` que implemente os métodos `__floordiv__`, `__rfloordiv__` e `__ifloordiv__` para realizar divisão inteira entre frações.
+    1. Teste a classe `Fracao` realizando divisões inteiras entre frações e utilizando o operador `//=` para modificar o objeto original.
+1. Exercícios para `__mod__`, `__rmod__`, e `__imod__`
+    1. Crie uma classe `Numero` que implemente o método mágico `__mod__` para calcular o resto da divisão (módulo) entre dois objetos dessa classe.
+    1. Modifique a classe `Numero` para que também possa calcular o módulo entre um número inteiro ou float e um objeto `Numero` utilizando `__mod__`.
+    1. Implemente o método mágico `__rmod__` na classe `Numero` para permitir que o cálculo do módulo funcione quando um número é dividido por um objeto `Numero`.
+    1. Crie dois objetos da classe `Numero` e realize a operação de módulo utilizando o operador `%`. Observe a saída.
+    1. Teste a classe `Numero` calculando o módulo de um número inteiro e um objeto `Numero`. Verifique se `__rmod__` foi chamado corretamente.
+    1. Modifique a classe `Numero` para implementar o método `__imod__` e permita que o operador `%=` modifique o objeto original.
+    1. Crie um objeto `Numero` e utilize o operador `%=` para calcular o módulo dele por outro valor. Verifique se o objeto foi modificado corretamente.
+    1. Tente calcular o módulo entre dois objetos `Numero` e atribuí-los diretamente a um deles usando o operador `%=`. Verifique o resultado.
+    1. Crie uma classe `Fracao` que implemente os métodos `__mod__`, `__rmod__` e `__imod__` para calcular o módulo entre frações.
+    1. Teste a classe `Fracao` calculando o módulo entre frações e utilizando o operador `%=` para modificar o objeto original.
+1. Exercícios para `__pow__`, `__rpow__`, e `__ipow__`
+    1. Crie uma classe `Numero` que implemente o método mágico `__pow__` para elevar um objeto dessa classe à potência de outro objeto da mesma classe.
+    1. Modifique a classe `Numero` para que também possa calcular a potência entre um número inteiro ou float e um objeto `Numero` utilizando `__pow__`.
+    1. Implemente o método mágico `__rpow__` na classe `Numero` para permitir que a operação de potência funcione quando um número é elevado à potência de um objeto `Numero`.
+    1. Crie dois objetos da classe `Numero` e realize a operação de potência utilizando o operador `**`. Observe a saída.
+    1. Teste a classe `Numero` calculando a potência de um número inteiro elevado a um objeto `Numero`. Verifique se `__rpow__` foi chamado corretamente.
+    1. Modifique a classe `Numero` para implementar o método `__ipow__` e permita que o operador `**=` modifique o objeto original.
+    1. Crie um objeto `Numero` e utilize o operador `**=` para elevar o objeto à potência de outro valor. Verifique se o objeto foi modificado corretamente.
+    1. Tente calcular a potência entre dois objetos `Numero` e atribuí-los diretamente a um deles usando o operador `**=`. Verifique o resultado.
+    1. Crie uma classe `Fracao` que implemente os métodos `__pow__`, `__rpow__` e `__ipow__` para calcular a potência entre frações.
+    1. Teste a classe `Fracao` calculando a potência de frações e utilizando o operador `**=` para modificar o objeto original.
+
+</details>

@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 24 | 17/09/2024 | [anotações](2.programacao-python/anotacoes.md)<br>[métodos mágicos aritméticos](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos-de-operadores-aritméticos) |
 | 23 | 16/09/2024 | [comando `yield`](2.programacao-python/comandos-built-in.md#yield)<br>[métodos mágicos](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos)<br>[métodos `__str__()`](2.programacao-python/programacao-orientada-objetos.md#método-__str__) e [`__repr()__`](2.programacao-python/programacao-orientada-objetos.md#método-__repr__) |
 | 22 | 13/09/2024 | [`except` genérico](2.programacao-python/tratamento-erros.md#except-genérico)<br>[notação `json`](2.programacao-python/javascript-object-notation.md)<br>[classes](2.programacao-python/programacao-orientada-objetos.md)<br>[avaliação - parte 5](2.programacao-python/avaliacao.md) |
 | 21 | 12/09/2024 | [`encoding`](2.programacao-python/arquivos.md#encoding)<br>[comandos `try` e `except`](2.programacao-python/tratamento-erros.md#blocos-try-e-except) |
