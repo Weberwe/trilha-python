@@ -5,6 +5,7 @@
 1. [exercícios cópia rasa](#exercícios-cópia-rasa)
 1. [cópia profunda](#cópia-profunda)
 1. [cópia rasa e profunda em outros tipos](#cópia-rasa-e-profunda-em-outros-tipos)
+1. [exercícios cópia profunda](#exercícios-cópia-profunda)
 
 # operações de cópia
 
@@ -254,17 +255,15 @@ A principal limitação da cópia rasa é que, para listas que contêm objetos m
 
 ## cópia profunda
 
-<!--
-
 A cópia profunda (deep copy) no Python é uma técnica usada para criar uma nova lista ou estrutura de dados que é completamente independente da original. Ao contrário da cópia rasa, que copia apenas as referências aos objetos contidos na lista original, a cópia profunda cria cópias reais e independentes desses objetos, resultando em uma duplicata completa e separada da estrutura de dados original.
 
 ### como funciona a cópia profunda
 
-Quando você realiza uma cópia profunda de uma lista, o Python cria um novo objeto de lista, e então copia recursivamente todos os elementos dessa lista original. Se algum desses elementos for uma estrutura de dados mutável, como outra lista ou dicionário, ele também será copiado em profundidade, garantindo que a nova lista seja totalmente independente da original.
+Quando se realiza uma cópia profunda de uma lista, o Python cria um novo objeto de lista, e então copia recursivamente todos os elementos dessa lista original. Se algum desses elementos for uma estrutura de dados mutável, como outra lista ou dicionário, ele também será copiado em profundidade, garantindo que a nova lista seja totalmente independente da original.
 
-Para realizar uma cópia profunda em Python, utilizamos o módulo `copy` e sua função `deepcopy`.
+Para realizar uma cópia profunda em Python, usa-se o módulo `copy` e sua função `deepcopy`.
 
-### Importando a Função `deepcopy`
+### módulo `copy`
 
 Antes de utilizá-la, é necessário importar a função `deepcopy` do módulo `copy`:
 
@@ -272,9 +271,9 @@ Antes de utilizá-la, é necessário importar a função `deepcopy` do módulo `
 import copy
 ```
 
-### Exemplo 1: Cópia Profunda de uma Lista Simples
+- **Exemplo 1: Cópia Profunda de uma Lista Simples**
 
-Vamos começar com um exemplo básico de cópia profunda:
+Veja um exemplo básico de cópia profunda:
 
 ```python
 import copy
@@ -284,15 +283,15 @@ lista_copiada = copy.deepcopy(lista_original)
 
 lista_copiada.append(5)
 
-print("Lista original:", lista_original)  # Saída: [1, 2, 3, 4]
-print("Lista copiada:", lista_copiada)    # Saída: [1, 2, 3, 4, 5]
+print("Lista original:", lista_original)  # saída : [1, 2, 3, 4]
+print("Lista copiada:", lista_copiada)    # saída : [1, 2, 3, 4, 5]
 ```
 
-**Explicação:** Aqui, `lista_copiada` é uma cópia profunda de `lista_original`. Como estamos lidando com objetos imutáveis (inteiros), o comportamento parece semelhante à cópia rasa. A diferença se torna mais evidente quando lidamos com objetos mutáveis.
+Aqui, `lista_copiada` é uma cópia profunda de `lista_original`. Como se está lidando com objetos imutáveis (inteiros), o comportamento parece semelhante à cópia rasa. A diferença se torna mais evidente quando se lida com objetos mutáveis.
 
-### Exemplo 2: Cópia Profunda com Listas Aninhadas
+- **Exemplo 2: Cópia Profunda com Listas Aninhadas**
 
-Agora vamos ver o comportamento da cópia profunda com listas aninhadas:
+Veja o comportamento da cópia profunda com listas aninhadas:
 
 ```python
 import copy
@@ -302,15 +301,15 @@ lista_copiada = copy.deepcopy(lista_original)
 
 lista_copiada[0].append(99)
 
-print("Lista original:", lista_original)  # Saída: [[1, 2, 3], [4, 5, 6]]
-print("Lista copiada:", lista_copiada)    # Saída: [[1, 2, 3, 99], [4, 5, 6]]
+print("Lista original:", lista_original)  # saída : [[1, 2, 3], [4, 5, 6]]
+print("Lista copiada:", lista_copiada)    # saída : [[1, 2, 3, 99], [4, 5, 6]]
 ```
 
-**Explicação:** Neste exemplo, `lista_copiada` é uma cópia profunda de `lista_original`. Isso significa que `lista_copiada` é completamente independente, incluindo as sublistas. Quando você modifica uma sublista em `lista_copiada`, a sublista correspondente em `lista_original` permanece inalterada.
+Neste exemplo, `lista_copiada` é uma cópia profunda de `lista_original`. Isso significa que `lista_copiada` é completamente independente, incluindo as sublistas. Quando se modifica uma sublista em `lista_copiada`, a sublista correspondente em `lista_original` permanece inalterada.
 
-### Exemplo 3: Cópia Profunda com Dicionários em Listas
+- **Exemplo 3: Cópia Profunda com Dicionários em Listas**
 
-A cópia profunda também é importante quando você está lidando com listas que contêm dicionários:
+A cópia profunda também é importante quando se está lidando com listas que contêm dicionários:
 
 ```python
 import copy
@@ -320,15 +319,15 @@ lista_copiada = copy.deepcopy(lista_original)
 
 lista_copiada[0]["a"] = 100
 
-print("Lista original:", lista_original)  # Saída: [{"a": 1, "b": 2}, {"c": 3, "d": 4}]
-print("Lista copiada:", lista_copiada)    # Saída: [{"a": 100, "b": 2}, {"c": 3, "d": 4}]
+print("Lista original:", lista_original)  # saída : [{"a": 1, "b": 2}, {"c": 3, "d": 4}]
+print("Lista copiada:", lista_copiada)    # saída : [{"a": 100, "b": 2}, {"c": 3, "d": 4}]
 ```
 
-**Explicação:** No caso de `lista_copiada`, qualquer alteração feita nos dicionários contidos dentro da lista não afetará `lista_original`, pois cada dicionário foi duplicado completamente.
+No caso de `lista_copiada`, qualquer alteração feita nos dicionários contidos dentro da lista não afetará `lista_original`, pois cada dicionário foi duplicado completamente.
 
-### Exemplo 4: Cópia Profunda com Estruturas de Dados Complexas
+- **Exemplo 4: Cópia Profunda com Estruturas de Dados Complexas**
 
-Vamos considerar uma estrutura de dados mais complexa, como uma lista contendo outras listas, dicionários, e até mesmo tuplas:
+Considere uma estrutura de dados mais complexa, como uma lista contendo outras listas, dicionários, e até mesmo tuplas:
 
 ```python
 import copy
@@ -339,13 +338,13 @@ lista_copiada = copy.deepcopy(lista_original)
 lista_copiada[0].append(99)
 lista_copiada[1]["chave"].append(100)
 
-print("Lista original:", lista_original)  # Saída: [[1, 2], {"chave": [3, 4]}, (5, 6)]
-print("Lista copiada:", lista_copiada)    # Saída: [[1, 2, 99], {"chave": [3, 4, 100]}, (5, 6)]
+print("Lista original:", lista_original)  # saída : [[1, 2], {"chave": [3, 4]}, (5, 6)]
+print("Lista copiada:", lista_copiada)    # saída : [[1, 2, 99], {"chave": [3, 4, 100]}, (5, 6)]
 ```
 
-**Explicação:** Neste exemplo, `lista_copiada` é uma cópia profunda de `lista_original`. Modificações feitas na cópia (como adicionar `99` à primeira sublista ou `100` ao valor da chave no dicionário) não afetam a lista original.
+Neste exemplo, `lista_copiada` é uma cópia profunda de `lista_original`. Modificações feitas na cópia (como adicionar `99` à primeira sublista ou `100` ao valor da chave no dicionário) não afetam a lista original.
 
-### Exemplo 5: Cópia Profunda e Objetos Personalizados
+- **Exemplo 5: Cópia Profunda e Objetos Personalizados**
 
 A cópia profunda também funciona com objetos de classes personalizadas, desde que esses objetos possam ser copiados.
 
@@ -368,25 +367,23 @@ lista_copiada = copy.deepcopy(lista_original)
 lista_copiada[0].x = 10
 lista_copiada[0].y = 20
 
-print("Lista original:", lista_original)  # Saída: [Ponto(1, 2)]
-print("Lista copiada:", lista_copiada)    # Saída: [Ponto(10, 20)]
+print("Lista original:", lista_original)  # saída : [Ponto(1, 2)]
+print("Lista copiada:", lista_copiada)    # saída : [Ponto(10, 20)]
 ```
 
-**Explicação:** `lista_copiada` aqui é uma cópia profunda de `lista_original`, incluindo o objeto `Ponto`. Alterar o objeto na cópia não afeta o objeto na lista original.
+Aqui, `lista_copiada` é uma cópia profunda de `lista_original`, incluindo o objeto `Ponto`. Alterar o objeto na cópia não afeta o objeto na lista original.
 
-### Quando Usar Cópia Profunda
+### quando usar
 
-- **Quando você precisa de uma duplicação completa e independente:** Se você está lidando com uma estrutura de dados complexa e quer garantir que a cópia seja totalmente separada do original, a cópia profunda é o caminho.
+- **Quando se precisa de uma duplicação completa e independente:** se está lidando com uma estrutura de dados complexa e quer garantir que a cópia seja totalmente separada do original, a cópia profunda é o caminho;
 
-- **Quando há objetos mutáveis aninhados:** Se a lista ou estrutura de dados contém listas, dicionários ou outros objetos mutáveis, a cópia profunda garantirá que todas as partes da estrutura sejam independentes.
+- **Quando há objetos mutáveis aninhados:** se a lista ou estrutura de dados contém listas, dicionários ou outros objetos mutáveis, a cópia profunda garantirá que todas as partes da estrutura sejam independentes;
 
-### Limitações da Cópia Profunda
+### limitações
 
-- **Desempenho:** A cópia profunda pode ser significativamente mais lenta e consumir mais memória do que a cópia rasa, especialmente para estruturas de dados grandes e complexas.
+- **Desempenho:** a cópia profunda pode ser significativamente mais lenta e consumir mais memória do que a cópia rasa, especialmente para estruturas de dados grandes e complexas;
 
-- **Complexidade:** Em casos onde não é necessário duplicar completamente todos os objetos internos, a cópia profunda pode ser excessiva.
-
--->
+- **Complexidade:** em casos onde não é necessário duplicar completamente todos os objetos internos, a cópia profunda pode ser excessiva;
 
 ## cópia rasa e profunda em outros tipos
 
@@ -409,8 +406,7 @@ Tuplas são estruturas de dados imutáveis no Python. Por causa dessa imutabilid
     ```
     **explicação :** a tupla `tupla_copiada` é uma nova referência à mesma tupla imutável. Não há necessidade de cópia rasa ou profunda aqui.
 
-- **cópia profunda :**
-<!--como tuplas são imutáveis e não podem ser alteradas após a criação, uma cópia profunda não é necessária ou aplicável. se a tupla contém objetos mutáveis (como listas), você ainda precisa considerar o impacto desses objetos na cópia, mas a tupla em si não precisa de uma cópia profunda.-->
+- **cópia profunda :** como tuplas são imutáveis e não podem ser alteradas após a criação, uma cópia profunda não é necessária ou aplicável. se a tupla contém objetos mutáveis (como listas), você ainda precisa considerar o impacto desses objetos na cópia, mas a tupla em si não precisa de uma cópia profunda.
 
 ### dicionários
 
@@ -431,23 +427,22 @@ Dicionários são mutáveis e, portanto, podem se beneficiar das técnicas de c�
     ```
     **explicação :** a cópia rasa do dicionário cria um novo dicionário onde as referências para os objetos dentro do dicionário original são copiadas. Mudanças nos objetos mutáveis (como a lista associada à chave `"b"`) afetam ambos os dicionários.
 
-- **cópia profunda :**
-<!-- para criar uma cópia profunda de um dicionário, você pode usar `copy.deepcopy()`.
+- **cópia profunda :** para criar uma cópia profunda de um dicionário, pode-se usar `copy.deepcopy()`.
 
-  ```python
-  import copy
+    ```python
+    import copy
 
-  dicionario_original = {"a": 1, "b": [2, 3]}
-  dicionario_copiado = copy.deepcopy(dicionario_original)
+    dicionario_original = {"a": 1, "b": [2, 3]}
+    dicionario_copiado = copy.deepcopy(dicionario_original)
 
-  dicionario_copiado["b"].append(4)
+    dicionario_copiado["b"].append(4)
 
-  print("Dicionário original:", dicionario_original)  # Saída: {"a": 1, "b": [2, 3]}
-  print("Dicionário copiado:", dicionario_copiado)    # Saída: {"a": 1, "b": [2, 3, 4]}
-  ```
+    print("Dicionário original:", dicionario_original)  # saída : {"a": 1, "b": [2, 3]}
+    print("Dicionário copiado:", dicionario_copiado)    # saída : {"a": 1, "b": [2, 3, 4]}
+    ```
 
-  **Explicação:** A cópia profunda cria um novo dicionário com cópias independentes dos objetos internos. Modificar a lista no dicionário copiado não afeta a lista no dicionário original.
--->
+    **explicação :** a cópia profunda cria um novo dicionário com cópias independentes dos objetos internos. Modificar a lista no dicionário copiado não afeta a lista no dicionário original;
+
 ### sets
 
 Sets são mutáveis, e o conceito de cópia rasa e profunda também se aplica a eles.
@@ -467,25 +462,50 @@ Sets são mutáveis, e o conceito de cópia rasa e profunda também se aplica a 
     ```
     **explicação :** a cópia rasa do set cria um novo set, mas não copia objetos mutáveis que possam estar dentro do set. neste caso, os sets contêm apenas inteiros, que são imutáveis.
 
-- **cópia profunda :**
-<!--para sets, a cópia profunda não é frequentemente necessária, pois sets não podem conter objetos complexos que precisem de uma cópia profunda. se um set contém objetos mutáveis, você pode usar `copy.deepcopy()` para garantir uma cópia completamente independente.
+- **cópia profunda :** para sets, a cópia profunda não é frequentemente necessária, pois sets não podem conter objetos complexos que precisem de uma cópia profunda; se um set contém objetos mutáveis, pode-se usar `copy.deepcopy()` para garantir uma cópia completamente independente.
 
-  ```python
-  import copy
+    ```python
+    import copy
 
-  set_original = {frozenset([1, 2]), frozenset([3, 4])}
-  set_copiado = copy.deepcopy(set_original)
+    set_original = {frozenset([1, 2]), frozenset([3, 4])}
+    set_copiado = copy.deepcopy(set_original)
 
-  set_copiado.add(frozenset([5, 6]))
+    set_copiado.add(frozenset([5, 6]))
 
-  print("Set original:", set_original)  # Saída: {frozenset({1, 2}), frozenset({3, 4})}
-  print("Set copiado:", set_copiado)    # Saída: {frozenset({1, 2}), frozenset({3, 4}), frozenset({5, 6})}
-  ```
+    print("Set original:", set_original)  # Saída: {frozenset({1, 2}), frozenset({3, 4})}
+    print("Set copiado:", set_copiado)    # Saída: {frozenset({1, 2}), frozenset({3, 4}), frozenset({5, 6})}
+    ```
 
-  **Explicação:** A cópia profunda garante que o set copiado não compartilhe referências com o set original, mas, na prática, sets geralmente não precisam de cópia profunda porque eles não contêm tipos complexos mutáveis.
--->
-### resumo
+    **explicação :** a cópia profunda garante que o set copiado não compartilhe referências com o set original, mas, na prática, sets geralmente não precisam de cópia profunda porque eles não contêm tipos complexos mutáveis;
 
-- **tuplas :** imutáveis, não requerem cópia rasa ou profunda;
-- **dicionários :** mutáveis, podem se beneficiar de cópias rasas e profundas;
-- **sets :** mutáveis, cópias rasas são comuns e cópias profundas podem ser usadas se o set contiver objetos complexos;
+## exercícios cópia profunda
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios com `list`
+    1. **Lista Simples**: Crie uma lista contendo três listas internas. Faça uma cópia profunda da lista original e modifique um elemento da cópia. Verifique se a lista original permanece inalterada.
+    1. **Listas Aninhadas**: Crie uma lista de três níveis de profundidade (lista dentro de lista dentro de lista). Faça uma cópia profunda e modifique o nível mais profundo. Verifique se a lista original foi alterada.
+    1. **Lista com Objetos Mutáveis**: Crie uma lista contendo listas e dicionários. Faça uma cópia profunda e adicione um novo elemento em um dos dicionários internos. Verifique se a alteração afeta a lista original.
+    1. **Listas Referenciadas**: Crie duas listas onde uma referência a outra. Faça uma cópia profunda da lista principal e adicione um elemento à cópia. Verifique se a referência entre as listas na cópia foi preservada ou alterada.
+    1. **Lista de Dicionários**: Crie uma lista com dicionários como elementos. Faça uma cópia profunda da lista e modifique um valor em um dos dicionários. Verifique se a lista original foi afetada.
+1. Exercícios com `tuple`
+    1. **Tupla com Objetos Mutáveis**: Crie uma tupla contendo listas e dicionários. Faça uma cópia profunda e modifique uma das listas dentro da cópia. Verifique se a tupla original permanece inalterada.
+    1. **Tuplas Aninhadas**: Crie uma tupla que contém outras tuplas e listas. Faça uma cópia profunda e modifique um elemento em uma das listas internas. Verifique se a tupla original foi afetada.
+    1. **Tupla e Ciclos de Referência**: Crie uma tupla que referencie uma lista que, por sua vez, referencia a própria tupla. Faça uma cópia profunda e modifique a lista dentro da cópia. Verifique se o ciclo de referência foi tratado corretamente.
+    1. **Tupla com Conjuntos**: Crie uma tupla contendo um conjunto (set) e uma lista. Faça uma cópia profunda e modifique o conjunto na cópia. Verifique se a tupla original foi afetada.
+    1. **Tupla Imutável**: Crie uma tupla contendo apenas objetos imutáveis (números e strings). Faça uma cópia profunda e verifique se a cópia é igual ao original. Explique por que a cópia profunda não criou uma nova instância.
+1. Exercícios com `dict`
+    1. **Dicionário Simples**: Crie um dicionário com listas como valores. Faça uma cópia profunda do dicionário e modifique um valor da lista em um dos pares chave-valor. Verifique se o dicionário original foi alterado.
+    1. **Dicionários Aninhados**: Crie um dicionário contendo outros dicionários como valores. Faça uma cópia profunda e modifique um valor em um dicionário interno. Verifique se o dicionário original permanece inalterado.
+    1. **Dicionário com Listas e Conjuntos**: Crie um dicionário onde os valores são listas e conjuntos. Faça uma cópia profunda e modifique um dos conjuntos. Verifique se o dicionário original foi alterado.
+    1. **Cópia de Dicionário com Tuplas**: Crie um dicionário onde as chaves são tuplas e os valores são listas. Faça uma cópia profunda e modifique um valor na lista. Verifique se a cópia afeta o dicionário original.
+    1. **Dicionário Referenciando Ele Mesmo**: Crie um dicionário que contenha uma chave cujo valor seja o próprio dicionário (ciclo de referência). Faça uma cópia profunda e verifique como o ciclo foi tratado.
+1. Exercícios com `set`
+    1. **Conjunto Simples**: Crie um conjunto contendo listas como elementos (use um `frozenset` para tornar o conjunto imutável). Faça uma cópia profunda e modifique uma das listas. Verifique se o conjunto original foi alterado.
+    1. **Conjunto de Dicionários**: Crie um conjunto onde os elementos são dicionários. Faça uma cópia profunda e modifique um valor em um dos dicionários internos. Verifique se o conjunto original foi afetado.
+    1. **Conjunto de Conjuntos**: Crie um conjunto onde os elementos são outros conjuntos (use `frozenset`). Faça uma cópia profunda e adicione um novo elemento a um dos conjuntos internos. Verifique se o conjunto original permanece inalterado.
+    1. **Conjunto e Tuplas**: Crie um conjunto onde os elementos são tuplas que contêm listas. Faça uma cópia profunda e modifique um elemento de uma lista dentro da cópia. Verifique se o conjunto original foi alterado.
+    1. **Conjuntos Aninhados**: Crie um conjunto contendo outros conjuntos (use `frozenset` para tornar isso possível). Faça uma cópia profunda e adicione um novo elemento ao conjunto interno. Verifique se o conjunto original foi afetado.
+
+</details>

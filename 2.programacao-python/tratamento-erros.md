@@ -19,6 +19,10 @@
 1. [exercícios exceções múltiplas](#exercícios-exceções-múltiplas)
 1. [`except` genérico](#except-genérico)
 1. [exercícios `except` genérico](#exercícios-except-genérico)
+1. [comandos `else` e `finally`](#comandos-else-e-finally)
+1. [exercícios `else` e `finally`](#exercícios-else-e-finally)
+1. [capturando mensagens de erro](#capturando-mensagens-de-erro)
+1. [exercícios mensagens de erro](#exercícios-mensagens-de-erro)
 
 # tratamento de erros
 
@@ -1135,5 +1139,310 @@ abrir_arquivo()
     ```
 
     - O que está sendo capturado pelo `except` genérico? Por que é importante capturar o erro `NameError` especificamente?
+
+</details>
+
+## comandos `else` e `finally`
+
+O tratamento de exceções em Python oferece recursos poderosos, e além do uso básico de `try` e `except`, dois blocos opcionais complementam o tratamento de erros: **`else`** e **`finally`**. Ambos têm papéis distintos que aumentam a flexibilidade e robustez do código.
+
+### `else`
+
+O bloco `else` é executado **somente** se **nenhuma exceção** for levantada dentro do bloco `try`. Ele é opcional e permite que se execute um código que deve ocorrer somente quando o bloco `try` for bem-sucedido, sem erros.
+
+A estrutura geral é a seguinte :
+
+```python
+try:
+    # código que pode gerar uma exceção
+except SomeException:
+    # código para tratar a exceção
+else:
+    # código que será executado se não houver exceções
+```
+
+- **Exemplo do uso**
+
+```python
+try:
+    numero = int(input("Digite um número: "))
+    resultado = 10 / numero
+except ValueError:
+    print("Erro: O valor inserido não é um número válido.")
+except ZeroDivisionError:
+    print("Erro: Divisão por zero.")
+else:
+    print(f"O resultado da divisão é: {resultado}")
+```
+
+- o bloco `try` tenta converter a entrada do usuário para um número inteiro e depois realiza uma divisão;
+- se uma exceção **`ValueError`** ou **`ZeroDivisionError`** for levantada, o código no bloco `except` correspondente será executado;
+- se **nenhuma exceção** ocorrer, o bloco `else` será executado, exibindo o resultado da divisão;
+
+#### vantagens
+
+1. **clareza de propósito** : colocar o código no bloco `else` ajuda a separar o que deve acontecer em caso de sucesso do que ocorre em caso de erro; isso melhora a legibilidade, tornando o código mais intuitivo;
+1. **evita o uso excessivo de código no `try`** : o código no bloco `try` deve ser apenas o necessário para detectar e tratar erros; o `else` permite que o código de sucesso seja separado, reduzindo o risco de capturar exceções inadvertidamente;
+1. **melhora a manutenção do código** : com o `else`, é mais fácil entender e gerenciar o fluxo de execução, o que facilita a manutenção e expansão do código;
+
+#### desvantagens
+
+1. **pouco utilizado em alguns casos** : nem sempre é necessário; se todo o código puder ser contido no bloco `try` sem perda de clareza, o `else` pode parecer redundante;
+1. **pode ser confundido com o fluxo do `try`** : novos programadores podem não entender de imediato o porquê de separar o código de sucesso no `else`, o que pode levar a uma má interpretação;
+
+### `finally`
+
+O bloco `finally` é executado **sempre**, independentemente de uma exceção ter sido levantada ou não. Ele é usado para garantir que o código crítico seja executado, como fechar arquivos, liberar recursos ou encerrar conexões com banco de dados, mesmo se ocorrer um erro.
+
+A estrutura geral é:
+
+```python
+try:
+    # código que pode gerar uma exceção
+except SomeException:
+    # código para tratar a exceção
+finally:
+    # código que sempre será executado, com ou sem exceção
+```
+
+- **Exemplo do uso**
+
+```python
+try:
+    arquivo = open('arquivo.txt', 'r')
+    conteudo = arquivo.read()
+except FileNotFoundError:
+    print("Erro: O arquivo não foi encontrado.")
+else:
+    print(conteudo)
+finally:
+    arquivo.close()
+    print("Arquivo fechado.")
+```
+
+- o bloco `try` tenta abrir um arquivo e lê seu conteúdo;
+- se o arquivo não for encontrado, um **`FileNotFoundError`** é levantado e tratado no bloco `except`;
+- se o arquivo for encontrado, o conteúdo é exibido no bloco `else`;
+- o bloco `finally` é executado sempre, fechando o arquivo, independentemente de ter havido uma exceção ou não;
+
+#### Vantagens
+
+1. **garantia de execução** : o `finally` garante que o código será executado, mesmo que uma exceção ocorra; isso é útil para operações como:
+    - fechar arquivos ou liberar recursos;
+    - desconectar de um banco de dados ou de uma API;
+    - limpeza de variáveis ou processos temporários;
+
+1. **robustez no código** : ele aumenta a robustez, pois, não importa o que aconteça no bloco `try` ou `except`, o código no `finally` será executado;
+
+1. **previne vazamento de recursos** : em programas que lidam com recursos limitados ou externos (como arquivos ou conexões de rede), o `finally` é essencial para garantir que esses recursos sejam corretamente fechados ou liberados;
+
+#### desvantagens
+
+1. **pode ocultar exceções** : se um erro ocorrer dentro do bloco `finally`, ele pode sobrescrever uma exceção levantada no bloco `try`, ocultando o erro original; isso dificulta a depuração.
+
+    ```python
+    try:
+        resultado = 10 / 0
+    except ZeroDivisionError:
+        print("Erro de divisão por zero.")
+    finally:
+        raise ValueError("Erro dentro do finally.")
+    ```
+
+    - neste caso, o erro **`ValueError`** do `finally` substitui a exceção **`ZeroDivisionError`**, o que pode confundir na hora da depuração, pois o erro original é perdido;
+
+1. **execução de código irrelevante** : se o bloco `finally` contiver código que não é crítico para a execução final (como mensagens desnecessárias), ele pode aumentar a complexidade sem benefícios reais;
+
+### quando usar `else` e `finally`
+
+#### `else`
+
+- **quando o código após o `try` só deve ser executado se não houver exceções** : isso torna o fluxo de execução mais claro e separado do tratamento de exceções;
+- **quando o código dentro do `try` deve ser mínimo**, limitando-se apenas ao que pode gerar exceções, enquanto o código de "sucesso" vai no `else`;
+
+#### `finally`
+
+- **quando for necessário liberar recursos ou fazer "limpeza"**, como fechar arquivos, desconectar de uma rede ou liberar memória, independentemente de erros;
+- **quando for fundamental garantir a execução de um bloco de código específico**, como garantir que um log seja escrito ou um backup seja criado, mesmo em caso de erro;
+
+### quando evitar `else` e `finally`
+
+- **evite `else` quando o código no bloco `try` for simples e fácil de ler** : se todo o código puder ser executado no `try` sem perda de clareza, o `else` pode não ser necessário;
+
+- **evite `finally` se não houver recursos para liberar ou ações críticas a serem executadas** : se não há ações que devam ser garantidas após o bloco `try`, o uso do `finally` pode ser desnecessário e pode adicionar complexidade desnecessária ao código;
+
+## exercícios `else` e `finally`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Operação aritmética** : Escreva um código que peça ao usuário dois números e os divida. Utilize um bloco `try` para capturar erros de divisão por zero e tipos inválidos. No bloco `else`, exiba o resultado. No bloco `finally`, exiba uma mensagem indicando que a operação foi concluída.
+1. **Leitura de arquivo** : Tente abrir um arquivo para leitura. Se o arquivo não for encontrado, capture a exceção com um `except`. Utilize o bloco `else` para ler o conteúdo e imprimir na tela. No `finally`, feche o arquivo, se ele tiver sido aberto.
+1. **Verificação de índice** : Peça ao usuário uma lista e um índice. No `try`, tente acessar o elemento da lista usando o índice. Capture o erro de `IndexError`. No `else`, exiba o valor encontrado. No `finally`, exiba uma mensagem indicando o fim da operação.
+1. **Conversão de tipos** : Peça ao usuário para digitar um número. No `try`, tente converter a entrada para `int`. Capture erros de conversão de tipos com `except`. No `else`, informe que a conversão foi bem-sucedida. No `finally`, imprima "Processo concluído".
+1. **Remoção de item de dicionário** : Crie um dicionário com alguns elementos. No `try`, remova uma chave fornecida pelo usuário. Se a chave não existir, capture o erro `KeyError`. No `else`, exiba o dicionário atualizado. No `finally`, exiba uma mensagem indicando que a operação de remoção foi tentada.
+1. **Escrita em arquivo** : Tente abrir um arquivo para escrita e adicionar algum conteúdo. Utilize `try` para capturar erros relacionados ao acesso ao arquivo. No `else`, informe que a escrita foi bem-sucedida. No `finally`, feche o arquivo.
+1. **Execução de função matemática** : Peça ao usuário um número e tente calcular sua raiz quadrada usando `try`. Capture qualquer erro relacionado a valores negativos. No `else`, exiba o resultado da raiz quadrada. No `finally`, exiba uma mensagem final.
+1. **Remoção de item de lista** : Peça ao usuário uma lista e um valor para remover. No `try`, tente remover o valor da lista. Capture erros caso o valor não esteja presente com `ValueError`. No `else`, exiba a lista atualizada. No `finally`, exiba uma mensagem indicando o fim da operação.
+1. **Divisão com múltiplas exceções** : Escreva um código que tente dividir dois números inseridos pelo usuário. Capture erros de `ZeroDivisionError` e `TypeError`. No `else`, mostre o resultado da divisão. No `finally`, exiba uma mensagem de conclusão.
+1. **Processamento de lista de inteiros** : Peça ao usuário uma lista de inteiros e tente somar os valores. Capture erros caso a lista contenha valores que não sejam inteiros. No `else`, exiba a soma. No `finally`, informe que o processamento foi concluído.
+1. **Operação em dicionário** : Peça ao usuário para fornecer uma chave e um valor, e tente adicioná-los a um dicionário. Capture erros de tipo com `TypeError`. No `else`, exiba o dicionário atualizado. No `finally`, exiba uma mensagem indicando que a operação foi finalizada.
+1. **Entrada de número positivo** : Solicite ao usuário um número positivo. No `try`, verifique se o número é maior que zero. Capture erros de entrada inválida. No `else`, mostre que a entrada foi válida. No `finally`, imprima "Fim do programa".
+1. **Acesso a arquivos protegidos** : Tente abrir um arquivo protegido. Capture erros de permissão com `PermissionError`. No `else`, informe que o arquivo foi acessado corretamente. No `finally`, exiba uma mensagem indicando que a tentativa foi feita.
+1. **Acesso a chaves em dicionários aninhados** : Peça ao usuário um dicionário aninhado e uma chave de primeiro nível para acessar. Capture erros de `KeyError` se a chave não existir. No `else`, exiba o valor da chave. No `finally`, exiba uma mensagem de fim.
+1. **Verificação de múltiplos índices** : Peça ao usuário uma lista e múltiplos índices. Tente acessar os elementos de cada índice e capture `IndexError`. No `else`, mostre os valores acessados. No `finally`, exiba uma mensagem de conclusão.
+1. **Cálculo de média** : Solicite uma lista de números do usuário. No `try`, tente calcular a média dos números. Capture erros de divisão por zero caso a lista esteja vazia. No `else`, exiba a média calculada. No `finally`, exiba uma mensagem final.
+1. **Conversão de dados para float** : Peça ao usuário para fornecer uma lista de números (em string) e tente converter todos para `float`. Capture qualquer erro de `ValueError` ao tentar a conversão. No `else`, mostre a lista de floats. No `finally`, exiba uma mensagem de conclusão.
+1. **Acesso a arquivos em um diretório** : Tente acessar um arquivo específico dentro de um diretório fornecido pelo usuário. Capture erros de `FileNotFoundError` caso o arquivo não exista. No `else`, exiba o conteúdo do arquivo. No `finally`, exiba uma mensagem indicando que a operação foi finalizada.
+
+</details>
+
+## capturando mensagens de erro
+
+Capturar e exibir as mensagens de erro em Python é uma prática crucial para a depuração e manutenção de um código robusto. Com o tratamento de exceções, é possível acessar as mensagens de erro associadas às exceções geradas durante a execução do programa. Isso ajuda a identificar rapidamente a causa de um problema, melhorar a experiência do usuário e evitar falhas não tratadas.
+
+### como funciona
+
+Quando uma exceção é levantada (gerada) em Python, ela contém uma mensagem descritiva que indica o motivo do erro. Capturar essa mensagem permite entendê-la melhor e tomar decisões sobre como tratar o erro.
+
+A captura da mensagem de erro geralmente é feita no bloco `except` ao manipular exceções, mas há formas mais detalhadas de capturar o rastreamento completo do erro e os detalhes sobre o contexto onde ele ocorreu.
+
+#### captura básica de exceção com `as`
+
+A forma mais simples de capturar a mensagem de erro é associando a exceção a uma variável usando o `as` dentro do bloco `except`. Essa variável conterá a mensagem de erro, que pode ser impressa ou registrada.
+
+- **Exemplo: Captura básica com `ZeroDivisionError`**
+
+```python
+try:
+    resultado = 10 / 0
+except ZeroDivisionError as e:
+    print(f"Erro: {e}")
+```
+
+- o bloco `try` tenta executar uma divisão por zero, o que gera uma exceção do tipo `ZeroDivisionError`;
+- o bloco `except` captura essa exceção e a associa à variável `e`, que contém a mensagem de erro `"division by zero"`;
+- a mensagem de erro é então impressa;
+
+**Saída:**
+```
+Erro: division by zero
+```
+
+#### módulo `traceback`
+
+O módulo `traceback` fornece informações detalhadas sobre o erro, incluindo o rastreamento da pilha (stack trace), que mostra a sequência de chamadas de função que levaram ao erro. Isso é especialmente útil para depurar grandes programas, pois ajuda a identificar onde, exatamente, o erro ocorreu.
+
+- **Exemplo: Usando `traceback.print_exc()`**
+
+```python
+import traceback
+
+try:
+    resultado = 10 / 0
+except ZeroDivisionError:
+    print("Erro detectado:")
+    traceback.print_exc()  # Exibe o rastreamento completo do erro
+```
+
+- o bloco `try` tenta realizar uma divisão por zero;
+- `traceback.print_exc()` imprime o rastreamento completo da exceção, incluindo o local do código onde ocorreu o erro;
+
+**Saída:**
+```
+Erro detectado:
+Traceback (most recent call last):
+  File "example.py", line 3, in <module>
+    resultado = 10 / 0
+ZeroDivisionError: division by zero
+```
+
+### acessando atributos específicos da exceção
+
+Dependendo do tipo de exceção, pode-se acessar informações adicionais. Por exemplo, com exceções relacionadas a arquivos, como `FileNotFoundError`, pode-se acessar atributos como `filename` (nome do arquivo) e `strerror` (mensagem de erro).
+
+- **Exemplo: `FileNotFoundError` com atributos adicionais**
+
+```python
+try:
+    with open("arquivo_inexistente.txt", "r") as f:
+        conteudo = f.read()
+except FileNotFoundError as e:
+    print(f"Erro: {e.strerror}")
+    print(f"Arquivo não encontrado: {e.filename}")
+```
+
+- o bloco `try` tenta abrir um arquivo que não existe, o que gera uma exceção `FileNotFoundError`;
+- a variável `e` contém informações detalhadas, como o nome do arquivo e a mensagem de erro;
+
+**Saída:**
+```
+Erro: No such file or directory
+Arquivo não encontrado: arquivo_inexistente.txt
+```
+
+### vantagens
+
+- 1. **Facilita a depuração** : capturar e exibir mensagens de erro ajuda a entender o que está acontecendo no programa em tempo de execução; isso é crucial para identificar e corrigir bugs rapidamente;
+- 1. **Permite mensagens de erro personalizadas** : pode-se capturar a mensagem de erro e, ao mesmo tempo, exibir uma mensagem personalizada que explique melhor o contexto do erro para o usuário ou para o desenvolvedor;
+
+    Exemplo:
+    ```python
+    try:
+        numero = int(input("Digite um número: "))
+        resultado = 10 / numero
+    except ValueError:
+        print("Erro: O valor fornecido não é um número válido.")
+    except ZeroDivisionError:
+        print("Erro: Não é possível dividir por zero.")
+    ```
+
+- 1. **Melhora a experiência do usuário** : ao capturar mensagens de erro e tratá-las adequadamente, pode-se fornecer feedback amigável para o usuário, em vez de permitir que o programa quebre com uma exceção não tratada;
+
+- 1. **Possibilita o uso de logs** : em sistemas maiores ou em ambientes de produção, é comum registrar as exceções em um arquivo de log para análise posterior; capturar a mensagem de erro permite gravá-la para monitoramento contínuo;
+
+### desvantagens
+
+- 1. **Pode esconder problemas graves** : capturar exceções sem o tratamento adequado ou sem re-exibi-las pode ocultar problemas maiores que deveriam parar o programa, dificultando a depuração;
+
+- 2. **Pode aumentar a complexidade** : adicionar muitos blocos de captura de erro pode tornar o código mais difícil de ler e manter, especialmente se não for claro quais exceções estão sendo capturadas e por quê;
+
+- 3. **Excessos no tratamento de erros** : se capturar mensagens de erro de maneira excessiva e tratar exceções que não necessariamente precisam ser tratadas, pode acabar mascarando problemas que deveriam ser abordados de outra forma, levando a comportamentos inesperados;
+
+    Exemplo negativo:
+    ```python
+    try:
+        resultado = 10 / 0
+    except Exception as e:
+        print("Erro desconhecido:", e)  # Captura genérica sem distinção
+    ```
+
+    - **Problema** : usar `except Exception` de maneira genérica pode capturar qualquer exceção, inclusive aquelas que não se espera, tornando o código mais difícil de depurar;
+
+## exercícios mensagens de erro
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Exercício 1: ZeroDivisionError - Divisão Simples** : Peça ao usuário dois números e tente dividi-los. Capture o erro de divisão por zero e exiba a mensagem de erro.
+1. **Exercício 2: ValueError - Conversão de String para Inteiro** : Peça ao usuário para inserir um número. Tente converter a entrada para `int`. Capture qualquer erro de `ValueError` e exiba a mensagem de erro.
+1. **Exercício 3: TypeError - Soma de Tipos Diferentes** : Tente somar uma string e um número. Capture o erro de `TypeError` e exiba a mensagem de erro.
+1. **Exercício 4: IndexError - Acessar Índice Inválido** : Crie uma lista com alguns elementos e peça ao usuário um índice. Tente acessar o elemento na posição fornecida. Capture o erro de `IndexError` e exiba a mensagem de erro.
+1. **Exercício 5: KeyError - Acesso a Chave de Dicionário Inexistente** : Crie um dicionário com algumas chaves e peça ao usuário uma chave. Tente acessar o valor correspondente à chave fornecida. Capture o erro de `KeyError` e exiba a mensagem de erro.
+1. **Exercício 6: ImportError - Importar Módulo Inexistente** : Tente importar um módulo que não existe. Capture o erro de `ImportError` e exiba a mensagem de erro.
+1. **Exercício 7: FileNotFoundError - Abrir Arquivo Inexistente** : Tente abrir um arquivo que não existe no sistema. Capture o erro de `FileNotFoundError` e exiba a mensagem de erro.
+1. **Exercício 8: NameError - Variável Não Definida** : Tente imprimir o valor de uma variável que não foi definida. Capture o erro de `NameError` e exiba a mensagem de erro.
+1. **Exercício 9: ZeroDivisionError - Cálculo de Média** : Peça ao usuário uma lista de números e calcule a média. Capture qualquer erro de `ZeroDivisionError` se a lista estiver vazia e exiba a mensagem de erro.
+1. **Exercício 10: ValueError - Entrada de Números** : Peça ao usuário para fornecer uma lista de números, mas digite uma string em vez de um número. Capture o erro de `ValueError` e exiba a mensagem de erro.
+1. **Exercício 11: TypeError - Concatenar Tipos Diferentes** : Peça ao usuário um número e uma string. Tente concatená-los diretamente. Capture o erro de `TypeError` e exiba a mensagem de erro.
+1. **Exercício 12: IndexError - Acesso em Lista Vazia** : Crie uma lista vazia e tente acessar o primeiro elemento. Capture o erro de `IndexError` e exiba a mensagem de erro.
+1. **Exercício 13: KeyError - Remoção de Chave Inexistente** : Tente remover uma chave de um dicionário que não existe. Capture o erro de `KeyError` e exiba a mensagem de erro.
+1. **Exercício 14: ImportError - Função Inexistente de Módulo** : Tente importar uma função específica de um módulo, mas use o nome errado da função. Capture o erro de `ImportError` e exiba a mensagem de erro.
+1. **Exercício 15: FileNotFoundError - Leitura de Arquivo Inexistente** : Tente abrir e ler o conteúdo de um arquivo que não existe no diretório atual. Capture o erro de `FileNotFoundError` e exiba a mensagem de erro.
+1. **Exercício 16: NameError - Função Não Definida** : Tente chamar uma função que não foi definida anteriormente. Capture o erro de `NameError` e exiba a mensagem de erro.
+1. **Exercício 17: ZeroDivisionError - Função de Divisão** : Crie uma função que divide dois números. Peça ao usuário dois números e tente dividi-los. Capture o erro de `ZeroDivisionError` e exiba a mensagem de erro.
+1. **Exercício 18: ValueError - Conversão de Lista de Strings para Inteiros** : Peça ao usuário uma lista de strings e tente converter todos os elementos para inteiros. Capture qualquer erro de `ValueError` e exiba a mensagem de erro.
+1. **Exercício 19: TypeError - Multiplicação de Tipos Diferentes** : Tente multiplicar uma string por outro tipo não permitido (ex.: `None`). Capture o erro de `TypeError` e exiba a mensagem de erro.
+1. **Exercício 20: IndexError - Listas Aninhadas** : Crie uma lista de listas e peça ao usuário para fornecer dois índices (um para a lista principal e outro para a lista interna). Tente acessar o elemento. Capture o erro de `IndexError` e exiba a mensagem de erro.
 
 </details>
