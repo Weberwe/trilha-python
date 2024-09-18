@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 25 | 18/09/2024 | [cópia profunda](2.programacao-python/copias-rasa-e-profunda.md#cópia-profunda)<br>comandos[`else`](2.programacao-python/tratamento-erros.md#else) e [`finally`](2.programacao-python/tratamento-erros.md#finally)<br>[mensagens de erro](2.programacao-python/tratamento-erros.md#capturando-mensagens-de-erro) |
 | 24 | 17/09/2024 | [anotações](2.programacao-python/anotacoes.md)<br>[métodos mágicos aritméticos](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos-de-operadores-aritméticos) |
 | 23 | 16/09/2024 | [comando `yield`](2.programacao-python/comandos-built-in.md#yield)<br>[métodos mágicos](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos)<br>[métodos `__str__()`](2.programacao-python/programacao-orientada-objetos.md#método-__str__) e [`__repr()__`](2.programacao-python/programacao-orientada-objetos.md#método-__repr__) |
 | 22 | 13/09/2024 | [`except` genérico](2.programacao-python/tratamento-erros.md#except-genérico)<br>[notação `json`](2.programacao-python/javascript-object-notation.md)<br>[classes](2.programacao-python/programacao-orientada-objetos.md)<br>[avaliação - parte 5](2.programacao-python/avaliacao.md) |
@@ -17,7 +18,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 | 20 | 11/09/2024 | [função `dir()`](2.programacao-python/funcoes-built-in.md#dir)<br>[variável `__name__`](2.programacao-python/modulos.md#variável-__name__-)<br>[wildcards](2.programacao-python/modulos.md#wildcards)<br>[operador `walrus`](2.programacao-python/operador-walrus.md) |
 | 19 | 10/09/2024 | [módulo `string`](2.programacao-python/modulos.md#módulo-string) [módulo `math`](2.programacao-python/modulos.md#módulo-math) [módulo `json`](2.programacao-python/modulos.md#módulo-json)<br>[comando `with`](2.programacao-python/arquivos.md#with) [comando `assert`](2.programacao-python/comandos-built-in.md#assert) |
 | 18 | 09/09/2024 | [arquivos](2.programacao-python/arquivos.md)<br>[módulo `os`](2.programacao-python/modulos.md#módulo-os) [módulo `time`](2.programacao-python/modulos.md#módulo-time) |
-| 17 | 06/09/2024 | [recursão](2.programacao-python/recursao.md)<br>[módulo `sys`](2.programacao-python/modulos.md#módulo-sys) [módulo `random`](2.programacao-python/modulos.md#módulo-random) |
+| 17 | 06/09/2024 | [recursão](2.programacao-python/funcoes.md#recursão)<br>[módulo `sys`](2.programacao-python/modulos.md#módulo-sys) [módulo `random`](2.programacao-python/modulos.md#módulo-random) |
 | 16 | 05/09/2024 | acompanhamento da [avaliação](2.programacao-python/avaliacao.md) |
 | 15 | 04/09/2024 | [empacotamento e desempacotamento](2.programacao-python/empacotamento-desempacotamento.md)<br>[`*args`](2.programacao-python/funcoes.md#args) [`**kwargs`](2.programacao-python/funcoes.md#kwargs) |
 | 14 | 03/09/2024 | comandos<br>[`import`](2.programacao-python/comandos-from-import-as.md#comando-import) [`from` e `as`](2.programacao-python/comandos-from-import-as.md#comandos-from-e-as)<br>[`namespaces`](2.programacao-python/namespaces.md)<br>[avaliação - parte 4](2.programacao-python/avaliacao.md#módulos) |
