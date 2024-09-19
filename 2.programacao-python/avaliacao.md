@@ -76,7 +76,7 @@ Novamente é efetuada a soma dos resultados da multiplicação :
 E novamente o total do somatório é dividido por onze para obter o quociente `18` e o resto `6` da divisão.
 
 Uma vez conhecidos o resto e o quociente, o mesmo teste do resto é realizado :
-- se o resto da divisão for `menor que 2`, então o primeiro dígito é igual a `zero`;
+- se o resto da divisão for `menor que 2`, então o segundo dígito é igual a `zero`;
 - se o resto da divisão for `maior ou igual a 2`, então o dígito verificador é igual a `11 menos o resto da divisão`;
 
 No exemplo, subtraindo 11 do resto resultará em :

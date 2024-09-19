@@ -14,10 +14,12 @@
     - [exercícios módulo `math`](#exercícios-módulo-math)
 1. [módulo `json`](#módulo-json)
     - [exercícios módulo `json`](#exercícios-módulo-json)
-1. [variável `__name__`](#variável-__name__-)
-    1. [exercícios `__name__`](#exercícios-__name__)
+1. [variável `__name__`](#variável-__name__)
+    1. [exercícios `__name__`](#exercícios-name)
 1. [`wildcards`](#wildcards)
     1. [exercícios wildcards](#exercícios-wildcards)
+1. [`datetime`](#datetime)
+    1. [exercícios `datetime`](#exercícios-datetime)
 
 # módulos
 
@@ -2032,5 +2034,576 @@ from math import sqrt, pi
 1. `from os import *` : Crie um novo diretório chamado "exercicios" no sistema de arquivos atual.
 1. `from sys import *` : Exiba o caminho do interpretador Python que está sendo usado.
 1. `from json import *` : Converta um dicionário Python em uma string JSON e depois reconverta para um dicionário.
+
+</details>
+
+## `datetime`
+
+O módulo `datetime` é fundamental para trabalhar com datas e horas, oferecendo uma ampla gama de funcionalidades para manipulação, formatação e cálculos com objetos de data e hora.
+
+### visão geral
+
+O módulo `datetime` fornece classes para manipular datas e horas de maneira simples e complexa. As principais classes disponíveis são:
+
+1. **`date`** : representa uma data (ano, mês, dia);
+1. **`time`** : representa um horário (hora, minuto, segundo, microsegundo);
+1. **`datetime`** : combina informações de data e hora;
+1. **`timedelta`** : representa a diferença entre duas datas, horas ou ambas;
+1. **`tzinfo`** : fornece informações de fuso horário;
+1. **`timezone`** : implementação concreta de `tzinfo` para fusos horários fixos;
+
+### classe `date`
+
+A classe `date` representa uma data no calendário gregoriano, composta por ano, mês e dia.
+
+```python
+from datetime import date
+
+# data atual
+hoje = date.today()
+print(hoje)  # exemplo : 2024-04-27
+
+# criando uma data específica
+data_especifica = date(2023, 12, 25)
+print(data_especifica)  # 2023-12-25
+```
+
+#### atributos
+
+- **`year`** : ano (ex.: 2024);
+- **`month`** : mês (1-12);
+- **`day`** : dia do mês (1-31);
+
+#### métodos comuns
+
+- **`today()`** : retorna a data atual;
+- **`fromtimestamp(timestamp)`** : cria uma data a partir de um timestamp POSIX;
+- **`weekday()`** : retorna o dia da semana como um inteiro (0=segunda, 6=domingo);
+- **`isoformat()`** : retorna a data no formato ISO 8601 (YYYY-MM-DD);
+
+#### exemplo
+
+```python
+from datetime import date
+
+# data atual
+hoje = date.today()
+print(f"Hoje é: {hoje}")
+
+# dia da semana
+dia_semana = hoje.weekday()
+dias = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']
+print(f"Dia da semana: {dias[dia_semana]}")
+
+# formatação ISO
+print("Formato ISO:", hoje.isoformat())
+```
+
+### classe `time`
+
+A classe `time` representa um horário, independentemente da data.
+
+```python
+from datetime import time
+
+# horário atual (não necessariamente o sistema)
+horario = time(14, 30, 45)
+print(horario)  # 14:30:45
+```
+
+#### atributos
+
+- **`hour`** : hora (0-23);
+- **`minute`** : minuto (0-59);
+- **`second`** : segundo (0-59);
+- **`microsecond`** : microssegundo (0-999999);
+- **`tzinfo`** : informações de fuso horário;
+
+#### métodos comuns
+
+- **`isoformat()`** : retorna o horário no formato ISO 8601 (HH:MM:SS.microsegundos);
+
+#### exemplo
+
+```python
+from datetime import time
+
+# criando um horário específico
+horario = time(9, 15, 30)
+print(f"Horário: {horario}")
+
+# formatação ISO
+print("Formato ISO:", horario.isoformat())
+```
+
+### classe `datetime`
+
+A classe `datetime` combina informações de data e hora em um único objeto.
+
+```python
+from datetime import datetime
+
+# data e hora atual
+agora = datetime.now()
+print(agora)  # exemplo : 2024-04-27 14:30:45.123456
+
+# criando uma data e hora específica
+data_hora = datetime(2023, 12, 25, 18, 30, 0)
+print(data_hora)  # 2023-12-25 18:30:00
+```
+
+#### atributos
+
+- **`year`**, **`month`**, **`day`**;
+- **`hour`**, **`minute`**, **`second`**, **`microsecond`**;
+- **`tzinfo`**;
+
+#### métodos comuns
+
+- **`now()`** : retorna a data e hora atual.;
+- **`utcnow()`** : retorna a data e hora atual em UTC.;
+- **`fromtimestamp(timestamp)`** : cria um `datetime` a partir de um timestamp POSIX.;
+- **`strftime(formato)`** : formata o `datetime` em uma string de acordo com o formato especificado.;
+- **`strptime(string, formato)`** : cria um `datetime` a partir de uma string e um formato.;
+
+#### exemplo
+
+```python
+from datetime import datetime
+
+# data e hora atual
+agora = datetime.now()
+print(f"Agora: {agora}")
+
+# formatação personalizada
+formatado = agora.strftime("%d/%m/%Y %H:%M:%S")
+print(f"Formatado: {formatado}")
+
+# parsing de string para datetime
+data_str = "25/12/2023 18:30:00"
+data_convertida = datetime.strptime(data_str, "%d/%m/%Y %H:%M:%S")
+print(f"Data convertida: {data_convertida}")
+```
+
+### classe `timedelta`
+
+A classe `timedelta` representa uma diferença entre duas datas, horas ou ambos. É útil para realizar cálculos com datas e horas.
+
+```python
+from datetime import timedelta
+
+# diferenca de 5 dias
+diferenca = timedelta(days=5)
+print(diferenca)  # 5 days, 0:00:00
+
+# diferenca de 2 semanas, 3 dias e 4 horas
+diferenca_complexa = timedelta(weeks=2, days=3, hours=4)
+print(diferenca_complexa)  # 17 days, 4:00:00
+```
+
+#### atributos
+
+- **`days`**;
+- **`seconds`**;
+- **`microseconds`**;
+- **`weeks`**, **`hours`**, **`minutes`**, **`milliseconds`**, etc. (passados como argumentos);
+
+#### exemplo
+
+```python
+from datetime import datetime, timedelta
+
+# data atual
+agora = datetime.now()
+
+# adicionando 10 dias
+futuro = agora + timedelta(days=10)
+print(f"Futuro: {futuro}")
+
+# subtraindo 2 horas
+passado = agora - timedelta(hours=2)
+print(f"Passado: {passado}")
+
+# diferença entre duas datas
+data1 = datetime(2023, 1, 1)
+data2 = datetime(2024, 1, 1)
+diferenca = data2 - data1
+print(f"Diferença: {diferenca}")  # 365 days, 0:00:00
+```
+
+### classes `tzinfo` e `timezone`
+
+A classe `tzinfo` é uma classe abstrata que fornece informações sobre fusos horários. A classe `timezone` é uma implementação concreta de `tzinfo` para fusos horários com deslocamento fixo em relação ao UTC.
+
+#### trabalhando com fusos horários
+
+```python
+from datetime import datetime, timezone, timedelta
+
+# UTC
+utc = timezone.utc
+agora_utc = datetime.now(utc)
+print(f"UTC: {agora_utc}")
+
+# Fuso horário com deslocamento de +3 horas
+fuso_plus3 = timezone(timedelta(hours=3))
+agora_plus3 = datetime.now(fuso_plus3)
+print(f"UTC+3: {agora_plus3}")
+
+# Fuso horário com deslocamento de -5 horas
+fuso_minus5 = timezone(timedelta(hours=-5))
+agora_minus5 = datetime.now(fuso_minus5)
+print(f"UTC-5: {agora_minus5}")
+```
+<!--
+#### exemplo Avançado com `pytz`
+
+Para fusos horários mais complexos que envolvem regras de horário de verão, é recomendado usar a biblioteca `pytz` (não faz parte do módulo `datetime` padrão).
+
+```python
+from datetime import datetime
+import pytz
+
+# Fuso horário de São Paulo
+fuso_sp = pytz.timezone('America/Sao_Paulo')
+agora_sp = datetime.now(fuso_sp)
+print(f"São Paulo: {agora_sp}")
+
+# Fuso horário de Nova York
+fuso_ny = pytz.timezone('America/New_York')
+agora_ny = datetime.now(fuso_ny)
+print(f"Nova York: {agora_ny}")
+```
+
+*Nota: Para usar `pytz`, você precisa instalá-lo via `pip install pytz`.* -->
+
+### formatação e parsing
+
+A formatação e parsing de datas e horas são essenciais para converter objetos `datetime` em strings e vice-versa.
+
+#### `strftime` - formatação
+
+O método `strftime` permite formatar objetos `datetime` em strings usando códigos de formatação.
+
+| Código | Descrição                             | Exemplo |
+|--------|---------------------------------------|---------|
+| `%Y`   | ano com século (e.g., 2024)           | 2024    |
+| `%m`   | mês como número decimal (01-12)       | 04      |
+| `%d`   | dia do mês (01-31)                     | 27      |
+| `%H`   | hora (00-23)                           | 14      |
+| `%M`   | minuto (00-59)                         | 30      |
+| `%S`   | segundo (00-59)                        | 45      |
+| `%f`   | microssegundos (000000-999999)         | 123456  |
+| `%A`   | nome completo do dia da semana        | Sábado  |
+| `%B`   | nome completo do mês                   | Abril   |
+
+**Exemplo**
+
+```python
+from datetime import datetime
+
+agora = datetime.now()
+formato = agora.strftime("%d/%m/%Y %H:%M:%S")
+print(f"Formatado: {formato}")  # exemplo : 27/04/2024 14:30:45
+```
+
+#### `strptime` - parsing
+
+O método `strptime` converte uma string em um objeto `datetime` de acordo com o formato especificado.
+
+**Exemplo**
+
+```python
+from datetime import datetime
+
+data_str = "25/12/2023 18:30:00"
+formato = "%d/%m/%Y %H:%M:%S"
+data_hora = datetime.strptime(data_str, formato)
+print(f"Data e Hora: {data_hora}")  # 2023-12-25 18:30:00
+```
+
+### operações comuns
+
+#### comparando datas e horas
+
+Objetos `datetime` podem ser comparados diretamente.
+
+```python
+from datetime import datetime
+
+data1 = datetime(2023, 1, 1)
+data2 = datetime(2024, 1, 1)
+
+if data1 < data2:
+    print("data1 é anterior a data2")
+else:
+    print("data1 não é anterior a data2")
+```
+
+#### extraindo componentes
+
+É possível acessar os componentes individuais de um objeto `datetime`.
+
+```python
+from datetime import datetime
+
+agora = datetime.now()
+print(f"Ano: {agora.year}")
+print(f"Mês: {agora.month}")
+print(f"Dia: {agora.day}")
+print(f"Hora: {agora.hour}")
+print(f"Minuto: {agora.minute}")
+print(f"Segundo: {agora.second}")
+```
+
+#### substituindo componentes
+
+É possível criar um novo objeto `datetime` com alguns componentes alterados usando o método `replace`.
+
+```python
+from datetime import datetime
+
+agora = datetime.now()
+novo_datetime = agora.replace(year=2025, month=12)
+print(novo_datetime)
+```
+
+### manipulação avançada com `timedelta`
+
+Além de adicionar ou subtrair `timedelta`, também é possível realizar operações mais complexas.
+
+#### diferença entre datas
+
+```python
+from datetime import datetime
+
+data1 = datetime(2024, 4, 27)
+data2 = datetime(2023, 12, 25)
+diferenca = data1 - data2
+print(f"Diferença: {diferenca.days} dias")
+```
+
+#### multiplicação e divisão com `timedelta`
+
+```python
+from datetime import timedelta
+
+delta = timedelta(days=2, hours=3)
+multiplicado = delta * 3
+print(multiplicado)  # 6 days, 9:00:00
+
+dividido = delta / 2
+print(dividido)  # 1 day, 15:00:00
+```
+
+### fusos horários avançados com `zoneinfo` (python 3.9+)
+
+A partir do Python 3.9, o módulo `zoneinfo` foi introduzido para fornecer suporte nativo a fusos horários com base no banco de dados IANA.
+
+#### uso básico
+
+```python
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+# fuso horário de São Paulo
+fuso_sp = ZoneInfo("America/Sao_Paulo")
+agora_sp = datetime.now(fuso_sp)
+print(f"São Paulo: {agora_sp}")
+
+# fuso horário de Tóquio
+fuso_tokyo = ZoneInfo("Asia/Tokyo")
+agora_tokyo = datetime.now(fuso_tokyo)
+print(f"Tóquio: {agora_tokyo}")
+```
+
+#### conversão entre fusos horários
+
+```python
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+# hora atual em UTC
+utc = ZoneInfo("UTC")
+agora_utc = datetime.now(utc)
+print(f"UTC: {agora_utc}")
+
+# convertendo para horário de Nova York
+fuso_ny = ZoneInfo("America/New_York")
+agora_ny = agora_utc.astimezone(fuso_ny)
+print(f"Nova York: {agora_ny}")
+```
+
+*Nota: É necessário ter o banco de dados de fusos horários disponível no sistema para que `zoneinfo` funcione corretamente.*
+
+### exemplos práticos
+
+Veja alguns exemplos práticos.
+
+#### exemplo 1: calculando idade
+
+```python
+from datetime import date
+
+def calcular_idade(data_nascimento):
+    hoje = date.today()
+    idade = hoje.year - data_nascimento.year - ((hoje.month, hoje.day) < (data_nascimento.month, data_nascimento.day))
+    return idade
+
+nascimento = date(1990, 5, 15)
+idade = calcular_idade(nascimento)
+print(f"Idade: {idade} anos")
+```
+
+#### exemplo 2: agendamento de eventos
+
+```python
+from datetime import datetime, timedelta
+
+# data e hora do evento
+evento = datetime(2024, 12, 31, 23, 59, 59)
+agora = datetime.now()
+
+# tempo restante
+tempo_restante = evento - agora
+print(f"Tempo restante para o evento: {tempo_restante}")
+
+# verificando se o evento já passou
+if agora > evento:
+    print("O evento já ocorreu.")
+else:
+    print("O evento ainda está por vir.")
+```
+
+#### exemplo 3: formatação de logs
+
+```python
+from datetime import datetime
+
+def log_mensagem(mensagem):
+    agora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{agora}] {mensagem}")
+
+log_mensagem("Iniciando o processo...")
+log_mensagem("Processo concluído com sucesso.")
+```
+
+#### exemplo 4: calculo julian date
+
+```python
+import sys
+from datetime import datetime, timedelta
+
+def calcula_julian():
+    try:
+        dias = int(input('digite o nr dias : '))
+    except ValueError as erro:
+        print('digite um numero valido')
+        print(f'{erro = }')
+        sys.exit(0)
+
+    agora = datetime.now()
+    ano_atual = agora.year
+
+    inicio = datetime(ano_atual,1,1)
+
+    julian_date = inicio + timedelta(days=dias-1)
+
+    return julian_date
+
+if __name__ == '__main__':
+    for _ in range(10):
+        julian = calcula_julian()
+        print(julian.strftime("%d/%m/%Y"))
+```
+
+### Boas Práticas
+
+1. **Sempre usar `datetime.now(tz=timezone.utc)` para armazenar datas e horas em UTC**, facilitando a conversão para outros fusos horários e evitando problemas com horário de verão;
+1. **Utilizar o módulo `zoneinfo` (Python 3.9+)`** para manipulação avançada de fusos horários;
+1. **Evitar a manipulação manual de strings para datas e horas**, preferindo métodos como `strftime` e `strptime` para garantir consistência;
+1. **Utilizar `timedelta` para cálculos de diferenças de tempo**, garantindo precisão e evitando erros comuns em cálculos manuais;
+
+## exercícios `datetime`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios sobre `date`
+    1. Crie um objeto `date` que represente a data do seu aniversário.
+    1. Exiba o ano, mês e dia da data atual usando o objeto `date`.
+    1. Usando o método `today()`, exiba a data atual no formato `dd/mm/yyyy`.
+    1. Crie uma função que receba um ano, mês e dia como argumentos e retorne o dia da semana dessa data.
+    1. Utilize o método `fromtimestamp()` para criar uma data a partir do timestamp `1609459200` (representando 1 de janeiro de 2021).
+    1. Exiba a data atual no formato ISO 8601 (`yyyy-mm-dd`) utilizando o método `isoformat()`.
+    1. Crie uma função que receba duas datas e retorne a diferença entre elas em dias.
+    1. Verifique se o dia 25 de dezembro de 2025 será uma sexta-feira.
+    1. Crie um programa que pergunte a data de nascimento do usuário e calcule quantos dias faltam até o próximo aniversário.
+    1. Escreva uma função que receba uma lista de datas e retorne a mais recente.
+1. Exercícios sobre `time`
+    1. Crie um objeto `time` que represente o horário 14:35:00.
+    1. Exiba as horas, minutos e segundos de um objeto `time` que representa 18:45:30.
+    1. Usando o método `isoformat()`, exiba o horário `08:15:45` no formato ISO (`hh:mm:ss`).
+    1. Crie uma função que receba duas horas diferentes e retorne a diferença em segundos.
+    1. Crie um objeto `time` que inclua microssegundos e exiba-os.
+    1. Modifique um objeto `time` para alterar apenas os minutos, sem mudar os outros componentes.
+    1. Escreva um programa que pergunte ao usuário a hora atual e exiba a hora em 12 horas (AM/PM).
+    1. Verifique se o horário `23:59:59` é anterior ao horário `00:00:00` do dia seguinte.
+    1. Crie uma função que receba um horário e adicione 15 minutos a ele.
+    1. Exiba o horário atual sem exibir microssegundos.
+1. Exercícios sobre `datetime`
+    1. Crie um objeto `datetime` que represente 1º de janeiro de 2022 às 12:30:45.
+    1. Exiba apenas a data de um objeto `datetime` que contém informações de data e hora.
+    1. Utilize o método `now()` para exibir a data e hora atuais no formato `dd/mm/yyyy hh:mm:ss`.
+    1. Converta o timestamp `1635724800` para um objeto `datetime`.
+    1. Crie uma função que receba uma string no formato `dd/mm/yyyy hh:mm:ss` e converta-a para um objeto `datetime`.
+    1. Crie uma função que receba uma data e hora e exiba o dia da semana correspondente.
+    1. Adicione 10 dias e 5 horas a um objeto `datetime`.
+    1. Crie um programa que pergunte ao usuário uma data e hora e calcule quantos dias faltam até o ano novo.
+    1. Verifique se o `datetime(2023, 5, 20, 14, 30)` é anterior ao `datetime(2024, 1, 1, 0, 0)`.
+    1. Escreva uma função que, dado um objeto `datetime`, retorne o nome do mês (ex.: Janeiro).
+1. Exercícios sobre `timedelta`
+    1. Crie um objeto `timedelta` que represente 3 dias, 2 horas e 30 minutos.
+    1. Subtraia 7 dias da data atual utilizando `timedelta`.
+    1. Crie uma função que receba duas datas e retorne a diferença entre elas em horas.
+    1. Multiplique um objeto `timedelta` de 2 horas por 5 e exiba o resultado.
+    1. Escreva um programa que calcule a diferença entre o horário atual e o meio-dia de hoje.
+    1. Adicione 30 dias a uma data específica utilizando `timedelta`.
+    1. Crie uma função que retorne quantos segundos existem em 3 dias, 5 horas e 10 minutos.
+    1. Verifique se a diferença entre duas datas é maior que 1 mês, usando `timedelta`.
+    1. Subtraia 45 minutos do horário atual e exiba o resultado.
+    1. Calcule a diferença entre a meia-noite e o horário atual em minutos.
+1. Exercícios sobre `timezone` e `zoneinfo`
+    1. Crie um objeto `timezone` para o fuso horário UTC e exiba a hora atual em UTC.
+    1. Converta o horário atual de UTC para o fuso horário de `UTC+3`.
+    1. Crie uma função que receba uma data e hora e converta para o fuso horário de Nova York usando `zoneinfo`.
+    1. Exiba a hora atual no fuso horário de Tóquio utilizando `zoneinfo`.
+    1. Verifique a diferença de horas entre São Paulo e Londres usando `zoneinfo`.
+    1. Crie um objeto `datetime` que represente a hora atual com o fuso horário UTC e converta-o para o fuso horário de `America/Sao_Paulo`.
+    1. Crie uma função que receba duas datas em diferentes fusos horários e retorne qual é anterior.
+    1. Converta a data e hora atual do fuso horário `UTC+5` para o fuso horário `UTC-2`.
+    1. Crie um programa que pergunte ao usuário a cidade e exiba a hora atual dessa cidade usando `zoneinfo`.
+    1. Verifique a diferença de tempo entre duas cidades à sua escolha utilizando `zoneinfo`.
+1. Exercícios sobre classes
+    1. Crie uma classe `Evento` com os atributos `nome` e `data_inicio` (um objeto `datetime`). Adicione um método que retorne o nome do evento e sua data no formato `dd/mm/yyyy hh:mm`.
+    1. Implemente uma classe `Tarefa` que tenha os atributos `descricao`, `data_criacao` (um objeto `date`) e `data_entrega` (outro objeto `date`). Adicione um método que informe quantos dias faltam até a entrega.
+    1. Desenvolva uma classe `Relogio` que tenha o atributo `hora_atual` (um objeto `time`). Adicione um método que exiba o horário no formato de 12 horas com AM/PM.
+    1. Crie uma classe `Compromisso` com os atributos `descricao`, `data_compromisso` (um objeto `datetime`) e `duracao` (um objeto `timedelta`). Adicione um método que retorne a data de término do compromisso.
+    1. Implemente uma classe `EventoRepetido` com os atributos `nome`, `data_inicio` (um objeto `datetime`) e `frequencia` (um objeto `timedelta`). Adicione um método que retorne a próxima data do evento com base na frequência.
+    1. Escreva uma classe `JornadaDeTrabalho` com os atributos `hora_inicio` e `hora_fim` (ambos objetos `time`). Adicione um método que calcule a quantidade de horas trabalhadas.
+    1. Crie uma classe `AluguelDeCarro` com os atributos `data_inicio`, `data_fim` (objetos `datetime`). Adicione um método que calcule o valor total do aluguel, sabendo que o preço por dia é de R$100.
+    1. Desenvolva uma classe `DataFormatada` com um atributo `data` (um objeto `date`). Adicione métodos para retornar a data nos formatos `yyyy-mm-dd` e `dd/mm/yyyy`.
+    1. Implemente uma classe `Viagem` com os atributos `destino`, `data_partida` e `data_retorno` (ambos objetos `datetime`). Adicione um método que informe quantos dias a viagem vai durar.
+    1. Crie uma classe `Projeto` com os atributos `nome_projeto`, `data_inicio`, `data_prevista_termino` (ambos objetos `date`). Adicione um método que retorne se o projeto está dentro do prazo (comparando a data atual com a data de término).
+    1. Desenvolva uma classe `RegistroDePonto` com os atributos `hora_entrada` e `hora_saida` (objetos `datetime`). Adicione um método que calcule a quantidade de horas trabalhadas em um dia.
+    1. Escreva uma classe `Aluno` com os atributos `nome`, `data_nascimento` (um objeto `date`). Adicione um método que calcule a idade do aluno.
+    1. Crie uma classe `Treinamento` com os atributos `modalidade`, `hora_inicio`, `hora_fim` (objetos `time`). Adicione um método que exiba o tempo total de duração do treinamento.
+    1. Implemente uma classe `Lembrete` com os atributos `mensagem`, `data_lembrete` (um objeto `datetime`). Adicione um método que verifique se o lembrete está configurado para uma data no passado ou futuro.
+    1. Desenvolva uma classe `ConsultaMedica` com os atributos `paciente`, `data_consulta` (um objeto `datetime`) e `duracao` (um objeto `timedelta`). Adicione um método que exiba o horário de término da consulta.
+    1. Crie uma classe `Encontro` com os atributos `local`, `data` (um objeto `date`) e `hora` (um objeto `time`). Adicione um método que exiba a data e hora do encontro no formato: `dd/mm/yyyy às hh:mm`.
+    1. Escreva uma classe `Contrato` com os atributos `nome_cliente`, `data_assinatura` (um objeto `date`) e `data_vencimento` (outro objeto `date`). Adicione um método que calcule quantos dias faltam para o vencimento do contrato.
+    1. Implemente uma classe `Corrida` com os atributos `distancia`, `hora_inicio` (um objeto `datetime`) e `tempo_estimado` (um objeto `timedelta`). Adicione um método que retorne a previsão de término da corrida.
+    1. Desenvolva uma classe `ReservaDeQuarto` com os atributos `numero_quarto`, `data_checkin` e `data_checkout` (objetos `datetime`). Adicione um método que informe quantas noites o hóspede vai ficar no hotel.
+    1. Crie uma classe `Feriado` com os atributos `nome`, `data_feriado` (um objeto `date`). Adicione um método que informe quantos dias faltam para o próximo feriado a partir da data atual.
 
 </details>
