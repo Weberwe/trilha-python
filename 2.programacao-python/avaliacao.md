@@ -128,7 +128,7 @@ O campo <cpf_digitado> deverá estar no formato `XXX.XXX.XXX-YY`, independente d
 
 ## mensagens
 
-Crie mensagens de boas vindas e de encerramento para seu programa. É sempre bom ser educado.
+Crie mensagens de boas vindas, encerramento e notificando se o CPF foi validado corretamente ou incorretamente.
 
 ## otimização
 
@@ -156,33 +156,44 @@ Seu programa deverá executar e jamais ser interrompido por um erro inesperado. 
 
 ## arquivos
 
-Arquivos são uma forma eficiente de armazenar informações por tempo indeterminado. Por conta disso, é necessário que sejam criados registros das tentativas de validação do CPF.
+Arquivos são uma forma eficiente de armazenar informações por tempo indeterminado. Por conta disso, é necessário que sejam criados registros das tentativas de validação do CPF. Ambos deverão ser cumulativos, isto é, a cada execução do programa os novos registros devem ser adicionados ao final deles.
 
 Seu programa deverá ter dois arquivos distintos.
-- `erros.log` : o arquivo será responsável por armazenar o CPF digitado pelo usuário e uma mensagem sucinta informando o motido dele ter sido invalidado, conforme o exemplo;
+- `erros.log` : o arquivo será responsável por armazenar a data e hora exatos do pedido de validação, o CPF digitado pelo usuário e uma mensagem sucinta informando o motido dele ter sido invalidado, conforme o exemplo;
 
     exemplos :
     ```log
-    asdf : caracter inválido
-    111.444.777-315 : tamanho inválido
-    123.456.799-87 : 1º dígito inválido
-    111.444777-15 : 1º dígito inválido
-    111.444.777-36 : 2º dígito inválido
-    111.111.111-11 : dígitos repetidos
+    [16/08/2024 18:55:34.123456] asdf : caracter inválido
+    [19/08/2024 18:21:34.123456] 111.444.777-315 : tamanho inválido
+    [20/08/2024 19:32:34.123456] 123.456.799-87 : 1º dígito inválido
+    [20/08/2024 07:44:34.123456] 111.444777-15 : 1º dígito inválido
+    [21/08/2024 10:01:34.123456] 111.444.777-36 : 2º dígito inválido
+    [22/08/2024 00:12:34.123456] 111.111.111-11 : dígitos repetidos
     ```
 
-- `validos.json` : o arquivo será responsável por armazenar os CPFs validados e que tiveram seus dois dígitos verificados e aprovados, conforme o exemplo;
+- `validos.json` : o arquivo será responsável por armazenar a data e hora exatos do pedido de validação, armazenar os CPFs validados e que tiveram seus dois dígitos verificados e aprovados, conforme o exemplo;
 
     exemplo :
     ```json
     {
-      [
-        {"cpf_digitado": "111444.777-35","digito_1": 3,"digito_2": 5,"cpf_formatado": "111.444.777-35"},
-        {"cpf_digitado": "111.444.777-35","digito_1": 3,"digito_2": 5,  "cpf_formatado": "111.444.777-35"},
-        {"cpf_digitado": "11144477735","digito_1": 3,"digito_2": 5,"cpf_formatado": "111.444.777-35"}
-      ]
+        [
+            {"data":"16/08/2024","hora":"07:44:34.123456","cpf_digitado": "111444.777-35","digito_1": 3,"digito_2": 5,"cpf_formatado": "111.444.777-35"},
+            {"data":"30/08/2024","hora":"18:21:34.123456","cpf_digitado": "111.444.777-35","digito_1": 3,"digito_2": 5,  "cpf_formatado": "111.444.777-35"},
+            {"data":"31/08/2024","hora":"18:42:34.123456","cpf_digitado": "11144477735","digito_1": 3,"digito_2": 5,"cpf_formatado": "111.444.777-35"}
+        ]
     }
     ```
+
+## classes
+
+É muito importante organizar o código em classes.
+
+Para isso, seu programa deverá possuir ao menos duas classes :
+- a classe `Cpf` deverá ser responsável por guardar o CPF digitado pelo usuário, realizar as validações dos dígitos verificadores, retornar quando estivar válido / inválido;
+- a classe `Arquivo` deverá ser responsável por receber as mensagens e salvá-las ou no arquivo `erros.log` ou no arquivo `validos.json`;
+- todas funções criadas envolvendo o CPF deverão ser adaptadas para serem usadas através dos objetos da classe `Cpf`, enquanto que todas as funções criadas envolvendo a manipulação de arquivos deverão ser adaptadas para serem usadas através de objetos da classe `Arquivo`;
+
+Seu módulo principal, o módulo `main.py`, deverá receber o CPF ditado e torná-lo uma instância da classe `Cpf`, para só então realizar todas as validações e verificações.
 
 ## o que usar
 
@@ -229,3 +240,9 @@ Parte 5
 - [ ] uso dos blocos `try` e `except`;
 - [ ] criação e armazenamento dos CPFs inválidos em `erros.log`;
 - [ ] criação e armazenamento dos CPFs válidos em `validos.json`;
+
+Parte 6
+- [ ] crie a classe `Cpf`;
+- [ ] crie a classe `Arquivo`;
+- [ ] use ambas as classes para instanciar objetos a partir do módulo `main.py`;
+- [ ] adicione a data e hora em cada validação do CPF com o módulo `datetime`;

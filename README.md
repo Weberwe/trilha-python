@@ -10,7 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 26 | 19/09/2024 | [módulo `datetime`](2.programacao-python/modulos.md#datetime) |
+| 26 | 19/09/2024 | [módulo `datetime`](2.programacao-python/modulos.md#datetime)<br>[herança](2.programacao-python/programacao-orientada-objetos.md#herança)<br>[avaliação - parte 6](2.programacao-python/avaliacao.md#classes) |
 | 25 | 18/09/2024 | [cópia profunda](2.programacao-python/copias-rasa-e-profunda.md#cópia-profunda)<br>comandos[`else`](2.programacao-python/tratamento-erros.md#else) e [`finally`](2.programacao-python/tratamento-erros.md#finally)<br>[mensagens de erro](2.programacao-python/tratamento-erros.md#capturando-mensagens-de-erro) |
 | 24 | 17/09/2024 | [anotações](2.programacao-python/anotacoes.md)<br>[métodos mágicos aritméticos](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos-de-operadores-aritméticos) |
 | 23 | 16/09/2024 | [comando `yield`](2.programacao-python/comandos-built-in.md#yield)<br>[métodos mágicos](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos)<br>[métodos `__str__()`](2.programacao-python/programacao-orientada-objetos.md#método-__str__) e [`__repr()__`](2.programacao-python/programacao-orientada-objetos.md#método-__repr__) |

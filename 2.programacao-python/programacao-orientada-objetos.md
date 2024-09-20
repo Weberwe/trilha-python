@@ -231,7 +231,7 @@ print(carro1.rodas)  # 6
 print(carro2.rodas)  # 4 (não foi alterado)
 ```
 
-## atributos de instância vs atributos de classe
+### atributos de instância vs atributos de classe
 
 Como mencionado antes, os **atributos de instância** pertencem a cada objeto separadamente, enquanto os **atributos de classe** pertencem à classe em si e são compartilhados por todas as instâncias.
 
@@ -267,8 +267,6 @@ class MinhaClasse:
 ```
 
 Aqui, `metodo_instancia` é um método de instância. Quando chamamos esse método em uma instância de `MinhaClasse`, ele acessa o atributo `valor` daquela instância em particular.
-
-#### explicando
 
 - **`self`**: É a referência à instância atual da classe. Sempre deve ser o primeiro parâmetro em qualquer método de instância, mas não é necessário passá-lo explicitamente ao chamar o método; o Python o gerencia automaticamente. Ele permite que o método acesse e modifique os atributos e outros métodos de instância.
 
@@ -354,7 +352,7 @@ A área do retângulo é: 15
 
 - aqui, o método `calcular_area` retorna a área do retângulo multiplicando os atributos `largura` e `altura`;
 
-### Importância dos Métodos de Instância
+### importância dos métodos de instância
 
 1. **Encapsulamento** : eles permitem encapsular o comportamento específico de uma instância dentro da classe; isso mantém a lógica organizada e evita que o código seja espalhado em várias partes do programa;
 
@@ -396,7 +394,7 @@ Saque de 200 realizado com sucesso. Saldo atual: 1300
 
 - o método `depositar` modifica o saldo da instância `minha_conta`, e o método `sacar` verifica se há saldo suficiente antes de realizar o saque;
 
-### Diferenciando Métodos de Instância de Outros Tipos de Métodos
+### diferenciando métodos de instância de outros tipos de métodos
 
 Em Python, existem três tipos principais de métodos em classes:
 
@@ -526,7 +524,7 @@ class Pessoa:
 pessoa1 = Pessoa("João", 30)
 
 # Chamando diretamente __repr__
-print(repr(pessoa1))  # Saída: Pessoa(nome='João', idade=30)
+print(repr(pessoa1))  # saída : Pessoa(nome='João', idade=30)
 ```
 
 Aqui, o método `__repr__` foi implementado para exibir os valores exatos dos atributos `nome` e `idade`, permitindo que a saída fosse mais detalhada e útil para entender o estado interno do objeto. Isso ajuda em depuração e, se possível, até recriar a instância de maneira precisa.
@@ -810,7 +808,7 @@ num2 = Numero(3)
 
 modulo = num1 % num2
 # __mod__ chamado
-print(modulo)  # Saída: Numero(1)
+print(modulo)  # saída : Numero(1)
 # saída :
 # Numero(1)
 ```
@@ -1075,5 +1073,313 @@ print(num1, end='\n\n')  # saída : Numero(30)
     1. Tente calcular a potência entre dois objetos `Numero` e atribuí-los diretamente a um deles usando o operador `**=`. Verifique o resultado.
     1. Crie uma classe `Fracao` que implemente os métodos `__pow__`, `__rpow__` e `__ipow__` para calcular a potência entre frações.
     1. Teste a classe `Fracao` calculando a potência de frações e utilizando o operador `**=` para modificar o objeto original.
+
+</details>
+
+## herança
+
+**Herança** é um dos principais conceitos da programação orientada a objetos (POO). Ela permite que uma classe herde atributos e métodos de outra classe, promovendo **reutilização de código** e **organização** do sistema. No contexto de Python, a herança ocorre quando uma nova classe (chamada de **classe derivada** ou **subclasse**) é criada a partir de uma classe existente (chamada de **classe base** ou **superclasse**), herdando os seus atributos e métodos.
+
+A principal vantagem da herança é que ela evita a duplicação de código. Ao invés de reescrever métodos ou atributos comuns entre várias classes, podemos defini-los uma vez na classe base e permitir que as subclasses os utilizem diretamente.
+
+### como funciona
+
+Quando uma classe herda de outra, ela recebe todos os atributos e métodos da classe base, e pode utilizar ou invocar esses recursos como se fossem seus próprios. Isso facilita a criação de subclasses mais especializadas que compartilham um comportamento comum.
+
+#### sintaxe básica
+
+Em Python, para definir uma classe que herda de outra, é usada a seguinte sintaxe:
+
+```python
+class ClasseBase:
+    # atributos e métodos da classe base
+    def __init__(self, atributo_base):
+        self.atributo_base = atributo_base
+
+    def metodo_base(self):
+        return f"Atributo base: {self.atributo_base}"
+
+# Subclasse que herda de ClasseBase
+class Subclasse(ClasseBase):
+    # atributos e métodos da subclasse
+    pass
+```
+
+Aqui, `Subclasse` herda de `ClasseBase`. A palavra-chave `pass` indica que a subclasse não tem definições adicionais. Mas, mesmo que não adicionemos novos métodos ou atributos na subclasse, ela ainda terá acesso ao que foi definido na `ClasseBase`.
+
+#### exemplo
+
+Vamos agora ver um exemplo mais concreto:
+
+```python
+class Animal:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def fazer_som(self):
+        return f"{self.nome} está fazendo um som."
+
+class Cachorro(Animal):
+    pass
+
+# criando uma instância de Cachorro
+meu_cachorro = Cachorro("Rex")
+print(meu_cachorro.fazer_som())  # saída : Rex está fazendo um som.
+```
+
+Neste exemplo:
+- A classe `Animal` é a **superclasse**, e a classe `Cachorro` é a **subclasse**.
+- A subclasse `Cachorro` herda o comportamento (atributo `nome` e método `fazer_som()`) da classe `Animal`.
+- Quando criamos um objeto da classe `Cachorro` (`meu_cachorro`), ele já pode usar o método `fazer_som()` da classe base `Animal`.
+
+Isso ocorre porque o Python, ao tentar acessar um método ou atributo na subclasse, primeiro verifica se o método ou atributo existe diretamente na subclasse. Se não encontrar, ele sobe na hierarquia de classes e busca na superclasse.
+
+### inicialização com o método `__init__`
+
+Uma das características mais comuns na herança é o uso do método especial `__init__()` (construtor). Quando uma subclasse herda de uma superclasse, o método `__init__()` da superclasse não é chamado automaticamente. É preciso invocá-lo manualmente para garantir que a subclasse seja corretamente inicializada.
+
+#### exemplo
+
+```python
+class Animal:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def fazer_som(self):
+        return f"{self.nome} está fazendo um som."
+
+class Cachorro(Animal):
+    def __init__(self, nome, raca):
+        # chamando o __init__ da classe base
+        super().__init__(nome)
+        self.raca = raca
+
+    def descricao(self):
+        return f"{self.nome} é um {self.raca}"
+
+# criando uma instância de Cachorro
+meu_cachorro = Cachorro("Rex", "Golden Retriever")
+print(meu_cachorro.descricao())  # saída : Rex é um Golden Retriever
+print(meu_cachorro.fazer_som())  # saída : Rex está fazendo um som.
+```
+
+Aqui, temos o seguinte fluxo:
+- a classe `Cachorro` tem um método `__init__()` próprio, que além de receber o nome, também aceita a raça do cachorro;
+- dentro do `__init__()` da classe `Cachorro`, usamos `super().__init__(nome)` para chamar o construtor da classe `Animal` e inicializar o atributo `nome`;
+- a subclasse `Cachorro` ainda tem acesso ao método `fazer_som()` da classe `Animal` e pode usá-lo normalmente;
+
+### atributos herdados
+
+**Atributos** são variáveis associadas a objetos de uma classe. Quando uma subclasse herda de uma superclasse, ela herda todos os atributos definidos na superclasse. Isso inclui :
+- atributos de instância (definidos dentro de métodos, normalmente dentro do `__init__()`);
+- atributos de classe (definidos diretamente no corpo da classe, fora de métodos);
+
+#### como funciona?
+
+1. **Atributos de Instância:**
+
+    Quando uma subclasse herda de uma superclasse, os atributos de instância da superclasse também fazem parte das instâncias da subclasse, desde que o construtor da superclasse (`__init__()`) seja chamado adequadamente.
+
+    Exemplo:
+    ```python
+    class Animal:
+        def __init__(self, nome):
+            self.nome = nome  # Atributo de instância
+
+    class Cachorro(Animal):
+        pass
+
+    rex = Cachorro("Rex")
+    print(rex.nome)  # saída : Rex
+    ```
+
+    - `self.nome` é um **atributo de instância** definido na classe `Animal`;
+    - quando um objeto da classe `Cachorro` é criado, ele herda o atributo `nome` da classe `Animal` porque a subclasse `Cachorro` não sobrescreve o `__init__()` da superclasse;
+
+2. **Atributos de Classe:**
+
+    Atributos de classe são compartilhados por todas as instâncias de uma classe, incluindo suas subclasses. Eles são definidos diretamente no corpo da classe e não no construtor.
+
+    Exemplo:
+    ```python
+    class Animal:
+        especie = "Mamífero"  # Atributo de classe
+
+    class Cachorro(Animal):
+        pass
+
+    rex = Cachorro("Rex")
+    print(rex.especie)  # saída : Mamífero
+    ```
+
+    - `especie` é um **atributo de classe** definido na superclasse `Animal`;
+    - a subclasse `Cachorro` herda esse atributo, portanto qualquer instância da classe `Cachorro` pode acessar `especie`;
+
+#### importante
+
+- **Atributos de Instância** : são definidos para cada instância individualmente. Para que a subclasse herde corretamente os atributos de instância, normalmente é necessário chamar o método `__init__()` da superclasse usando `super()`;
+- **Atributos de Classe** : são compartilhados por todas as instâncias da classe e suas subclasses, a menos que sejam sobrescritos;
+
+### métodos herdados
+
+**Métodos** são funções definidas dentro de uma classe, que manipulam os atributos de instância ou realizam outras operações. Quando uma subclasse herda de uma superclasse, ela também herda todos os métodos da superclasse. Isso significa que a subclasse pode chamar diretamente os métodos definidos na superclasse, sem precisar reescrevê-los.
+
+#### como funciona?
+
+Quando um método é chamado em uma instância de uma subclasse, o Python segue a **ordem de resolução de métodos (MRO)**, que significa que:
+1. o Python verifica primeiro se o método existe na subclasse;
+1. se não encontrar, ele sobe para a superclasse e verifica lá;
+
+Se o método estiver definido na superclasse, a subclasse poderá utilizá-lo automaticamente, como se fosse parte dela.
+
+```python
+class Animal:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def fazer_som(self):
+        return f"{self.nome} está fazendo um som."
+
+class Cachorro(Animal):
+    pass
+
+# criando um objeto da subclasse Cachorro
+rex = Cachorro("Rex")
+
+# chamando o método herdado da superclasse
+print(rex.fazer_som())  # saída : Rex está fazendo um som.
+```
+
+Neste exemplo:
+- a subclasse `Cachorro` herda o método `fazer_som()` da classe `Animal`;
+- quando uma instância de `Cachorro` é criada, o objeto `rex` pode chamar o método `fazer_som()` diretamente, sem que ele tenha sido explicitamente definido na classe `Cachorro`;
+
+#### modificações em métodos herdados
+
+Embora a subclasse herde métodos diretamente da superclasse, ela pode:
+1. **Usar os métodos da superclasse sem modificações** : como nos exemplos acima;
+1. **Sobrescrever os métodos herdados** : a subclasse pode sobrescrever os métodos herdados;
+1. **Adicionar novos métodos** : a subclasse pode definir seus próprios métodos, além dos herdados;
+
+    Exemplo:
+    ```python
+    class Animal:
+        def fazer_som(self):
+            return "Som genérico de animal"
+
+    class Cachorro(Animal):
+        def latir(self):
+            return f"{self.nome} está latindo!"
+
+        def fazer_som(self):
+            return "Som específico do Cachorro"
+
+    rex = Cachorro("Rex")
+    print(rex.fazer_som())  # Método herdado, mas sobrescrito
+    print(rex.latir())      # Método novo da subclasse
+    ```
+
+    Aqui, `Cachorro` herda e sobrescreve o método `fazer_som()` da classe `Animal` e, além disso, define um novo método `latir()`.
+
+### sobrecarga de métodos
+
+Em Python, é possível sobrescrever (ou seja, redefinir) métodos de uma superclasse na subclasse. Quando isso acontece, o método da subclasse é chamado, em vez do método da superclasse.
+
+No exemplo anterior, a classe `Cachorro` sobrescreveu o método `emitir_som` da classe base `Animal`. Se quiser ainda assim acessar o método da superclasse dentro da subclasse, pode-se usar `super()`.
+
+```python
+class Cachorro(Animal):
+    def emitir_som(self):
+        # chamando o método da classe base
+        super().emitir_som()
+        print(f'{self.nome} também está latindo.')
+```
+
+### como o python procura atributos e métodos?
+
+Quando um método ou atributo de uma instância é acessado, o Python segue a seguinte ordem de busca:
+
+1. **Subclasse :** primeiro, o Python verifica se o método ou atributo existe na subclasse;
+1. **Superclasse :** se não for encontrado na subclasse, ele sobe para a superclasse e verifica lá;
+1. **Mais acima (se houver) :** se houver classes acima na hierarquia, ele continua a busca até encontrar o que está sendo procurado ou até esgotar todas as opções;
+
+Essa cadeia de busca é chamada de **MRO** (Method Resolution Order), que basicamente é a ordem de busca que o Python segue para encontrar métodos e atributos.
+
+#### exemplo de MRO
+
+```python
+class A:
+    def metodo(self):
+        print("Método de A")
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+
+objeto = C()
+objeto.metodo()  # saída : Método de A
+```
+
+Neste exemplo, o objeto da classe `C` está chamando `metodo()`. Como a classe `C` e a classe `B` não possuem esse método, o Python vai até a classe `A` e o encontra lá.
+
+É possível verificar a ordem de resolução de métodos usando o método `mro()` ou a função `help()`.
+
+```python
+print(objeto.mro())
+```
+
+Isso mostra a sequência que o Python segue para encontrar o método ou atributo solicitado.
+
+## exercícios herança
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Herança Simples
+    1. Crie uma classe `Veiculo` com um atributo `marca`. Crie uma subclasse `Carro` que herde de `Veiculo`. Instancie um objeto de `Carro` e defina a marca.
+    1. Implemente uma classe `Animal` com um método `fazer_som()` que imprima "Som genérico". Crie uma subclasse `Gato` que herde de `Animal` e teste o método herdado.
+    1. Crie uma classe `Pessoa` com um atributo `nome`. Crie uma subclasse `Estudante` que herde de `Pessoa` e instancie um objeto de `Estudante`. Defina o nome e imprima-o.
+    1. Crie uma classe `Eletronico` com um método `ligar()`. Crie uma subclasse `Computador` que herde de `Eletronico` e utilize o método `ligar()`.
+    1. Crie uma classe `InstrumentoMusical` com um método `tocar()`. Crie uma subclasse `Violao` que herde de `InstrumentoMusical` e utilize o método herdado.
+    1. Implemente uma classe `Funcionario` com um método `trabalhar()` que imprime "Trabalhando". Crie uma subclasse `Programador` que herde de `Funcionario` e utilize o método `trabalhar()`.
+    1. Desenvolva uma classe `Produto` com um método `informar_preco()` que imprime "Preço não definido". Crie uma subclasse `Eletronico` e teste o método herdado.
+    1. Crie uma classe `Bicicleta` com um método `pedalar()`. Crie uma subclasse `MountainBike` que herde de `Bicicleta` e utilize o método `pedalar()`.
+    1. Crie uma classe `Telefone` com um método `ligar()`. Crie uma subclasse `Smartphone` e utilize o método herdado.
+    1. Desenvolva uma classe `ContaBancaria` com um método `depositar()`. Crie uma subclasse `ContaCorrente` e utilize o método herdado.
+1. Herança de Atributos de Instância
+    1. Crie uma classe `Pessoa` com os atributos `nome` e `idade`. Crie uma subclasse `Aluno` que herde esses atributos e instancie um objeto de `Aluno`. Defina o nome e a idade e imprima-os.
+    1. Implemente uma classe `Veiculo` com os atributos `marca` e `ano`. Crie uma subclasse `Carro` que herde esses atributos. Instancie um objeto de `Carro`, defina os valores dos atributos e imprima-os.
+    1. Crie uma classe `Funcionario` com os atributos `nome` e `salario`. Crie uma subclasse `Gerente` que herde esses atributos e instancie um objeto de `Gerente`. Defina o nome e o salário e imprima-os.
+    1. Crie uma classe `Animal` com os atributos `nome` e `especie`. Crie uma subclasse `Cachorro` que herde esses atributos. Instancie um objeto de `Cachorro`, defina os atributos e imprima-os.
+    1. Implemente uma classe `Produto` com os atributos `nome` e `preco`. Crie uma subclasse `Livro` que herde esses atributos. Instancie um objeto de `Livro`, defina o nome e o preço, e imprima-os.
+    1. Desenvolva uma classe `Eletronico` com os atributos `marca` e `modelo`. Crie uma subclasse `Smartphone` que herde esses atributos. Instancie um objeto de `Smartphone`, defina os valores dos atributos e imprima-os.
+    1. Crie uma classe `Pessoa` com os atributos `nome` e `endereco`. Crie uma subclasse `Cliente` que herde esses atributos e instancie um objeto de `Cliente`. Defina os valores e imprima-os.
+    1. Implemente uma classe `ContaBancaria` com os atributos `titular` e `saldo`. Crie uma subclasse `ContaPoupanca` que herde esses atributos. Instancie um objeto de `ContaPoupanca`, defina o titular e o saldo, e imprima-os.
+    1. Desenvolva uma classe `Veiculo` com os atributos `marca` e `velocidade_maxima`. Crie uma subclasse `Moto` que herde esses atributos. Instancie um objeto de `Moto`, defina os atributos e imprima-os.
+    1. Crie uma classe `Jogador` com os atributos `nome` e `posicao`. Crie uma subclasse `Atacante` que herde esses atributos e instancie um objeto de `Atacante`. Defina os valores e imprima-os.
+1. Herança de Atributos de Classe
+    1. Crie uma classe `Pessoa` com um atributo de classe `especie = "Humano"`. Crie uma subclasse `Aluno` que herde esse atributo. Verifique se o atributo é acessível pela subclasse.
+    1. Desenvolva uma classe `Veiculo` com um atributo de classe `categoria = "Transporte"`. Crie uma subclasse `Carro` que herde esse atributo e acesse-o através de um objeto da subclasse.
+    1. Implemente uma classe `Animal` com um atributo de classe `tipo = "Mamífero"`. Crie uma subclasse `Cachorro` que herde esse atributo e verifique se o objeto da subclasse pode acessá-lo.
+    1. Crie uma classe `Produto` com um atributo de classe `tipo = "Mercadoria"`. Crie uma subclasse `Alimento` que herde esse atributo. Instancie um objeto da subclasse e acesse o atributo.
+    1. Desenvolva uma classe `Funcionario` com um atributo de classe `empresa = "TechCorp"`. Crie uma subclasse `Engenheiro` que herde esse atributo e acesse-o através de um objeto da subclasse.
+    1. Crie uma classe `Eletronico` com um atributo de classe `tipo = "Aparelho"`. Crie uma subclasse `Computador` que herde esse atributo e instancie um objeto para acessá-lo.
+    1. Implemente uma classe `ContaBancaria` com um atributo de classe `instituicao = "Banco ABC"`. Crie uma subclasse `ContaCorrente` que herde esse atributo e verifique se o objeto da subclasse pode acessá-lo.
+    1. Desenvolva uma classe `Jogador` com um atributo de classe `esporte = "Futebol"`. Crie uma subclasse `Goleiro` que herde esse atributo e acesse-o através de um objeto da subclasse.
+    1. Crie uma classe `InstrumentoMusical` com um atributo de classe `categoria = "Cordas"`. Crie uma subclasse `Violao` que herde esse atributo. Instancie um objeto da subclasse e acesse o atributo.
+    1. Implemente uma classe `Pessoa` com um atributo de classe `planeta = "Terra"`. Crie uma subclasse `Cientista` que herde esse atributo e acesse-o através de um objeto da subclasse.
+1. Herança de Métodos
+    1. Crie uma classe `Veiculo` com um método `mover()` que imprime "O veículo está se movendo". Crie uma subclasse `Carro` que herde esse método e teste-o.
+    1. Implemente uma classe `Funcionario` com um método `trabalhar()` que imprime "Funcionário está trabalhando". Crie uma subclasse `Gerente` e sobrescreva o método herdado.
+    1. Desenvolva uma classe `Produto` com um método `informar_preco()` que imprime "Preço não definido". Crie uma subclasse `Alimento` e utilize o método herdado.
+    1. Crie uma classe `Pessoa` com um método `falar()` que imprime "Olá, eu sou uma pessoa". Crie uma subclasse `Aluno` e sobrescreva o método herdado.
+    1. Implemente uma classe `Animal` com um método `comer()` que imprime "O animal está comendo". Crie uma subclasse `Leao` e utilize o método herdado.
+    1. Desenvolva uma classe `InstrumentoMusical` com um método `tocar()` que imprime "Tocando instrumento". Crie uma subclasse `Guitarra` e sobrescreva o método herdado.
+    1. Crie uma classe `Veiculo` com um método `parar()` que imprime "O veículo está parando". Crie uma subclasse `Moto` e utilize o método herdado.
+    1. Implemente uma classe `Funcionario` com um método `descansar()` que imprime "Funcionário está descansando". Crie uma subclasse `Programador` e sobrescreva o método herdado.
+    1. Desenvolva uma classe `Eletronico` com um método `desligar()` que imprime "Aparelho desligado". Crie uma subclasse `Tablet` e utilize o método herdado.
+    1. Crie uma classe `Jogador` com um método `correr()` que imprime "Jogador está correndo". Crie uma subclasse `Atacante` e sobrescreva o método herdado.
 
 </details>
