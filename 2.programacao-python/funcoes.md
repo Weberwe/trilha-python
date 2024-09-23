@@ -1759,7 +1759,7 @@ Se fosse feita uma tentativa de acessar `y` fora da função `interna()`, seria 
 
 ### funções internas e escopo de variáveis (relembrando)
 
-O comportamento de funções internas tem muito a ver com o [**escopo de variáveis**](2.programacao-python/namespaces.md), que define onde uma variável pode ser acessada. Em Python, o escopo segue as seguintes regras :
+O comportamento de funções internas tem muito a ver com o [**escopo de variáveis**](namespaces.md), que define onde uma variável pode ser acessada. Em Python, o escopo segue as seguintes regras :
 
 1. **local (função interna)** : variáveis definidas dentro da função interna são locais a ela;
 1. **enclosing (função externa)** : variáveis definidas na função externa podem ser acessadas pela função interna;
