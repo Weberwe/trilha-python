@@ -1667,3 +1667,352 @@ Para cada exercício abaixo, primeiro monte uma função de sua versão usando a
 1. **Contar elementos em uma lista aninhada** : Escreva uma função recursiva que conte quantos elementos (incluindo os das sublistas) existem em uma lista aninhada.
 
 </details>
+
+## objetos de primeira classe
+
+Em Python, **objetos de primeira classe** (ou "first-class objects") referem-se àqueles que podem ser manipulados como qualquer outra variável. Em termos simples, um objeto de primeira classe é algo que pode ser:
+
+- atribuído a uma variável;
+- passado como argumento para uma função;
+- retornado como valor de uma função;
+- armazenado em estruturas de dados (como listas ou dicionários);
+
+Em Python, funções são objetos de primeira classe, o que significa que você pode manipulá-las como faria com qualquer outro tipo de dado (como números ou strings). Isso é fundamental para o entendimento de decoradores.
+
+### exemplo
+
+Veja um exemplo simples de manipulação de uma função como um objeto de primeira classe.
+
+```python
+def saudacao(nome):
+    return f"Olá, {nome}!"
+
+# atribuindo a função saudacao a uma variável
+cumprimento = saudacao
+
+# chamando a função através da nova variável
+print(cumprimento("Maria"))
+```
+
+**Explicação :**
+- `saudacao` é uma função que recebe um nome e retorna uma saudação;
+- a função é atribuída à variável `cumprimento`; como funções são objetos de primeira classe, `cumprimento` agora se refere à mesma função;
+- quando se chama `cumprimento("Maria")`, é equivalente a se chamar `saudacao("Maria")`;
+
+### por que isso é importante?
+
+Esse comportamento é a base para criar funções mais complexas, como decoradores. Ser capaz de tratar uma função como um objeto significa que podemos passar funções como argumentos, armazená-las e até mesmo retorná-las de outras funções, que é o que veremos a seguir.
+
+## funções internas
+
+Funções internas (ou "Nested Functions") são simplesmente funções que são definidas dentro de outra função. Elas têm acesso às variáveis locais da função externa em que foram criadas, mas, por padrão, não podem ser acessadas de fora dessa função. Isso cria um escopo limitado, onde a função interna só pode ser usada dentro do bloco de código onde foi definida.
+
+Esse conceito é importante porque permite :
+- criar **escopos fechados** (ou isolados), onde certas funcionalidades ficam "escondidas" e são usadas apenas quando necessárias;
+- facilitar o encapsulamento, garantindo que uma função interna tenha acesso apenas às variáveis de que precisa;
+
+### exemplo
+
+Veja um exemplo simples :
+
+```python
+def externa():
+    mensagem = "Olá da função externa!"
+
+    def interna():
+        print(mensagem)
+
+    # chamando a função interna dentro da função externa
+    interna()
+
+externa()
+```
+
+**Explicação :**
+1. a função `externa()` contém uma variável local chamada `mensagem` e outra função chamada `interna()`;
+2. a função `interna()` imprime o valor da variável `mensagem`;
+3. quando se chama `externa()`, a função `interna()` é chamada dentro dela e imprime a mensagem "Olá da função externa!";
+4. **a função `interna()` não é acessível fora de `externa()`.** se tentar chamá-la diretamente como `interna()`, será levantado um erro;
+
+### escopo e acesso a variáveis
+
+Funções internas têm acesso ao **escopo da função externa**, o que significa que podem acessar variáveis definidas na função externa, mas variáveis dentro de `interna()` não são visíveis fora dela.
+
+Veja um exemplo mais elaborado:
+
+```python
+def externa():
+    x = 10  # variável no escopo da função externa
+
+    def interna():
+        y = 5  # variável no escopo da função interna
+        print(f"x: {x}, y: {y}")  # a função interna pode acessar 'x' e 'y'
+
+    interna()
+
+externa()
+```
+
+Aqui, a função interna tem acesso à variável `x`, que foi definida no escopo da função externa, mas a variável `y` (definida no escopo da função interna) não pode ser acessada fora da função `interna`.
+
+Se fosse feita uma tentativa de acessar `y` fora da função `interna()`, seria levantado um erro, porque `y` é local à função `interna()` e não existe no escopo de `externa()`.
+
+### funções internas e escopo de variáveis (relembrando)
+
+O comportamento de funções internas tem muito a ver com o [**escopo de variáveis**](2.programacao-python/namespaces.md), que define onde uma variável pode ser acessada. Em Python, o escopo segue as seguintes regras :
+
+1. **local (função interna)** : variáveis definidas dentro da função interna são locais a ela;
+1. **enclosing (função externa)** : variáveis definidas na função externa podem ser acessadas pela função interna;
+1. **global** : variáveis globais podem ser acessadas de qualquer lugar, mas modificá-las requer a palavra-chave `global`;
+1. **built-in** : são as funções e variáveis embutidas no python, como `len()` ou `int()`;
+
+Se uma função interna quiser **modificar** uma variável da função externa, ela precisa usar a palavra-chave `nonlocal`.
+
+### exemplo com `nonlocal`
+
+Veja um exemplo onde a função interna modifica uma variável da função externa usando `nonlocal`:
+
+```python
+def externa():
+    contador = 0  # variável no escopo da função externa
+
+    def interna():
+        nonlocal contador  # declara que vai usar a variável de 'externa'
+        contador += 1  # modificando a variável 'contador'
+        print(f"Contador atualizado: {contador}")
+
+    interna()
+    interna()  # chamando a função interna várias vezes
+
+externa()
+```
+
+**Explicação :**
+1. a função externa define a variável `contador`;
+1. a função interna usa a palavra-chave `nonlocal` para declarar que ela quer modificar a variável `contador`, que está no escopo da função externa;
+1. cada vez que chamamos `interna()`, o valor de `contador` é incrementado;
+
+Sem `nonlocal`, a função interna não poderia modificar `contador`, pois, por padrão, as variáveis da função externa seriam apenas "lidas" e não alteradas.
+
+### quando usar
+
+Funções internas são úteis quando se quer :
+
+1. **encapsular lógica** : se uma função depende de outra que só será usada dentro dela, faz sentido manter essa função interna; isso mantém o código mais organizado e evita poluição do escopo global;
+    Exemplo :
+    ```python
+    def calcular_media(valores):
+        def soma(lista):
+            return sum(lista)
+
+        total = soma(valores)
+        return total / len(valores)
+
+    print(calcular_media([10, 20, 30]))  # Exemplo de função interna auxiliando o cálculo
+    ```
+    Aqui, `soma()` é uma função auxiliar que só faz sentido ser usada dentro de `calcular_media()`, portanto, mantemos ela encapsulada dentro da função maior.
+
+2. **criar closures** : funções internas são frequentemente usadas em **closures**, que são funções que "lembram" as variáveis de seu ambiente externo mesmo depois de esse ambiente ter sido finalizado; isso é útil em vários contextos, como criar funções que guardam estado entre chamadas;
+
+3. **esconder detalhes de implementação** : se deseja garantir que certos detalhes da implementação fiquem ocultos do resto do código, as funções internas são uma boa solução;
+
+## exercícios funções internas
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma função chamada `funcao_externa` que define e chama uma função interna que imprime "Função interna chamada".
+1. Crie uma função `saudacao` que tenha uma função interna chamada `bom_dia` e que imprime "Bom dia!" quando chamada.
+1. Crie uma função chamada `contagem` que tenha uma função interna que imprime os números de 1 a 5.
+1. Modifique o exercício 3 para que a função interna receba um argumento que determine até qual número contar.
+1. Crie uma função `calculo` que defina uma função interna chamada `soma` que recebe dois números e retorna sua soma.
+1. Modifique o exercício 5 para que, além da soma, a função `calculo` tenha outra função interna chamada `subtracao` que retorna a subtração dos dois números.
+1. Crie uma função `operacao` que tenha uma função interna chamada `multiplicacao` que multiplica dois números.
+1. Crie uma função `dividir_por_dois` que tenha uma função interna que divida o número passado por 2 e retorne o resultado.
+1. Crie uma função `reverter_string` que contenha uma função interna que receba uma string e a retorne invertida.
+1. Crie uma função `contador` que contenha uma função interna que incremente uma variável de contagem em 1 cada vez que for chamada.
+1. Modifique o exercício 10 para que a função `contador` chame a função interna várias vezes e imprima a contagem a cada vez.
+1. Crie uma função `teste_acesso` que contenha uma função interna que imprime "Acesso permitido" se uma senha for correta, e "Acesso negado" caso contrário.
+1. Crie uma função `filtrar_pares` que tenha uma função interna que receba uma lista e retorne apenas os números pares.
+1. Crie uma função `verifica_maior` que tenha uma função interna que compare dois números e retorne o maior.
+1. Crie uma função `mensagem_personalizada` que contenha uma função interna que recebe uma mensagem e imprime "Sua mensagem é: " seguido da mensagem.
+1. Crie uma função `calcular_area_retangulo` que contenha uma função interna que recebe dois valores (comprimento e largura) e retorna a área de um retângulo.
+1. Crie uma função `validar_idade` que contenha uma função interna que verifica se uma pessoa é maior de idade (18 anos ou mais) e retorna True ou False.
+1. Crie uma função `cumprimentar_pessoa` que contenha uma função interna que recebe um nome e imprime "Olá, [nome]!".
+1. Crie uma função `repetir_palavra` que tenha uma função interna que recebe uma palavra e a imprime repetidamente, 3 vezes.
+1. Crie uma função `sequencia_fibonacci` que contenha uma função interna que gera e imprime os primeiros 10 números da sequência de Fibonacci.
+
+</details>
+
+## funções retornando funções
+
+Em Python, como funções são objetos de primeira classe (ou seja, podem ser tratadas como dados), isso permite que uma função retorne outra função como seu valor de retorno. Isso significa que, em vez de uma função retornar um valor simples, como um número ou uma string, ela pode retornar outra função.
+
+Essa técnica é muito poderosa, pois permite criar **funções dinâmicas**, ou seja, funções que se adaptam ou são criadas com base no contexto em que são chamadas.
+
+### exemplo
+
+Primeiro, veja um exemplo simples de uma função que retorna outra função :
+
+```python
+def saudacao(funcao):
+    def interna(nome):
+        return f"{funcao}, {nome}!"
+    return interna
+
+# criando uma função personalizada
+ola_funcao = saudacao("Olá")
+
+# usando a função retornada
+print(ola_funcao("Maria"))  # saída : Olá, Maria!
+print(ola_funcao("João"))   # saída : Olá, João
+```
+
+Aqui, `saudacao()` é uma função que retorna outra função, `interna()`. Veja como isso funciona em prática:
+
+**Explicação :**
+1. `saudacao()` recebe um argumento `funcao` (nesse caso, uma string, como "Olá");
+1. dentro de `saudacao()`, foi definida uma função chamada `interna()` que usa o argumento `funcao` e retorna uma saudação personalizada;
+1. o importante aqui é que `saudacao()` **não chama `interna()` diretamente**, ela **retorna** a função `interna()` para que possa ser chamada depois;
+1. quando `ola_funcao("maria")` é chamada, na verdade está sendo chamando a função `interna()`, que foi retornada por `saudacao()`;
+
+Esse padrão pode ser muito útil para criar funções personalizadas ou dinâmicas. Por exemplo, pode-se criar várias saudações diferentes :
+
+```python
+# criando outras saudações
+boa_noite_funcao = saudacao("Boa noite")
+bom_dia_funcao = saudacao("Bom dia")
+
+print(boa_noite_funcao("Carlos"))  # saída : Boa noite, Carlos!
+print(bom_dia_funcao("Ana"))       # saída : Bom dia, Ana!
+```
+
+Aqui, as saudações são geradas dinamicamente, e `saudacao()` funciona como uma **fábrica de funções**.
+
+### outro exemplo: função de potência
+
+Outro exemplo prático é criar uma função que retorna outra função para calcular a potência de um número com um expoente fixo.
+
+```python
+def potencia(expoente):
+    def elevar(base):
+        return base ** expoente
+    return elevar
+
+# criando funções para elevar ao quadrado e ao cubo
+quadrado = potencia(2)
+cubo = potencia(3)
+
+print(quadrado(4))  # saída : 16 (4^2)
+print(cubo(4))      # saída : 64 (4^3)
+```
+
+Aqui, `potencia()` retorna uma função que eleva um número `base` ao valor do `expoente` que foi definido.
+
+**Explicação :**
+- `potencia(2)` cria uma função que sempre eleva um número ao quadrado;
+- `potencia(3)` cria uma função que sempre eleva um número ao cubo;
+- a função retornada (`elevar`) armazena o valor do `expoente` e usa esse valor quando é chamada com a `base`;
+
+### closures
+
+Ao falar de funções que retornam funções, é necessário introduzir o conceito de **closures**.
+
+Uma **closure** é uma função que "lembra" o ambiente em que foi criada, mesmo após o término da execução da função que a gerou. Em outras palavras, uma closure permite que uma função interna acesse variáveis da função externa em que foi definida, mesmo depois que essa função externa já foi finalizada.
+
+#### características
+
+1. **acesso a variáveis do escopo externo** : a função interna pode acessar e manipular variáveis que pertencem ao escopo da função externa;
+1. **persistência** : as variáveis do escopo externo permanecem disponíveis para a função interna mesmo após a execução da função externa ter sido concluída;
+1. **encapsulamento** : as closures ajudam a encapsular comportamentos e estados, permitindo que dados sejam mantidos em um estado isolado;
+
+#### como funcionam
+
+Para entender melhor como as closures funcionam, veja um exemplo simples:
+
+```python
+def cria_contador():
+    contador = 0  # variável do escopo da função externa
+
+    def incrementar():
+        nonlocal contador  # permite que a função interna modifique a variável do escopo externo
+        contador += 1
+        return contador
+
+    return incrementar  # retorna a função interna
+
+# criando uma nova closure
+contador1 = cria_contador()
+
+# Chamando a função retornada
+print(contador1())  # saída : 1
+print(contador1())  # saída : 2
+print(contador1())  # saída : 3
+```
+
+**Explicação :**
+1. `cria_contador()` é uma função externa que define a variável `contador` e a função interna `incrementar()`;
+1. a função interna `incrementar()` usa a palavra-chave `nonlocal` para indicar que ela deseja modificar a variável `contador` que está no escopo da função externa;
+1. quando `cria_contador()` é chamada, ela retorna a função `incrementar()`, que é agora uma closure; essa closure "lembra" do valor de `contador`;
+1. a cada vez que chamamos `contador1()`, a variável `contador` é incrementada, e seu valor é mantido entre as chamadas, mesmo que `cria_contador()` já tenha terminado;
+
+#### por que usar
+
+As closures são úteis por várias razões:
+
+1. **encapsulamento de estado** : elas permitem encapsular o estado, mantendo variáveis acessíveis apenas dentro da closure; isso ajuda a evitar poluição do escopo global e mantém a lógica do programa mais organizada;
+
+1. **criação de funções com comportamento dinâmico** : elas permitem a criação de funções que podem se adaptar com base em parâmetros que foram passados quando a closure foi criada;
+
+1. **facilidade de implementação de decoradores** : closures são frequentemente usadas para implementar decoradores, que são uma maneira poderosa de modificar o comportamento de funções;
+
+#### exemplo prático: contador com estado
+
+Veja o exemplo do contador para mostrar como as closures podem ser usadas em uma situação mais prática.
+
+```python
+def gerador_de_multiplicador(fator):
+    def multiplicar(numero):
+        return numero * fator
+    return multiplicar
+
+# criando closures com diferentes fatores
+dobro = gerador_de_multiplicador(2)
+triplo = gerador_de_multiplicador(3)
+
+print(dobro(5))   # saída : 10 (5 * 2)
+print(triplo(5))  # saída : 15 (5 * 3)
+```
+
+**Explicação :**
+- `gerador_de_multiplicador()` retorna uma função `multiplicar()` que multiplica um número pelo `fator` fornecido;
+- quando `gerador_de_multiplicador(2)` é chamado, ele retorna uma closure que "lembra" que o fator é 2, permitindo que se chame `dobro(5)` e se obtenha o resultado correto;
+- o mesmo vale para `triplo`, que "lembra" que seu fator é 3;
+
+## exercícios funções retornando funções
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma função `retorna_funcao` que retorna uma função que imprime "Função retornada".
+1. Crie uma função `gerar_saudacao` que retorna outra função que recebe um nome e imprime "Olá, [nome]!".
+1. Crie uma função `multiplicador(n)` que retorna uma função que multiplica um número pelo valor de `n`.
+1. Crie uma função `potencia(expoente)` que retorna uma função que eleva um número ao valor do expoente.
+1. Crie uma função `somador(valor)` que retorna uma função que soma `valor` a outro número passado.
+1. Crie uma função `criador_de_boas_vindas(mensagem)` que retorna uma função que imprime a mensagem seguida de um nome.
+1. Crie uma função `divisor(divisor)` que retorna uma função que divide um número pelo divisor.
+1. Crie uma função `gerar_funcao_com_prefixo(prefixo)` que retorna uma função que imprime o prefixo seguido de um nome.
+1. Crie uma função `concatenar_prefixo(sufixo)` que retorna uma função que adiciona o sufixo a uma string passada.
+1. Crie uma função `aplicador_de_taxa(taxa)` que retorna uma função que aplica uma taxa percentual sobre um valor.
+1. Crie uma função `gerar_calculadora(operacao)` que retorna uma função que realiza a operação (soma, subtração, multiplicação ou divisão) sobre dois números.
+1. Crie uma função `verificador(minimo)` que retorna uma função que verifica se um número é maior ou igual ao valor mínimo.
+1. Crie uma função `aplicador_de_desconto(desconto)` que retorna uma função que aplica um desconto percentual a um preço.
+1. Crie uma função `fabrica_de_greetings(saudacao)` que retorna uma função que, ao ser chamada, imprime a saudação com um nome.
+1. Crie uma função `gerar_contador(inicio)` que retorna uma função que incrementa e retorna o valor de `inicio` a cada vez que é chamada.
+1. Crie uma função `fabrica_de_multiplicacao(fator)` que retorna uma função que multiplica um número pelo fator.
+1. Crie uma função `validador_de_senha(senha)` que retorna uma função que verifica se a senha passada como argumento é a senha correta.
+1. Crie uma função `criador_de_replicas(n)` que retorna uma função que imprime uma string repetidamente, `n` vezes.
+1. Crie uma função `fabrica_de_comparador(x)` que retorna uma função que verifica se um número passado é maior, menor ou igual a `x`.
+1. Crie uma função `gerador_de_boletos(taxa)` que retorna uma função que calcula o valor final de um boleto dado o valor inicial.
+
+</details>

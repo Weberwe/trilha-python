@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 27 | 23/09/2024 | [objetos de primeira classe](2.programacao-python/funcoes.md#objetos-de-primeira-classe)<br>[funções internas](2.programacao-python/funcoes.md#funções-internas)<br>[funções retornando funções](2.programacao-python/funcoes.md#funções-retornando-funções) |
 | 26 | 19/09/2024 | [módulo `datetime`](2.programacao-python/modulos.md#datetime)<br>[herança](2.programacao-python/programacao-orientada-objetos.md#herança)<br>[avaliação - parte 6](2.programacao-python/avaliacao.md#classes) |
 | 25 | 18/09/2024 | [cópia profunda](2.programacao-python/copias-rasa-e-profunda.md#cópia-profunda)<br>comandos[`else`](2.programacao-python/tratamento-erros.md#else) e [`finally`](2.programacao-python/tratamento-erros.md#finally)<br>[mensagens de erro](2.programacao-python/tratamento-erros.md#capturando-mensagens-de-erro) |
 | 24 | 17/09/2024 | [anotações](2.programacao-python/anotacoes.md)<br>[métodos mágicos aritméticos](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos-de-operadores-aritméticos) |
