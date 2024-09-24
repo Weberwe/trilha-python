@@ -2016,3 +2016,310 @@ print(triplo(5))  # saída : 15 (5 * 3)
 1. Crie uma função `gerador_de_boletos(taxa)` que retorna uma função que calcula o valor final de um boleto dado o valor inicial.
 
 </details>
+
+## decoradores
+
+Decoradores em Python são uma forma de modificar ou estender o comportamento de funções ou métodos sem alterar seu código. Eles permitem adicionar funcionalidades a funções existentes de maneira elegante e reutilizável.
+
+Um decorador é, na essência, uma função que recebe outra função como argumento e retorna uma nova função que geralmente estende ou altera o comportamento da função original.
+
+### decorador simples
+
+Veja o exemplo abaixo :
+
+```python
+def decorador(func):
+    def wrapper():
+        print("Algo está acontecendo antes da função ser chamada.")
+        func()
+        print("Algo está acontecendo depois da função ser chamada.")
+    return wrapper
+
+def diga_whee():
+    print("Whee!")
+
+diga_whee = decorador(diga_whee)
+```
+
+Aqui, foram definidas duas funções simples, `decorador()` e `diga_whee()`, além de uma função interna `wrapper()`. Depois, a função `diga_whee()` foi redefinida para aplicar `decorador()` à função original `diga_whee()`.
+
+Veja o que acontece quando ele é executado :
+
+```python
+diga_whee()
+# saída :
+# Algo está acontecendo antes da função ser chamada.
+# Whee!
+# Algo está acontecendo depois da função ser chamada.
+```
+
+Para entender o que está acontecendo aqui, olhe para os exemplos anteriores. Tudo o que foi aprendido até o momento está sendo aplicado.
+
+A chamada de decoração acontece na seguinte linha :
+
+```python
+diga_whee = decorador(diga_whee)
+```
+
+Na verdade, o nome `diga_whee` agora aponta para a função interna `wrapper()`. Lembre-se de que se retorna `wrapper` como uma função quando chama `decorador(diga_whee)` :
+
+```python
+print(diga_whee)
+<function decorador.<locals>.wrapper at 0x7f3c5dfd42f0>
+```
+
+No entanto, `wrapper()` tem uma referência à função original `diga_whee()` como `func`, e chama essa função entre as duas chamadas a `print()`.
+
+Simplificando, um decorador envolve uma função, modificando seu comportamento.
+
+Antes de prosseguir, veja um segundo exemplo. Como `wrapper()` é uma função do Python, a maneira como um decorador modifica uma função pode mudar dinamicamente. Para não incomodar seus vizinhos, o exemplo a seguir só executará o código decorado durante o dia:
+
+**Exemplo :**
+
+```python
+from datetime import datetime
+
+def nao_durante_noite(func):
+    def wrapper():
+        if 7 <= datetime.now().hour < 22:
+            func()
+        else:
+            pass  # Silêncio, os vizinhos estão dormindo
+    return wrapper
+
+def diga_whee():
+    print("Whee!")
+
+diga_whee = nao_durante_noite(diga_whee)
+```
+
+Se tentar chamar `diga_whee()` após o horário de dormir, nada acontecerá :
+
+```python
+diga_whee()
+```
+
+Aqui, `diga_whee()` não imprime nenhuma saída. Isso acontece porque o teste `if` falhou, então o `wrapper` não chamou `func()`, a função original `diga_whee()`.
+
+### usando `@`
+
+Veja o código escrito anteriormente. A maneira que a função `diga_whee` foi decorada é um pouco desajeitada. Primeiro, é preciso digitar o nome `diga_whee` três vezes. Além disso, a decoração fica escondida abaixo da definição da função.
+
+Em vez disso, o Python permite que se use decoradores de uma maneira mais simples com o símbolo `@`, às vezes chamado de **sintaxe pie**. O exemplo a seguir faz exatamente a mesma coisa que o primeiro exemplo de decorador:
+
+```python
+def decorador(func):
+    def wrapper():
+        print("Algo está acontecendo antes da função ser chamada.")
+        func()
+        print("Algo está acontecendo depois da função ser chamada.")
+    return wrapper
+
+@decorador
+def diga_whee():
+    print("Whee!")
+```
+
+Então, usar `@decorador` é apenas uma maneira mais curta de dizer `diga_whee = decorador(diga_whee)`. É assim que se aplica um decorador a uma função de forma Pythonica.
+
+## reutilizando decoradores
+
+Lembre-se de que um decorador é apenas uma função do Python. Todas as ferramentas usuais de reutilização estão disponíveis. Agora, crie um módulo onde armazenará seus decoradores para usá-los em várias outras funções.
+
+Crie um arquivo chamado `decoradores.py` com o seguinte conteúdo:
+
+```python
+def faz_duas_vezes(func):
+    def wrapper_faz_duas_vezes():
+        func()
+        func()
+    return wrapper_faz_duas_vezes
+```
+
+O decorador `faz_duas_vezes()` chama a função decorada duas vezes.
+
+> [!NOTE]
+> Pode-se nomear sua função interna como quiser, e um nome genérico como `wrapper()` geralmente é suficiente e mais usado.
+
+Agora pode-se usar este novo decorador em outros arquivos com uma importação :
+
+```python
+from decoradores import faz_duas_vezes
+
+@faz_duas_vezes
+def diga_whee():
+    print("Whee!")
+```
+
+Quando executar este exemplo, verá que a função original `diga_whee()` é executada duas vezes:
+
+```python
+diga_whee()
+# saída :
+# Whee!
+# Whee!
+```
+
+Há duas exclamações "Whee!" impressas, confirmando que `@faz_duas_vezes` faz exatamente o que diz.
+
+### decoradores com argumentos
+
+Suponha que tenha uma função que aceita alguns argumentos. Será que ainda é possível decorá-la? Vamos testar:
+
+```python
+from decoradores import faz_duas_vezes
+
+@faz_duas_vezes
+def saudar(name):
+    print(f"Hello {name}")
+...
+```
+
+Agora, `@faz_duas_vezes` é aplicado à função `saudar()`, que espera um nome como argumento. No entanto, ao chamar essa função, um erro é levantado:
+
+```python
+saudar(name="World")
+Traceback (most recent call last):
+  ...
+TypeError: wrapper_faz_duas_vezes() takes 0 positional arguments but 1 was given
+```
+
+O problema é que a função interna `wrapper_faz_duas_vezes()` não aceita nenhum argumento, mas passou `name="World"` para ela. Podería-se corrigir isso deixando `wrapper_faz_duas_vezes()` aceitar um argumento, mas isso não funcionaria para a função `diga_whee()` criada anteriormente.
+
+A solução é usar `*args` e `**kwargs` na função interna `wrapper`. Dessa forma, ela aceitará um número arbitrário de argumentos posicionais e nomeados.
+
+```python
+def faz_duas_vezes(func):
+    def wrapper_faz_duas_vezes(*args, **kwargs):
+        func(*args, **kwargs)
+        func(*args, **kwargs)
+    return wrapper_faz_duas_vezes
+```
+
+A função interna `wrapper_faz_duas_vezes()` agora aceita qualquer número de argumentos e os passa para a função que está decorando. Agora, tanto seus exemplos de `diga_whee()` quanto `saudar()` funcionarão.
+
+```python
+from decoradores import faz_duas_vezes
+
+@faz_duas_vezes
+def diga_whee():
+    print("Whee!")
+
+diga_whee()
+# saída :
+# Whee!
+# Whee!
+
+@faz_duas_vezes
+def saudar(name):
+    print(f"Hello {name}")
+
+saudar("World")
+# saída :
+# Hello World
+# Hello World
+```
+
+Agora, usa-se o mesmo decorador, `@faz_duas_vezes`, para decorar duas funções diferentes. Isso revela um dos poderes dos decoradores: eles adicionam comportamento que pode ser aplicado a muitas funções diferentes.
+
+## decoradores com retorno
+
+O que acontece com o valor de retorno de funções decoradas? Bem, isso depende do decorador decidir. Suponha que decore uma função simples da seguinte maneira:
+
+```python
+from decoradores import faz_duas_vezes
+
+@faz_duas_vezes
+def retorna_saudacao(name):
+    print("Criando saudação")
+    return f"Oi {name}"
+```
+
+Tente usá-la :
+
+```python
+oi_adam = retorna_saudacao("Adam")
+# saída :
+# Criando saudação
+# Criando saudação
+
+print(oi_adam)
+None
+```
+
+Ops, o decorator consumiu o valor de retorno da função.
+
+Como o `wrapper_faz_duas_vezes()` não retorna explicitamente um valor, a chamada `retorna_saudacao("Adam")` acaba retornando `None`.
+
+Para corrigir isso, é preciso garantir que a função wrapper retorne o valor de retorno da função decorada.
+
+```python
+# decoradores.py
+
+def faz_duas_vezes(func):
+    def wrapper_do_twice(*args, **kwargs):
+        func(*args, **kwargs)
+        return func(*args, **kwargs)
+    return wrapper_do_twice
+```
+
+Agora se retorna o valor de retorno da última chamada da função decorada. Confira o exemplo novamente:
+
+```python
+from decoradores import faz_duas_vezes
+
+@faz_duas_vezes
+def retorna_saudacao(name):
+    print("Criando saudação")
+    return f"Oi {name}"
+
+retorna_saudacao("Adam")
+# saída :
+# Criando saudação
+# Criando saudação
+'Oi Adam'
+```
+
+Desta vez, `retorna_saudacao()` retorna a saudação `'Oi Adam'`.
+
+## exercícios decorador
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Funções Simples e Decoradores
+    1. Crie um decorador que imprima "Iniciando função" antes de executar uma função e "Função finalizada" após a execução.
+    1. Crie um decorador que adicione uma linha em branco antes e depois da execução de uma função.
+    1. Crie um decorador que conte e imprima o número de vezes que uma função foi chamada.
+    1. Crie um decorador que imprima a data e hora exatas em que uma função foi chamada.
+    1. Crie um decorador que execute uma função duas vezes.
+    1. Crie um decorador que imprima "Execução permitida" ou "Execução negada" antes de uma função, baseado em um parâmetro booleano.
+    1. Crie um decorador que calcule e imprima o tempo de execução de uma função.
+    1. Crie um decorador que ignore a execução de uma função e apenas imprima "Função ignorada".
+    1. Crie um decorador que registre o nome da função e os argumentos que ela recebeu.
+    1. Crie um decorador que converta o resultado de uma função em uma string e imprima o tipo do valor retornado.
+1. Funções com Parâmetros
+    1. Crie um decorador que multiplica o valor retornado por uma função por 2.
+    1. Crie um decorador que inverte a ordem dos argumentos de uma função antes de chamá-la.
+    1. Crie um decorador que adicione 10 ao primeiro argumento de uma função.
+    1. Crie um decorador que verifique se os argumentos passados a uma função são inteiros. Se não forem, imprima uma mensagem de erro.
+    1. Crie um decorador que execute uma função apenas se todos os seus argumentos forem números positivos.
+    1. Crie um decorador que troque os valores de dois parâmetros de uma função antes de executá-la.
+    1. Crie um decorador que limite a execução de uma função a apenas 3 chamadas.
+    1. Crie um decorador que some 5 ao valor retornado por uma função.
+    1. Crie um decorador que execute uma função apenas se a soma de seus argumentos for maior que 100.
+    1. Crie um decorador que imprima os argumentos e o valor retornado de uma função.
+1. Funções com Vários Decoradores
+    1. Crie dois decoradores: um que imprime "Começando" e outro que imprime "Finalizando". Aplique-os a uma função.
+    1. Crie dois decoradores: um que executa uma função três vezes e outro que imprime o tempo de execução. Aplique ambos à mesma função.
+    1. Crie dois decoradores: um que inverte os argumentos e outro que soma 10 ao resultado da função. Aplique-os a uma função.
+    1. Crie dois decoradores: um que verifica se os argumentos são inteiros e outro que multiplica o resultado por 2. Aplique ambos a uma função.
+    1. Crie dois decoradores: um que limita as chamadas a 2 e outro que imprime os argumentos da função. Aplique ambos a uma função.
+    1. Crie um decorador que converte o valor retornado em uma lista e outro que ordena essa lista. Aplique ambos a uma função que retorna vários números.
+1. Decoradores para Controle de Fluxo
+    1. Crie um decorador que execute uma função apenas entre 9h e 17h.
+    1. Crie um decorador que execute uma função apenas se o valor de um argumento for maior que 10.
+    1. Crie um decorador que execute uma função apenas se o valor de retorno da função for positivo.
+    1. Crie um decorador que execute uma função apenas se o usuário fornecer uma senha correta (simulada com um valor fixo).
+
+</details>
