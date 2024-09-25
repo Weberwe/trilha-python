@@ -22,6 +22,15 @@
     1. [funções com parâmetros posicionais e parâmetros com valores padrão](#funções-com-parâmetros-posicionais-e-parâmetros-com-valores-padrão)
     1. [funções com parâmetros posicionais, parâmetros com valores padrão e `*args`](#funções-com-parâmetros-posicionais-parâmetros-com-valores-padrão-e-args)
     1. [funções com parâmetros posicionais, parâmetros com valores padrão, `*args` e `**kwargs`](#funções-com-parâmetros-posicionais-parâmetros-com-valores-padrão-args-e-kwargs)
+1. [recursão](#recursão)
+1. [exercícios recursão](#exercícios-recursão)
+1. [objetos de primeira classe](#objetos-de-primeira-classe)
+1. [funções internas](#funções-internas)
+1. [exercícios funções internas](#exercícios-funções-internas)
+1. [funções retornando funções](#funções-retornando-funções)
+1. [exercícios funções retornando funções](#exercícios-funções-retornando-funcões)
+1. [decorador simples](#decorador-simples)
+1. [exercícios decorador](#exercícios-decorador)
 
 # funções
 
@@ -1152,7 +1161,7 @@ Registro_completo: True
 ...
 >>>
 >>> # chamando a função
->>> print(calcular_area_comprimento(5, 3))  # Saída: 15
+>>> print(calcular_area_comprimento(5, 3))  # saída : 15
 15
 >>> |
 ```
@@ -1670,38 +1679,87 @@ Para cada exercício abaixo, primeiro monte uma função de sua versão usando a
 
 ## objetos de primeira classe
 
-Em Python, **objetos de primeira classe** (ou "first-class objects") referem-se àqueles que podem ser manipulados como qualquer outra variável. Em termos simples, um objeto de primeira classe é algo que pode ser:
+Em Python, **objetos de primeira classe** (ou "first-class objects") referem-se àqueles que podem ser manipulados como qualquer outra variável. Em termos simples, um objeto de primeira classe é algo que pode ser :
 
 - atribuído a uma variável;
 - passado como argumento para uma função;
 - retornado como valor de uma função;
 - armazenado em estruturas de dados (como listas ou dicionários);
 
-Em Python, funções são objetos de primeira classe, o que significa que você pode manipulá-las como faria com qualquer outro tipo de dado (como números ou strings). Isso é fundamental para o entendimento de decoradores.
+Em Python, funções são objetos de primeira classe, o que significa que é possível manipulá-las como qualquer outro tipo de dado (como números ou strings). Isso é fundamental para o entendimento de decoradores.
 
-### exemplo
+### exemplos
 
-Veja um exemplo simples de manipulação de uma função como um objeto de primeira classe.
+1. atribuindo valor a uma variável
 
-```python
-def saudacao(nome):
-    return f"Olá, {nome}!"
+    ```python
+    valor = 10
+    outro_valor = valor
+    outro_valor += 1
 
-# atribuindo a função saudacao a uma variável
-cumprimento = saudacao
+    print(f'{valor = }')
+    # saída : valor = 10
+    print(f'{outro_valor = }')
+    # saída : outro_valor = 11
+    ```
 
-# chamando a função através da nova variável
-print(cumprimento("Maria"))
-```
+    No exemplo acima, um valor inteiro literal é salvo na variável `valor`. Depois, essa mesma variável é usada para atribuir seu valor em outra variável chamada `outro_valor`, que tem seu conteúdo acrescido de 1. Repare que as variáveis são independentes e alterar uma não afeta a outra.
 
-**Explicação :**
-- `saudacao` é uma função que recebe um nome e retorna uma saudação;
-- a função é atribuída à variável `cumprimento`; como funções são objetos de primeira classe, `cumprimento` agora se refere à mesma função;
-- quando se chama `cumprimento("Maria")`, é equivalente a se chamar `saudacao("Maria")`;
+1. atribuindo uma função a uma variável
+
+    **Exemplo 1**
+    ```python
+    def saudacao():
+        print('Seja bem-vindo')
+
+    saudacao()
+    # saída : Seja bem-vindo
+
+    variavel = saudacao
+    variavel()
+    # saída : Seja bem-vindo
+    ```
+
+    **Explicação :**
+    - `saudacao` é uma função que retorna uma mensagem de boas-vindas;
+    - lembre-se que para uma função ser executada, ela precisa se chamada com os parênteses;
+    - a função é atribuída à variável `variavel` (repare na falta dos parênteses); como funções são objetos de primeira classe, `variavel` agora se refere à mesma função;
+    - quando se chama `variavel()`, é equivalente a se chamar `saudacao()`;
+
+    **Exemplo 2**
+    ```python
+    valor = 10
+
+    print(f'{valor = }')
+    # saída : valor = 10
+
+    imprime = print
+    print = 1
+
+    try:
+        print(f'{valor = }')
+    except TypeError as erro:
+        imprime(erro)
+        # saída : 'int' object is not callable
+
+    imprime(f'{valor = }')
+    # saída : valor = 10
+
+    print = imprime
+    print(f'{valor = }')
+    # saída : valor = 10
+    ```
+
+    **Explicação :**
+    - é criada uma variável chamada `valor` e mostrada com a função `print`;
+    - o objeto da função `print` é copiado para a variável `imprime` e o valor literal inteiro 1 é guardado no objeto `print`;
+    - são feitas duas tentativas de mostrar o conteúdo da variável `valor`; uma usando o objeto `print` como função, que gera o `TypeError` e outra usando a o objeto `imprime` como função, que então mostra o valor da variável `valor`;
+    - repare que aqui o objeto `print` "perdeu" sua propriedade de mostrar as coisas no terminal, mas esse comportamento foi copiado para a variável `imprime`;
+    - depois, `print` recebe o objeto de `imprime` e retoma sua funcionalidade original de mostrar o conteúdo dos objetos no terminal;
 
 ### por que isso é importante?
 
-Esse comportamento é a base para criar funções mais complexas, como decoradores. Ser capaz de tratar uma função como um objeto significa que podemos passar funções como argumentos, armazená-las e até mesmo retorná-las de outras funções, que é o que veremos a seguir.
+Esse comportamento é a base para criar funções mais complexas, como decoradores. Ser capaz de tratar uma função como um objeto significa que é possível passar funções como argumentos, armazená-las e até mesmo retorná-las de outras funções, conteúdo que será visto a seguir.
 
 ## funções internas
 
@@ -1731,14 +1789,23 @@ externa()
 **Explicação :**
 1. a função `externa()` contém uma variável local chamada `mensagem` e outra função chamada `interna()`;
 2. a função `interna()` imprime o valor da variável `mensagem`;
-3. quando se chama `externa()`, a função `interna()` é chamada dentro dela e imprime a mensagem "Olá da função externa!";
-4. **a função `interna()` não é acessível fora de `externa()`.** se tentar chamá-la diretamente como `interna()`, será levantado um erro;
+3. quando se chama `externa()`, a função `interna()` é chamada dentro da `externa()` e imprime a mensagem "Olá da função externa!";
+4. **a função `interna()` não é acessível fora de `externa()`;** se tentar chamá-la diretamente como `interna()`, será levantado um erro;
+```python
+interna()
+# saída :
+# Traceback (most recent call last):
+#   File "main.py", line 10, in <module>
+#     interna()
+#     ^^^^^^^
+# NameError: nome 'interna' is not defined. Did you mean: 'externa'?
+```
 
 ### escopo e acesso a variáveis
 
 Funções internas têm acesso ao **escopo da função externa**, o que significa que podem acessar variáveis definidas na função externa, mas variáveis dentro de `interna()` não são visíveis fora dela.
 
-Veja um exemplo mais elaborado:
+Veja um exemplo :
 
 ```python
 def externa():
@@ -1746,11 +1813,12 @@ def externa():
 
     def interna():
         y = 5  # variável no escopo da função interna
-        print(f"x: {x}, y: {y}")  # a função interna pode acessar 'x' e 'y'
+        print(f"{x = }, {y = }")  # a função interna pode acessar 'x' e 'y'
 
     interna()
 
 externa()
+# saída : x = 10, y = 5
 ```
 
 Aqui, a função interna tem acesso à variável `x`, que foi definida no escopo da função externa, mas a variável `y` (definida no escopo da função interna) não pode ser acessada fora da função `interna`.
@@ -1768,7 +1836,7 @@ O comportamento de funções internas tem muito a ver com o [**escopo de variáv
 
 Se uma função interna quiser **modificar** uma variável da função externa, ela precisa usar a palavra-chave `nonlocal`.
 
-### exemplo com `nonlocal`
+### comando `nonlocal`
 
 Veja um exemplo onde a função interna modifica uma variável da função externa usando `nonlocal`:
 
@@ -1777,7 +1845,7 @@ def externa():
     contador = 0  # variável no escopo da função externa
 
     def interna():
-        nonlocal contador  # declara que vai usar a variável de 'externa'
+        nonlocal contador  # declara que vai usar a variável da função 'externa'
         contador += 1  # modificando a variável 'contador'
         print(f"Contador atualizado: {contador}")
 
@@ -1790,11 +1858,11 @@ externa()
 **Explicação :**
 1. a função externa define a variável `contador`;
 1. a função interna usa a palavra-chave `nonlocal` para declarar que ela quer modificar a variável `contador`, que está no escopo da função externa;
-1. cada vez que chamamos `interna()`, o valor de `contador` é incrementado;
+1. cada vez que `interna()` é chamada, o valor de `contador` é incrementado;
 
 Sem `nonlocal`, a função interna não poderia modificar `contador`, pois, por padrão, as variáveis da função externa seriam apenas "lidas" e não alteradas.
 
-### quando usar
+### quando usar funções internas
 
 Funções internas são úteis quando se quer :
 
@@ -1808,9 +1876,10 @@ Funções internas são úteis quando se quer :
         total = soma(valores)
         return total / len(valores)
 
-    print(calcular_media([10, 20, 30]))  # Exemplo de função interna auxiliando o cálculo
+    numeros = [10, 20, 30]
+    print(calcular_media(numeros))  # exemplo de função interna auxiliando o cálculo
     ```
-    Aqui, `soma()` é uma função auxiliar que só faz sentido ser usada dentro de `calcular_media()`, portanto, mantemos ela encapsulada dentro da função maior.
+    Aqui, `soma()` é uma função auxiliar que só faz sentido ser usada dentro de `calcular_media()`, portanto, ela é mantida encapsulada dentro da função maior.
 
 2. **criar closures** : funções internas são frequentemente usadas em **closures**, que são funções que "lembram" as variáveis de seu ambiente externo mesmo depois de esse ambiente ter sido finalizado; isso é útil em vários contextos, como criar funções que guardam estado entre chamadas;
 
@@ -1850,14 +1919,14 @@ Em Python, como funções são objetos de primeira classe (ou seja, podem ser tr
 
 Essa técnica é muito poderosa, pois permite criar **funções dinâmicas**, ou seja, funções que se adaptam ou são criadas com base no contexto em que são chamadas.
 
-### exemplo
+### exemplo saudacao
 
-Primeiro, veja um exemplo simples de uma função que retorna outra função :
+Veja um exemplo simples de uma função que retorna outra função :
 
 ```python
-def saudacao(funcao):
+def saudacao(intro):
     def interna(nome):
-        return f"{funcao}, {nome}!"
+        return f"{intro}, {nome}!"
     return interna
 
 # criando uma função personalizada
@@ -1865,14 +1934,14 @@ ola_funcao = saudacao("Olá")
 
 # usando a função retornada
 print(ola_funcao("Maria"))  # saída : Olá, Maria!
-print(ola_funcao("João"))   # saída : Olá, João
+print(ola_funcao("João"))   # saída : Olá, João!
 ```
 
-Aqui, `saudacao()` é uma função que retorna outra função, `interna()`. Veja como isso funciona em prática:
+Aqui, `saudacao()` é uma função que retorna outra função, `interna()`.
 
 **Explicação :**
-1. `saudacao()` recebe um argumento `funcao` (nesse caso, uma string, como "Olá");
-1. dentro de `saudacao()`, foi definida uma função chamada `interna()` que usa o argumento `funcao` e retorna uma saudação personalizada;
+1. `saudacao()` recebe um argumento `intro` (nesse caso, uma string, como "Olá");
+1. dentro de `saudacao()`, foi definida uma função chamada `interna()` que usa o argumento `intro` e retorna uma saudação personalizada;
 1. o importante aqui é que `saudacao()` **não chama `interna()` diretamente**, ela **retorna** a função `interna()` para que possa ser chamada depois;
 1. quando `ola_funcao("maria")` é chamada, na verdade está sendo chamando a função `interna()`, que foi retornada por `saudacao()`;
 
@@ -1889,14 +1958,14 @@ print(bom_dia_funcao("Ana"))       # saída : Bom dia, Ana!
 
 Aqui, as saudações são geradas dinamicamente, e `saudacao()` funciona como uma **fábrica de funções**.
 
-### outro exemplo: função de potência
+### exemplo potência
 
 Outro exemplo prático é criar uma função que retorna outra função para calcular a potência de um número com um expoente fixo.
 
 ```python
 def potencia(expoente):
     def elevar(base):
-        return base ** expoente
+        return f'{base ** expoente} ({base}^{expoente})'
     return elevar
 
 # criando funções para elevar ao quadrado e ao cubo
@@ -1932,29 +2001,32 @@ Para entender melhor como as closures funcionam, veja um exemplo simples:
 
 ```python
 def cria_contador():
-    contador = 0  # variável do escopo da função externa
+    # variável do escopo da função externa
+    contador = 0
 
     def incrementar():
-        nonlocal contador  # permite que a função interna modifique a variável do escopo externo
+        # permite que a função interna modifique a variável do escopo externo
+        nonlocal contador
         contador += 1
         return contador
 
-    return incrementar  # retorna a função interna
+    # retorna a função interna
+    return incrementar
 
 # criando uma nova closure
-contador1 = cria_contador()
+fun_contador = cria_contador()
 
 # Chamando a função retornada
-print(contador1())  # saída : 1
-print(contador1())  # saída : 2
-print(contador1())  # saída : 3
+print(f'{fun_contador() = }')  # saída : fun_contador() = 1
+print(f'{fun_contador() = }')  # saída : fun_contador() = 2
+print(f'{fun_contador() = }')  # saída : fun_contador() = 3
 ```
 
 **Explicação :**
 1. `cria_contador()` é uma função externa que define a variável `contador` e a função interna `incrementar()`;
 1. a função interna `incrementar()` usa a palavra-chave `nonlocal` para indicar que ela deseja modificar a variável `contador` que está no escopo da função externa;
 1. quando `cria_contador()` é chamada, ela retorna a função `incrementar()`, que é agora uma closure; essa closure "lembra" do valor de `contador`;
-1. a cada vez que chamamos `contador1()`, a variável `contador` é incrementada, e seu valor é mantido entre as chamadas, mesmo que `cria_contador()` já tenha terminado;
+1. a cada vez que chamamos `fun_contador()`, a variável `contador` é incrementada, e seu valor é mantido entre as chamadas, mesmo que `cria_contador()` já tenha terminado;
 
 #### por que usar
 
@@ -1966,14 +2038,14 @@ As closures são úteis por várias razões:
 
 1. **facilidade de implementação de decoradores** : closures são frequentemente usadas para implementar decoradores, que são uma maneira poderosa de modificar o comportamento de funções;
 
-#### exemplo prático: contador com estado
+#### exemplo contador com estado
 
 Veja o exemplo do contador para mostrar como as closures podem ser usadas em uma situação mais prática.
 
 ```python
 def gerador_de_multiplicador(fator):
     def multiplicar(numero):
-        return numero * fator
+        return f'{numero * fator} ({numero} * {fator})'
     return multiplicar
 
 # criando closures com diferentes fatores
@@ -2025,25 +2097,81 @@ Um decorador é, na essência, uma função que recebe outra função como argum
 
 ### decorador simples
 
+Para usar um decorador, é necessário aplicar os conceitos vistos anteriormente. [Funções internas](#funções-internas) e [retorno de funções](#funções-retornando-funções).
+
+### funções como argumentos
+
+Para usar os decoradores, ainda preciso ver mais um conceito novo : passar funções como argumentos de outras funções.
+
+Veja um exemplo simples abaixo :
+
+```python
+def decorador(func):
+    func()
+
+def diga_whee():
+    print('Whee!')
+
+decorador(diga_whee)
+# saída : Whee!
+```
+
+**Explicação :**
+- a função `decorador` é uma função que tem um parâmetro chamado `func`;
+- esse parâmetro, que é uma função, é então executado de dentro da função `decorador`;
+
+#### adicionando comportamentos
+
+Uma vantagem de executar uma função dentro de outra função é a possibilidade de se adicionar algum comportamento antes e depois de sua execução automaticamente. Tal comportamento é válido para qualquer função passada para o decorador.
+
 Veja o exemplo abaixo :
 
 ```python
 def decorador(func):
+    print('Antes da função ser chamada.')
+    func()
+    print('Depois da função ser chamada.')
+
+def diga_whee():
+    print('Whee!')
+
+decorador(diga_whee)
+# Antes da função ser chamada.
+# saída : Whee!
+# Depois da função ser chamada.
+```
+
+**Explicação :**
+- repare na nova funcionalidade da função `decorador`;
+- ela adiciona uma mensagem antes e depois da execução da função passada;
+
+Embora isso possa parecer relativamente sem utilidade, ainda há mais alguns detalhes faltantes para a função `decorador` realmente se tornar uma função decoradora.
+
+Veja como fica quando aplicado o conceito de funções internas :
+
+```python
+def decorador(func):
     def wrapper():
-        print("Algo está acontecendo antes da função ser chamada.")
+        print('Antes da função ser chamada.')
         func()
-        print("Algo está acontecendo depois da função ser chamada.")
+        print('Depois da função ser chamada.')
     return wrapper
 
 def diga_whee():
-    print("Whee!")
+    print('Whee!')
 
 diga_whee = decorador(diga_whee)
 ```
 
-Aqui, foram definidas duas funções simples, `decorador()` e `diga_whee()`, além de uma função interna `wrapper()`. Depois, a função `diga_whee()` foi redefinida para aplicar `decorador()` à função original `diga_whee()`.
+**Explicação :**
+- assim como tem-se por convenção chamar o primeiro parâmetro de um método (função de uma classe), tem-se por padrão chamar a função interna de um decorador de `wrapper`;
+- agora, a função `decorador` está passando a variável `func` com o objeto da função para dentro da função `wrapper`;
+- dentro da função `wrapper` é feita a execução da função `func`, assim como a adição de suas mensagens antes e depois;
+- dessa vez, a função `decorador` está retornando o objeto da função `wrapper`, isso permite que sua execução seja feita sob demanda em outro momento;
+- como a ideia do decorador é adicionar um comportamento ou antes ou depois da função original, é válido retornar o objeto da função `wrapper` para a própria função que se quer alterar;
+- exatamente o que é feito com `diga_whee = decorador(diga_whee)`, local onde ocorre a chamada da decoração;
 
-Veja o que acontece quando ele é executado :
+Veja o que acontece quando é executado :
 
 ```python
 diga_whee()
@@ -2053,26 +2181,13 @@ diga_whee()
 # Algo está acontecendo depois da função ser chamada.
 ```
 
-Para entender o que está acontecendo aqui, olhe para os exemplos anteriores. Tudo o que foi aprendido até o momento está sendo aplicado.
+Na verdade, o objeto de nome `diga_whee` recebeu o objeto da função interna `wrapper()`. No entanto, a função `wrapper()` tem uma referência à função original `diga_whee()` como `func`, e chama essa função entre as duas chamadas a `print()`.
 
-A chamada de decoração acontece na seguinte linha :
+Em suma, um decorador envolve uma função, modificando seu comportamento.
 
-```python
-diga_whee = decorador(diga_whee)
-```
+#### mais exemplo
 
-Na verdade, o nome `diga_whee` agora aponta para a função interna `wrapper()`. Lembre-se de que se retorna `wrapper` como uma função quando chama `decorador(diga_whee)` :
-
-```python
-print(diga_whee)
-<function decorador.<locals>.wrapper at 0x7f3c5dfd42f0>
-```
-
-No entanto, `wrapper()` tem uma referência à função original `diga_whee()` como `func`, e chama essa função entre as duas chamadas a `print()`.
-
-Simplificando, um decorador envolve uma função, modificando seu comportamento.
-
-Antes de prosseguir, veja um segundo exemplo. Como `wrapper()` é uma função do Python, a maneira como um decorador modifica uma função pode mudar dinamicamente. Para não incomodar seus vizinhos, o exemplo a seguir só executará o código decorado durante o dia:
+Antes de prosseguir, veja um segundo exemplo. Como `wrapper()` é uma função do Python, a maneira como um decorador modifica uma função pode mudar dinamicamente. Por exemplo, para não incomodar seus vizinhos, o exemplo a seguir só executará o código decorado durante o dia:
 
 **Exemplo :**
 
@@ -2080,63 +2195,68 @@ Antes de prosseguir, veja um segundo exemplo. Como `wrapper()` é uma função d
 from datetime import datetime
 
 def nao_durante_noite(func):
+    def silencio():
+        print('Agora não pode fazer barulho')
+
     def wrapper():
         if 7 <= datetime.now().hour < 22:
             func()
         else:
-            pass  # Silêncio, os vizinhos estão dormindo
+            silencio()
     return wrapper
 
 def diga_whee():
-    print("Whee!")
+    print('Whee!')
 
+# decorando a função diga_whee
 diga_whee = nao_durante_noite(diga_whee)
 ```
 
-Se tentar chamar `diga_whee()` após o horário de dormir, nada acontecerá :
-
-```python
-diga_whee()
-```
-
-Aqui, `diga_whee()` não imprime nenhuma saída. Isso acontece porque o teste `if` falhou, então o `wrapper` não chamou `func()`, a função original `diga_whee()`.
+Caso o código acima seja executado entre 22h da noite até 7h da manhã, o decorador irá retornar a função `silencio`, em vez da função originalmente decorada.
 
 ### usando `@`
 
-Veja o código escrito anteriormente. A maneira que a função `diga_whee` foi decorada é um pouco desajeitada. Primeiro, é preciso digitar o nome `diga_whee` três vezes. Além disso, a decoração fica escondida abaixo da definição da função.
+Veja o código escrito anteriormente. A maneira que a função `diga_whee` foi decorada é um pouco desajeitada, não é intuitivo. Primeiro, é preciso digitar o nome `diga_whee` outras mais duas vezes para decorá-la. Além disso, a decoração fica escondida abaixo da definição da função.
 
-Em vez disso, o Python permite que se use decoradores de uma maneira mais simples com o símbolo `@`, às vezes chamado de **sintaxe pie**. O exemplo a seguir faz exatamente a mesma coisa que o primeiro exemplo de decorador:
+Apesar disso funcionar, o Python permite que se use decoradores de uma maneira mais simples com o símbolo `@`, às vezes chamado de **sintaxe pie**. O exemplo a seguir faz exatamente a mesma coisa que o primeiro exemplo de decorador:
 
 ```python
 def decorador(func):
     def wrapper():
-        print("Algo está acontecendo antes da função ser chamada.")
+        print('Antes da função ser chamada.')
         func()
-        print("Algo está acontecendo depois da função ser chamada.")
+        print('Depois da função ser chamada.')
     return wrapper
 
 @decorador
 def diga_whee():
-    print("Whee!")
+    print('Whee!')
 ```
 
 Então, usar `@decorador` é apenas uma maneira mais curta de dizer `diga_whee = decorador(diga_whee)`. É assim que se aplica um decorador a uma função de forma Pythonica.
 
-## reutilizando decoradores
+### reutilizando decoradores
 
-Lembre-se de que um decorador é apenas uma função do Python. Todas as ferramentas usuais de reutilização estão disponíveis. Agora, crie um módulo onde armazenará seus decoradores para usá-los em várias outras funções.
+Lembre-se de que um decorador é apenas uma função do Python. Todas as ferramentas usuais de reutilização estão disponíveis. Agora, um módulo será criado, onde será armazenado os decoradores para usá-los em várias outras funções.
 
-Crie um arquivo chamado `decoradores.py` com o seguinte conteúdo:
+O arquivo criado vai ser chamar `decoradores.py` com o seguinte conteúdo :
 
 ```python
 def faz_duas_vezes(func):
-    def wrapper_faz_duas_vezes():
+    def wrapper():
         func()
         func()
-    return wrapper_faz_duas_vezes
+    return wrapper
+
+def decorador(func):
+    def wrapper():
+        print('Antes da função ser chamada.')
+        func()
+        print('Depois da função ser chamada.')
+    return wrapper
 ```
 
-O decorador `faz_duas_vezes()` chama a função decorada duas vezes.
+O decorador `faz_duas_vezes()` vai chamar a função decorada duas vezes.
 
 > [!NOTE]
 > Pode-se nomear sua função interna como quiser, e um nome genérico como `wrapper()` geralmente é suficiente e mais usado.
@@ -2148,10 +2268,10 @@ from decoradores import faz_duas_vezes
 
 @faz_duas_vezes
 def diga_whee():
-    print("Whee!")
+    print('Whee!')
 ```
 
-Quando executar este exemplo, verá que a função original `diga_whee()` é executada duas vezes:
+Quando executar este exemplo, verá que a função original `diga_whee()` é executada duas vezes :
 
 ```python
 diga_whee()
@@ -2160,50 +2280,88 @@ diga_whee()
 # Whee!
 ```
 
-Há duas exclamações "Whee!" impressas, confirmando que `@faz_duas_vezes` faz exatamente o que diz.
+As duas exclamações "Whee!" mostradas confirmam que `@faz_duas_vezes` faz exatamente o que diz.
 
 ### decoradores com argumentos
 
-Suponha que tenha uma função que aceita alguns argumentos. Será que ainda é possível decorá-la? Vamos testar:
+Os decoradores vistos até agora não possuiam qualquer argumento. Veja o que acontece se tentar decorar uma função que recebe algum argumento :
 
 ```python
 from decoradores import faz_duas_vezes
 
 @faz_duas_vezes
-def saudar(name):
-    print(f"Hello {name}")
-...
+def saudar(nome):
+    print(f"Olá, {nome}")
 ```
 
-Agora, `@faz_duas_vezes` é aplicado à função `saudar()`, que espera um nome como argumento. No entanto, ao chamar essa função, um erro é levantado:
+Agora, o decorador `@faz_duas_vezes` é aplicado à função `saudar()`, que espera um nome como argumento. No entanto, ao chamar essa função, um erro é levantado:
 
 ```python
-saudar(name="World")
-Traceback (most recent call last):
-  ...
-TypeError: wrapper_faz_duas_vezes() takes 0 positional arguments but 1 was given
+saudar('arnold')
+# Traceback (most recent call last):
+#   File "main.py", line 18, in <module>
+#     saudar('arnold')
+# TypeError: faz_duas_vezes.<locals>.wrapper() takes 0 positional arguments but 1 was given
 ```
 
-O problema é que a função interna `wrapper_faz_duas_vezes()` não aceita nenhum argumento, mas passou `name="World"` para ela. Podería-se corrigir isso deixando `wrapper_faz_duas_vezes()` aceitar um argumento, mas isso não funcionaria para a função `diga_whee()` criada anteriormente.
+Repare que o problema ocorreu na função interna do decorador `faz_duas_vezes`, a `wrapper`. Isso porque ela não aceita nenhum argumento, mas `nome="arnold"` foi passado para ela. Pode-se corrigir isso deixando `wrapper()` aceitar um argumento. Veja um exemplo abaixo :
+
+```python
+def faz_duas_vezes(func):
+    def wrapper(x):
+        func(x)
+        func(x)
+    return wrapper
+```
+
+Quando executar a função decorada novamente, a saída será como a esperada :
+
+```python
+@faz_duas_vezes
+def saudar(nome):
+    print(f"Olá, {nome}")
+
+saudar('arnold')
+# saída :
+# Olá, arnold
+# Olá, arnold
+```
+
+O problema é quando se usa o mesmo decorador em uma função sem argumentos,
+
+```python
+@faz_duas_vezes
+def diga_whee():
+    print('Whee!')
+
+diga_whee()
+# saída :
+# Traceback (most recent call last):
+#   File "main.py", line 23, in <module>
+#     diga_whee()
+# TypeError: faz_duas_vezes.<locals>.wrapper() missing 1 required positional argument: 'x'
+```
+
+Há praticamente o mesmo problema...
 
 A solução é usar `*args` e `**kwargs` na função interna `wrapper`. Dessa forma, ela aceitará um número arbitrário de argumentos posicionais e nomeados.
 
 ```python
 def faz_duas_vezes(func):
-    def wrapper_faz_duas_vezes(*args, **kwargs):
+    def wrapper(*args, **kwargs):
         func(*args, **kwargs)
         func(*args, **kwargs)
-    return wrapper_faz_duas_vezes
+    return wrapper
 ```
 
-A função interna `wrapper_faz_duas_vezes()` agora aceita qualquer número de argumentos e os passa para a função que está decorando. Agora, tanto seus exemplos de `diga_whee()` quanto `saudar()` funcionarão.
+A função interna `wrapper()` agora aceita qualquer número de argumentos e os passa para a função que está decorando. Agora, qualquer uma das funções decoradas `diga_whee()` quanto `saudar()` funcionarão.
 
 ```python
 from decoradores import faz_duas_vezes
 
 @faz_duas_vezes
 def diga_whee():
-    print("Whee!")
+    print('Whee!')
 
 diga_whee()
 # saída :
@@ -2211,45 +2369,46 @@ diga_whee()
 # Whee!
 
 @faz_duas_vezes
-def saudar(name):
-    print(f"Hello {name}")
+def saudar(nome):
+    print(f"Olá, {nome}")
 
-saudar("World")
+saudar("arnold")
 # saída :
-# Hello World
-# Hello World
+# Olá, arnold
+# Olá, arnold
 ```
 
-Agora, usa-se o mesmo decorador, `@faz_duas_vezes`, para decorar duas funções diferentes. Isso revela um dos poderes dos decoradores: eles adicionam comportamento que pode ser aplicado a muitas funções diferentes.
+Agora, usa-se o mesmo decorador, `@faz_duas_vezes`, para decorar duas funções diferentes.
 
-## decoradores com retorno
+### decoradores com retorno
 
-O que acontece com o valor de retorno de funções decoradas? Bem, isso depende do decorador decidir. Suponha que decore uma função simples da seguinte maneira:
+O que acontece com o valor de retorno de funções decoradas?
+
+Veja um exemplo de retorno de uma função decorada :
 
 ```python
 from decoradores import faz_duas_vezes
 
 @faz_duas_vezes
-def retorna_saudacao(name):
-    print("Criando saudação")
-    return f"Oi {name}"
+def saudar(nome):
+    print('Criando saudação')
+    return f'Olá, {nome}'
 ```
 
-Tente usá-la :
+Ao tentar usá-la :
 
 ```python
-oi_adam = retorna_saudacao("Adam")
+saida = saudar('arnold')
 # saída :
 # Criando saudação
 # Criando saudação
 
-print(oi_adam)
-None
+print(saida)
+# saída :
+# None
 ```
 
-Ops, o decorator consumiu o valor de retorno da função.
-
-Como o `wrapper_faz_duas_vezes()` não retorna explicitamente um valor, a chamada `retorna_saudacao("Adam")` acaba retornando `None`.
+Repare que o valor da variável `saida` foi `None`. Isso porque a função chamada, a `wrapper`, não tinha qualquer tipo de retorno especificado, logo, o Python assumiu que o retorno dela foi o valor padrão `None`.
 
 Para corrigir isso, é preciso garantir que a função wrapper retorne o valor de retorno da função decorada.
 
@@ -2257,30 +2416,34 @@ Para corrigir isso, é preciso garantir que a função wrapper retorne o valor d
 # decoradores.py
 
 def faz_duas_vezes(func):
-    def wrapper_do_twice(*args, **kwargs):
+    def wrapper(*args, **kwargs):
         func(*args, **kwargs)
-        return func(*args, **kwargs)
-    return wrapper_do_twice
+        resultado = func(*args, **kwargs)
+        return resultado
+    return wrapper
 ```
 
-Agora se retorna o valor de retorno da última chamada da função decorada. Confira o exemplo novamente:
+Agora, a função `wrapper` está retornando o retorno da função decorada através da variável `resultado`.
+
+Veja o exemplo corrigido :
 
 ```python
 from decoradores import faz_duas_vezes
 
 @faz_duas_vezes
-def retorna_saudacao(name):
-    print("Criando saudação")
-    return f"Oi {name}"
+def saudar(nome):
+    print('Criando saudação')
+    return f'Oi {nome}'
 
-retorna_saudacao("Adam")
+saida = saudar('arnold')
+print(saida)
 # saída :
 # Criando saudação
 # Criando saudação
-'Oi Adam'
+# Olá, arnold
 ```
 
-Desta vez, `retorna_saudacao()` retorna a saudação `'Oi Adam'`.
+Desta vez, `saudar()` retorna a saudação `Olá, arnold`.
 
 ## exercícios decorador
 
@@ -2323,3 +2486,178 @@ Desta vez, `retorna_saudacao()` retorna a saudação `'Oi Adam'`.
     1. Crie um decorador que execute uma função apenas se o usuário fornecer uma senha correta (simulada com um valor fixo).
 
 </details>
+
+
+
+
+
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### estrutura básica
+
+Para entender a estrutura básica de um decorador, veja um exemplo simples:
+
+```python
+def meu_decorador(funcao):
+    def nova_funcao():
+        print("Algo está acontecendo antes da função ser chamada.")
+        funcao()  # chamando a função original
+        print("Algo está acontecendo depois da função ser chamada.")
+    return nova_funcao
+```
+
+**Explicação :**
+1. `meu_decorador` é a função decoradora que aceita uma função `funcao` como argumento;
+2. dentro de `meu_decorador`, definimos `nova_funcao`, que adiciona algum comportamento antes e depois de chamar a função original;
+3. `nova_funcao` é retornada como o resultado do decorador;
+
+#### usando
+
+Para aplicar um decorador a uma função, usa-se o símbolo `@` seguido do nome do decorador, logo acima da definição da função que se quer decorar.
+
+```python
+@meu_decorador
+def minha_funcao():
+    print("A função original está sendo chamada.")
+
+# chamando a função decorada
+minha_funcao()
+```
+
+**Saída :**
+```
+Algo está acontecendo antes da função ser chamada.
+A função original está sendo chamada.
+Algo está acontecendo depois da função ser chamada.
+```
+
+Aqui, `minha_funcao` foi decorada com `meu_decorador`, que adiciona comportamentos antes e depois da execução da função original.
+
+### decoradores com argumentos
+
+Os decoradores podem ser mais complexos e aceitar argumentos. Para isso, é preciso criar um nível extra de funções.
+
+**Exemplo :**
+
+```python
+def decorador_com_argumento(arg):
+    def meu_decorador(funcao):
+        def nova_funcao(*args, **kwargs):
+            print(f"Argumento do decorador: {arg}")
+            return funcao(*args, **kwargs)
+        return nova_funcao
+    return meu_decorador
+
+@decorador_com_argumento("Olá!")
+def outra_funcao(nome):
+    print(f"Olá, {nome}!")
+
+# Chamando a função decorada
+outra_funcao("Maria")
+```
+
+**Saída:**
+```
+Argumento do decorador: Olá!
+Olá, Maria!
+```
+
+Neste exemplo:
+- `decorador_com_argumento` é um decorador que aceita um argumento, `arg`.
+- `meu_decorador` é a função decoradora que define a função interna `nova_funcao`.
+- Quando chamamos `outra_funcao("Maria")`, primeiro imprimimos o argumento do decorador e, em seguida, chamamos a função original.
+
+### Decoradores e Funções Internas
+
+Como discutimos anteriormente, decoradores frequentemente utilizam funções internas (closures). Isso permite que o decorador "lembre" do estado, como os argumentos passados, mesmo após a função externa ter terminado.
+
+### Vantagens dos Decoradores
+
+1. **Reutilização de Código**: Decoradores permitem adicionar funcionalidades comuns a várias funções sem duplicar código.
+2. **Separação de Preocupações**: Permitem separar a lógica da função da lógica adicional que queremos adicionar.
+3. **Clareza e Limpeza**: A sintaxe do decorador torna o código mais legível e claro sobre como as funções estão sendo modificadas.
+
+### Exemplo Prático: Medir Tempo de Execução
+
+Vamos criar um decorador que mede o tempo de execução de uma função.
+
+```python
+import time
+
+def tempo_de_execucao(funcao):
+    def nova_funcao(*args, **kwargs):
+        inicio = time.time()  # Tempo de início
+        resultado = funcao(*args, **kwargs)  # Chamando a função original
+        fim = time.time()  # Tempo de fim
+        print(f"A função {funcao.__name__} levou {fim - inicio:.4f} segundos para executar.")
+        return resultado
+    return nova_funcao
+
+@tempo_de_execucao
+def soma(a, b):
+    time.sleep(1)  # Simulando uma operação demorada
+    return a + b
+
+# Chamando a função decorada
+resultado = soma(3, 5)
+print(f"Resultado da soma: {resultado}")
+```
+
+**Saída:**
+```
+A função soma levou 1.0005 segundos para executar.
+Resultado da soma: 8
+```
+
+Neste exemplo:
+- O decorador `tempo_de_execucao` mede quanto tempo a função `soma` leva para ser executada.
+- Usamos `time.sleep(1)` para simular uma operação demorada.
+
+### Resumo
+
+Os decoradores em Python são uma maneira poderosa de modificar o comportamento de funções de forma reutilizável e elegante. Eles permitem adicionar funcionalidades, como logging, verificação de permissões, medição de tempo de execução, e muito mais, sem a necessidade de alterar o código da função original.
+
+Se você tiver mais perguntas sobre decoradores ou quiser explorar exemplos adicionais, estou aqui para ajudar!
