@@ -174,9 +174,9 @@ No exemplo abaixo, foi criada uma classe `Carro` com atributos de instância com
 ```python
 class Carro:
     def __init__(self, marca, modelo, ano):
-        self.marca = marca  # Atributo de instância
-        self.modelo = modelo  # Atributo de instância
-        self.ano = ano  # Atributo de instância
+        self.marca = marca  # atributo de instância
+        self.modelo = modelo  # atributo de instância
+        self.ano = ano  # atributo de instância
 ```
 
 Aqui :
@@ -205,12 +205,12 @@ Os **atributos de classe** são compartilhados por **todas** as instâncias de u
 
 ```python
 class Carro:
-    rodas = 4  # Atributo de classe, compartilhado por todas as instâncias
+    rodas = 4  # atributo de classe, compartilhado por todas as instâncias
 
     def __init__(self, marca, modelo, ano):
-        self.marca = marca  # Atributo de instância
-        self.modelo = modelo  # Atributo de instância
-        self.ano = ano  # Atributo de instância
+        self.marca = marca  # atributo de instância
+        self.modelo = modelo  # atributo de instância
+        self.ano = ano  # atributo de instância
 ```
 
 Aqui, `rodas` é um **atributo de classe**. Ele é o mesmo para todas as instâncias da classe `Carro` :
@@ -237,12 +237,12 @@ Como mencionado antes, os **atributos de instância** pertencem a cada objeto se
 
 ```python
 class Carro:
-    rodas = 4  # Atributo de classe (compartilhado por todas as instâncias)
+    rodas = 4  # atributo de classe (compartilhado por todas as instâncias)
 
     def __init__(self, marca, modelo, ano):
-        self.marca = marca  # Atributo de instância (específico para cada instância)
-        self.modelo = modelo  # Atributo de instância
-        self.ano = ano  # Atributo de instância
+        self.marca = marca  # atributo de instância (específico para cada instância)
+        self.modelo = modelo  # atributo de instância
+        self.ano = ano  # atributo de instância
 ```
 
 Aqui:
@@ -260,7 +260,7 @@ Cada método de instância, por convenção, tem o parâmetro `self` como seu pr
 ```python
 class MinhaClasse:
     def __init__(self, valor):
-        self.valor = valor  # Atributo de instância
+        self.valor = valor  # atributo de instância
 
     def metodo_instancia(self):
         print(f"O valor atual é: {self.valor}")
@@ -279,10 +279,10 @@ Aqui, `metodo_instancia` é um método de instância. Quando chamamos esse méto
 ```python
 class Pessoa:
     def __init__(self, nome, idade):
-        self.nome = nome  # Atributo de instância
-        self.idade = idade  # Atributo de instância
+        self.nome = nome  # atributo de instância
+        self.idade = idade  # atributo de instância
 
-    def saudacao(self):  # Método de instância
+    def saudacao(self):  # método de instância
         print(f"Olá, meu nome é {self.nome} e tenho {self.idade} anos.")
 ```
 
@@ -307,10 +307,10 @@ Olá, meu nome é Ana e tenho 30 anos.
 ```python
 class Carro:
     def __init__(self, marca, modelo):
-        self.marca = marca  # Atributo de instância
-        self.modelo = modelo  # Atributo de instância
+        self.marca = marca  # atributo de instância
+        self.modelo = modelo  # atributo de instância
 
-    def mudar_modelo(self, novo_modelo):  # Método de instância
+    def mudar_modelo(self, novo_modelo):  # método de instância
         self.modelo = novo_modelo  # Modificando o atributo de instância
         print(f"O modelo do carro foi atualizado para {self.modelo}.")
 
@@ -332,10 +332,10 @@ O modelo do carro foi atualizado para Camry.
 ```python
 class Retangulo:
     def __init__(self, largura, altura):
-        self.largura = largura  # Atributo de instância
-        self.altura = altura  # Atributo de instância
+        self.largura = largura  # atributo de instância
+        self.altura = altura  # atributo de instância
 
-    def calcular_area(self):  # Método de instância
+    def calcular_area(self):  # método de instância
         return self.largura * self.altura
 
 # Criando uma instância de Retangulo
@@ -366,13 +366,13 @@ A área do retângulo é: 15
 class ContaBancaria:
     def __init__(self, titular, saldo):
         self.titular = titular
-        self.saldo = saldo  # Atributo de instância
+        self.saldo = saldo  # atributo de instância
 
-    def depositar(self, valor):  # Método de instância
+    def depositar(self, valor):  # método de instância
         self.saldo += valor
         print(f"Depósito de {valor} realizado com sucesso. Saldo atual: {self.saldo}")
 
-    def sacar(self, valor):  # Método de instância
+    def sacar(self, valor):  # método de instância
         if valor > self.saldo:
             print("Saldo insuficiente!")
         else:
@@ -1184,7 +1184,7 @@ Aqui, temos o seguinte fluxo:
     ```python
     class Animal:
         def __init__(self, nome):
-            self.nome = nome  # Atributo de instância
+            self.nome = nome  # atributo de instância
 
     class Cachorro(Animal):
         pass
@@ -1203,7 +1203,7 @@ Aqui, temos o seguinte fluxo:
     Exemplo:
     ```python
     class Animal:
-        especie = "Mamífero"  # Atributo de classe
+        especie = "Mamífero"  # atributo de classe
 
     class Cachorro(Animal):
         pass
@@ -1275,8 +1275,8 @@ Embora a subclasse herde métodos diretamente da superclasse, ela pode:
             return "Som específico do Cachorro"
 
     rex = Cachorro("Rex")
-    print(rex.fazer_som())  # Método herdado, mas sobrescrito
-    print(rex.latir())      # Método novo da subclasse
+    print(rex.fazer_som())  # método herdado, mas sobrescrito
+    print(rex.latir())      # método novo da subclasse
     ```
 
     Aqui, `Cachorro` herda e sobrescreve o método `fazer_som()` da classe `Animal` e, além disso, define um novo método `latir()`.
@@ -1383,3 +1383,787 @@ Isso mostra a sequência que o Python segue para encontrar o método ou atributo
     1. Crie uma classe `Jogador` com um método `correr()` que imprime "Jogador está correndo". Crie uma subclasse `Atacante` e sobrescreva o método herdado.
 
 </details>
+
+## métodos mágicos de operadores de comparação
+
+Também é possível encontrar que métodos especiais estão por trás dos operadores de comparação. Por exemplo, quando se executa algo como `5 < 2`, Python chama o método mágico `.__lt__()`.
+
+Veja a tabela abaixo desses métodos :
+
+| Operador | Método de Suporte |
+|---|---|
+| `<` | `.__lt__(self, other)` |
+| `<=` | `.__le__(self, other)` |
+| `==` | `.__eq__(self, other)` |
+| `!=` | `.__ne__(self, other)` |
+| `>=` | `.__ge__(self, other)` |
+| `>` | `.__gt__(self, other)` |
+
+Veja abaixo a classe `Retangulo` que aplica esses métodos mágicos para comparar a área do objeto.
+
+```python
+class retangulo:
+    def __init__(self, altura, largura):
+        self.altura = altura
+        self.largura = largura
+
+    def area(self):
+        return self.altura * self.largura
+
+    def __eq__(self, other):
+        return self.area() == other.area()
+
+    def __lt__(self, other):
+        return self.area() < other.area()
+
+    def __gt__(self, other):
+        return self.area() > other.area()
+```
+
+A classe possui um método `.area()` que calcula a área do retângulo usando sua altura e largura. Em seguida, há três métodos mágicos necessários para suportar os operadores de comparação pretendidos. Observe que todos eles usam a área do retângulo para determinar o resultado final.
+
+Veja como fica aplicado na prática :
+
+```python
+quadra_basquete = Retangulo(15, 28)
+quadra_futebol = Retangulo(75, 110)
+
+print(quadra_basquete < quadra_futebol)
+# saída : True
+print(quadra_basquete > quadra_futebol)
+# saída : False
+print(quadra_basquete == quadra_futebol)
+# saída : False
+```
+
+## exercícios métodos mágicos de operadores de comparação
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios para `__lt__(self, other)` (menor que)
+    1. **Crie uma classe `Produto`** com um atributo `preco`. Implemente o método `__lt__` para que possa comparar dois produtos com base no preço.
+    1. **Implemente a classe `Data`** com atributos `dia`, `mes` e `ano`. Use o método `__lt__` para comparar duas datas e determinar se uma data é anterior à outra.
+    1. **Crie uma classe `Pessoa`** com um atributo `idade`. Implemente `__lt__` para que você possa verificar se uma pessoa é mais jovem que outra.
+    1. **Desenvolva uma classe `Quadrado`** que tem um atributo `lado`. Implemente `__lt__` para que você possa comparar dois quadrados com base na área.
+    1. **Crie uma classe `Nota`** que representa uma nota escolar com um atributo `valor`. Use `__lt__` para determinar se uma nota é menor que outra.
+1. Exercícios para `__le__(self, other)` (menor ou igual a)
+    1. **Use a classe `Produto`** do exercício anterior e adicione o método `__le__` para permitir a comparação de preços, incluindo igualdade.
+    1. **Modifique a classe `Data`** para implementar `__le__`, permitindo que você compare se uma data é anterior ou igual a outra.
+    1. **Adicione o método `__le__` à classe `Pessoa`** para que você possa verificar se uma pessoa é mais jovem ou da mesma idade que outra.
+    1. **Use a classe `Quadrado`** do exercício anterior e implemente `__le__` para comparar a área de dois quadrados, permitindo igualdade.
+    1. **Crie uma classe `Nota`** com o método `__le__` que permite verificar se uma nota é menor ou igual a outra.
+1. Exercícios para `__eq__(self, other)` (igual a)
+    1. **Crie uma classe `Produto`** que tenha um atributo `codigo`. Implemente `__eq__` para comparar produtos com base no código.
+    1. **Desenvolva a classe `Data`** para incluir o método `__eq__`, permitindo verificar se duas datas são iguais.
+    1. **Implemente `__eq__` na classe `Pessoa`** para comparar duas pessoas com base no nome e idade.
+    1. **Adicione o método `__eq__` à classe `Quadrado`** para que você possa verificar se dois quadrados têm a mesma área.
+    1. **Crie uma classe `Nota`** com um atributo `disciplina` e implemente `__eq__` para comparar notas de diferentes disciplinas.
+1. Exercícios para `__ne__(self, other)` (diferente de)
+    1. **Utilize a classe `Produto`** do primeiro exercício e implemente `__ne__` para verificar se dois produtos são diferentes com base no preço.
+    1. **Modifique a classe `Data`** para incluir o método `__ne__`, permitindo que você compare se duas datas são diferentes.
+    1. **Adicione o método `__ne__` à classe `Pessoa`** para determinar se duas pessoas são diferentes com base na idade.
+    1. **Use a classe `Quadrado`** e implemente `__ne__` para verificar se dois quadrados têm áreas diferentes.
+    1. **Crie uma classe `Nota`** com o método `__ne__` para comparar notas e verificar se são diferentes.
+1. Exercícios para `__ge__(self, other)` (maior ou igual a)
+    1. **Implemente o método `__ge__` na classe `Produto`** para comparar produtos com base no preço, permitindo verificar se um produto é mais caro ou igual a outro.
+    1. **Adicione `__ge__` à classe `Data`** para que você possa comparar se uma data é posterior ou igual a outra.
+    1. **Modifique a classe `Pessoa`** para implementar `__ge__`, permitindo que você verifique se uma pessoa é mais velha ou da mesma idade que outra.
+    1. **Use a classe `Quadrado`** do exercício anterior e implemente `__ge__` para comparar áreas, permitindo verificar se uma área é maior ou igual a outra.
+    1. **Crie uma classe `Nota`** e adicione `__ge__` para permitir verificar se uma nota é maior ou igual a outra.
+1. Exercícios para `__gt__(self, other)` (maior que)
+    1. **Crie uma classe `Produto`** com um atributo `preco` e implemente `__gt__` para comparar produtos com base no preço.
+    1. **Implemente a classe `Data`** e use `__gt__` para determinar se uma data é posterior a outra.
+    1. **Adicione `__gt__` à classe `Pessoa`** para que você possa verificar se uma pessoa é mais velha que outra.
+    1. **Utilize a classe `Quadrado`** e implemente `__gt__` para comparar áreas e verificar se um quadrado é maior que o outro.
+    1. **Crie uma classe `Nota`** com o método `__gt__` que permite verificar se uma nota é maior que outra.
+
+</details>
+
+## métodos estáticos
+
+Métodos estáticos são uma forma de definir funções dentro de uma classe que não requerem uma referência a uma instância da classe para serem chamadas. Eles são marcados com o decorador `@staticmethod` e não têm acesso direto ao estado da instância ou à classe.
+
+- **definição** : um método estático é um método que pertence à classe, não a uma instância da classe; isso significa que ela pode ser chamada sem criar um objeto da classe;
+- **acesso** : métodos estáticos não têm acesso a `self` (a instância da classe) ou `cls` (a própria classe); eles não podem modificar o estado da instância ou da classe;
+
+### quando usar
+
+Os métodos estáticos são úteis quando:
+
+1. **Encapsulamento de Funções Relacionadas** : se deseja agrupar funções que fazem parte da lógica da classe, mas que não precisam acessar os dados da instância ou da classe;
+1. **Organização** : eles ajudam a organizar o código de maneira mais limpa e clara, separando a lógica que não depende do estado da instância;
+
+### como definir
+
+Veja a sintaxe para definir um método estático :
+
+```python
+class MinhaClasse:
+    @staticmethod
+    def meu_metodo_estatico(param):
+        return f"Você passou {param}."
+```
+
+Veja um exemplo prático :
+
+```python
+class Calculadora:
+
+    @staticmethod
+    def somar(a, b):
+        return a + b
+
+    @staticmethod
+    def subtrair(a, b):
+        return a - b
+
+    @staticmethod
+    def multiplicar(a, b):
+        return a * b
+
+    @staticmethod
+    def dividir(a, b):
+        if b == 0:
+            return "Erro: Divisão por zero!"
+        return a / b
+
+# chamando métodos estáticos sem criar uma instância da classe
+print(Calculadora.somar(5, 3))         # saída : 8
+print(Calculadora.subtrair(10, 4))     # saída : 6
+print(Calculadora.multiplicar(2, 3))   # saída : 6
+print(Calculadora.dividir(8, 2))       # saída : 4.0
+print(Calculadora.dividir(8, 0))       # saída : Erro: Divisão por zero!
+```
+
+## exercícios métodos estáticos
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie um método estático em uma classe `Matematica` que calcule e retorne o fatorial de um número.
+1. Implemente um método estático `converter_para_maiusculas` em uma classe `Texto` que receba uma string e a retorne em letras maiúsculas.
+1. Defina um método estático em uma classe `Utils` que gere um número aleatório entre um intervalo definido.
+1. Na classe `Data`, crie um método estático que verifique se um ano é bissexto.
+1. Crie um método estático em uma classe `Validador` que valide se um e-mail tem o formato correto.
+1. Implemente um método estático `calcular_area_retangulo` em uma classe `Geometria` que receba a largura e a altura e retorne a área.
+1. Crie um método estático `formatar_telefone` em uma classe `Contato` que formate um número de telefone para o padrão (XX) XXXXX-XXXX.
+1. Na classe `Conversor`, defina um método estático que converta uma temperatura de Celsius para Fahrenheit.
+1. Crie um método estático em uma classe `StringUtils` que remova espaços em branco de uma string.
+1. Implemente um método estático `gerar_uuid` em uma classe `Identificador` que gere um UUID.
+1. Crie um método estático `contar_vogais` em uma classe `AnalisadorDeTexto` que conte o número de vogais em uma string.
+1. Na classe `Calculadora`, defina um método estático que calcule a soma de uma lista de números.
+1. Crie um método estático em uma classe `ValidadorDeSenha` que verifique se uma senha atende a certos critérios (ex.: tamanho mínimo, presença de números).
+1. Implemente um método estático `substituir_espacos` em uma classe `Texto`, que substitua espaços por sublinhados em uma string.
+1. Crie um método estático `formatar_data` em uma classe `FormatoData` que formate uma data no padrão DD/MM/AAAA.
+1. Na classe `ConversorDeMoeda`, crie um método estático que converta valores entre duas moedas diferentes.
+1. Defina um método estático em uma classe `Verificador` que retorne se uma palavra é um palíndromo.
+1. Crie um método estático `calcular_media` em uma classe `Estatisticas` que receba uma lista de números e retorne a média.
+1. Implemente um método estático `remover_elementos_repetidos` em uma classe `ListaUtils` que retorne uma lista sem elementos duplicados.
+1. Na classe `Relogio`, crie um método estático que converta horas de formato 12 horas para 24 horas.
+
+</details>
+
+## métodos de classe
+
+Métodos de classe são uma maneira de definir funções que pertencem à classe em si, e não a uma instância específica da classe. Eles são decorados com o `@classmethod` e recebem a classe como primeiro parâmetro, que é normalmente nomeado como `cls`.
+
+- **definição** : um método de classe é um método que pode ser chamado na própria classe, sem precisar de uma instância. Ele recebe a classe como primeiro argumento, permitindo que você acesse ou modifique atributos da classe;
+- **acesso** : ao contrário dos métodos de instância que têm acesso ao estado da instância através de `self`, os métodos de classe têm acesso ao estado da classe através de `cls`;
+
+### quando usar
+
+Métodos de classe são úteis quando:
+
+1. **Manipulação de Atributos de Classe** : se deseja acessar ou modificar atributos que são comuns a todas as instâncias da classe;
+1. **Fábricas** : quer implementar métodos que podem criar instâncias da classe de maneiras alternativas (métodos de fábrica);
+
+### como definir
+
+Veja a sintaxe para definir um método estático :
+
+```python
+class MinhaClasse:
+    @classmethod
+    def meu_metodo_de_classe(cls):
+        # lógica do método
+```
+
+Veja um exemplo prático :
+
+```python
+class ContaBancaria:
+    taxa_de_juros = 0.05  # atributo da classe
+
+    def __init__(self, saldo):
+        self.saldo = saldo
+
+    @classmethod
+    def set_taxa_de_juros(cls, nova_taxa):
+        cls.taxa_de_juros = nova_taxa
+
+    @classmethod
+    def criar_conta(cls, saldo_inicial):
+        return cls(saldo_inicial)
+
+    def aplicar_juros(self):
+        self.saldo += self.saldo * self.taxa_de_juros
+
+# usando o método de classe para alterar a taxa de juros
+print("Taxa de juros atual:", ContaBancaria.taxa_de_juros)  # saída : 0.05
+ContaBancaria.set_taxa_de_juros(0.07)
+print("Nova taxa de juros:", ContaBancaria.taxa_de_juros)    # saída : 0.07
+
+# usando o método de classe para criar uma nova conta
+nova_conta = ContaBancaria.criar_conta(1000)
+print("Saldo inicial da nova conta:", nova_conta.saldo)  # saída : 1000
+
+# aplicando juros
+nova_conta.aplicar_juros()
+print("Saldo após aplicar juros:", nova_conta.saldo)  # saída : 1070.0
+```
+
+## exercícios métodos de classe
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma classe `Carro` que tenha um atributo de classe `numero_de_carros` e um método de classe que incremente esse número sempre que um novo carro for criado.
+1. Implemente um método de classe `criar_carrinho` em uma classe `CarrinhoDeCompras`, que retorne uma instância de `CarrinhoDeCompras` com uma lista vazia.
+1. Defina uma classe `Produto` com um atributo de classe `estoque_total` e um método de classe que retorne o total de produtos em estoque.
+1. Crie um método de classe em uma classe `Usuario` que retorne uma lista de todos os usuários cadastrados.
+1. Na classe `Conta`, implemente um método de classe `definir_limite` que defina um limite padrão para todas as contas.
+1. Crie um método de classe `adicionar_cliente` em uma classe `Banco` que adicione um novo cliente à lista de clientes.
+1. Defina um método de classe em uma classe `Funcionario` que conte o número total de funcionários.
+1. Crie um método de classe `gerar_id` em uma classe `Registro`, que retorne um ID único cada vez que for chamado.
+1. Implemente um método de classe `calcular_media` em uma classe `Notas`, que receba uma lista de notas e retorne a média.
+1. Na classe `Livro`, crie um método de classe que retorne uma lista de todos os livros publicados.
+1. Crie um método de classe `incrementar_visitas` em uma classe `Pagina`, que incremente o número de visitas a uma página web.
+1. Defina um método de classe em uma classe `Equipe` que retorne o número total de membros da equipe.
+1. Implemente um método de classe `set_telefone` em uma classe `Contato` que permita atualizar o número de telefone para todos os contatos.
+1. Na classe `Transacao`, crie um método de classe que retorne todas as transações de um determinado tipo.
+1. Crie um método de classe `criar_arquivo` em uma classe `GeradorDeRelatorios` que crie um novo arquivo de relatório.
+1. Defina um método de classe em uma classe `Categoria` que retorne a lista de todas as categorias disponíveis.
+1. Implemente um método de classe `adicionar_item` em uma classe `Inventario` que adicione um item ao inventário global.
+1. Crie um método de classe `definir_mensagem_padrao` em uma classe `Mensagem` que altere a mensagem padrão para todos os objetos da classe.
+1. Na classe `Evento`, crie um método de classe que retorne a lista de todos os eventos agendados.
+1. Implemente um método de classe `get_informacoes` em uma classe `Escola` que retorne informações sobre todas as escolas cadastradas.
+
+</details>
+
+## métodos de instância vs estáticos vs de classe
+
+### métodos de instância
+
+1. **Definição**
+    - são aqueles que operam em instâncias específicas de uma classe; eles têm acesso ao estado da instância através do parâmetro `self`, que se refere ao objeto atual;
+
+1. **Quando Usar**
+    - quando se precisa acessar ou modificar atributos de uma instância específica;
+    - quando a lógica do método depende dos dados contidos na instância;
+
+1. **Vantagens**
+    - **Acesso ao estado da instância** : podem manipular e acessar dados específicos de cada instância, tornando-os muito flexíveis;
+    - **Encapsulamento** : a lógica é organizada em torno da instância, facilitando a leitura e a manutenção do código;
+
+1. **Desvantagens**
+    - **Dependência de instância** : necessita de uma instância da classe para ser chamado, o que pode aumentar a sobrecarga de criação de objetos quando não é necessário;
+    - **Performance** : acesso a atributos de instância pode ser mais lento em comparação com métodos que não dependem de estado, especialmente em chamadas repetidas;
+
+### métodos de classe
+
+1. **Definição**
+    - são métodos que operam na classe como um todo, não em instâncias específicas. Eles são definidos com o decorador `@classmethod` e recebem a classe como primeiro argumento (`cls`);
+
+1. **Quando Usar**
+    - quando se precisa manipular ou acessar atributos que pertencem à classe e são compartilhados entre todas as instâncias;
+    - para criar métodos de fábrica que instanciam objetos de maneira diferente;
+
+1. **Vantagens**
+    - **Acesso ao estado da classe** : podem modificar atributos que são comuns a todas as instâncias, oferecendo um meio de controlar o comportamento da classe como um todo;
+    - **Métodos de fábrica** : facilitam a criação de instâncias de maneira mais flexível e centralizada;
+
+1. **Desvantagens**
+    - **Menos flexível que métodos de instância** : não têm acesso aos dados específicos de uma instância, o que limita seu uso em alguns contextos;
+    - **Possível confusão** : a lógica de negócios pode se tornar confusa se não for bem estruturada, especialmente se muitas operações dependem de atributos de classe;
+
+### métodos estáticos
+
+1. **Definição**
+    - são funções definidas dentro do escopo de uma classe que não dependem do estado da instância nem do estado da classe; eles são decorados com `@staticmethod`;
+
+1. **Quando Usar**
+    - quando a lógica do método não precisa acessar ou modificar atributos de instância ou de classe;
+    - Para agrupar funções que têm uma lógica relacionada à classe, mas que não requerem acesso a `self` ou `cls`;
+
+1. **Vantagens**
+    - **Desacoplamento** : não dependem do estado da instância ou da classe, tornando-os mais fáceis de testar e reutilizar;
+    - **Organização** : permitem agrupar funções relacionadas à lógica da classe, mantendo o código mais organizado;
+
+1. **Desvantagens**
+    - **Sem acesso ao estado** : como não têm acesso a `self` ou `cls`, não podem interagir com atributos de instância ou de classe, limitando seu uso em determinadas situações;
+    - **Menos intuitivo** : o uso pode ser menos intuitivo para aqueles que estão acostumados a trabalhar com métodos que interagem com o estado;
+
+### comparação
+
+| Característica         | Métodos de Instância         | Métodos de Classe               | Métodos Estáticos               |
+|------------------------|------------------------------|---------------------------------|---------------------------------|
+| **Acesso**             | `self` (instância)          | `cls` (classe)                  | Nenhum acesso ao estado         |
+| **Quando Usar**        | Manipular dados específicos da instância | Manipular dados da classe ou métodos de fábrica | Lógica que não precisa de estado |
+| **Vantagens**          | Flexibilidade e encapsulamento | Controle sobre a classe e seus atributos | Desacoplamento e organização     |
+| **Desvantagens**       | Dependência de instância     | Menos flexível em relação a instâncias | Sem acesso ao estado            |
+
+### exemplos
+
+Abaixo há exemplos de criação de classes que abordam os conceitos vistos anteriormente
+- [**atributos de instância**](#atributos-de-instância)
+- [**atributos de classe**](#atributos-de-classe)
+- [**métodos de instância**](#métodos-de-instância)
+- [**métodos de classe**](#métodos-de-classe)
+- [**métodos estáticos**](#métodos-estáticos)
+- [**métodos mágicos**](#métodos-mágicos)
+
+#### Exemplo 1 : Classe `Carro`
+
+**Objetivo**: Um sistema que gerencia veículos, com contador de carros criados e operações entre diferentes carros.
+
+```python
+class Carro:
+    total_carros = 0
+
+    def __init__(self, marca, modelo, ano, preco):
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+        self.preco = preco
+        Carro.total_carros += 1
+
+    def descricao(self):
+        return f'{self.marca} {self.modelo} ({self.ano})'
+
+    @classmethod
+    def carros_criados(cls):
+        return f'Carros criados: {cls.total_carros}'
+
+    @staticmethod
+    def depreciacao(preco, anos):
+        return preco * (0.9 ** anos)
+
+    def __str__(self):
+        return self.descricao()
+
+    def __add__(self, outro_carro):
+        return self.preco + outro_carro.preco
+
+    def __lt__(self, outro_carro):
+        return self.ano < outro_carro.ano
+
+carro1 = Carro("Toyota", "Corolla", 2020, 90000)
+carro2 = Carro("Honda", "Civic", 2019, 85000)
+
+print(carro1)  # Toyota Corolla (2020)
+print(carro2)  # Honda Civic (2019)
+
+print(Carro.carros_criados())  # Carros criados: 2
+print(Carro.depreciacao(100000, 5))  # 59049.0
+
+print(carro1 + carro2)  # 175000
+
+print(carro1 < carro2)  # False (Corolla é mais novo que Civic)
+```
+
+---
+
+#### Exemplo 2 : Classe `Funcionario`
+
+**Objetivo** : Sistema de gerenciamento de funcionários com contagem total e cálculo de salário.
+
+```python
+class Funcionario:
+    total_funcionarios = 0
+
+    def __init__(self, nome, cargo, salario):
+        self.nome = nome
+        self.cargo = cargo
+        self.salario = salario
+        Funcionario.total_funcionarios += 1
+
+    def info(self):
+        return f'{self.nome} trabalha como {self.cargo}'
+
+    @classmethod
+    def total_funcionarios_cadastrados(cls):
+        return f'Total de funcionários: {cls.total_funcionarios}'
+
+    @staticmethod
+    def aumento_percentual(salario, percentual):
+        return salario * (1 + percentual / 100)
+
+    def __repr__(self):
+        return f'Funcionario({self.nome}, {self.cargo}, {self.salario})'
+
+    def __eq__(self, outro_funcionario):
+        return self.salario == outro_funcionario.salario
+
+    def __gt__(self, outro_funcionario):
+        return self.salario > outro_funcionario.salario
+
+func1 = Funcionario("Alice", "Engenheira", 5000)
+func2 = Funcionario("Bob", "Gerente", 6000)
+
+print(func1.info())  # Alice trabalha como Engenheira
+print(Funcionario.total_funcionarios_cadastrados())  # Total de funcionários: 2
+
+print(Funcionario.aumento_percentual(5000, 10))  # 5500.0
+
+print(func1 == func2)  # False
+print(func1 > func2)  # False
+```
+
+---
+
+#### Exemplo 3 : Classe `Livro`
+
+**Objetivo** : Sistema de biblioteca com contagem de livros e operações entre diferentes livros.
+
+```python
+class Livro:
+    total_livros = 0
+
+    def __init__(self, titulo, autor, paginas):
+        self.titulo = titulo
+        self.autor = autor
+        self.paginas = paginas
+        Livro.total_livros += 1
+
+    def detalhes(self):
+        return f'{self.titulo} por {self.autor}, {self.paginas} páginas'
+
+    @classmethod
+    def total_de_livros(cls):
+        return f'Total de livros cadastrados: {cls.total_livros}'
+
+    @staticmethod
+    def comparar_paginas(livro1, livro2):
+        return livro1.paginas > livro2.paginas
+
+    def __str__(self):
+        return self.detalhes()
+
+    def __add__(self, outro_livro):
+        return self.paginas + outro_livro.paginas
+
+    def __eq__(self, outro_livro):
+        return self.paginas == outro_livro.paginas
+
+livro1 = Livro("1984", "George Orwell", 328)
+livro2 = Livro("Brave New World", "Aldous Huxley", 288)
+
+print(livro1)  # 1984 por George Orwell, 328 páginas
+print(livro2)  # Brave New World por Aldous Huxley, 288 páginas
+
+print(Livro.total_de_livros())  # Total de livros cadastrados: 2
+
+print(Livro.comparar_paginas(livro1, livro2))  # True
+
+# Soma de páginas
+print(livro1 + livro2)  # 616
+
+print(livro1 == livro2)  # False
+```
+
+---
+
+#### Exemplo 4 : Classe `Produto`
+
+**Objetivo** : Gerenciamento de produtos com estoque e operações de inventário.
+
+```python
+class Produto:
+    total_produtos = 0
+
+    def __init__(self, nome, preco, quantidade):
+        self.nome = nome
+        self.preco = preco
+        self.quantidade = quantidade
+        Produto.total_produtos += 1
+
+    def info(self):
+        return f'{self.nome}: R${self.preco:.2f} (Estoque: {self.quantidade})'
+
+    @classmethod
+    def total_estoque(cls):
+        return f'Total de produtos cadastrados: {cls.total_produtos}'
+
+    @staticmethod
+    def calcular_desconto(preco, desconto):
+        return preco - (preco * desconto / 100)
+
+    def __str__(self):
+        return self.info()
+
+    def __mul__(self, outro_produto):
+        return self.quantidade * self.preco + outro_produto.quantidade * outro_produto.preco
+
+    def __lt__(self, outro_produto):
+        return self.preco < outro_produto.preco
+
+produto1 = Produto("Camiseta", 50, 10)
+produto2 = Produto("Calça", 80, 5)
+
+print(produto1)  # Camiseta: R$50.00 (Estoque: 10)
+print(produto2)  # Calça: R$80.00 (Estoque: 5)
+
+print(Produto.total_estoque())  # Total de produtos cadastrados: 2
+print(Produto.calcular_desconto(100, 10))  # 90.0
+
+print(produto1 * produto2)  # 900 (valor total dos produtos em estoque)
+print(produto1 < produto2)  # True (Camiseta é mais barata que Calça)
+```
+
+---
+
+#### Exemplo 5 : Classe `ContaBancaria`
+
+**Objetivo** : Sistema de contas bancárias com total de contas criadas e operações financeiras.
+
+```python
+class ContaBancaria:
+    total_contas = 0
+
+    def __init__(self, titular, saldo):
+        self.titular = titular
+        self.saldo = saldo
+        ContaBancaria.total_contas += 1
+
+    def depositar(self, valor):
+        self.saldo += valor
+        return f'Novo saldo de {self.titular}: R${self.saldo:.2f}'
+
+    @classmethod
+    def total_de_contas(cls):
+        return f'Total de contas: {cls.total_contas}'
+
+    @staticmethod
+    def calcular_juros(saldo, taxa):
+        return saldo * (1 + taxa / 100)
+
+    def __str__(self):
+        return f'Conta de {self.titular} com saldo de R${self.saldo:.2f}'
+
+    def __sub__(self, outro_conta):
+        return self.saldo - outro_conta.saldo
+
+    def __gt__(self, outro_conta):
+        return self.saldo > outro_conta.saldo
+
+conta1 = ContaBancaria("Carlos", 1500)
+conta2 = ContaBancaria("Ana", 2500)
+
+print(conta1)  # Conta de Carlos com saldo de R$1500.00
+print(conta2)  # Conta de Ana com saldo de R$2500.00
+
+print(ContaBancaria.total_de_contas())  # Total de contas: 2
+print(ContaBancaria.calcular_juros(1000, 5))  # 1050.0
+
+print(conta2 - conta1)  # 1000
+print(conta1 > conta2)  # False
+```
+
+---
+
+#### Exemplo 6 : Classe `Pessoa` e Herança com `Funcionario`
+
+**Objetivo** : Criar um sistema que gerencie pessoas e seus derivados, como funcionários, com métodos de fábrica para criação e comparação de idade.
+
+```python
+class Pessoa:
+    populacao_total = 0
+
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+        Pessoa.populacao_total += 1
+
+    def info(self):
+        return f'Nome: {self.nome}, Idade: {self.idade}'
+
+    @classmethod
+    def from_string(cls, dados):
+        nome, idade = dados.split(',')
+        return cls(nome, int(idade))
+
+    @staticmethod
+    def maior_idade(idade):
+        return idade >= 18
+
+    def __str__(self):
+        return f'{self.nome}, {self.idade} anos'
+
+    def __add__(self, outra_pessoa):
+        return self.idade + outra_pessoa.idade
+
+    def __eq__(self, outra_pessoa):
+        return self.idade == outra_pessoa.idade
+
+
+class Funcionario(Pessoa):
+    def __init__(self, nome, idade, salario):
+        super().__init__(nome, idade)
+        self.salario = salario
+
+    def info(self):
+        return f'{super().info()}, Salário: {self.salario}'
+
+    def __gt__(self, outro_funcionario):
+        return self.salario > outro_funcionario.salario
+
+
+pessoa1 = Pessoa("Carlos", 25)
+funcionario1 = Funcionario("Ana", 30, 5000)
+
+print(pessoa1.info())  # Carlos, 25 anos
+print(funcionario1.info())  # Nome: Ana, Idade: 30, Salário: 5000
+
+# Fábrica
+pessoa2 = Pessoa.from_string("João,40")
+print(pessoa2)  # João, 40 anos
+
+print(Pessoa.maior_idade(17))  # False
+print(pessoa1 + pessoa2)  # 65 (soma das idades)
+
+funcionario2 = Funcionario("Pedro", 35, 7000)
+print(funcionario1 > funcionario2)  # False
+```
+
+---
+
+#### Exemplo 7 : Classe `Animal` e Herança com `Cachorro`
+
+**Objetivo** : Gerenciar diferentes tipos de animais com métodos de fábrica para criar animais a partir de dados e operações de idade e raça.
+
+```python
+class Animal:
+    total_animais = 0
+
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+        Animal.total_animais += 1
+
+    def som(self):
+        return "Som genérico"
+
+    @classmethod
+    def cria_a_partir_de_string(cls, dados):
+        nome, idade = dados.split(',')
+        return cls(nome, int(idade))
+
+    @staticmethod
+    def expectativa_vida(tipo):
+        return 15 if tipo == "Cachorro" else 10
+
+    def __str__(self):
+        return f'Animal: {self.nome}, Idade: {self.idade}'
+
+    def __add__(self, outro_animal):
+        return self.idade + outro_animal.idade
+
+    def __eq__(self, outro_animal):
+        return self.idade == outro_animal.idade
+
+
+class Cachorro(Animal):
+    def __init__(self, nome, idade, raca):
+        super().__init__(nome, idade)
+        self.raca = raca
+
+    def som(self):
+        return "Latido"
+
+    def __gt__(self, outro_cachorro):
+        return len(self.raca) > len(outro_cachorro.raca)
+
+
+animal1 = Animal("Tigre", 4)
+cachorro1 = Cachorro("Rex", 3, "Labrador")
+
+print(animal1.info())  # Animal: Tigre, Idade: 4
+print(cachorro1.info())  # Animal: Rex, Idade: 3
+
+animal2 = Animal.cria_a_partir_de_string("Leão,5")
+print(animal2)  # Animal: Leão, Idade: 5
+
+print(animal1 + animal2)  # 9
+
+cachorro2 = Cachorro("Spike", 4, "Poodle")
+print(cachorro1 > cachorro2)  # False
+
+print(Animal.expectativa_vida("Cachorro"))  # 15
+```
+
+---
+
+#### Exemplo 8 : Classe `Produto` e Herança com `Eletronico`
+
+**Objetivo**: Sistema de gerenciamento de produtos com métodos de fábrica para criação de produtos e operações de estoque.
+
+```python
+class Produto:
+    total_produtos = 0
+
+    def __init__(self, nome, preco):
+        self.nome = nome
+        self.preco = preco
+        Produto.total_produtos += 1
+
+    def info(self):
+        return f'Produto: {self.nome}, Preço: R${self.preco:.2f}'
+
+    @classmethod
+    def cria_a_partir_de_string(cls, dados):
+        nome, preco = dados.split(',')
+        return cls(nome, float(preco))
+
+    @staticmethod
+    def aplicar_desconto(preco, desconto):
+        return preco - (preco * desconto / 100)
+
+    def __str__(self):
+        return self.info()
+
+    def __add__(self, outro_produto):
+        return self.preco + outro_produto.preco
+
+    def __eq__(self, outro_produto):
+        return self.preco == outro_produto.preco
+
+
+class Eletronico(Produto):
+    def __init__(self, nome, preco, garantia):
+        super().__init__(nome, preco)
+        self.garantia = garantia
+
+    def info(self):
+        return f'{super().info()}, Garantia: {self.garantia} anos'
+
+    def __gt__(self, outro_eletronico):
+        return self.garantia > outro_eletronico.garantia
+
+
+produto1 = Produto("Mesa", 300)
+eletronico1 = Eletronico("Notebook", 2500, 2)
+
+print(produto1.info())  # Produto: Mesa, Preço: R$300.00
+print(eletronico1.info())  # Produto: Notebook, Preço: R$2500.00, Garantia: 2 anos
+
+produto2 = Produto.cria_a_partir_de_string("Cadeira,150")
+print(produto2)  # Produto: Cadeira, Preço: R$150.00
+
+print(produto1 + produto2)  # 450.0
+
+eletronico2 = Eletronico("TV", 1800, 3)
+print(eletronico1 > eletronico2)  # False
+
+print(Produto.aplicar_desconto(1000, 10))  # 900.0
+```
