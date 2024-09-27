@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 30 | 26/09/2024 | atividade remota<br>[agenda eletrônica](2.programacao-python/atividade-agenda-eletronica.md) |
 | 29 | 25/09/2024 | [métodos mágicos de operadores de comparação](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos-de-operadores-de-comparação)<br>[métodos estáticos](2.programacao-python/programacao-orientada-objetos.md#métodos-estáticos)<br>[métodos de classe](2.programacao-python/programacao-orientada-objetos.md#métodos-de-classe) |
 | 28 | 24/09/2024 | [acompanhamento da avaliação](2.programacao-python/avaliacao.md) |
 | 27 | 23/09/2024 | [objetos de primeira classe](2.programacao-python/funcoes.md#objetos-de-primeira-classe)<br>[funções internas](2.programacao-python/funcoes.md#funções-internas)<br>[funções retornando funções](2.programacao-python/funcoes.md#funções-retornando-funções)<br>[decoradores](2.programacao-python/funcoes.md#decoradores) |
