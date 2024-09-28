@@ -26,7 +26,7 @@ A Agenda Eletrônica deverá ser criada segundo os critérios abaixo :
     - listar todos os contatos;
     - listar contatos semelhantes ao nome que for buscado :
         - exemplo : buscar por *carlos* irá retornar *Carlos Alberto*, *Carlos Silva* e *José Carlos da Silva*;
-    - ano inicializar, ela deve mostrar o nome de todos os aniversariantes do dia;
+    - ao inicializar, ela deve mostrar o nome de todos os aniversariantes do dia;
 - uma classe `Contato`, que vai ser composta por :
     - nome completo;
     - telefone;
