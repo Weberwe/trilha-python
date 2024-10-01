@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 32 | 01/10/2024 | [tkinter](2.programacao-python/tkinter.md) |
 | 31 | 30/09/2024 | [expressões regulares](2.programacao-python/expressoes-regulares.md) |
 | 30 | 26/09/2024 | atividade remota<br>[agenda eletrônica](2.programacao-python/atividade-agenda-eletronica.md) |
 | 29 | 25/09/2024 | [métodos mágicos de operadores de comparação](2.programacao-python/programacao-orientada-objetos.md#métodos-mágicos-de-operadores-de-comparação)<br>[métodos estáticos](2.programacao-python/programacao-orientada-objetos.md#métodos-estáticos)<br>[métodos de classe](2.programacao-python/programacao-orientada-objetos.md#métodos-de-classe) |
