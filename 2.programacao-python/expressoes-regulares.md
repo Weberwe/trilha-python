@@ -1,3 +1,22 @@
+# índice
+
+1. [introdução](#introdução)
+1. [funções](#funções)
+    1. [`re.search()`](#research)
+    1. [`re.match()`](#rematch)
+    1. [`re.findall()`](#refindall)
+    1. [`re.sub()`](#resub)
+    1. [`re.split()`](#resplit)
+    1. [`re.compile()`](#recompile)
+    1. [`re.escape()`](#reescape)
+1. [metacaracteres](#metacaracteres)
+    1. [`.` (ponto)](#-ponto)
+    1. [`^` (circunflexo)](#-circunflexo)
+    1. [`$` (cifrão)](#-cifrão)
+    1. [`*` (asterisco)](#-asterisco)
+    1. [`+` (mais)](#-mais)
+    1. [`?` (interrogação)](#-interrogação)
+
 # expressões regulares
 
 ## introdução
