@@ -954,3 +954,528 @@ string_escapada = re.escape(string)
 </details>
 
 ---
+
+## metacaracteres
+
+### `.` (ponto)
+
+O metacaractere `.` (ponto) em expressões regulares corresponde a **qualquer caractere**, exceto quebras de linha (por padrão). Isso significa que ele pode corresponder a letras, números, espaços ou qualquer outro símbolo, com exceção de uma nova linha.
+
+1. **exemplo encontrar qualquer caractere**
+
+    Veja o uso do `.` para encontrar qualquer caractere presente em uma posição específica.
+
+    ```python
+    import re
+
+    # texto de exemplo
+    texto = "A B C D E"
+
+    # usando o ponto (.) para encontrar qualquer caractere (menos quebras de linha)
+    resultado = re.findall(r"A.B", texto)
+
+    # exibindo o resultado
+    print("Resultado com '.':", resultado)
+    ```
+
+    **Explicação**
+    - **`A.B`** : o padrão encontra "A", seguido de **qualquer caractere** (devido ao `.`), seguido de "B";
+    - o padrão encontra a combinação "A B";
+
+    **Saída**
+    ```
+    Resultado com '.': ['A B']
+    ```
+
+1. **exemplo usando o `.` com `re.split()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Palavra1 Palavra2 Palavra3"
+
+    # dividindo por qualquer caractere (exceto nova linha)
+    resultado = re.split(r"r.", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.split() com '.':", resultado)
+    ```
+
+    **Explicação**
+    - **`r.l`** : encontra qualquer sequência de "r", seguido de qualquer caractere (`.`), seguido de "l";
+    - o `split()` divide o texto quando encontra esse padrão;
+
+    **Saída**
+    ```
+    Resultado de re.split() com '.': ['Pa', 'vra1 Pa', 'vra2 Pa', 'vra3']
+    ```
+
+1. **exemplo substituindo caracteres com `re.sub()`**
+
+    ```python
+    # texto de exemplo
+    texto = "123 abc !@#"
+
+    # qualquer caractere (.) seguido por um não número será substituído por "X"
+    resultado = re.sub(r".\D", "XX", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.sub() com '.':", resultado)
+    ```
+
+    **Explicação**
+    - o `.` encontra qualquer caractere, e o `re.sub()` substitui todos os caracteres por "X";
+
+    **Saída**
+    ```
+    Resultado de re.sub() com '.': 12XXXXXXXX#
+    ```
+
+### exercícios `.`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize o metacaractere ponto (`.`) para encontrar qualquer caractere entre duas letras "a". Aplique essa expressão à string "aba aca ada" e veja o que é retornado.
+1. Escreva uma expressão regular que encontre todas as ocorrências de três caracteres consecutivos em uma string, onde o caractere do meio pode ser qualquer um. Utilize `.` para isso e aplique à string "abc 123 xyz".
+1. Defina uma expressão regular que busque qualquer caractere antes e depois de uma vogal. Use o ponto (`.`) para representar os caracteres desconhecidos e aplique essa expressão à frase "o rato roeu a roupa".
+1. Escreva uma expressão regular que utilize `.` para encontrar qualquer sequência de três caracteres, onde o primeiro e o último sejam números, e o caractere do meio pode ser qualquer um. Teste com a string "2a3 4+5 6!7".
+1. Crie uma expressão regular que utilize o ponto (`.`) para localizar qualquer palavra de quatro caracteres em uma string. Aplique-a na frase "hoje faz sol e vou correr".
+1. Defina uma expressão regular que busque por padrões onde o primeiro caractere é "c", o último é "o", e o caractere do meio pode ser qualquer um. Aplique à string "cao cto cno cqo".
+1. Escreva uma expressão regular que utilize `.` para substituir todos os caracteres em uma senha fictícia, como "p@ssw0rd123", por asteriscos (*), exceto os números.
+1. Crie uma expressão regular que busque por qualquer caractere que venha logo antes de um número. Utilize o metacaractere ponto (`.`) para representar o caractere desconhecido e aplique na string "x1 y2 z3".
+1. Defina uma expressão regular que encontre qualquer palavra que tenha exatamente cinco letras, sendo a segunda uma vogal. Use `.` para os outros caracteres e aplique na frase "Python é fácil e divertido".
+1. Escreva uma expressão regular que utilize o ponto (`.`) para encontrar todas as ocorrências onde o primeiro caractere de uma palavra seja "p", o último seja "r", e o caractere do meio pode ser qualquer um. Teste com a string "por par pir pur per".
+
+</details>
+
+---
+
+### `^` (circunflexo)
+
+O metacaractere `^` é usado para indicar o **início de uma string** ou linha (dependendo das flags usadas). Ele verifica se a string ou linha começa com um determinado padrão.
+
+1. **exemplo verificar o início de uma string com `re.match()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Python é uma linguagem poderosa."
+
+    # verificando se a string começa com "Python"
+    resultado = re.match(r"^Python", texto)
+
+    # exibindo o resultado
+    if resultado:
+        print("A string começa com 'Python'")
+    else:
+        print("A string não começa com 'Python'")
+    ```
+
+    **Explicação**
+    - **`^Python`** : o `^` garante que "Python" só será correspondido se estiver no início da string;
+
+    **Saída**
+    ```
+    A string começa com 'Python'
+    ```
+
+1. **exemplo usando `^` com `re.findall()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Python é poderoso.\npython é versátil."
+
+    # encontrando "python" no início de cada linha (ignorando maiúsculas/minúsculas)
+    resultado = re.findall(r"^python", texto, flags=re.IGNORECASE | re.MULTILINE)
+
+    # exibindo o resultado
+    print("Correspondências encontradas no início de linhas:", resultado)
+    ```
+
+    **Explicação**
+    - **`^python`** : o `^` busca "python" no início da string. A flag `re.MULTILINE` permite que a busca seja feita no início de cada linha (não apenas da string inteira);
+    - a flag `re.IGNORECASE` ignora a diferença entre maiúsculas e minúsculas;
+
+    **Saída**
+    ```
+    Correspondências encontradas no início de linhas: ['Python', 'python']
+    ```
+
+1. **exemplo usando `^` para garantir o início da string com `re.sub()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Python é uma linguagem poderosa."
+
+    # substituindo "Python" no início por "Java"
+    resultado = re.sub(r"^Python", "Java", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.sub() com '^':", resultado)
+    ```
+
+    **Explicação**
+    - o padrão `^Python` só substitui "Python" se ele aparecer no início da string;
+
+    **Saída**
+    ```
+    Resultado de re.sub() com '^': Java é uma linguagem poderosa.
+    ```
+
+### exercícios `^`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize o metacaractere circunflexo (`^`) para verificar se uma string começa com a palavra "Olá". Teste a expressão com a frase "Olá, mundo!".
+1. Escreva uma expressão regular que utilize `^` para verificar se uma string começa com um número. Aplique essa expressão à string "123abc".
+1. Defina uma expressão regular que utilize `^` para verificar se uma string começa com a letra "P". Teste-a com as palavras "Python" e "java".
+1. Crie uma expressão regular que utilize `^` para garantir que uma frase começa com a palavra "Era". Teste a expressão com a frase "Era uma vez".
+1. Escreva uma expressão regular que utilize `^` para verificar se uma string começa com um símbolo como "@" ou "#". Teste-a com a string "@usuario123".
+1. Defina uma expressão regular que utilize `^` para verificar se uma string começa com uma letra maiúscula. Aplique essa expressão à frase "Hoje é um bom dia".
+1. Crie uma expressão regular que utilize `^` para verificar se uma string começa com a sequência "abc". Teste com a string "abcdef" e "xyzabc".
+1. Escreva uma expressão regular que utilize `^` para verificar se uma string começa com um dígito (0-9). Aplique a expressão à string "8 maçãs".
+1. Defina uma expressão regular que utilize `^` para verificar se uma string começa com a sequência "http". Aplique-a em uma URL como "http://example.com".
+1. Crie uma expressão regular que utilize `^` para verificar se uma string começa com qualquer palavra de quatro letras. Aplique a expressão na frase "Lindo dia hoje!".
+
+</details>
+
+---
+
+### `$` (cifrão)
+
+O metacaractere `$` é usado para verificar se um padrão está presente no **final de uma string** ou linha (dependendo das flags).
+
+1. **exemplo verificar o final de uma string com `re.search()`**
+
+    ```python
+    # texto de exemplo
+    texto = "A linguagem Python é poderosa."
+
+    # verificando se a string termina com "poderosa."
+    resultado = re.search(r"poderosa\.$", texto)
+
+    # exibindo o resultado
+    if resultado:
+        print("A string termina com 'poderosa.'")
+    else:
+        print("A string não termina com 'poderosa.'")
+    ```
+
+    **Explicação**
+    - **`poderosa\.$`** : o padrão "poderosa." só será encontrado se estiver no final da string, graças ao `$`;
+
+    **Saída**
+    ```
+    A string termina com 'poderosa.'
+    ```
+
+1. **exemplo usando `$` com `re.findall()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Eu gosto de Python.\nAmo programar em Python."
+
+    # encontrando "Python" no final de cada linha
+    resultado = re.findall(r"Python\.$", texto, flags=re.MULTILINE)
+
+    # exibindo o resultado
+    print("Correspondências encontradas no final de linhas:", resultado)
+    ```
+
+    **Explicação**
+    - **`Python\.$`** : o padrão encontra "Python." no final de cada linha. A flag `re.MULTILINE` permite a verificação em cada linha, não apenas no final da string;
+
+    **Saída**
+    ```
+    Correspondências encontradas no final de linhas: ['Python.']
+    ```
+
+1. **exemplo substituindo um padrão no final da string com `re.sub()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Eu adoro Python."
+
+    # substituindo "Python." no final por "Java."
+    resultado = re.sub(r"Python\.$", "Java.", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.sub() com '$':", resultado)
+    ```
+
+    **Explicação**
+    - o padrão `Python\.$` substitui "Python." por "Java." somente se "Python." estiver no final da string;
+
+    **Saída**
+    ```
+    Resultado de re.sub() com '$': Eu adoro Java.
+    ```
+
+### exercícios `$`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize o metacaractere cifrão (`$`) para verificar se uma string termina com a palavra "fim". Teste com a string "Essa é a última palavra: fim".
+1. Escreva uma expressão regular que use o cifrão (`$`) para verificar se uma string termina com um número. Aplique à string "O total é 42".
+1. Defina uma expressão regular que utilize o metacaractere `$` para verificar se uma string termina com a sequência "123". Teste com a string "Senha: abc123".
+1. Crie uma expressão regular que utilize `$` para verificar se uma string termina com uma letra maiúscula. Aplique à frase "Hoje é um bom Dia".
+1. Escreva uma expressão regular que utilize `$` para verificar se uma string termina com um ponto final. Teste com a frase "Este é o fim.".
+1. Defina uma expressão regular que utilize `$` para verificar se uma string termina com a palavra "Python". Aplique à string "Eu estou aprendendo Python".
+1. Crie uma expressão regular que utilize `$` para verificar se uma string termina com um espaço em branco. Teste com a frase "Aqui tem um espaço ".
+1. Escreva uma expressão regular que utilize `$` para verificar se uma string termina com um símbolo como "!" ou "?". Aplique à string "Você está bem?".
+1. Defina uma expressão regular que utilize `$` para verificar se uma string termina com três letras consecutivas. Teste com a string "finalabc".
+1. Crie uma expressão regular que utilize `$` para verificar se uma string termina com um caractere numérico. Teste com a string "O resultado final foi 9".
+
+</details>
+
+---
+
+### `*` (asterisco)
+
+O metacaractere `*` significa **"zero ou mais ocorrências"** do padrão que o precede. Isso significa que o padrão anterior pode aparecer repetidamente (incluindo a possibilidade de não aparecer).
+
+1. **exemplo encontrando padrões com `*`**
+
+    ```python
+    import re
+
+    # texto de exemplo
+    texto = "Aaaahhh! Isso é incrível!"
+
+    # Padrão: "A" seguido de zero ou mais "a"
+    resultado = re.findall(r"Aa*", texto)
+
+    # exibindo o resultado
+    print("Resultado com '*':", resultado)
+    ```
+
+    **Explicação**
+    - **`Aa*`** : procura por um "A" seguido de zero ou mais letras "a". Isso significa que ele pode encontrar "A", "Aa", "Aaa", etc;
+
+    **Saída**
+    ```
+    Resultado com '*': ['Aaaa']
+    ```
+
+1. **exemplo usando `*` com `re.search()`**
+
+    ```python
+    # texto de exemplo
+    texto = "123 abc 456 def"
+
+    # Procurando dígitos seguidos de zero ou mais espaços
+    resultado = re.search(r"\d*\s*", texto)
+
+    # exibindo o resultado
+    print("Resultado com '*':", resultado.group())
+    ```
+
+    **Explicação**
+    - **`\d*\s*`** : encontra zero ou mais dígitos seguidos de zero ou mais espaços;
+
+    **Saída**
+    ```
+    Resultado com '*': 123
+    ```
+
+    Aqui, ele encontra a sequência "123 " (três dígitos e um espaço).
+
+1. **exemplo substituindo com `*` usando `re.sub()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Gatoooo"
+
+    # substituindo "o" repetido por "o"
+    resultado = re.sub(r"o*", "o", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.sub() com '*':", resultado)
+    ```
+
+    **Explicação**
+    - **`o*`** : substitui qualquer sequência de "o" (zero ou mais) por apenas um "o";
+
+    **Saída**
+    ```
+    Resultado de re.sub() com '*': Gato
+    ```
+
+### exercícios `*`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize o metacaractere asterisco (`*`) para encontrar ocorrências de uma letra seguida por zero ou mais letras "a". Teste com a string "baaa ba b".
+1. Escreva uma expressão regular que utilize `*` para encontrar palavras que tenham a letra "s" seguida por zero ou mais letras "e". Aplique à string "seu selo sente".
+1. Defina uma expressão regular que use `*` para verificar se uma string contém zero ou mais espaços em branco antes de uma palavra. Teste com a string "   exemplo".
+1. Crie uma expressão regular que utilize `*` para encontrar sequências de números seguidos por zero ou mais zeros. Aplique à string "120 3000 45000".
+1. Escreva uma expressão regular que utilize `*` para encontrar palavras que começam com "a" e podem ter qualquer número de letras depois, incluindo nenhuma. Teste com as palavras "a", "abacaxi", "análise".
+1. Defina uma expressão regular que utilize `*` para verificar se uma string contém zero ou mais caracteres antes da palavra "fim". Aplique à string "isso é o fim".
+1. Crie uma expressão regular que utilize `*` para encontrar sequências de caracteres que começam com "x" e podem ter zero ou mais caracteres após isso. Teste com "x", "xyz", "xabc".
+1. Escreva uma expressão regular que utilize `*` para verificar se uma string contém zero ou mais caracteres especiais antes de um número. Aplique à string "@#1".
+1. Defina uma expressão regular que utilize `*` para encontrar palavras que podem ter uma letra "e" no início e qualquer número de letras após isso, incluindo nenhuma. Teste com "e", "elefante", "esperança".
+1. Crie uma expressão regular que utilize `*` para verificar se uma string contém zero ou mais vogais seguidas de uma letra "s". Teste com as strings "s", "ass", "ooos".
+
+</details>
+
+---
+
+### `+` (mais)
+
+O metacaractere `+` significa **"uma ou mais ocorrências"** do padrão que o precede. Ao contrário de `*`, o padrão deve aparecer pelo menos uma vez.
+
+1. **exemplo encontrando padrões com `+`**
+
+    ```python
+    # texto de exemplo
+    texto = "Eu tenho 1000 maçãs."
+
+    # Padrão: Encontrar um ou mais dígitos seguidos de um espaço
+    resultado = re.findall(r"\d+ ", texto)
+
+    # exibindo o resultado
+    print("Resultado com '+':", resultado)
+    ```
+
+    **Explicação**
+    - **`\d+`** : procura por um ou mais dígitos. Isso significa que encontra números inteiros ou sequências de números;
+
+    **Saída**
+    ```
+    Resultado com '+': ['1000 ']
+    ```
+
+1. **exemplo usando `+` para dividir strings com `re.split()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Palavra123Outra"
+
+    # dividindo o texto por uma ou mais sequências de dígitos
+    resultado = re.split(r"\d+", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.split() com '+':", resultado)
+    ```
+
+    **Explicação**
+    - **`\d+`** : divide a string em partes, usando uma ou mais ocorrências de dígitos como separador;
+
+    **Saída**
+    ```
+    Resultado de re.split() com '+': ['Palavra', 'Outra']
+    ```
+
+### exercícios `+`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize o metacaractere mais (`+`) para encontrar sequências de uma letra "a" seguida por uma ou mais letras "b". Teste com a string "ab, abb, a, aaa".
+1. Escreva uma expressão regular que utilize `+` para verificar se uma string contém uma ou mais ocorrências do caractere "x". Aplique à string "xxxy", "xy", e "y".
+1. Defina uma expressão regular que utilize `+` para encontrar palavras que começam com a letra "s" e são seguidas por uma ou mais letras "e". Teste com as palavras "se", "selo", "s".
+1. Crie uma expressão regular que utilize `+` para verificar se uma string contém uma ou mais dígitos consecutivos. Aplique à string "a123b", "abc", e "456".
+1. Escreva uma expressão regular que utilize `+` para encontrar sequências de letras "o" seguidas de uma ou mais letras "k". Teste com a string "ook, oook, ok".
+1. Defina uma expressão regular que utilize `+` para verificar se uma string contém uma ou mais vogais seguidas por uma letra "n". Aplique à string "an", "eenn", e "onn".
+1. Crie uma expressão regular que utilize `+` para encontrar sequências de caracteres que começam com "m" e são seguidas por uma ou mais letras "a". Teste com "ma", "maa", "m".
+1. Escreva uma expressão regular que utilize `+` para verificar se uma string termina com um ou mais caracteres especiais. Aplique à string "abc!!!", "abc", e "abc??".
+1. Defina uma expressão regular que utilize `+` para encontrar palavras que começam com a letra "c" e são seguidas por uma ou mais letras "a" ou "e". Teste com "ca", "ceee", "c".
+1. Crie uma expressão regular que utilize `+` para verificar se uma string contém uma sequência de uma ou mais letras "r" seguidas de uma letra "s". Teste com "rs", "rrrs", e "r".
+
+</details>
+
+---
+
+### `?` (interrogação)
+
+O metacaractere `?` significa **"zero ou uma ocorrência"** do padrão que o precede. Ou seja, o padrão pode aparecer no máximo uma vez.
+
+1. **exemplo encontrando padrões com `?`**
+
+    ```python
+    # texto de exemplo
+    texto = "cor ou cor?reto"
+
+    # Padrão: Encontrar "cor" seguido de uma letra opcional "?"
+    resultado = re.findall(r"cor\??", texto)
+
+    # exibindo o resultado
+    print("Resultado com '?':", resultado)
+    ```
+
+    **Explicação**
+    - **`cor\??`** : encontra "cor" seguido de zero ou uma interrogação;
+
+    **Saída**
+    ```
+    Resultado com '?': ['cor', 'cor?']
+    ```
+
+1. **exemplo usando `?` com `re.fullmatch()`**
+
+    ```python
+    # texto de exemplo
+    texto = "coloor"
+
+    # verificando se o texto corresponde a "colo" seguido de zero ou uma letra "o"
+    resultado = re.fullmatch(r"colo?", texto)
+
+    # exibindo o resultado
+    if resultado:
+        print("Resultado com '?':", resultado.group())
+    else:
+        print("Nenhuma correspondência.")
+    ```
+
+    **Explicação**
+    - **`colo?`** : o padrão espera a palavra "col" seguida de zero ou uma letra "o";
+
+    **Saída**
+    ```
+    Nenhuma correspondência.
+    ```
+
+    Aqui, não há correspondência porque a palavra tem duas letras "o", enquanto o `?` permite no máximo uma.
+
+1. **exemplo substituindo padrões opcionais com `re.sub()`**
+
+    ```python
+    # texto de exemplo
+    texto = "correto"
+
+    # substituindo "r?" por "RR"
+    resultado = re.sub(r"r?", "RR", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.sub() com '?':", resultado)
+    ```
+
+    **Explicação**
+    - **`r?`** : o padrão "r?" encontra zero ou uma letra "r", substituindo-a por "RR";
+
+    **Saída**
+    ```
+    Resultado de re.sub() com '?': RRcoRRRRRRetoRR
+    ```
+
+### exercícios `?`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize o metacaractere interrogação (`?`) para encontrar ocorrências da letra "a" seguida opcionalmente pela letra "b". Teste com a string "a, ab, b, aa".
+1. Escreva uma expressão regular que utilize `?` para verificar se uma string contém a letra "x" seguida opcionalmente por "y". Aplique à string "xy", "x", e "y".
+1. Defina uma expressão regular que utilize `?` para encontrar palavras que podem ou não ter a letra "e" no final. Teste com as palavras "casa" e "casae".
+1. Crie uma expressão regular que utilize `?` para verificar se uma string contém a sequência "ab" seguida opcionalmente por um espaço. Teste com "ab", "ab ", e "abc".
+1. Escreva uma expressão regular que utilize `?` para encontrar sequências de dígitos que podem ter um sinal de mais (+) ou menos (-) antes deles. Aplique à string "+123", "-456", e "789".
+1. Defina uma expressão regular que utilize `?` para verificar se uma string termina com uma letra "s" ou não. Teste com as palavras "cachorro" e "cachorros".
+1. Crie uma expressão regular que utilize `?` para encontrar palavras que começam com "a" e podem ter uma letra "b" logo após. Teste com "a", "ab", "abc".
+1. Escreva uma expressão regular que utilize `?` para verificar se uma string contém a letra "c" seguida opcionalmente por uma letra "d". Aplique à string "cd", "c", e "d".
+1. Defina uma expressão regular que utilize `?` para encontrar sequências de caracteres que começam com "m" e podem ter uma letra "a" opcionalmente após. Teste com "m", "ma", "mb".
+1. Crie uma expressão regular que utilize `?` para verificar se uma string contém uma sequência de uma vogal seguida opcionalmente por uma consoante. Teste com "a", "an", "i", e "it".
+
+</details>
+
+---
