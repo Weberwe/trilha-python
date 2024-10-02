@@ -562,3 +562,474 @@ root.mainloop()
 </details>
 
 ---
+
+## `Listbox`
+
+O **Listbox** exibe uma lista de itens, e o usuário pode selecionar um ou mais deles. Ele é útil para mostrar listas de opções, como listas de arquivos, opções de escolha múltipla, etc.
+
+```python
+listbox = tk.Listbox(parent, options...)
+```
+
+### parâmetros mais comuns
+
+- **`parent`** : a janela ou frame onde o widget será colocado;
+- **`selectmode`** : define o modo de seleção; valores comuns são `SINGLE` (seleção única) e `MULTIPLE` (seleção múltipla);
+- **`height`** : define o número de linhas visíveis no Listbox;
+- **`bg`**, **`fg`** : define as cores de fundo e do texto;
+- **`font`** : define a fonte usada no Listbox;
+
+### métodos úteis
+
+- **`insert(index, *elements)`** : insere itens no Listbox em uma posição específica;
+- **`delete(start, end)`** : remove itens entre as posições `start` e `end`;
+- **`get(start, end)`** : obtém os itens entre as posições `start` e `end`;
+- **`curselection()`** : retorna o índice dos itens selecionados;
+
+### exemplo
+
+```python
+import tkinter as tk
+
+def mostra_selecionados():
+    indices_selecionados = listbox.curselection()  # Obtém os índices dos itens selecionados
+    itens_selecionados = [listbox.get(i) for i in indices_selecionados]  # Converte índices em itens
+    label.config(text=f"Selecionado: {', '.join(itens_selecionados)}")
+
+# criação da janela principal
+root = tk.Tk()
+root.title("Exemplo de Listbox")
+root.geometry("300x200")
+
+# criando uma lista de itens
+listbox = tk.Listbox(
+    root,
+    selectmode="SINGLE",
+    font=("Arial", 12),
+    height=5)
+listbox.pack(padx=10, pady=10)
+for item in ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]:
+    listbox.insert(tk.END, item)
+
+# criando um rótulo (Label)
+label = tk.Label(
+    root,
+    text="Selecione um item",
+    font=("Arial", 12))
+label.pack(padx=10, pady=10)
+
+# botão para exibir a seleção
+button = tk.Button(
+    root,
+    text="Mostrar Seleção",
+    command=mostra_selecionados,
+    font=("Arial", 12))
+button.pack(padx=10, pady=10)
+
+# iniciando o loop de eventos
+root.mainloop()
+```
+
+- **`curselection()`** : obtém os índices dos itens selecionados;
+- **`get()`** : converte os índices em valores para exibir os itens selecionados no rótulo;
+
+## exercícios `Listbox`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Listbox Simples** : Crie uma janela com um `Listbox` contendo uma lista de frutas (como maçã, banana e laranja). Exiba a fruta selecionada em um `Label` quando o usuário clicar em um botão.
+1. **Adicionar Itens ao Listbox** : Crie um `Listbox` vazio e um `Entry`. Quando o usuário digitar um texto no `Entry` e clicar em um botão "Adicionar", o texto deve ser adicionado como um novo item no `Listbox`.
+1. **Remover Itens do Listbox** : Crie um `Listbox` com cinco itens e um botão "Remover". Quando o botão for clicado, o item selecionado deve ser removido da lista.
+1. **Selecionar Múltiplos Itens** : Crie um `Listbox` que permita a seleção de múltiplos itens (usando a opção `selectmode=MULTIPLE`). Quando um botão for clicado, exiba os itens selecionados em um `Label`.
+1. **Mover Itens Entre Dois Listboxes** : Crie dois `Listboxes` lado a lado e dois botões ">>" e "<<". O botão ">>" deve mover o item selecionado do primeiro `Listbox` para o segundo, e o botão "<<" deve fazer o inverso.
+1. **Contar Itens no Listbox** : Crie um `Listbox` e um botão "Contar". Quando o botão for clicado, exiba o número total de itens no `Listbox` em um `Label`.
+1. **Listbox com Barra de Rolagem** : Crie um `Listbox` com 20 itens e adicione uma barra de rolagem para navegar pelos itens.
+1. **Modificar o Texto de um Item Selecionado** : Crie um `Listbox` e um botão "Modificar". Quando um item for selecionado e o botão for clicado, o texto do item selecionado deve ser modificado para "Item Modificado".
+1. **Limpar Todo o Conteúdo do Listbox** : Crie um `Listbox` com 5 itens e um botão "Limpar". Quando o botão for clicado, todos os itens devem ser removidos do `Listbox`.
+1. **Mover Item Selecionado para Cima ou para Baixo** : Crie um `Listbox` com cinco itens e dois botões: "Mover Para Cima" e "Mover Para Baixo". O botão "Mover Para Cima" deve mover o item selecionado para uma posição acima na lista, e o botão "Mover Para Baixo" deve movê-lo para uma posição abaixo.
+
+</details>
+
+---
+
+## `Checkbutton`
+
+O **Checkbutton** cria uma caixa de seleção que permite ao usuário marcar ou desmarcar uma opção. Ele é frequentemente utilizado em formulários onde múltiplas escolhas podem ser feitas.
+
+```python
+checkbutton = tk.Checkbutton(parent, options...)
+```
+
+### parâmetros mais comuns
+
+- **`parent`** : a janela ou frame onde o widget será colocado;
+- **`text`** : define o texto associado ao Checkbutton;
+- **`variable`** : uma variável do tipo `IntVar()` ou `BooleanVar()` que rastreia o estado (marcado ou desmarcado);
+- **`onvalue`** e **`offvalue`** : define os valores para a variável quando o Checkbutton estiver marcado ou desmarcado;
+
+### exemplo
+
+```python
+import tkinter as tk
+
+def mostra_selecionados():
+    label.config(text=f"Opção marcada: {opcao.get()}")
+
+# criação da janela principal
+root = tk.Tk()
+root.title("Exemplo de Checkbutton")
+root.geometry("300x150")
+
+# variável associada ao Checkbutton
+opcao = tk.IntVar()
+
+# criando um Checkbutton
+checkbutton = tk.Checkbutton(
+    root,
+    text="Aceitar Termos",
+    variable=opcao,
+    onvalue=1,
+    offvalue=0)
+checkbutton.pack(padx=10, pady=10)
+
+# criando um rótulo (Label)
+label = tk.Label(root, text="Opção marcada: 0", font=("Arial", 12))
+label.pack(padx=10, pady=10)
+
+# botão para exibir o estado
+button = tk.Button(
+    root,
+    text="Mostrar Seleção",
+    command=mostra_selecionados,
+    font=("Arial", 12))
+button.pack(padx=10, pady=10)
+
+# iniciando o loop de eventos
+root.mainloop()
+```
+
+- **`variable=opcao`** : a variável `opcao` armazena o estado do Checkbutton (marcado ou desmarcado);
+- **`onvalue=1` e `offvalue=0`** : define os valores quando o Checkbutton está marcado ou desmarcado;
+
+## exercícios `Checkbutton`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Checkbutton Simples** : Crie um programa com um `Checkbutton` que, ao ser marcado ou desmarcado, exibe o estado atual ("Marcado" ou "Desmarcado") em um `Label`.
+1. **Checkbutton com Variável de Controle** : Crie um `Checkbutton` associado a uma variável `IntVar`. Quando o `Checkbutton` for alterado, exiba o valor da variável (`1` para marcado, `0` para desmarcado) em um `Label`.
+1. **Vários Checkbuttons Independentes** : Crie três `Checkbuttons` independentes para selecionar "Pizza", "Hambúrguer" e "Sushi". Ao clicar em um botão "Exibir Seleção", mostre quais opções estão marcadas em um `Label`.
+1. **Checkbuttons com Estado Inicial** : Crie dois `Checkbuttons` com estado inicial, um marcado e outro desmarcado. Permita que o usuário altere os estados e exiba os novos estados em um `Label`.
+1. **Checkbutton que Habilita e Desabilita Outros Widgets** : Crie um `Checkbutton` que, quando marcado, habilita um `Entry` para que o usuário possa digitar. Quando desmarcado, o `Entry` deve ser desabilitado (usando o método `config(state=DISABLED)`).
+1. **Alternando Texto de um Checkbutton** : Crie um `Checkbutton` com o texto "Ativar". Quando ele for marcado, o texto deve mudar para "Desativar". Quando desmarcado, o texto deve voltar para "Ativar".
+1. **Selecionar e Desmarcar Todos os Checkbuttons** : Crie cinco `Checkbuttons` com opções variadas (por exemplo, "Opção 1", "Opção 2", etc.) e dois botões: "Selecionar Todos" e "Desmarcar Todos". Ao clicar nesses botões, todos os `Checkbuttons` devem ser marcados ou desmarcados, respectivamente.
+1. **Checkbuttons com Contagem de Seleção** : Crie três `Checkbuttons`. Quando o usuário marcar ou desmarcar qualquer um deles, exiba em um `Label` quantos `Checkbuttons` estão atualmente marcados.
+1. **Checkbutton que Controla a Cor de Fundo** : Crie três `Checkbuttons`, cada um associado a uma cor (vermelho, verde e azul). Quando o `Checkbutton` for marcado, a cor correspondente deve ser aplicada como cor de fundo da janela.
+1. **Checkbutton para Ativar/Desativar Funcionalidade** : Crie um `Checkbutton` que, quando marcado, ative uma função de temporizador que exibe a hora atual em um `Label` a cada segundo. Quando desmarcado, o temporizador deve ser desativado.
+
+</details>
+
+---
+
+## `Radiobutton`
+
+O **Radiobutton** permite a seleção de apenas uma opção entre várias. É usado quando o usuário deve escolher uma única opção em um grupo.
+
+```python
+radiobutton = tk.Radiobutton(parent, options...)
+```
+
+### parâmetros mais comuns
+
+- **`parent`** : a janela ou frame onde o widget será colocado;
+- **`text`** : define o texto associado ao Radiobutton;
+- **`variable`** : uma variável do tipo `IntVar()` que armazena o valor da opção selecionada;
+- **`value`** : o valor atribuído à variável quando o Radiobutton está selecionado;
+
+### exemplo
+
+```python
+import tkinter as tk
+
+def mostra_selecionados():
+    label.config(text=f"Opção selecionada: {radio_var.get()}")
+
+# criação da janela principal
+root = tk.Tk()
+root.title("Exemplo de Radiobutton")
+root.geometry("300x200")
+
+# variável associada aos Radiobuttons
+radio_var = tk.IntVar()
+
+# criando Radiobuttons
+radiobutton1 = tk.Radiobutton(root, text="Opção 1", variable=radio_var, value=1)
+radiobutton2 = tk.Radiobutton(root, text="Opção 2", variable=radio_var, value=2)
+radiobutton3 = tk.Radiobutton(root, text="Opção 3", variable=radio_var, value=3)
+
+radiobutton1.pack(padx=10, pady=5)
+radiobutton2.pack(padx=10, pady=5)
+radiobutton3.pack(padx=10, pady=5)
+
+# criando um rótulo (Label)
+label = tk.Label(root, text="Nenhuma opção selecionada", font=("Arial", 12))
+label.pack(padx=10, pady=10)
+
+# botão para exibir a seleção
+button = tk.Button(
+    root,
+    text="Mostrar Seleção",
+    command=mostra_selecionados,
+    font=("Arial", 12))
+button.pack(padx=10, pady=10)
+
+# iniciando o loop de eventos
+root.mainloop()
+```
+
+- **`variable=radio_var`** : a variável `radio_var` armazena o valor da opção selecionada;
+- **`value=1`, `value=2`, `value=3`** : define os valores associados a cada Radiobutton;
+
+## exercícios `Radiobutton`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Radiobutton Simples** : Crie três `Radiobuttons` com opções de cores ("Vermelho", "Verde", "Azul"). Exiba a cor selecionada em um `Label` quando qualquer um dos `Radiobuttons` for clicado.
+1. **Radiobutton com Variável de Controle** : Crie quatro `Radiobuttons` (por exemplo, "Opção A", "Opção B", "Opção C" e "Opção D") vinculados a uma variável `IntVar`. Quando o usuário selecionar uma opção, exiba o valor correspondente em um `Label`.
+1. **Radiobutton que Controla o Texto de um Label** : Crie três `Radiobuttons` com diferentes opções de saudação ("Bom dia", "Boa tarde", "Boa noite"). Quando o usuário selecionar uma saudação, o texto de um `Label` deve ser atualizado com a saudação escolhida.
+1. **Formulário de Seleção de Gênero** : Crie um formulário com dois `Radiobuttons` para selecionar o gênero (por exemplo, "Masculino" e "Feminino"). Quando um botão "Enviar" for clicado, exiba a escolha em um `Label`.
+1. **Radiobuttons Desativados e Habilitados Dinamicamente** : Crie três `Radiobuttons`, mas deixe-os inicialmente desativados (usando `state=DISABLED`). Adicione um `Checkbutton` que, quando marcado, habilite os `Radiobuttons`.
+1. **Seleção de Opções de Tamanho** : Crie um conjunto de três `Radiobuttons` que permita selecionar tamanhos de camisetas ("Pequeno", "Médio", "Grande"). Exiba o tamanho selecionado em um `Label` e mostre uma mensagem de "Seleção inválida" caso nenhum tamanho tenha sido escolhido.
+1. **Mudar a Cor de Fundo com Radiobutton** : Crie quatro `Radiobuttons` com opções de cores. Quando o usuário selecionar uma cor, altere a cor de fundo da janela para a cor correspondente.
+1. **Radiobutton com Imagens** : Crie três `Radiobuttons`, cada um associado a uma imagem (como ícones de frutas: maçã, banana, uva). Ao selecionar um `Radiobutton`, exiba a imagem correspondente em um `Label`.
+1. **Radiobutton que Controla Outras Funções** : Crie dois `Radiobuttons`, "Ativar" e "Desativar". Quando "Ativar" for selecionado, um `Entry` deve ser habilitado. Quando "Desativar" for selecionado, o `Entry` deve ser desabilitado.
+1. **Radiobuttons com Função de Enquete** : Crie uma interface com cinco `Radiobuttons` representando diferentes faixas etárias (ex: "Menos de 18", "18-25", "26-35", "36-50", "Mais de 50"). Quando o usuário clicar em "Submeter", exiba a faixa etária selecionada em um `Label`.
+
+</details>
+
+---
+
+## variáveis
+
+No Tkinter, além de usar variáveis Python normais, há um conjunto especial de **variáveis de controle** que são projetadas para armazenar e rastrear valores que são associados a widgets interativos. Essas variáveis são necessárias quando se quer vincular o estado de um widget com um valor dinâmico (como entradas de texto, seleção de botões de rádio, checkbuttons, etc.). Essas variáveis são subclasses do tipo especial `Variable`, projetado para facilitar a interação entre o código e os widgets.
+
+O Tkinter fornece quatro principais tipos de variáveis de controle, cada uma projetada para lidar com diferentes tipos de dados:
+
+1. **`StringVar`** : variável para armazenar strings (texto);
+1. **`IntVar`** : variável para armazenar inteiros;
+1. **`DoubleVar`** : variável para armazenar números de ponto flutuante (float);
+1. **`BooleanVar`** : variável para armazenar valores booleanos (`True` ou `False`);
+
+Cada uma dessas variáveis possui métodos que permitem obter e definir o valor associado, e elas são comumente usadas com widgets que precisam manter um valor dinâmico, como `Entry`, `Checkbutton`, `Radiobutton`, e outros.
+
+### `StringVar`
+
+A variável `StringVar` (String Variable) é usada para armazenar e gerenciar valores de texto. É útil para widgets como `Entry`, `Label`, e `OptionMenu`.
+
+- **`get()`** : retorna o valor armazenado;
+- **`set(value)`** : define um novo valor para a variável;
+
+#### exemplo
+
+```python
+import tkinter as tk
+
+# criando a janela principal
+root = tk.Tk()
+root.title("Exemplo com StringVar")
+root.geometry("300x200")
+
+# criando um StringVar
+nome_var = tk.StringVar()
+
+# função que será chamada ao pressionar o botão
+def exibir_nome():
+    print("Nome:", nome_var.get())  # Obtém o valor da StringVar
+
+# criando um Entry ligado ao StringVar
+entry_nome = tk.Entry(root, textvariable=nome_var)
+entry_nome.pack(pady=10)
+
+# botão que exibe o valor inserido
+btn_mostrar = tk.Button(root, text="Exibir Nome", command=exibir_nome)
+btn_mostrar.pack(pady=10)
+
+# iniciando o loop de eventos
+root.mainloop()
+```
+
+- **`textvariable=nome_var`** : liga o valor digitado no widget `Entry` à variável `nome_var`; qualquer alteração no `Entry` também modifica o valor da `StringVar`, e vice-versa;
+- **`nome_var.get()`** : obtém o valor atual da variável, que neste caso, é o texto inserido no campo de entrada;
+
+### `IntVar`
+
+A variável `IntVar` (Integer Variable) é usada para armazenar valores inteiros. É comumente utilizada em widgets como `Radiobutton` e `Checkbutton`.
+
+- **`get()`** : retorna o valor armazenado;
+- **`set(value)`** : define um novo valor para a variável;
+
+#### exemplo
+
+```python
+import tkinter as tk
+
+# criando a janela principal
+root = tk.Tk()
+root.title("Exemplo com IntVar")
+root.geometry("300x200")
+
+# criando uma IntVar
+opcao_var = tk.IntVar()
+
+# função que exibe a opção selecionada
+def exibir_opcao():
+    print("Opção selecionada:", opcao_var.get())
+
+# criando Radiobuttons associados ao IntVar
+radio1 = tk.Radiobutton(root, text="Opção 1", variable=opcao_var, value=1)
+radio1.pack(pady=5)
+radio2 = tk.Radiobutton(root, text="Opção 2", variable=opcao_var, value=2)
+radio2.pack(pady=5)
+
+# botão que exibe a opção selecionada
+btn_exibir = tk.Button(root, text="Exibir Opção", command=exibir_opcao)
+btn_exibir.pack(pady=10)
+
+# iniciando o loop de eventos
+root.mainloop()
+```
+
+- **`variable=opcao_var`** : liga a variável `IntVar` ao grupo de `Radiobuttons`; o valor da variável é alterado quando um botão de rádio é selecionado;
+- **`value=1`, `value=2`** : cada `Radiobutton` tem um valor associado, que será atribuído a `opcao_var` quando o botão for selecionado;
+
+### `DoubleVar`
+
+A variável `DoubleVar` (Double Variable) é usada para armazenar números de ponto flutuante (números decimais).
+
+- **`get()`** : retorna o valor armazenado;
+- **`set(value)`** : define um novo valor para a variável;
+
+#### exemplo
+
+```python
+import tkinter as tk
+
+# criando a janela principal
+root = tk.Tk()
+root.title("Exemplo com DoubleVar")
+root.geometry("300x200")
+
+# criando uma DoubleVar
+valor_var = tk.DoubleVar(value=1.0)
+
+# função para exibir o valor
+def exibir_valor():
+    print("Valor atual:", valor_var.get())
+
+# etiqueta exibindo o valor inicial
+label = tk.Label(root, textvariable=valor_var)
+label.pack(pady=10)
+
+# botão para exibir o valor no terminal
+btn_exibir = tk.Button(root, text="Exibir Valor", command=exibir_valor)
+btn_exibir.pack(pady=10)
+
+# Iniciando o loop de eventos
+root.mainloop()
+```
+
+- **`DoubleVar()`** : armazena valores flutuantes; é possível inicializar a variável passando um valor como argumento (por exemplo, `1.0`);
+- **`textvariable=valor_var`** : o `Label` exibe o valor armazenado na variável, que pode ser atualizado em tempo real;
+
+### `BooleanVar`
+
+A variável `BooleanVar` (Boolean Variable) armazena valores booleanos (`True` ou `False`). É útil para widgets como `Checkbutton`.
+
+- **`get()`** : retorna `True` ou `False`;
+- **`set(value)`** : define o valor para `True` ou `False`;
+
+#### exemplo
+
+```python
+import tkinter as tk
+
+# criando a janela principal
+root = tk.Tk()
+root.title("Exemplo com BooleanVar")
+root.geometry("300x200")
+
+# criando uma BooleanVar
+opcao = tk.BooleanVar()
+
+# função para exibir o estado do checkbox
+def exibir_estado():
+    print("Checkbox está selecionado?", opcao.get())
+
+# criando o Checkbutton ligado à BooleanVar
+check_button = tk.Checkbutton(root, text="Aceitar Termos", variable=opcao)
+check_button.pack(pady=10)
+
+# botão que exibe o estado do checkbox
+btn_verificar = tk.Button(root, text="Verificar", command=exibir_estado)
+btn_verificar.pack(pady=10)
+
+# iniciando o loop de eventos
+root.mainloop()
+```
+
+- **`variable=opcao`** : liga o estado do `Checkbutton` à variável `BooleanVar`. Quando o botão é marcado, o valor de `opcao` é `True`; caso contrário, é `False`;
+- **`opcao.get()`** : retorna o estado atual do `Checkbutton`;
+
+## exercícios variáveis
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios com `StringVar`
+    1. **Exibição Simples de Texto** : Crie um programa onde o texto de um `Label` seja controlado por uma `StringVar`. O `Label` deve atualizar automaticamente ao modificar o valor da variável.
+    1. **Entrada de Texto Dinâmica** : Crie um programa com um `Entry` e um `Label`. Use uma `StringVar` para conectar o texto do `Entry` ao `Label`, de forma que o `Label` atualize conforme o texto é digitado.
+    1. **Combinação de Texto** : Crie dois `Entry` widgets para o primeiro e o último nome. Use duas variáveis `StringVar` para capturar o conteúdo, combiná-los e exibir o nome completo em um `Label`.
+    1. **Validação de Entrada** : Crie um `Entry` conectado a uma `StringVar`. Sempre que o texto for modificado, verifique se o valor inserido é um nome válido (sem números) e exiba uma mensagem de erro em um `Label`.
+    1. **Alteração de Texto ao Clicar em um Botão** : Crie um `Button` que, quando clicado, altere o valor de uma `StringVar` e atualize um `Label` com o novo valor.
+    1. **Atualização Condicional** : Crie dois `Entry` widgets e uma `StringVar` para cada um. Quando ambos os campos forem preenchidos, mostre um `Label` com uma mensagem de boas-vindas usando os dois nomes combinados.
+    1. **Concatenação de Valores** : Crie três `Entry` widgets (nome, sobrenome e cidade) com três variáveis `StringVar`. Exiba um `Label` que mostre uma frase concatenando esses valores.
+    1. **Troca de Valores entre Widgets** : Crie dois `Entry` widgets com uma `StringVar` para cada. Adicione um botão que troque os valores entre os dois `Entry`.
+    1. **Manipulação com Expressões Regulares** : Crie um `Entry` com uma `StringVar` para capturar um número de telefone. Valide o número inserido em tempo real, exibindo uma mensagem de erro se o formato estiver incorreto (por exemplo, "(XX) XXXX-XXXX").
+    1. **Interagir com Menu** : Crie um menu suspenso (`OptionMenu`) que exibe uma lista de opções. Use uma `StringVar` para armazenar a opção selecionada e mostre a escolha em um `Label`.
+1. Exercícios com `IntVar`
+    1. **Exibição Simples de Número** : Crie um `Label` que exibe o valor de uma `IntVar`. Quando o valor da variável mudar, o `Label` deve ser atualizado automaticamente.
+    1. **Contador com Botões** : Crie dois `Buttons` para incrementar e decrementar o valor de uma `IntVar`. Mostre o valor atual em um `Label`.
+    1. **Controle de Volume Simples** : Crie uma interface que simule um controle de volume com um `Scale` horizontal. Use uma `IntVar` para capturar o valor e exiba o nível de volume em um `Label`.
+    1. **Controle de Números Impares e Pares** : Crie dois `Radiobuttons` com valores de uma `IntVar`. Um deve selecionar números ímpares e o outro números pares. Ao clicar, exiba uma lista de números ímpares ou pares em um `Label`.
+    1. **Somador de Valores** : Crie três `Entry` widgets, cada um conectado a uma `IntVar`. Mostre a soma dos três valores em um `Label` e atualize o resultado em tempo real.
+    1. **Verificador de Par ou Ímpar** : Crie um `Entry` onde o usuário insere um número inteiro. Utilize uma `IntVar` para capturar o valor e exiba em um `Label` se o número é par ou ímpar.
+    1. **Seleção de Opções Numéricas** : Crie um conjunto de cinco `Radiobuttons`, cada um representando um número de 1 a 5. Utilize uma `IntVar` para armazenar a seleção e exiba o valor escolhido em um `Label`.
+    1. **Atualização Automática de Números** : Crie uma interface com um `Scale` e um `Label`. Use uma `IntVar` para conectar o `Scale` ao `Label` e exiba o valor do `Scale` conforme ele é movido.
+    1. **Calculadora de Fatorial** : Crie um `Entry` para inserir um número inteiro e um `Button` que, ao ser clicado, calcule e exiba o fatorial do número usando uma `IntVar`.
+    1. **Controle de Alternância com Checkbuttons** : Crie quatro `Checkbuttons` cada um ligado a uma `IntVar`. Adicione um botão que exiba o valor numérico resultante da combinação dos `Checkbuttons` marcados.
+1. Exercícios com `DoubleVar`
+    1. **Exibição Simples de Valor Decimal** : Crie um `Label` que exibe o valor de uma `DoubleVar`. O `Label` deve ser atualizado automaticamente ao alterar a variável.
+    1. **Conversão de Moeda** : Crie um `Entry` onde o usuário insere um valor em dólares. Use uma `DoubleVar` para capturar o valor e exiba a conversão em reais usando uma taxa de câmbio fictícia.
+    1. **Calculadora de Desconto** : Crie um `Entry` para inserir o preço original de um produto e um `Scale` para ajustar o percentual de desconto. Use uma `DoubleVar` para capturar esses valores e exibir o preço final com desconto.
+    1. **Cálculo de IMC (Índice de Massa Corporal)** : Crie dois `Entry` widgets para o usuário inserir peso (em kg) e altura (em metros). Use `DoubleVar` para capturar esses valores e calcular o IMC, exibindo o resultado em um `Label`.
+    1. **Controle de Precisão Decimal** : Crie um `Scale` que permite selecionar valores decimais entre 0.0 e 10.0. Use uma `DoubleVar` para armazenar o valor e exiba-o com 2 casas decimais em um `Label`.
+    1. **Conversor de Temperatura** : Crie uma interface com um `Entry` para o usuário inserir uma temperatura em Celsius. Use uma `DoubleVar` para converter o valor para Fahrenheit e exibi-lo em um `Label`.
+    1. **Calculadora de Juros Simples** : Crie três `Entry` widgets para inserir o valor principal, taxa de juros anual e número de anos. Use `DoubleVar` para capturar esses valores e calcular o valor total após os juros.
+    1. **Medidor de Distância** : Crie uma interface com um `Entry` onde o usuário insere uma distância em quilômetros. Converta esse valor para milhas utilizando uma `DoubleVar` e exiba o resultado em um `Label`.
+    1. **Multiplicação Automática** : Crie dois `Entry` widgets para o usuário inserir dois números decimais. Use `DoubleVar` para multiplicá-los e exiba o resultado em um `Label`.
+    1. **Simulador de Investimento** : Crie uma interface onde o usuário insere o valor inicial e a taxa de crescimento anual. Use uma `DoubleVar` para calcular o valor acumulado após 5 anos e exibi-lo em um `Label`.
+1. Exercícios com `BooleanVar`
+    1. **Checkbutton Simples** : Crie um `Checkbutton` que altera uma `BooleanVar`. Exiba o estado atual (True ou False) em um `Label`.
+    1. **Botão de Ativação/Desativação** : Crie um `Button` que alterna o valor de uma `BooleanVar` entre True e False a cada clique e atualiza um `Label` com o valor atual.
+    1. **Simulação de Lâmpada** : Crie uma interface com um `Checkbutton` que simula uma lâmpada. Quando marcado, exiba "Ligada", e quando desmarcado, exiba "Desligada", usando uma `BooleanVar`.
+    1. **Habilitar/Desabilitar Widgets** : Crie um `Checkbutton` que habilita e desabilita um `Entry` widget ao marcar e desmarcar, controlado por uma `BooleanVar`.
+    1. **Radiobutton com BooleanVar** : Crie dois `Radiobuttons` com opções "Ativado" e "Desativado". Use uma `BooleanVar` para controlar a seleção e exiba o valor atual em um `Label`.
+    1. **Alternância entre Estados** : Crie dois `Buttons`, um para definir uma `BooleanVar` como `True` e outro para definir como `False`. Mostre o valor da variável em um `Label`.
+    1. **Botão de Validação** : Crie um `Button` que só possa ser clicado se uma `BooleanVar` for `True`. Controle o estado do botão com um `Checkbutton` ligado a essa variável.
+    1. **Simulação de Login** : Crie um sistema de login onde um `Checkbutton` deve ser marcado para lembrar a senha. Use uma `BooleanVar` para controlar a opção.
+    1. **Seleção de Opções** : Crie três `Checkbuttons` para representar opções de um questionário. Use `BooleanVar` para cada uma e exiba uma mensagem com as opções selecionadas ao clicar em um botão.
+    1. **Aplicação de Estilo** : Crie um `Checkbutton` que ativa ou desativa uma cor de fundo para a janela. Use uma `BooleanVar` para controlar a mudança de cor.
+
+</details>
