@@ -64,3 +64,19 @@ Curso com duração de 60 horas, totalizando 15 aulas.
 | 03 | 24/07/2024 | [tipos primitivos - parte 2](1.logica-programacao/tipos-primitivos.md)<br>[parênteses](1.logica-programacao/tipos-primitivos.md#parênteses)<br>[prioridades](1.logica-programacao/tipos-primitivos.md#prioridades)<br>[expressões lógicas](1.logica-programacao/tipos-primitivos.md#expressões-lógicas) <br>[comandos de atribuição](1.logica-programacao/tipos-primitivos.md#comandos-de-atribuição) |
 | 02 | 23/07/2024 | [tipos primitivos](1.logica-programacao/tipos-primitivos.md)<br>[constantes](1.logica-programacao/tipos-primitivos.md#constantes)<br>[variáveis](1.logica-programacao/tipos-primitivos.md#variáveis)<br>[declarando variáveis](1.logica-programacao/tipos-primitivos.md#declarando-variáveis)<br>[expressões aritméticas](1.logica-programacao/tipos-primitivos.md#expressões-aritméticas) |
 | 01 | 22/07/2024 | [o que é lógica](1.logica-programacao/o-que-eh-logica.md) |
+
+## Como Usar Este Repositório
+
+1. **Clone o repositório** : `git clone https://github.com/gutohertzog/trilha-python.git`
+2. **Navegue para o diretório desejado** : `cd trilha-python/1-logica-programacao` ou `cd trilha-python/2-programacao-python`
+3. **Siga as instruções nos arquivos de cada aula**
+
+## Contribuições
+
+Contribuições são bem-vindas! Se você deseja adicionar novos exemplos, corrigir erros ou melhorar o material existente, sinta-se à vontade para abrir uma pull request.
+
+## Contato
+
+Se você tiver alguma dúvida ou sugestão, entre em contato através das issues do repositório.
+
+Esperamos que este repositório seja útil para seu aprendizado de Python. Boa sorte e bons estudos!
