@@ -10,6 +10,7 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 33 | 02/10/2024 | [função lambda](2.programacao-python/funcoes.md#lambda)<br>tkinter - parte 2<br>[callback](2.programacao-python/tkinter.md#callback) [tkinter e `lambda`](2.programacao-python/tkinter.md#tkinter-e-lambda) |
 | 32 | 01/10/2024 | [tkinter](2.programacao-python/tkinter.md) |
 | 31 | 30/09/2024 | [expressões regulares](2.programacao-python/expressoes-regulares.md) |
 | 30 | 26/09/2024 | atividade remota<br>[agenda eletrônica](2.programacao-python/atividade-agenda-eletronica.md) |

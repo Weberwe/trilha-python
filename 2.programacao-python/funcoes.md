@@ -2487,177 +2487,118 @@ Desta vez, `saudar()` retorna a saudação `Olá, arnold`.
 
 </details>
 
+## `lambda`
 
+A função `lambda` em Python é uma maneira de criar funções pequenas e anônimas (sem nome) de forma concisa. Elas são especialmente úteis quando se precisa de uma função para uma operação simples e não quer definir uma função convencional usando a palavra-chave `def`.
 
-
-
------
------
------
------
------
------
------
------
------
------
------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### estrutura básica
-
-Para entender a estrutura básica de um decorador, veja um exemplo simples:
+A sintaxe básica de uma função `lambda` é:
 
 ```python
-def meu_decorador(funcao):
-    def nova_funcao():
-        print("Algo está acontecendo antes da função ser chamada.")
-        funcao()  # chamando a função original
-        print("Algo está acontecendo depois da função ser chamada.")
-    return nova_funcao
+lambda argumentos: expressão
 ```
 
-**Explicação :**
-1. `meu_decorador` é a função decoradora que aceita uma função `funcao` como argumento;
-2. dentro de `meu_decorador`, definimos `nova_funcao`, que adiciona algum comportamento antes e depois de chamar a função original;
-3. `nova_funcao` é retornada como o resultado do decorador;
+- **argumentos** : os parâmetros que a função `lambda` aceitará;
+- **expressão** : uma única expressão que a função calculará e retornará; note que não pode haver múltiplas instruções ou comandos;
 
-#### usando
+### exemplos
 
-Para aplicar um decorador a uma função, usa-se o símbolo `@` seguido do nome do decorador, logo acima da definição da função que se quer decorar.
+1. **Função `lambda` Simples**
+
+    Um exemplo básico de uma função `lambda` que recebe um número e o dobra:
+
+    ```python
+    dobrar = lambda x: x * 2
+
+    resultado = dobrar(5)
+    print(resultado)  # saída : 10
+    ```
+
+2. **Usando `lambda` com `map()`**
+
+    A função `map()` aplica uma função a todos os itens em um iterável (como uma lista). Pode-se usar uma função `lambda` para definir a operação:
+
+    ```python
+    numeros = [1, 2, 3, 4, 5]
+    dobrados = list(map(lambda x: x * 2, numeros))
+
+    print(dobrados)  # saída : [2, 4, 6, 8, 10]
+    ```
+
+3. **Usando `lambda` com `filter()`**
+
+    A função `filter()` filtra itens de um iterável com base em uma função que retorna `True` ou `False`. Aqui está como usar uma função `lambda` para filtrar números pares:
+
+    ```python
+    numeros = [1, 2, 3, 4, 5, 6]
+    pares = list(filter(lambda x: x % 2 == 0, numeros))
+
+    print(pares)  # saída : [2, 4, 6]
+    ```
+
+4. **Usando `lambda` com `sorted()`**
+
+    É possível usar uma função `lambda` como uma chave de ordenação em listas. Aqui está um exemplo de como ordenar uma lista de tuplas pelo segundo elemento:
+
+    ```python
+    pessoas = [("Alice", 30), ("Bob", 25), ("Charlie", 35)]
+    ordenado = sorted(pessoas, key=lambda x: x[1])
+
+    print(ordenado)  # saída : [('Bob', 25), ('Alice', 30), ('Charlie', 35)]
+    ```
+
+5. **Funções `lambda` com Múltiplos Argumentos**
+
+    Uma função `lambda` pode receber múltiplos argumentos. Aqui está um exemplo que calcula a soma de dois números:
+
+    ```python
+    soma = lambda x, y: x + y
+
+    resultado = soma(3, 5)
+    print(resultado)  # saída : 8
+    ```
+
+### Comparação com Funções Normais
+
+Embora as funções `lambda` sejam muito úteis para operações simples, é importante notar que elas têm algumas limitações. Por exemplo, não é possível definir múltiplas expressões ou usar comandos complexos. Para funções mais complexas, é melhor usar a definição convencional com `def`.
+
+Aqui está uma comparação:
 
 ```python
-@meu_decorador
-def minha_funcao():
-    print("A função original está sendo chamada.")
+# usando uma função lambda
+quadrado = lambda x: x ** 2
+print(quadrado(4))  # saída : 16
 
-# chamando a função decorada
-minha_funcao()
+# usando uma função convencional
+def quadrado_funcao(x):
+    return x ** 2
+
+print(quadrado_funcao(4))  # saída : 16
 ```
 
-**Saída :**
-```
-Algo está acontecendo antes da função ser chamada.
-A função original está sendo chamada.
-Algo está acontecendo depois da função ser chamada.
-```
+## exercícios `lambda`
 
-Aqui, `minha_funcao` foi decorada com `meu_decorador`, que adiciona comportamentos antes e depois da execução da função original.
+<details>
+<summary>Lista de Exercícios</summary>
 
-### decoradores com argumentos
+1. **Dobrar Números**: Crie uma função `lambda` que receba um número e retorne o dobro desse número. Teste a função com um valor de entrada.
+1. **Triplicar Números**: Crie uma função `lambda` que receba um número e retorne o triplo desse número. Teste a função com um valor de entrada.
+1. **Verificar Paridade**: Escreva uma função `lambda` que verifique se um número é par e retorne `True` ou `False`.
+1. **Filtrar Números Ímpares**: Dada uma lista de números, use `filter()` e uma função `lambda` para criar uma nova lista contendo apenas os números ímpares.
+1. **Elevar ao Quadrado**: Crie uma lista de números e use `map()` com uma função `lambda` para criar uma nova lista contendo os quadrados desses números.
+1. **Ordenar Nomes**: Dada uma lista de nomes, use `sorted()` com uma função `lambda` para ordená-los pelo comprimento dos nomes.
+1. **Soma de Dois Números**: Crie uma função `lambda` que receba dois números e retorne a soma deles. Teste a função com dois valores.
+1. **Concatenar Strings**: Escreva uma função `lambda` que receba duas strings e as concatene. Teste a função com duas entradas.
+1. **Verificar se uma String é Palíndromo**: Crie uma função `lambda` que verifique se uma string é um palíndromo (lê-se da mesma forma de trás para frente).
+1. **Filtrar Palavras Longas**: Dada uma lista de palavras, use `filter()` e uma função `lambda` para criar uma nova lista contendo apenas palavras com mais de 5 letras.
+1. **Multiplicação de Três Números**: Crie uma função `lambda` que receba três números e retorne o produto deles.
+1. **Transformar Lista de Tuplas**: Dada uma lista de tuplas onde cada tupla contém um nome e uma idade, use `map()` e uma função `lambda` para criar uma nova lista com apenas os nomes.
+1. **Inverter String**: Escreva uma função `lambda` que receba uma string e retorne essa string invertida.
+1. **Ordenar Tuplas por Nome**: Dada uma lista de tuplas (nome, idade), use `sorted()` com uma função `lambda` para ordenar as tuplas pelo nome.
+1. **Calcular Fatorial**: Crie uma função `lambda` que calcule o fatorial de um número (use recursão para isso).
+1. **Filtrar Números em um Intervalo**: Dada uma lista de números, use `filter()` e uma função `lambda` para criar uma nova lista contendo apenas números entre 10 e 50.
+1. **Verificar se uma String Começa com uma Vogal**: Escreva uma função `lambda` que verifique se uma string começa com uma vogal.
+1. **Criar um Dicionário de Quadrados**: Dada uma lista de números, use `map()` e uma função `lambda` para criar um dicionário onde as chaves são os números e os valores são seus quadrados.
+1. **Converter Temperaturas**: Crie uma função `lambda` que converta uma temperatura de Celsius para Fahrenheit. Teste a função com um valor de entrada.
+1. **Calcular a Média**: Dada uma lista de números, use `reduce()` e uma função `lambda` para calcular a média dos números (importando `reduce` do módulo `functools`).
 
-Os decoradores podem ser mais complexos e aceitar argumentos. Para isso, é preciso criar um nível extra de funções.
-
-**Exemplo :**
-
-```python
-def decorador_com_argumento(arg):
-    def meu_decorador(funcao):
-        def nova_funcao(*args, **kwargs):
-            print(f"Argumento do decorador: {arg}")
-            return funcao(*args, **kwargs)
-        return nova_funcao
-    return meu_decorador
-
-@decorador_com_argumento("Olá!")
-def outra_funcao(nome):
-    print(f"Olá, {nome}!")
-
-# Chamando a função decorada
-outra_funcao("Maria")
-```
-
-**Saída:**
-```
-Argumento do decorador: Olá!
-Olá, Maria!
-```
-
-Neste exemplo:
-- `decorador_com_argumento` é um decorador que aceita um argumento, `arg`.
-- `meu_decorador` é a função decoradora que define a função interna `nova_funcao`.
-- Quando chamamos `outra_funcao("Maria")`, primeiro imprimimos o argumento do decorador e, em seguida, chamamos a função original.
-
-### Decoradores e Funções Internas
-
-Como discutimos anteriormente, decoradores frequentemente utilizam funções internas (closures). Isso permite que o decorador "lembre" do estado, como os argumentos passados, mesmo após a função externa ter terminado.
-
-### Vantagens dos Decoradores
-
-1. **Reutilização de Código**: Decoradores permitem adicionar funcionalidades comuns a várias funções sem duplicar código.
-2. **Separação de Preocupações**: Permitem separar a lógica da função da lógica adicional que queremos adicionar.
-3. **Clareza e Limpeza**: A sintaxe do decorador torna o código mais legível e claro sobre como as funções estão sendo modificadas.
-
-### Exemplo Prático: Medir Tempo de Execução
-
-Vamos criar um decorador que mede o tempo de execução de uma função.
-
-```python
-import time
-
-def tempo_de_execucao(funcao):
-    def nova_funcao(*args, **kwargs):
-        inicio = time.time()  # Tempo de início
-        resultado = funcao(*args, **kwargs)  # Chamando a função original
-        fim = time.time()  # Tempo de fim
-        print(f"A função {funcao.__name__} levou {fim - inicio:.4f} segundos para executar.")
-        return resultado
-    return nova_funcao
-
-@tempo_de_execucao
-def soma(a, b):
-    time.sleep(1)  # Simulando uma operação demorada
-    return a + b
-
-# Chamando a função decorada
-resultado = soma(3, 5)
-print(f"Resultado da soma: {resultado}")
-```
-
-**Saída:**
-```
-A função soma levou 1.0005 segundos para executar.
-Resultado da soma: 8
-```
-
-Neste exemplo:
-- O decorador `tempo_de_execucao` mede quanto tempo a função `soma` leva para ser executada.
-- Usamos `time.sleep(1)` para simular uma operação demorada.
-
-### Resumo
-
-Os decoradores em Python são uma maneira poderosa de modificar o comportamento de funções de forma reutilizável e elegante. Eles permitem adicionar funcionalidades, como logging, verificação de permissões, medição de tempo de execução, e muito mais, sem a necessidade de alterar o código da função original.
-
-Se você tiver mais perguntas sobre decoradores ou quiser explorar exemplos adicionais, estou aqui para ajudar!
+</details>
