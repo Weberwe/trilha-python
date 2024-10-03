@@ -23,9 +23,6 @@
     1. [exercícios gerenciadores de layout](#exercícios-gerenciadores-de-layout)
 1. [variáveis](#variáveis)
     1. [exercícios variáveis](#exercícios-variáveis)
-1. [callback](#callback)
-1. [tkinter e `lambda`](#tkinter-e-lambda)
-    1. [exercícios tkinter e `lambda`](#exercícios-tkinter-e-lambda)
 
 
 
@@ -1466,5 +1463,841 @@ Quando se associa uma função a um evento (por exemplo, o clique de um botão) 
 1. Crie um aplicativo com um campo de entrada e um botão que calcula a raiz quadrada do número digitado e exibe o resultado em um rótulo, utilizando `lambda`.
 1. Faça uma janela com três botões que mostram diferentes mensagens em um rótulo. Use `lambda` para cada botão para exibir uma mensagem específica.
 1. Crie um aplicativo com uma caixa de texto (`Text`) e um botão que, ao ser clicado, conta o número de palavras digitadas na caixa de texto e exibe o resultado em um rótulo. Utilize `lambda` para a contagem.
+
+</details>
+
+## método `trace()`
+
+O método `trace` é uma função disponível nas variáveis de controle do Tkinter, como `StringVar`, `IntVar`, `DoubleVar`, e `BooleanVar`. Ele permite que mudanças em uma variável sejam "rastreadas", ou seja, pode-se definir uma função (callback) que será chamada automaticamente sempre que o valor da variável for alterado.
+
+### como funciona
+
+Quando o `trace` é usado, é possível especificar três aspectos :
+
+1. **Modo de Rastreio** : pode-se escolher quando a função de callback deve ser chamada. Os modos mais comuns são:
+    - `"r"`: chamado quando a variável é lida;
+    - `"w"`: chamado quando a variável é escrita (ou seja, seu valor é alterado);
+    - `"u"`: chamado quando a variável é atualizada (que pode incluir leitura ou escrita);
+
+2. **Índice de Variável** : um índice que permite selecionar qual variável está sendo rastreada. Isso é útil quando há várias variáveis e deseja rastrear mudanças em uma delas;
+
+3. **Callback** : a função que será chamada quando a variável mudar. Esta função pode receber três argumentos: o nome da variável, o índice e o modo de rastreamento;
+
+### exemplo
+
+Aqui está um exemplo que ilustra o uso do `trace` com um `Entry` e um `Label`:
+
+```python
+import tkinter as tk
+
+def meu_callback(nome, indice, modo):
+    texto_atual = texto_var.get()
+    label.config(text=f"Você digitou: {texto_atual}")
+
+janela = tk.Tk()
+janela.title("Exemplo de trace")
+
+# criando uma StringVar
+texto_var = tk.StringVar()
+
+# usando o método trace para rastrear mudanças
+texto_var.trace("w", meu_callback)
+
+# criando um Entry
+entrada = tk.Entry(janela, textvariable=texto_var)
+entrada.pack(pady=10)
+
+# criando um Label para mostrar o texto
+label = tk.Label(janela, text="")
+label.pack(pady=10)
+
+janela.mainloop()
+```
+
+- **Importação e Janela Principal** : o exemplo começa importando o Tkinter e criando a janela principal;
+- **StringVar e Trace** : a `StringVar` `texto_var` é criada, e o método `trace` é utilizado para associar a função `meu_callback` ao modo de escrita;
+- **Widgets** : um `Entry` é criado, e a `StringVar` é ligada a ele, permitindo que qualquer mudança no campo de entrada atualize automaticamente a variável. Um `Label` é criado para exibir o texto digitado;
+- **Callback** : sempre que o texto no `Entry` é alterado, o `meu_callback` é chamado, e ele atualiza o `Label` com o texto atual;
+
+### vantagens
+
+- **Reatividade** : o método `trace` torna o aplicativo mais interativo, permitindo que ações sejam executadas automaticamente em resposta a alterações na interface do usuário;
+
+- **Separação de Lógica** : é possível manter a lógica da interface do usuário separada do restante do código, facilitando a manutenção;
+
+## exercícios `trace()`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie um aplicativo onde o usuário pode digitar um texto em um campo de entrada (`Entry`). Use `trace` para atualizar um rótulo (`Label`) que exibe o texto em tempo real à medida que o usuário digita.
+1. Crie uma janela com um campo de entrada que aceita apenas números. Utilize uma variável `StringVar` e `trace` para validar a entrada e garantir que apenas dígitos sejam permitidos.
+1. Faça um aplicativo que possui dois campos de entrada (`Entry`). Quando o texto de um dos campos for alterado, use `trace` para atualizar o segundo campo com o mesmo valor em tempo real.
+1. Crie um aplicativo com um campo de entrada onde o usuário pode digitar um número. Utilize `trace` para monitorar mudanças e, quando o número for alterado, mostre seu quadrado em um rótulo.
+1. Desenvolva um aplicativo com uma variável `IntVar` que rastreia a quantidade de itens em uma lista. Utilize `trace` para atualizar um rótulo que mostra a quantidade total de itens sempre que a variável é alterada.
+1. Crie um aplicativo onde o usuário pode selecionar uma opção de uma lista (`Listbox`). Use `trace` para monitorar a seleção e exibir a opção escolhida em um rótulo sempre que mudar.
+1. Crie um aplicativo que tenha um botão para adicionar itens a um `Listbox`. Utilize uma variável `StringVar` e `trace` para atualizar o número de itens exibidos em um rótulo sempre que um novo item for adicionado.
+1. Desenvolva um aplicativo com dois campos de entrada. Um deve aceitar um valor de taxa de juros, e o outro um valor principal. Utilize `trace` para calcular e exibir o montante total em um rótulo sempre que qualquer um dos campos for alterado.
+1. Crie uma janela onde o usuário pode escolher entre várias opções (como "Sim" ou "Não") usando `Radiobuttons`. Use `trace` para atualizar um rótulo que exibe a opção escolhida em tempo real.
+1. Faça um aplicativo onde o usuário pode digitar um texto em um campo de entrada e, ao digitar, o número de caracteres deve ser mostrado em um rótulo. Utilize `trace` para contar e exibir o número de caracteres à medida que o texto é alterado.
+
+</details>
+
+## `messagebox`
+
+O módulo `messagebox` do Tkinter é utilizado para exibir janelas de diálogo predefinidas (alertas, avisos, confirmações e perguntas) e interativas que mostram mensagens ao usuário e, em alguns casos, permitem que ele responda a essas mensagens. Essas janelas são muito úteis em aplicativos GUI para informar o usuário sobre eventos importantes, confirmar ações ou exibir erros.
+
+As janelas de diálogo criadas por ele são modais, o que significa que, enquanto estiverem abertas, bloqueiam a interação com o resto da interface até que o usuário responda à mensagem.
+
+Essas caixas de diálogo podem conter botões de interação como "Ok", "Cancelar", "Sim", "Não", dependendo do tipo de mensagem que se deseja exibir.
+
+### como funciona
+
+O `messagebox` é invocado usando funções que exibem a mensagem desejada e retornam um valor com base na interação do usuário (por exemplo, "OK", "Yes", "No"). O valor retornado pode ser utilizado para controlar o fluxo do programa, como, por exemplo, proceder com uma ação se o usuário confirmar ou cancelar.
+
+Veja uma tabela das funções do `messagebox` :
+
+| Função | Parâmetros | Retorno | Descrição |
+|----|----|----|----|
+| `showinfo()` | **`title`** (`str`), **`message`** (`str`) | notificação de conclusão de uma tarefa | exibe uma caixa de mensagem informativa para o usuário |
+| `showwarning()` | **`title`** (`str`), **`message`** (`str`) | avisar sobre exclusão de dados | exibe uma caixa de aviso para alertar o usuário sobre uma situação que exige atenção |
+| `showerror()` | **`title`** (`str`), **`message`** (`str`) | notificar falhas ou erros em operações | exibe uma caixa de erro para notificar o usuário sobre um problema ocorrido |
+| `askquestion()` | **`title`** (`str`), **`message`** (`str`) | `"yes"` ou `"no"` | exibe uma caixa de pergunta e retorna `'yes'` ou `'no'` dependendo da resposta do usuário |
+| `askokcancel()` | **`title`** (`str`), **`message`** (`str`) | `True` (OK) ou `False` (Cancelar) | exibe uma caixa de confirmação com as opções "OK" e "Cancelar"; retorna `True` ou `False.|
+| `askretrycancel()` | **`title`** (`str`), **`message`** (`str`) | `True` (Repetir) ou `False` (Cancelar) | exibe uma caixa com as opções "Tentar Novamente" e "Cancelar"; retorna `True` ou `False.|
+| `askyesno()` | **`title`** (`str`), **`message`** (`str`) | `True` (Sim) ou `False` (Não) | exibe uma caixa com as opções "Sim" e "Não"; retorna `True` para "Sim" e `False` para "Não.|
+| `askyesnocancel()` | **`title`** (`str`), **`message`** (`str`) | `True` (Sim), `False` (Não), `None` (Cancelar) | exibe uma caixa com as opções "Sim", "Não" e "Cancelar"; retorna `True`, `False` ou `None.|
+
+### `showinfo()`
+
+A função `showinfo()` é usada para exibir uma caixa de mensagem informativa. Ela normalmente é utilizada para informar o usuário sobre o sucesso de uma operação ou para fornecer uma mensagem geral.
+
+```python
+messagebox.showinfo(title="Título", message="Sua mensagem informativa.")
+```
+
+Onde :
+- **`title`** (`str`) : o título da janela de diálogo;
+- **`message`** (`str`) : a mensagem informativa a ser exibida ao usuário;
+
+**Exemplo :**
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+def show_info():
+    messagebox.showinfo("Informação", "A operação foi concluída com sucesso!")
+
+janela = tk.Tk()
+janela.title("Exemplo showinfo")
+
+info_button = tk.Button(janela, text="Mostrar Informação", command=show_info)
+info_button.pack(pady=20)
+
+janela.mainloop()
+```
+
+**Explicação** : quando o botão "Mostrar Informação" é clicado, a função `show_info()` exibe uma caixa de mensagem informativa com o título "Informação" e a mensagem "A operação foi concluída com sucesso!".
+
+---
+
+### `showwarning()`
+
+A função `showwarning()` é usada para exibir uma caixa de mensagem de aviso. Essa função é útil para alertar o usuário sobre uma situação que pode exigir atenção, como uma operação potencialmente perigosa ou irreversível.
+
+```python
+messagebox.showwarning(title="Título", message="Sua mensagem de aviso.")
+```
+
+Onde :
+- **`title`** (`str`) : o título da janela de diálogo;
+- **`message`** (`str`) : a mensagem de aviso a ser exibida ao usuário;
+
+**Exemplo :**
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+def show_warning():
+    messagebox.showwarning("Aviso", "Essa ação pode causar perda de dados!")
+
+root = tk.Tk()
+root.title("Exemplo showwarning")
+
+warning_button = tk.Button(root, text="Mostrar Aviso", command=show_warning)
+warning_button.pack(pady=20)
+
+root.mainloop()
+```
+
+**Explicação** : quando o botão "Mostrar Aviso" é clicado, a função `show_warning()` exibe uma caixa de diálogo com o título "Aviso" e a mensagem "Essa ação pode causar perda de dados!". Isso alerta o usuário sobre a possibilidade de uma ação arriscada.
+
+---
+
+### `showerror()`
+
+A função `showerror()` é usada para exibir uma caixa de mensagem de erro. Ela é utilizada quando ocorre um erro e se quer notificar o usuário de forma clara sobre o problema.
+
+```python
+messagebox.showerror(title="Título", message="Sua mensagem de erro.")
+```
+
+Onde :
+- **`title`** (`str`) : o título da janela de diálogo;
+- **`message`** (`str`) : a mensagem de erro a ser exibida ao usuário;
+
+**Exemplo :**
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+def show_error():
+    messagebox.showerror("Erro", "Ocorreu um erro ao processar a solicitação!")
+
+root = tk.Tk()
+root.title("Exemplo showerror")
+
+error_button = tk.Button(root, text="Mostrar Erro", command=show_error)
+error_button.pack(pady=20)
+
+root.mainloop()
+```
+
+**Explicação** : quando o botão "Mostrar Erro" é clicado, a função `show_error()` exibe uma caixa de diálogo com o título "Erro" e a mensagem "Ocorreu um erro ao processar a solicitação!". Isso ajuda a notificar o usuário sobre um erro crítico.
+
+---
+
+### `askquestion()`
+
+A função `askquestion()` exibe uma caixa de diálogo com uma pergunta simples e dois botões: "Sim" e "Não". Ela retorna uma string que pode ser `"yes"` ou `"no"`, dependendo da escolha do usuário.
+
+```python
+messagebox.askquestion(title="Título", message="Sua pergunta")
+```
+
+Onde :
+- **`title`** (`str`) : o título da janela de diálogo;
+- **`message`** (`str`) : a pergunta que será exibida ao usuário;
+
+Retorno :
+- **`"yes"`** ou **`"no"`** : dependendo da escolha do usuário;
+
+**Exemplo :**
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+def confirm_exit():
+    resposta = messagebox.askquestion("Confirmar", "Você deseja realmente sair?")
+    if resposta == "yes":
+        root.quit()
+
+root = tk.Tk()
+root.title("Exemplo askquestion")
+
+exit_button = tk.Button(root, text="Sair", command=confirm_exit)
+exit_button.pack(pady=20)
+
+root.mainloop()
+```
+
+**Explicação** : quando o botão "Sair" é clicado, a função `askquestion()` exibe uma pergunta confirmando se o usuário deseja sair. Se o usuário clicar em "Sim" (`"yes"`), o programa será fechado com `root.quit()`.
+
+---
+
+### `askokcancel()`
+
+A função `askokcancel()` exibe uma caixa de diálogo com uma pergunta e dois botões: "OK" e "Cancelar". Ela retorna um valor booleano, `True` se o usuário clicar em "OK" e `False` se clicar em "Cancelar".
+
+```python
+messagebox.askokcancel(title="Título", message="Sua mensagem")
+```
+
+Onde :
+- **`title`** (`str`) : o título da janela de diálogo;
+- **`message`** (`str`) : a mensagem ou pergunta que será exibida ao usuário;
+
+Retorno:
+- **`True`** ou **`False`** : dependendo da escolha do usuário;
+
+**Exemplo :**
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+def delete_file():
+    resposta = messagebox.askokcancel("Confirmar", "Você deseja realmente deletar o arquivo?")
+    if resposta:
+        print("Arquivo deletado.")
+    else:
+        print("Ação cancelada.")
+
+root = tk.Tk()
+root.title("Exemplo askokcancel")
+
+delete_button = tk.Button(root, text="Deletar Arquivo", command=delete_file)
+delete_button.pack(pady=20)
+
+root.mainloop()
+```
+
+**Explicação** : quando o botão "Deletar Arquivo" é clicado, a função `askokcancel()` pergunta ao usuário se ele deseja realmente deletar o arquivo. Se o usuário clicar em "OK", o arquivo será deletado (no exemplo, simulado com uma mensagem de `print`).
+
+---
+
+### `askretrycancel()`
+
+A função `askretrycancel()` exibe uma caixa de diálogo com uma mensagem e dois botões: "Repetir" e "Cancelar". Ela retorna `True` se o usuário escolher "Repetir" e `False` se o usuário clicar em "Cancelar". Isso é útil em casos de falhas em operações que podem ser tentadas novamente.
+
+```python
+messagebox.askretrycancel(title="Título", message="Sua mensagem")
+```
+
+Onde :
+- **`title`** (`str`) : o título da janela de diálogo;
+- **`message`** (`str`) : a mensagem a ser exibida ao usuário;
+
+Retorno:
+- **`True`** ou **`False`** : dependendo da escolha do usuário;
+
+**Exemplo :**
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+def retry_operation():
+    resposta = messagebox.askretrycancel("Falha", "Ocorreu um erro. Deseja tentar novamente?")
+    if resposta:
+        print("Tentando novamente...")
+    else:
+        print("Operação cancelada.")
+
+root = tk.Tk()
+root.title("Exemplo askretrycancel")
+
+retry_button = tk.Button(root, text="Simular Erro", command=retry_operation)
+retry_button.pack(pady=20)
+
+root.mainloop()
+```
+
+**Explicação** : quando o botão "Simular Erro" é clicado, a função `askretrycancel()` pergunta ao usuário se ele deseja tentar a operação novamente após uma falha. Se o usuário clicar em "Repetir", o programa tentará novamente a operação (simulado com um `print`). Caso contrário, a operação será cancelada.
+
+---
+
+As funções `askyesno()` e `askyesnocancel()` do módulo `messagebox` do Tkinter exibem caixas de diálogo que permitem ao usuário tomar decisões através de respostas "Sim" ou "Não", com a opção de cancelar no caso de `askyesnocancel()`. São úteis em situações onde você quer que o usuário faça uma escolha clara e o fluxo do programa depende dessas respostas.
+
+Vamos entender cada uma delas com detalhes e exemplos práticos.
+
+---
+
+### `askyesno()`
+
+A função `askyesno()` exibe uma caixa de diálogo com uma pergunta e dois botões: "Sim" e "Não". Ela retorna valores booleanos (`True` ou `False`) dependendo da escolha do usuário.
+
+```python
+messagebox.askyesno(title="Título", message="Sua pergunta")
+```
+
+Onde :
+- **`title`** (`str`) : o título da janela de diálogo;
+- **`message`** (`str`) : a pergunta ou mensagem a ser exibida ao usuário;
+
+Retorno:
+- **`True`** : se o usuário clicar em "Sim";
+- **`False`** : se o usuário clicar em "Não";
+
+**Exemplo :**
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+def confirmar_envio():
+    resposta = messagebox.askyesno("Confirmar Envio", "Você tem certeza que deseja enviar o formulário?")
+    if resposta:
+        print("Formulário enviado!")
+    else:
+        print("Envio cancelado.")
+
+root = tk.Tk()
+root.title("Exemplo askyesno")
+
+send_button = tk.Button(root, text="Enviar Formulário", command=confirmar_envio)
+send_button.pack(pady=20)
+
+root.mainloop()
+```
+
+**Explicação** : quando o botão "Enviar Formulário" é clicado, uma pergunta é feita ao usuário para confirmar se ele deseja realmente enviar o formulário. Se o usuário clicar em "Sim", o formulário é "enviado" (neste caso, simulado com um `print`). Se clicar em "Não", o envio é cancelado.
+
+---
+
+### `askyesnocancel()`
+
+A função `askyesnocancel()` exibe uma caixa de diálogo com três botões: "Sim", "Não" e "Cancelar". Ela retorna:
+- **`True`** se o usuário clicar em "Sim";
+- **`False`** se o usuário clicar em "Não";
+- **`None`** se o usuário clicar em "Cancelar" ou fechar a janela.
+
+Essa função é útil quando você deseja que o usuário tenha a opção de cancelar a operação além de escolher entre "Sim" ou "Não".
+
+```python
+messagebox.askyesnocancel(title="Título", message="Sua pergunta")
+```
+
+Onde :
+- **`title`** (`str`) : o título da janela de diálogo;
+- **`message`** (`str`) : a pergunta ou mensagem a ser exibida ao usuário;
+
+Retorno:
+- **`True`** : se o usuário clicar em "Sim";
+- **`False`** : se o usuário clicar em "Não";
+- **`None`** : se o usuário clicar em "Cancelar" ou fechar a janela;
+
+**Exemplo :**
+```python
+import tkinter as tk
+from tkinter import messagebox
+
+def confirmar_acao():
+    resposta = messagebox.askyesnocancel("Salvar Arquivo", "Deseja salvar as alterações antes de sair?")
+    if resposta is True:
+        print("Alterações salvas!")
+    elif resposta is False:
+        print("Alterações descartadas.")
+    else:
+        print("Ação cancelada.")
+
+root = tk.Tk()
+root.title("Exemplo askyesnocancel")
+
+save_button = tk.Button(root, text="Sair", command=confirmar_acao)
+save_button.pack(pady=20)
+
+root.mainloop()
+```
+
+**Explicação** : quando o botão "Sair" é clicado, uma pergunta é feita ao usuário para saber se ele deseja salvar as alterações antes de sair. Se o usuário clicar em "Sim", as alterações são salvas (simulado com um `print`). Se ele clicar em "Não", as alterações são descartadas. Se ele clicar em "Cancelar" ou fechar a janela, a ação de saída é cancelada.
+
+---
+
+### exemplos mais completos
+
+1. **exemplo com `showinfo()`, `showwarning()` e `showerror()` :**
+
+    ```python
+    import tkinter as tk
+    from tkinter import messagebox
+
+    def process_success():
+        messagebox.showinfo("Sucesso", "A operação foi concluída com êxito!")
+
+    def process_warning():
+        messagebox.showwarning("Atenção", "Essa ação pode resultar em perda de dados!")
+
+    def process_error():
+        messagebox.showerror("Erro", "Ocorreu um erro durante a operação!")
+
+    root = tk.Tk()
+    root.title("Exemplo de Messagebox")
+
+    success_button = tk.Button(root, text="Simular Sucesso", command=process_success)
+    success_button.pack(pady=10)
+
+    warning_button = tk.Button(root, text="Simular Aviso", command=process_warning)
+    warning_button.pack(pady=10)
+
+    error_button = tk.Button(root, text="Simular Erro", command=process_error)
+    error_button.pack(pady=10)
+
+    root.mainloop()
+    ```
+
+1. **exemplo com `askquestion()`, `askokcancel()` e `askretrycancel()` :**
+
+    ```python
+    import tkinter as tk
+    from tkinter import messagebox
+
+    def sair():
+        resposta = messagebox.askquestion("Sair", "Tem certeza que deseja sair?")
+        if resposta == "yes":
+            root.quit()
+
+    def deletar_arquivo():
+        resposta = messagebox.askokcancel("Deletar", "Você deseja realmente deletar o arquivo?")
+        if resposta:
+            print("Arquivo deletado.")
+        else:
+            print("Ação cancelada.")
+
+    def tentar_novamente():
+        resposta = messagebox.askretrycancel("Erro", "Falha na operação. Deseja tentar novamente?")
+        if resposta:
+            print("Repetindo operação...")
+        else:
+            print("Operação cancelada.")
+
+    root = tk.Tk()
+    root.title("Exemplo Completo")
+
+    sair_button = tk.Button(root, text="Sair", command=sair)
+    sair_button.pack(pady=10)
+
+    deletar_button = tk.Button(root, text="Deletar Arquivo", command=deletar_arquivo)
+    deletar_button.pack(pady=10)
+
+    retry_button = tk.Button(root, text="Tentar Novamente", command=tentar_novamente)
+    retry_button.pack(pady=10)
+
+    root.mainloop()
+    ```
+
+1. **exemplo com `askyesnocancel()` e `askyesno()` :**
+
+    ```python
+    import tkinter as tk
+    from tkinter import messagebox
+
+    def realizar_operacao():
+        salvar = messagebox.askyesnocancel("Salvar", "Você deseja salvar as alterações?")
+        if salvar is True:
+            print("Alterações salvas com sucesso.")
+        elif salvar is False:
+            continuar = messagebox.askyesno("Continuar", "Deseja continuar sem salvar?")
+            if continuar:
+                print("Continuação sem salvar.")
+            else:
+                print("Operação cancelada.")
+        else:
+            print("Ação cancelada.")
+
+    root = tk.Tk()
+    root.title("Exemplo Completo")
+
+    operate_button = tk.Button(root, text="Realizar Operação", command=realizar_operacao)
+    operate_button.pack(pady=20)
+
+    root.mainloop()
+    ```
+
+---
+
+## exercícios `messagebox`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Exercícios `showinfo()`
+    1. Crie um programa que exibe uma caixa de diálogo `showinfo()` quando o usuário clicar em um botão, com a mensagem "Operação concluída com sucesso!".
+    1. Modifique o programa para que o título da caixa de diálogo seja "Informação Importante", e a mensagem exibida seja "Seu arquivo foi salvo!".
+    1. Crie uma aplicação com dois botões. O primeiro deve exibir uma mensagem `showinfo()` dizendo "Início do processo", e o segundo "Fim do processo".
+    1. Desenvolva um programa que exiba uma caixa de diálogo `showinfo()` informando ao usuário o nome da aplicação, que deve ser recebido por uma entrada `Entry`.
+    1. Escreva um programa que exiba uma mensagem de boas-vindas personalizada com `showinfo()` assim que o usuário digitar seu nome em um campo de entrada e clicar em "Enviar".
+1. Exercícios `showwarning()`
+    1. Crie um programa que exibe uma caixa de diálogo `showwarning()` quando o usuário tentar fechar uma janela sem salvar o arquivo. A mensagem deve ser "Atenção! Arquivo não salvo!".
+    1. Crie um botão que, ao ser clicado, exibe um aviso `showwarning()` dizendo "Sua sessão está prestes a expirar".
+    1. Desenvolva uma aplicação que avisa com `showwarning()` caso o usuário insira uma idade fora do intervalo permitido (por exemplo, abaixo de 18 ou acima de 60).
+    1. Crie um programa que simula uma tentativa de exclusão de um item e, antes de confirmar, exibe um aviso `showwarning()` dizendo "Tem certeza de que deseja excluir este item?".
+    1. Escreva um programa que exibe uma caixa de aviso `showwarning()` se o usuário tentar continuar sem preencher um formulário obrigatório.
+1. Exercícios `showerror()`
+    1. Crie um programa que exibe uma caixa de erro `showerror()` ao tentar realizar uma divisão por zero, com a mensagem "Erro: Divisão por zero não permitida!".
+    1. Faça um programa que tenta abrir um arquivo e, se o arquivo não existir, exibe uma mensagem de erro `showerror()` dizendo "Erro: Arquivo não encontrado".
+    1. Desenvolva uma aplicação que verifica o formato de um endereço de e-mail inserido. Se o formato for inválido, exibe um erro com `showerror()`.
+    1. Crie um programa que exibe um erro `showerror()` quando o usuário tentar conectar-se a um servidor inexistente, com a mensagem "Erro de Conexão: Servidor não encontrado".
+    1. Escreva um programa que solicita a entrada de um número e exibe uma caixa de erro `showerror()` se a entrada não for um número inteiro válido.
+1. Exercícios `askquestion()`
+    1. Crie um programa que pergunta ao usuário com `askquestion()` se ele deseja realmente sair da aplicação. Se ele clicar em "Sim", a aplicação fecha; caso contrário, continua rodando.
+    1. Desenvolva um programa que, ao tentar excluir um item de uma lista, pergunta ao usuário com `askquestion()` se ele realmente deseja removê-lo.
+    1. Faça um programa que pergunta ao usuário se ele deseja abrir um arquivo novo ou continuar com o atual, usando `askquestion()`.
+    1. Crie um programa que exibe uma pergunta com `askquestion()` para confirmar se o usuário deseja reiniciar a aplicação, e implemente a ação correspondente.
+    1. Escreva um programa que pergunta ao usuário, usando `askquestion()`, se ele quer realizar um backup dos dados antes de sair da aplicação.
+1. Exercícios `askokcancel()`
+    1. Desenvolva um programa que exibe uma caixa de diálogo `askokcancel()` ao tentar fechar a janela principal, confirmando se o usuário realmente deseja sair.
+    1. Faça um programa que pergunta, usando `askokcancel()`, se o usuário deseja salvar as alterações em um arquivo antes de fechá-lo.
+    1. Crie um programa que exibe um `askokcancel()` para confirmar se o usuário deseja redefinir um formulário antes de prosseguir.
+    1. Escreva um programa que, ao tentar realizar uma operação de exclusão permanente de dados, solicita confirmação com `askokcancel()`.
+    1. Desenvolva uma aplicação onde o usuário tenta redefinir uma senha, e uma caixa de confirmação `askokcancel()` pergunta se ele deseja realmente alterar a senha.
+1. Exercícios `askretrycancel()`
+    1. Crie um programa que tenta conectar a um servidor e, se a conexão falhar, exibe uma caixa de diálogo `askretrycancel()` para perguntar se o usuário deseja tentar novamente.
+    1. Desenvolva uma aplicação que tenta carregar um arquivo. Se houver falha, uma mensagem `askretrycancel()` permite que o usuário tente carregar o arquivo novamente ou cancele a operação.
+    1. Faça um programa que tenta realizar uma operação de download. Caso o download falhe, o programa exibe uma caixa `askretrycancel()` perguntando se o usuário deseja tentar novamente.
+    1. Escreva um programa que tenta realizar uma impressão de documento e, se houver erro, usa `askretrycancel()` para perguntar se o usuário deseja tentar imprimir novamente.
+    1. Desenvolva um programa que simula uma tentativa de login. Se o login falhar, uma caixa `askretrycancel()` pergunta se o usuário quer tentar novamente ou cancelar o processo.
+1. Exercícios `askyesno()`
+    1. Crie um programa que pergunta ao usuário com `askyesno()` se ele deseja salvar um arquivo antes de sair da aplicação.
+    1. Desenvolva uma aplicação que pergunta ao usuário, usando `askyesno()`, se ele deseja apagar permanentemente um item.
+    1. Crie um programa que, ao clicar em um botão, pergunta ao usuário se ele quer continuar com uma operação arriscada, usando `askyesno()`.
+    1. Escreva um programa que pergunta ao usuário se ele quer mudar o tema da aplicação, usando `askyesno()`.
+    1. Desenvolva um programa que, após o preenchimento de um formulário, pergunta ao usuário, usando `askyesno()`, se ele deseja enviar os dados.
+1. Exercícios `askyesnocancel()`
+    1. Desenvolva um programa que pergunta ao usuário se ele deseja salvar as alterações antes de fechar um arquivo, com `askyesnocancel()`. Dependendo da resposta, o arquivo é salvo, descartado, ou a operação é cancelada.
+    1. Crie uma aplicação que pergunta ao usuário, com `askyesnocancel()`, se ele deseja excluir, manter ou cancelar a operação de exclusão de uma pasta.
+    1. Faça um programa que pergunta se o usuário quer reiniciar, desligar ou cancelar a operação, usando `askyesnocancel()`.
+    1. Desenvolva um programa onde o usuário pode alterar configurações, e o sistema pergunta, com `askyesnocancel()`, se ele deseja aplicar as alterações, reverter ou cancelar a ação.
+    1. Escreva um programa que pergunta ao usuário se ele quer continuar com a instalação de um software, cancelar ou adiar, usando `askyesnocancel()`.
+
+</details>
+
+## métodos `quit()` vs `destroy()`
+
+No **Tkinter**, os métodos **`quit()`** e **`destroy()`** são usados para encerrar a aplicação ou fechar janelas, mas há diferenças importantes no modo como cada um funciona.
+
+### `quit()`
+
+O método **`quit()`** é usado para interromper o loop principal da aplicação (`mainloop()`) e parar a execução da interface gráfica. Ele encerra a interação da interface gráfica, mas não destrói as janelas ou widgets existentes; a janela principal e seus componentes permanecem visíveis e podem ser manipulados, mas o loop de eventos é interrompido, então nenhum evento adicional será processado (por exemplo, cliques de botão ou digitação).
+
+**Como funciona :**
+
+- ele **sai do loop principal** (`mainloop()`) e impede que novos eventos sejam processados;
+- **não destrói os widgets** ou fecha janelas; apenas faz com que a interface gráfica "pare" de responder;
+- o programa continua rodando, mas sem a interface gráfica funcionando corretamente;
+
+**Exemplo :**
+```python
+import tkinter as tk
+
+def alterar_label_e_encerrar():
+    # altera o texto do label
+    label.config(text="Loop interrompido!")
+    # encerra o loop principal
+    root.quit()
+
+root = tk.Tk()
+root.title("Exemplo de quit()")
+
+# label inicial
+label = tk.Label(root, text="Loop rodando")
+label.pack(pady=10)
+
+# botão que altera o label e encerra o loop
+botao = tk.Button(root, text="Alterar Label e Parar Loop", command=alterar_label_e_encerrar)
+botao.pack(pady=10)
+
+# inicia o loop principal
+root.mainloop()
+
+# reinicia o loop principal, com o label já alterado
+label.config(text="O loop foi reiniciado, mas o label ainda está alterado!")
+root.mainloop()
+```
+
+**Explicação**
+1. **Label Inicial** : o **`Label`** é exibido com o texto inicial "Loop rodando";
+1. **Botão** : quando o botão é clicado, a função **`alterar_label_e_encerrar()`** é chamada;
+    - A função altera o texto do **`Label`** para "Loop interrompido!";
+    - Em seguida, chama **`quit()`**, interrompendo o loop principal (`mainloop`);
+1. **Reinício do Loop** : após a interrupção do loop, o script continua rodando e reinicia o loop principal, com o texto do **`Label`** já alterado. Isso demonstra que os widgets continuam existindo e suas propriedades permanecem alteradas após o `quit()`;
+
+**Resultado:**
+1. Quando o programa inicia, o **`Label`** exibe "Loop rodando".
+1. Ao clicar no botão, o **`Label`** muda para "Loop interrompido!" e o loop da interface para.
+1. Quando o loop é reiniciado, o **`Label`** mostra "O loop foi reiniciado, mas o label ainda está alterado!".
+
+### **Método `destroy()`**
+
+O método **`destroy()`** é usado para **fechar permanentemente** uma janela (ou widget) e **destruir todos os seus componentes**. Ele elimina a janela principal ou um widget específico, removendo-o completamente da aplicação. Se for chamado no widget raiz (`root`), encerrará a aplicação, destruindo a janela e todos os widgets nela contidos.
+
+**Como funciona :**
+
+- **Destrói completamente a janela ou widget** em que foi chamado.
+- Todos os widgets filhos daquele widget ou janela também são destruídos.
+- Se usado na janela principal (por exemplo, `root`), encerra a aplicação e **fecha a janela**.
+- Ao contrário de `quit()`, ele não apenas interrompe o loop principal, mas também fecha e remove a janela.
+
+**Exemplo :**
+
+```python
+import tkinter as tk
+
+def fechar_janela():
+    root.destroy()
+
+root = tk.Tk()
+root.title("Exemplo com destroy()")
+
+# Botão para destruir a janela principal
+botao = tk.Button(root, text="Fechar Janela", command=fechar_janela)
+botao.pack()
+
+root.mainloop()
+```
+Aqui, o botão chama `destroy()`, que fecha a janela principal e encerra completamente a aplicação. Todos os widgets dentro de `root` também são destruídos.
+
+## `Menu`
+
+O **widget `Menu`** do Tkinter é usado para criar **barras de menu** em uma aplicação gráfica, que podem conter várias opções e submenus. Ele é essencial para criar interfaces de usuário mais completas, fornecendo funcionalidades como menus de arquivo, edição, visualização, ajuda, etc. O widget `Menu` permite a criação de **menu principal**, **menu de contexto (popup)** e **submenus**.
+
+### estrutura
+
+Um menu no Tkinter é geralmente associado a uma janela principal (`Tk` ou `Toplevel`) e consiste em vários **itens de menu**. Esses itens podem ser simples opções (como "Abrir" ou "Salvar") ou até mesmo outros submenus. Cada item do menu pode estar associado a uma **ação (callback)** que será executada quando ele for clicado.
+
+### criando um menu principal
+
+Um **menu principal** é um menu geralmente localizado na parte superior da janela principal. Ele pode conter várias opções, como "Arquivo", "Editar", "Visualizar", cada uma das quais pode ter suas próprias entradas de submenu.
+
+**Exemplo :**
+
+```python
+import tkinter as tk
+
+def nova_acao():
+    print("Nova ação selecionada!")
+
+# Janela principal
+root = tk.Tk()
+root.title("Exemplo de Menu")
+
+# Criação do menu principal
+menu_principal = tk.Menu(root)
+root.config(menu=menu_principal)  # Configura o menu principal na janela
+
+# Criação de um submenu "Arquivo"
+menu_arquivo = tk.Menu(menu_principal, tearoff=0)
+menu_principal.add_cascade(label="Arquivo", menu=menu_arquivo)
+
+# Adicionando opções ao submenu "Arquivo"
+menu_arquivo.add_command(label="Novo", command=nova_acao)
+menu_arquivo.add_command(label="Abrir", command=lambda: print("Abrir selecionado"))
+menu_arquivo.add_separator()  # Separador
+menu_arquivo.add_command(label="Sair", command=root.quit)
+
+# Criação de um submenu "Editar"
+menu_editar = tk.Menu(menu_principal, tearoff=0)
+menu_principal.add_cascade(label="Editar", menu=menu_editar)
+
+# Adicionando opções ao submenu "Editar"
+menu_editar.add_command(label="Copiar", command=lambda: print("Copiar selecionado"))
+menu_editar.add_command(label="Colar", command=lambda: print("Colar selecionado"))
+
+root.mainloop()
+```
+
+**Explicação :**
+
+1. **Menu principal** : um menu é criado usando `tk.Menu(root)` e depois associado à janela principal com `root.config(menu=menu_principal)`;
+1. **Submenu "Arquivo"** : é criado usando `Menu()` e adicionado ao menu principal com `add_cascade()`;
+1. **Comandos no menu** : as opções "Novo", "Abrir", e "Sair" são adicionadas ao submenu com `add_command()`. Cada opção está associada a uma função (um callback), que será executada quando o item for selecionado;
+1. **Separador** : um separador visual é inserido entre as opções usando `add_separator()`;
+
+### menu de contexto (popup menu)
+
+O **menu de contexto** é exibido quando o usuário clica com o botão direito do mouse sobre um determinado widget ou área da janela.
+
+**Exemplo :**
+
+```python
+import tkinter as tk
+
+def copiar():
+    print("Copiar selecionado")
+
+def colar():
+    print("Colar selecionado")
+
+# Função para mostrar o menu de contexto
+def mostrar_menu_popup(event):
+    menu_popup.post(event.x_root, event.y_root)
+
+# Janela principal
+root = tk.Tk()
+root.title("Exemplo de Menu Popup")
+
+# Criando um menu de contexto (popup)
+menu_popup = tk.Menu(root, tearoff=0)
+menu_popup.add_command(label="Copiar", command=copiar)
+menu_popup.add_command(label="Colar", command=colar)
+
+# Ligando o menu popup ao botão direito do mouse
+root.bind("<Button-3>", mostrar_menu_popup)
+
+root.mainloop()
+```
+
+**Explicação :**
+
+- a menu de contexto é criado da mesma forma que o menu principal, mas ele é exibido apenas quando o evento de clique com o botão direito é detectado;
+- **`post(x, y)`** : este método exibe o menu na posição especificada pelas coordenadas (`x`, `y`), que são passadas através do evento de clique com o botão direito do mouse;
+
+### adicionando checkbox e radiobutton ao menu
+
+Menus também podem ter itens como **Checkboxes** (caixas de seleção) e **Radiobuttons**, que permitem aos usuários marcar ou selecionar uma entre várias opções.
+
+**Exemplo :**
+
+```python
+import tkinter as tk
+
+def verificar_opcao():
+    print(f"Opção 1: {var_opcao1.get()}, Opção 2: {var_opcao2.get()}")
+
+def verificar_radio():
+    print(f"Selecionado: {var_radio.get()}")
+
+root = tk.Tk()
+root.title("Exemplo de Menu com Checkbox e Radiobutton")
+
+# Criação do menu principal
+menu_principal = tk.Menu(root)
+root.config(menu=menu_principal)
+
+# Criação de um submenu "Opções"
+menu_opcoes = tk.Menu(menu_principal, tearoff=0)
+menu_principal.add_cascade(label="Opções", menu=menu_opcoes)
+
+# Variáveis associadas aos checkboxes
+var_opcao1 = tk.BooleanVar()
+var_opcao2 = tk.BooleanVar()
+
+# Adicionando checkboxes
+menu_opcoes.add_checkbutton(label="Opção 1", variable=var_opcao1, command=verificar_opcao)
+menu_opcoes.add_checkbutton(label="Opção 2", variable=var_opcao2, command=verificar_opcao)
+
+# Variável associada ao Radiobutton
+var_radio = tk.StringVar(value="Opção A")
+
+# Adicionando radiobuttons
+menu_opcoes.add_radiobutton(label="Opção A", variable=var_radio, value="Opção A", command=verificar_radio)
+menu_opcoes.add_radiobutton(label="Opção B", variable=var_radio, value="Opção B", command=verificar_radio)
+
+root.mainloop()
+```
+
+**Explicação :**
+
+- **`add_checkbutton()`** : adiciona uma opção de checkbox ao menu. Está associada a uma variável do tipo `BooleanVar()`, que rastreia o estado marcado/desmarcado;
+- **`add_radiobutton()`** : adiciona uma opção de radiobutton ao menu. Está associada a uma variável, e apenas um dos itens pode ser selecionado;
+
+### parâmetros comuns do menu
+
+| Parâmetro | Tipo | Descrição |
+|----|----|----|
+| `parent` | `Tk` ou `Toplevel` | o widget no qual o menu será colocado (geralmente a janela principal) |
+| `tearoff` | `int` | define se o menu pode ser "destacado" em uma nova janela. `0` desativa essa funcionalidade |
+| `label` | `str` | define o rótulo exibido na opção do menu |
+| `command` | `function` | função a ser chamada quando o item de menu for selecionado |
+| `variable` | `Variable` | variável associada a um item de menu (usada para `checkbutton` e `radiobutton`) |
+| `value` | `str` ou `int`| valor associado ao item de radiobutton no menu |
+
+## exercícios `Menu`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Menu Simples** : Crie uma aplicação com um menu simples que tenha um item "Sair" que encerra a aplicação quando clicado.
+1. **Submenu com Comandos** : Crie um menu com um submenu chamado "Arquivo". Adicione os itens "Novo", "Abrir" e "Salvar" a esse submenu, e imprima uma mensagem no console quando cada um deles for clicado.
+1. **Separador no Menu** : Adicione um separador no submenu "Arquivo" entre os itens "Abrir" e "Salvar". Certifique-se de que o separador está visível na interface.
+1. **Menu com Opções de Editar** : Crie um menu "Editar" com os itens "Copiar", "Colar" e "Desfazer". Implemente funções que imprimam no console quando cada item for clicado.
+1. **Checkbox no Menu** : Crie um submenu "Opções" com um checkbox chamado "Ativar Notificações". Quando selecionado, imprima "Notificações ativadas" e, quando desmarcado, imprima "Notificações desativadas".
+1. **Radiobutton no Menu** : Adicione um submenu "Configurações" com dois radiobuttons: "Modo Claro" e "Modo Escuro". Use uma variável para armazenar a escolha do usuário e imprima a opção selecionada no console.
+1. **Menu de Contexto** : Crie um menu de contexto que aparece ao clicar com o botão direito do mouse em uma área da janela. Adicione opções "Copiar" e "Colar" a este menu.
+1. **Menu de Ajuda** : Adicione um item "Ajuda" no menu principal que exibe uma mensagem "Esta é a seção de ajuda." ao ser clicado.
+1. **Desabilitar Itens do Menu** : Crie um menu "Arquivo" e desabilite a opção "Salvar" inicialmente. Adicione uma opção "Salvar como" que, ao ser selecionada, habilita a opção "Salvar".
+1. **Menu com Atalhos de Teclado** : Adicione atalhos de teclado ao seu menu. Por exemplo, use "Ctrl+N" para o item "Novo" e "Ctrl+S" para o item "Salvar".
+1. **Menu Dinâmico** : Crie uma lista de itens que podem ser adicionados dinamicamente ao submenu "Lista". Use um botão para adicionar novos itens à lista no menu.
+1. **Submenus Aninhados** : Crie um menu com submenus aninhados. Por exemplo, um submenu "Formato" dentro do submenu "Editar", com opções "Negrito" e "Itálico".
+1. **Múltiplos Menus** : Crie uma janela com dois menus principais diferentes: um para "Arquivo" e outro para "Editar". Cada um deve ter suas próprias opções e funcionalidades.
+1. **Menu com Mensagens** : Adicione um menu "Notificações" que mostra diferentes tipos de mensagens (como "Novo item adicionado" ou "Erro ao salvar") quando cada item é clicado.
+1. **Fechar Menu ao Clicar Fora** : Implemente uma funcionalidade onde o menu é fechado se o usuário clicar fora dele, em qualquer parte da janela.
 
 </details>
