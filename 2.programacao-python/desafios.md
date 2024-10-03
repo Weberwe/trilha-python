@@ -136,3 +136,28 @@ Crie uma calculadora de números romanos.
 O Python possui diversas funções built-in que facilitam o trabalho. Embora ajudem, é interessante tentar replicar o comportamento delas para entender como funciona e, também, para praticar.
 Então, recrie as seguintes funções :
 - `sum()`, `len()`, `pow()`, `max()`, `min()`, `abs()`, `round()`, `range()`, `divmod()`
+
+## Jogo da Velha
+
+Crie uma interface gráfica para o jogo da velha usando botões em uma matriz 3x3. Os jogadores podem clicar nos botões para fazer suas jogadas e exiba mensagens de vitória, empate ou próximo jogador em um Label.
+
+## Jogo da Forca
+
+Crie uma interface gráfica para o jogo da forca. Exiba uma palavra oculta com underscore (_) para cada letra não revelada. Os jogadores podem digitar letras em um Entry e clicar em um botão para verificar se a letra está correta. Exiba a palavra atualizada e a imagem da forca à medida que o jogador erra.
+
+## Adivinhar o Número
+
+Crie uma interface gráfica para um jogo de adivinhação de números. Gere um número aleatório e deixe os jogadores digitarem sua suposição em um Entry. Forneça um botão para verificar se a suposição está correta e exiba mensagens informando se é muito alta ou muito baixa.
+
+## Calculadora
+
+Crie uma calculadora, como a do Windows, usando o Tkinter.
+
+## Bloco de Notas
+
+Crie um aplicativo que simule o Bloco de Notas. Implemente a possibilidade de trocar as fontes do campo `Text` durante a execução do programa.
+
+Todas as fontes instaldas podem ser encontradas em :
+- Windows : `C:\Windows\Fonts`;
+- Linux : `/usr/share/fonts` ou `~/.fonts`;
+- macOS : `/Library/Fonts` ou `~/Library/Fonts`

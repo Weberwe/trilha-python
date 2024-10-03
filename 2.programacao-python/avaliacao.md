@@ -195,6 +195,11 @@ Para isso, seu programa deverá possuir ao menos duas classes :
 
 Seu módulo principal, o módulo `main.py`, deverá receber o CPF ditado e torná-lo uma instância da classe `Cpf`, para só então realizar todas as validações e verificações.
 
+## interface
+
+Linha de comando pode ser algo que os programadores estão acostumados, mas as pessoas comuns não.
+Então, seu programa deverá apresentar uma interface gráfica para que a pessoa possa digitar o CPF em um campo e apertar um botão para validar. Depois, seu programa deverá informar ao usuário se o CPF digitade é válido ou não. Adicione um Menu, onde o usuário poderá escolher encerrar o programa por lá. Ao usar o Menu, uma mensagem deverá aparecer para o usuário se ele realmente deseja encerrar o programa.
+
 ## o que usar
 
 > [!CAUTION]
@@ -246,3 +251,12 @@ Parte 6
 - [ ] crie a classe `Arquivo`;
 - [ ] use ambas as classes para instanciar objetos a partir do módulo `main.py`;
 - [ ] adicione a data e hora em cada validação do CPF com o módulo `datetime`;
+
+Parte 7
+- [ ] crie uma interface para seu programa com o Tkinter;
+- [ ] use, pelo menos, um de cada Widgets `Label`, `Entry`, `Button` e `Menu`;
+- [ ] use `messagebox` para informar ao usuário das validações;
+- [ ] use `messagebox` para confirmar o encerramento do programa;
+- [ ] coloque toda a parte da interface em um módulo separado chamado de `gui.py`;
+- [ ] o módulo `main.py` ficará responsável por importar as classes do módulo auxiliar e a interface do `gui.py`;
+- [ ] o módulo `main.py` será o módulo intermediário entre os módulos auxilar (das classes) e a interface;
