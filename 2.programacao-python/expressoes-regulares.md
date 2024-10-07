@@ -129,6 +129,8 @@ Abaixo há três tabelas com o resumo da maior parte do conteúdo que será vist
 | `\` | Escapa um metacaractere ou representa uma sequência especial. | `\d` corresponde a qualquer dígito, `\.` corresponde a um ponto literal. |
 | `\|` | Representa uma alternativa (OU). | `gato\|cachorro` corresponde a "gato" ou "cachorro". |
 | `()` | Agrupa partes da expressão e cria um grupo de captura. | `(ab)+` corresponde a "ab", "abab", "ababab", etc. |
+
+| Sequência | Explicação | Exemplo |
 | `\w` | Corresponde a qualquer caractere alfanumérico ou sublinhado. | `\w+` corresponde a "palavra", "palavra123", "_palavra", etc. |
 | `\W` | Corresponde a qualquer caractere que não seja alfanumérico ou sublinhado. | `\W+` corresponde a "espaço ", "!@#$", etc. |
 | `\d` | Corresponde a qualquer dígito. | `\d+` corresponde a "123", "456789", etc. |
@@ -358,6 +360,88 @@ re.match(padrão, string, flags=0)
 
 ---
 
+### `re.fullmatch()`
+
+A função `re.fullmatch()` verifica se **toda a string** corresponde exatamente ao padrão fornecido. Ela só retorna uma correspondência se a string inteira corresponder ao padrão; caso contrário, retorna `None`.
+
+```python
+re.fullmatch(padrão, string, flags=0)
+```
+
+- **`padrão`** : o padrão que você quer procurar (expressão regular);
+- **`string`** : a string onde será feita a busca;
+- **`flags`** : parâmetro opcional para modificar o comportamento da busca (isso será visto mais tarde);
+
+1. **exemplo verificando se toda a string corresponde ao padrão**
+
+    ```python
+    import re
+
+    # texto para verificação
+    texto = "Python3"
+
+    # verificando se a string inteira corresponde ao padrão
+    resultado = re.fullmatch(r"Py....3", texto)
+
+    if resultado:
+        print("Padrão encontrado:", resultado.group())
+    else:
+        print("Padrão não encontrado.")
+    ```
+
+    **Explicação**
+    - **`Py....3`** : esse padrão corresponde a uma palavra iniciada com Py, seguido de 4 caracteres quaisquer e finalizando com o número 3;
+    - **`re.fullmatch(r"Py....3", texto)`** : verifica se toda a string `texto` corresponde ao padrão;
+
+    **Saída**
+    ```
+    Padrão encontrado: Python3
+    ```
+
+    Aqui, o padrão `\w+` corresponde exatamente à string inteira, então há uma correspondência.
+
+1. **exemplo caso em que a string não corresponde completamente**
+
+    ```python
+    # texto para fazer a verificação
+    texto = "Python3!"
+
+    # verificando se a string inteira corresponde ao padrão
+    resultado = re.fullmatch(r"\w+", texto)
+
+    if resultado:
+        print("Padrão encontrado:", resultado.group())
+    else:
+        print("Padrão não encontrado.")
+    ```
+
+    Neste exemplo, o caractere de exclamação `!` não faz parte do padrão `\w+`, pois `\w` corresponde apenas a letras, números e underscores. Portanto, o resultado será:
+
+    **Saída**
+    ```
+    Padrão não encontrado.
+    ```
+
+### exercícios `re.full match()`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Use `fullmatch()` para verificar se a string "Python3" corresponde à expressão regular que representa uma palavra que começa com "Python" seguida de um dígito.
+1. Crie uma expressão regular que utilize `fullmatch()` para validar se a string "2024-10-07" é uma data no formato "aaaa-mm-dd".
+1. Use `fullmatch()` para verificar se a string "abcde" corresponde a uma sequência de exatamente 5 letras minúsculas.
+1. Escreva uma expressão regular que utilize `fullmatch()` para validar se a string "12345" é composta apenas por números.
+1. Defina uma expressão regular que utilize `fullmatch()` para verificar se a string "email@exemplo.com" é um formato válido de e-mail.
+1. Use `fullmatch()` para verificar se a string "senha123!" corresponde a uma senha que deve ter pelo menos 8 caracteres, incluindo letras, números e símbolos.
+1. Crie uma expressão regular que utilize `fullmatch()` para validar se a string "ABC-123" tem um padrão que consiste em 3 letras maiúsculas, um hífen e 3 dígitos.
+1. Use `fullmatch()` para verificar se a string "123-456-7890" corresponde a um número de telefone no formato "ddd-ddd-dddd".
+1. Escreva uma expressão regular que utilize `fullmatch()` para verificar se a string "a*b+c?" é uma expressão que contém letras e os operadores de soma e multiplicação.
+1. Defina uma expressão regular que utilize `fullmatch()` para validar se a string "Mariana" corresponde a um nome que começa com letra maiúscula e tem apenas letras.
+
+</details>
+
+---
+
 ### `re.findall()`
 
 A função `re.findall()` encontra **todas as correspondências** do padrão na string e retorna uma lista com as correspondências. Diferente de `search()`, que retorna apenas a primeira correspondência, `findall()` retorna todas as ocorrências encontradas.
@@ -502,7 +586,7 @@ re.sub(padrão, substituição, string, contagem=0, flags=0)
     ```python
     import re
 
-    # texto onde vamos fazer a substituição
+    # texto para fazer a substituição
     texto = "Eu adoro maçã. A maçã é minha fruta favorita."
 
     # substituindo "maçã" por "banana"
@@ -626,7 +710,7 @@ re.split(padrão, string, maxsplit=0, flags=0)
 1. **exemplo dividindo uma string por espaços**
 
     ```python
-    # texto onde vamos dividir
+    # texto para dividir
     texto = "Eu gosto de programar em Python."
 
     # dividindo a string por espaços
@@ -752,7 +836,7 @@ padrão_compilado = re.compile(padrão, flags=0)
     # compilando o padrão para encontrar números
     padrão_números = re.compile(r"\d+")
 
-    # texto onde vamos buscar
+    # texto para buscar
     texto = "O produto custa 250 reais e o desconto é de 10%."
 
     # usando o padrão compilado para encontrar todos os números
@@ -927,7 +1011,7 @@ string_escapada = re.escape(string)
     ```python
     import re
 
-    # Texto onde vamos fazer a busca
+    # Texto para fazer a busca
     texto = "O arquivo dataXlog foi criado com sucesso."
 
     # Sem usar re.escape (o ponto é tratado como caractere coringa)
@@ -1262,7 +1346,7 @@ O metacaractere `*` significa **"zero ou mais ocorrências"** do padrão que o p
     # texto de exemplo
     texto = "Aaaahhh! Isso é incrível!"
 
-    # Padrão: "A" seguido de zero ou mais "a"
+    # padrão : "a" seguido de zero ou mais "a"
     resultado = re.findall(r"Aa*", texto)
 
     # exibindo o resultado
@@ -1351,7 +1435,7 @@ O metacaractere `+` significa **"uma ou mais ocorrências"** do padrão que o pr
     # texto de exemplo
     texto = "Eu tenho 1000 maçãs."
 
-    # Padrão: Encontrar um ou mais dígitos seguidos de um espaço
+    # padrão : encontrar um ou mais dígitos seguidos de um espaço
     resultado = re.findall(r"\d+ ", texto)
 
     # exibindo o resultado
@@ -1417,7 +1501,7 @@ O metacaractere `?` significa **"zero ou uma ocorrência"** do padrão que o pre
     # texto de exemplo
     texto = "cor ou cor?reto"
 
-    # Padrão: Encontrar "cor" seguido de uma letra opcional "?"
+    # padrão : encontrar "cor" seguido de uma letra opcional "?"
     resultado = re.findall(r"cor\??", texto)
 
     # exibindo o resultado
@@ -1498,3 +1582,1169 @@ O metacaractere `?` significa **"zero ou uma ocorrência"** do padrão que o pre
 </details>
 
 ---
+
+### `{}` (chaves)
+
+O metacaractere `{}` é usado para definir **quantificadores específicos** em um padrão. Ele permite determinar quantas vezes o padrão anterior deve ocorrer. Existem três formas principais de usar `{}`:
+
+- **`{n}`** : exatamente `n` ocorrências;
+- **`{n,}`** : pelo menos `n` ocorrências;
+- **`{n,m}`** : pelo menos `n` e no máximo `m` ocorrências;
+
+1. **exemplo quantidade exata de ocorrências `{n}`**
+
+    ```python
+    import re
+
+    # texto de exemplo
+    texto = "Oooooops!"
+
+    # padrão : encontrar "O" seguido exatamente de cinco letras "o"
+    resultado = re.findall(r"Oo{5}", texto)
+
+    # exibindo o resultado
+    print("Resultado com '{5}':", resultado)
+    ```
+
+    **Explicação**
+    - **`Oo{5}`** : o padrão encontra "O" seguido de exatamente 5 letras "o";
+
+    **Saída**
+    ```
+    Resultado com '{5}': ['Oooooo']
+    ```
+
+1. **exemplo pelo menos `n` ocorrências `{n,}`**
+
+    ```python
+    # texto de exemplo
+    texto = "Ahhhhh! Que legal!"
+
+    # padrão : encontrar "h" repetido três ou mais vezes
+    resultado = re.findall(r"h{3,}", texto)
+
+    # exibindo o resultado
+    print("Resultado com '{3,}':", resultado)
+    ```
+
+    **Explicação**
+    - **`h{3,}`** : procura por três ou mais letras "h" seguidas;
+
+    **Saída**
+    ```
+    Resultado com '{3,}': ['hhhh']
+    ```
+
+1. **exemplo entre `n` e `m` ocorrências `{n,m}`**
+
+    ```python
+    # texto de exemplo
+    texto = "Hmm... Interessante."
+
+    # padrão : encontrar "m" repetido entre 2 e 4 vezes
+    resultado = re.findall(r"m{2,4}", texto)
+
+    # exibindo o resultado
+    print("Resultado com '{2,4}':", resultado)
+    ```
+
+    **Explicação**
+    - **`m{2,4}`** : o padrão encontra "m" repetido entre 2 e 4 vezes;
+
+    **Saída**
+    ```
+    Resultado com '{2,4}': ['mm']
+    ```
+
+### exercícios `{}`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize o metacaractere chaves (`{}`) para encontrar sequências de exatamente 3 letras "a" consecutivas. Teste com a string "a aa aaa aaaa".
+1. Escreva uma expressão regular que utilize `{}` para encontrar números que tenham exatamente 4 dígitos. Aplique à string "123 4567 8901 12345".
+1. Defina uma expressão regular que utilize `{}` para verificar se uma string contém exatamente 2 letras "b" seguidas de qualquer caractere. Teste com a string "bb bbx bbb bbbb".
+1. Crie uma expressão regular que utilize `{}` para encontrar palavras que contenham entre 2 e 4 letras "e" consecutivas. Teste com a string "bee beee beeee beeeee".
+1. Escreva uma expressão regular que utilize `{}` para encontrar sequências de exatamente 5 números. Aplique à string "12345 67890 12 34567".
+1. Defina uma expressão regular que utilize `{}` para encontrar qualquer sequência de 2 a 3 letras "x" seguidas de uma letra "y". Aplique à string "xxxy xxy xy xxxxxy".
+1. Crie uma expressão regular que utilize `{}` para encontrar palavras que contenham de 3 a 6 letras "a" consecutivas. Teste com a string "a aa aaa aaaa aaaaaa".
+1. Escreva uma expressão regular que utilize `{}` para verificar se uma string contém entre 1 e 3 letras "m" seguidas de qualquer caractere. Aplique à string "m mm mmm mmmm".
+1. Defina uma expressão regular que utilize `{}` para encontrar sequências de exatamente 4 ou 5 dígitos. Teste com a string "1234 56789 123 45678".
+1. Crie uma expressão regular que utilize `{}` para encontrar qualquer palavra que tenha de 2 a 5 letras "n" seguidas de uma letra "o". Aplique à string "nno nnno nnnno nnnnno".
+
+</details>
+
+---
+
+### `[]` (colchetes)
+
+O metacaractere `[]` define um **conjunto de caracteres**. Ele permite que se especifique um conjunto de caracteres que podem aparecer em uma posição específica na string. Qualquer caractere dentro dos colchetes será aceito para corresponder ao padrão.
+
+1. **exemplo conjunto de caracteres simples**
+
+    ```python
+    # texto de exemplo
+    texto = "Cão, Gato, Pato"
+
+    # padrão : encontrar qualquer palavra que comece com "C", "G" ou "P"
+    resultado = re.findall(r"[CGP]\w+", texto)
+
+    # exibindo o resultado
+    print("Resultado com '[CGP]':", resultado)
+    ```
+
+    **Explicação**
+    - **`[CGP]\w+`** : o padrão encontra qualquer palavra que comece com "C", "G" ou "P";
+
+    **Saída**
+    ```
+    Resultado com '[CGP]': ['Cão', 'Gato', 'Pato']
+    ```
+
+1. **exemplo intervalo de caracteres**
+
+    ```python
+    # texto de exemplo
+    texto = "123abc456"
+
+    # padrão : encontrar dígitos entre 1 e 3
+    resultado = re.findall(r"[1-3]", texto)
+
+    # exibindo o resultado
+    print("Resultado com '[1-3]':", resultado)
+    ```
+
+    **Explicação**
+    - **`[1-3]`** : o padrão encontra qualquer dígito entre 1 e 3;
+
+    **Saída**
+    ```
+    Resultado com '[1-3]': ['1', '2', '3']
+    ```
+
+1. **exemplo negação dentro do conjunto**
+
+    O uso de **`^`** dentro dos colchetes nega o conjunto, ou seja, procura por caracteres **que não** estão no conjunto.
+
+    ```python
+    # texto de exemplo
+    texto = "123abc456def"
+
+    # padrão : encontrar tudo que não seja um número
+    resultado = re.findall(r"[^0-9]+", texto)
+
+    # exibindo o resultado
+    print("Resultado com '[^0-9]':", resultado)
+    ```
+
+    **Explicação**
+    - **`[^0-9]+`** : o padrão encontra sequências de caracteres que **não** sejam números;
+
+    **Saída**
+    ```
+    Resultado com '[^0-9]': ['abc', 'def']
+    ```
+
+1. **exemplo substituindo caracteres usando conjuntos**
+
+    Veja um conjunto de caracteres para substituir todas as vogais por "X".
+
+    ```python
+    # texto de exemplo
+    texto = "Python é divertido!"
+
+    # substituindo todas as vogais por "X"
+    resultado = re.sub(r"[aeiouAEIOU]", "X", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.sub() com '[aeiou]':", resultado)
+    ```
+
+    **Explicação**
+    - **`[aeiouAEIOU]`** : o padrão encontra qualquer vogal (maiúscula ou minúscula) e substitui por "X";
+
+    **Saída**
+    ```
+    Resultado de re.sub() com '[aeiou]': PythXn é dXvXrtXdX!
+    ```
+
+### exercícios `[]`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize colchetes (`[]`) para encontrar qualquer vogal (a, e, i, o, u) em uma string. Teste com a string "python regex tutorial".
+1. Escreva uma expressão regular que utilize colchetes para encontrar qualquer número de 0 a 3. Aplique à string "0123456789".
+1. Defina uma expressão regular que utilize colchetes para encontrar qualquer letra maiúscula de "A" a "F". Teste com a string "ABCDEFabcdefGHIJ".
+1. Crie uma expressão regular que utilize colchetes para encontrar qualquer caractere que seja um ponto, vírgula ou ponto de exclamação. Aplique à string "Olá, mundo! Tudo bem?".
+1. Escreva uma expressão regular que utilize colchetes para encontrar qualquer caractere alfanumérico (letras e números). Teste com a string "abc123!@#".
+1. Defina uma expressão regular que utilize colchetes para encontrar qualquer uma das letras "p", "y", ou "t". Aplique à string "python regex tutorial".
+1. Crie uma expressão regular que utilize colchetes para encontrar quaisquer dois dígitos consecutivos que estejam entre 5 e 9. Teste com a string "456789".
+1. Escreva uma expressão regular que utilize colchetes para encontrar qualquer letra minúscula exceto "a", "e", "i", "o", e "u". Aplique à string "Python Regex".
+1. Defina uma expressão regular que utilize colchetes para encontrar qualquer caractere que não seja uma letra ou número (use `[^...]`). Teste com a string "abc123!@#".
+1. Crie uma expressão regular que utilize colchetes para encontrar qualquer uma das letras de "a" até "f" e qualquer número de 1 a 4. Aplique à string "abc123def456".
+
+</details>
+
+---
+
+### `()` (parênteses)
+
+Os parênteses **`()`** são usados para **agrupar** partes de uma expressão regular e permitir que sejam tratadas como uma única unidade. Isso também permite **capturar** essas partes da string, possibilitando o uso em substituições e extrações.
+
+1. **exemplo agrupando com `()` para encontrar padrões complexos**
+
+    ```python
+    import re
+
+    # texto de exemplo
+    texto = "Área de código: +55, número: 12345-6789"
+
+    # padrão : encontrar código de área e número de telefone usando agrupamento
+    resultado = re.search(r"(\+\d{2}), número: (\d{5}-\d{4})", texto)
+
+    # exibindo o resultado
+    if resultado:
+        print("Código de área:", resultado.group(1))
+        print("Número de telefone:", resultado.group(2))
+    ```
+
+    **Explicação**
+    - **`(\+\d{2})`** : captura o código de área, que começa com "+" seguido por dois dígitos;
+    - **`(\d{5}-\d{4})`** : captura o número de telefone no formato "12345-6789";
+    - **`group(1)` e `group(2)`** : retornam as partes capturadas pelo primeiro e segundo grupo;
+
+    **Saída**
+    ```
+    Código de área: +55
+    Número de telefone: 12345-6789
+    ```
+
+1. **exemplo usando grupos com `re.findall()`**
+
+    ```python
+    # texto de exemplo
+    texto = "ID de produto: A123, B456, C789"
+
+    # padrão : encontrar IDs de produto e capturá-los
+    resultado = re.findall(r"([A-Z]\d{3})", texto)
+
+    # exibindo o resultado
+    print("IDs de produto encontrados:", resultado)
+    ```
+
+    **Explicação**
+    - **`([A-Z]\d{3})`** : captura IDs de produto formados por uma letra maiúscula seguida por três dígitos;
+
+    **Saída**
+    ```
+    IDs de produto encontrados: ['A123', 'B456', 'C789']
+    ```
+
+1. **exemplo substituindo com grupos usando `re.sub()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Preço: 100 dólares"
+
+    # substituindo o valor e capturando a palavra "dólares"
+    resultado = re.sub(r"(\d+) (dólares)", r"Valor: \1 \2", texto)
+
+    # exibindo o resultado
+    print("Resultado de re.sub() com grupos:", resultado)
+    ```
+
+    **Explicação**
+    - **`\1`** : refere-se ao primeiro grupo capturado (o valor numérico);
+    - **`\2`** : refere-se ao segundo grupo capturado (a palavra "dólares");
+
+    **Saída**
+    ```
+    Resultado de re.sub() com grupos: Valor: 100 dólares
+    ```
+
+### exercícios `()`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize parênteses (`()`) para capturar a sequência de letras "ab" dentro de uma string. Teste com a string "abc, abcd, efg".
+1. Escreva uma expressão regular que utilize parênteses para capturar e extrair o número de uma data no formato "Dia: 25, Mês: 12, Ano: 2024". Aplique à string "Dia: 25, Mês: 12, Ano: 2024".
+1. Defina uma expressão regular que utilize parênteses para agrupar e capturar duas palavras consecutivas. Teste com a string "palavra1 palavra2".
+1. Crie uma expressão regular que utilize parênteses para capturar e inverter o nome e sobrenome em uma string no formato "Sobrenome, Nome". Aplique à string "Silva, João".
+1. Escreva uma expressão regular que utilize parênteses para capturar um número de telefone no formato "(XX) XXXX-XXXX". Teste com a string "(21) 9876-1234".
+1. Defina uma expressão regular que utilize parênteses para capturar grupos de três letras seguidas por um espaço. Aplique à string "abc def ghi".
+1. Crie uma expressão regular que utilize parênteses para capturar a sequência de um código postal no formato "XXXXX-XXX". Teste com a string "12345-678".
+1. Escreva uma expressão regular que utilize parênteses para capturar a parte de um endereço de e-mail antes do símbolo "@" e o domínio depois dele. Teste com "email@example.com".
+1. Defina uma expressão regular que utilize parênteses para capturar a primeira e a última palavra de uma frase. Aplique à string "Python é divertido de aprender".
+1. Crie uma expressão regular que utilize parênteses para capturar a parte inteira e a parte decimal de um número no formato "123.456". Teste com a string "Preço: 123.45".
+
+</details>
+
+---
+
+### `|` (barra vertical)
+
+O metacaractere **`|`** funciona como um **"ou lógico"** em expressões regulares, permitindo que você defina alternativas para correspondência. Ele tenta corresponder a parte antes do `|` ou a parte depois do `|`.
+
+1. **exemplo alternativas com `|` para diferentes palavras**
+
+    ```python
+    # texto de exemplo
+    texto = "Cachorro, Gato, Pássaro"
+
+    # padrão : encontrar "Cachorro", "Gato" ou "Pássaro"
+    resultado = re.findall(r"Cachorro|Gato|Pássaro", texto)
+
+    # exibindo o resultado
+    print("Animais encontrados:", resultado)
+    ```
+
+    **Explicação**
+    - **`Cachorro|Gato|Pássaro`** : procura por qualquer uma dessas palavras na string;
+
+    **Saída**
+    ```
+    Animais encontrados: ['Cachorro', 'Gato', 'Pássaro']
+    ```
+
+1. **exemplo usando `|` com `re.match()`**
+
+    ```python
+    # texto de exemplo
+    texto = "Verde é uma cor"
+
+    # padrão : encontrar "Verde" ou "Azul" no início da string
+    resultado = re.match(r"Verde|Azul", texto)
+
+    # exibindo o resultado
+    if resultado:
+        print("Cor encontrada:", resultado.group())
+    else:
+        print("Nenhuma cor encontrada.")
+    ```
+
+    **Explicação**
+    - **`Verde|Azul`** : verifica se o texto começa com "Verde" ou "Azul";
+
+    **Saída**
+    ```
+    Cor encontrada: Verde
+    ```
+
+1. **exemplo alternativas com padrões complexos**
+
+    ```python
+    # texto de exemplo
+    texto = "Carro: ABC-1234 ou Moto: 9876-XYZ"
+
+    # padrão : encontrar placas de carro ou moto
+    resultado = re.findall(r"[A-Z]{3}-\d{4}|\d{4}-[A-Z]{3}", texto)
+
+    # exibindo o resultado
+    print("Placas encontradas:", resultado)
+    ```
+
+    **Explicação**
+    - **`[A-Z]{3}-\d{4}`** : encontra placas de veículos no formato "ABC-1234" ou "XYZ-9876";
+
+    **Saída**
+    ```
+    Placas encontradas: ['ABC-1234', 'XYZ-9876']
+    ```
+
+### exercícios `|`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize a barra vertical (`|`) para encontrar ocorrências de "maçã" ou "laranja" em uma string. Teste com a string "Eu gosto de maçã e laranja".
+1. Escreva uma expressão regular que utilize `|` para encontrar a palavra "cão" ou "gato" em uma frase. Aplique à string "O cão e o gato são animais de estimação".
+1. Defina uma expressão regular que utilize `|` para encontrar números que podem ser "10" ou "20". Teste com a string "10 15 20 25".
+1. Crie uma expressão regular que utilize `|` para encontrar as cores "azul", "verde" ou "vermelho". Teste com a string "As cores são azul, verde e vermelho".
+1. Escreva uma expressão regular que utilize `|` para encontrar palavras que podem ser "carro", "moto" ou "bicicleta". Aplique à string "Eu tenho um carro e uma bicicleta".
+1. Defina uma expressão regular que utilize `|` para capturar sequências de letras "a", "b" ou "c". Teste com a string "a b c d e f".
+1. Crie uma expressão regular que utilize `|` para encontrar a palavra "dia" ou "noite" em uma string. Aplique à string "Eu prefiro o dia à noite".
+1. Escreva uma expressão regular que utilize `|` para encontrar números que podem ser "100", "200" ou "300". Teste com a string "100 150 200 250 300".
+1. Defina uma expressão regular que utilize `|` para encontrar palavras que sejam "sol" ou "lua". Aplique à string "O sol brilha durante o dia, e a lua à noite".
+1. Crie uma expressão regular que utilize `|` para encontrar nomes de frutas "banana", "uva" ou "morango". Teste com a string "Eu comprei banana, uva e morango".
+
+</details>
+
+---
+
+## sequências
+
+### `\d` (dígitos)
+
+- **`\d`** corresponde a qualquer **dígito numérico** de 0 a 9;
+- **equivalente a**: `[0-9]`;
+
+1. **exemplo encontrando todos os dígitos em uma string**
+
+    ```python
+    import re
+
+    # texto de exemplo
+    texto = "A senha é 12345 e o código de área é 55."
+
+    # padrão : encontrar todos os dígitos na string
+    resultado = re.findall(r"\d", texto)
+
+    # exibindo o resultado
+    print("Dígitos encontrados:", resultado)
+    ```
+
+    **Explicação**
+    - **`\d`** encontra todos os dígitos individuais.
+
+    **Saída**
+    ```
+    Dígitos encontrados: ['1', '2', '3', '4', '5', '5', '5']
+    ```
+
+1. **exemplo capturando sequências de dígitos**
+
+    ```python
+    # texto de exemplo
+    texto = "Produto X custa 999 reais e Produto Y custa 1500 reais."
+
+    # padrão : encontrar números inteiros
+    resultado = re.findall(r"\d+", texto)
+
+    # exibindo o resultado
+    print("Números inteiros encontrados:", resultado)
+    ```
+
+    **Explicação**
+    - **`\d+`** captura um ou mais dígitos consecutivos (números inteiros).
+
+    **Saída**
+    ```
+    Números inteiros encontrados: ['999', '1500']
+    ```
+
+### exercícios `\d`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize `\d` para encontrar qualquer dígito em uma string. Teste com a string "abc123def456".
+1. Escreva uma expressão regular que utilize `\d` para encontrar todos os dígitos em uma frase contendo palavras e números. Aplique à string "Eu tenho 2 gatos e 3 cachorros".
+1. Defina uma expressão regular que utilize `\d` para encontrar sequências de dois dígitos consecutivos. Teste com a string "12 34 56 78 90".
+1. Crie uma expressão regular que utilize `\d` para capturar o ano de uma data no formato "dd/mm/aaaa". Aplique à string "Hoje é 07/10/2024".
+1. Escreva uma expressão regular que utilize `\d` para verificar se uma string contém um número de telefone no formato "XXXXX-XXXX". Teste com a string "Meu número é 12345-6789".
+1. Defina uma expressão regular que utilize `\d` para encontrar todos os números de uma sequência, separados por letras. Teste com "a1b2c3d4".
+1. Crie uma expressão regular que utilize `\d` para capturar números de CPF no formato "XXX.XXX.XXX-XX". Teste com a string "Meu CPF é 123.456.789-09".
+1. Escreva uma expressão regular que utilize `\d` para verificar se uma string contém um código postal (CEP) no formato "XXXXX-XXX". Teste com a string "CEP: 98765-432".
+1. Defina uma expressão regular que utilize `\d` para encontrar números que representem a idade de pessoas em uma frase. Aplique à string "Maria tem 25 anos, João tem 30".
+1. Crie uma expressão regular que utilize `\d` para capturar os números de uma sequência numérica com vários grupos de dígitos. Teste com a string "Grupo 1: 123, Grupo 2: 456, Grupo 3: 789".
+
+</details>
+
+---
+
+### `\D` (não-dígitos)
+
+- **`\D`** corresponde a qualquer caractere **que não seja um dígito**;
+- **equivalente a**: `[^0-9]`;
+
+1. **exemplo encontrando caracteres que não sejam dígitos**
+
+    ```python
+    # texto de exemplo
+    texto = "Preço: 1500 reais"
+
+    # padrão : encontrar tudo que não seja dígito
+    resultado = re.findall(r"\D", texto)
+
+    # exibindo o resultado
+    print("Caracteres não numéricos encontrados:", resultado)
+    ```
+
+    **Explicação**
+    - **`\D`** encontra qualquer caractere que **não** seja um dígito.
+
+    **Saída**
+    ```
+    Caracteres não numéricos encontrados: ['P', 'r', 'e', 'ç', 'o', ':', ' ', ' ', 'r', 'e', 'a', 'i', 's']
+    ```
+
+1. **exemplo removendo todos os dígitos de uma string**
+
+    ```python
+    # texto de exemplo
+    texto = "Meu número de telefone é 1234-5678."
+
+    # padrão : substituir todos os dígitos por uma string vazia
+    resultado = re.sub(r"\d", "", texto)
+
+    # exibindo o resultado
+    print("Texto sem dígitos:", resultado)
+    ```
+
+    **Explicação**
+    - **`\d`** substitui cada dígito encontrado por uma string vazia.
+
+    **Saída**
+    ```
+    Texto sem dígitos: Meu número de telefone é -.
+    ```
+
+### exercícios `\D`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize `\D` para encontrar qualquer caractere que não seja um dígito em uma string. Teste com a string "abc123def456".
+1. Escreva uma expressão regular que utilize `\D` para encontrar todas as letras em uma string que contém palavras e números. Aplique à string "A idade de João é 25 e a de Maria é 30".
+1. Defina uma expressão regular que utilize `\D` para separar os dígitos de qualquer outro caractere em uma string. Teste com "123abc456def".
+1. Crie uma expressão regular que utilize `\D` para capturar tudo o que não seja números em uma string que contém uma mistura de números e símbolos. Aplique à string "Preço: $100, Desconto: 20%".
+1. Escreva uma expressão regular que utilize `\D` para encontrar o texto de uma string que contém um CPF, ignorando os números. Teste com a string "CPF: 123.456.789-09".
+1. Defina uma expressão regular que utilize `\D` para encontrar todas as letras em uma string contendo números e letras. Teste com a string "abc123xyz456".
+1. Crie uma expressão regular que utilize `\D` para remover todos os números de uma string, mantendo apenas os caracteres alfabéticos. Aplique à string "Casa123Rua456Bairro789".
+1. Escreva uma expressão regular que utilize `\D` para capturar todos os caracteres que não são dígitos de uma string contendo uma data no formato "dd/mm/aaaa". Teste com a string "07/10/2024".
+1. Defina uma expressão regular que utilize `\D` para identificar a parte textual de uma mensagem que mistura letras, números e símbolos. Aplique à string "Pedido #123456: Produto - Televisor".
+1. Crie uma expressão regular que utilize `\D` para capturar e extrair tudo o que não seja números de uma string com endereços, como "Rua 25, Número 123, Bairro 789".
+
+</details>
+
+---
+
+### `\w` (caracteres alfanuméricos)
+
+- **`\w`** corresponde a qualquer **caractere alfanumérico** (letras, dígitos e o caractere sublinhado `_`);
+- **equivalente a**: `[a-zA-Z0-9_]`;
+
+1. **exemplo encontrando todas as palavras**
+
+    ```python
+    # texto de exemplo
+    texto = "Palavras e números: 123_ABC"
+
+    # padrão : encontrar todas as sequências alfanuméricas
+    resultado = re.findall(r"\w+", texto)
+
+    # exibindo o resultado
+    print("Palavras e números encontrados:", resultado)
+    ```
+
+    **Explicação**
+    - **`\w+`** captura sequências de caracteres alfanuméricos (palavras ou números).
+
+    **Saída**
+    ```
+    Palavras e números encontrados: ['Palavras', 'e', 'números', '123_ABC']
+    ```
+
+1. **exemplo substituindo caracteres alfanuméricos**
+
+    ```python
+    # texto de exemplo
+    texto = "Código: ABC_123"
+
+    # padrão : substituir todos os caracteres alfanuméricos por "*"
+    resultado = re.sub(r"\w", "*", texto)
+
+    # exibindo o resultado
+    print("Resultado de substituição:", resultado)
+    ```
+
+    **Explicação**
+    - **`\w`** encontra cada caractere alfanumérico e o substitui por "*".
+
+    **Saída**
+    ```
+    Resultado de substituição: ******: *******
+    ```
+
+### exercícios `\w`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize `\w` para encontrar todas as letras e números em uma string. Teste com a string "abc123!@#".
+1. Escreva uma expressão regular que utilize `\w` para encontrar qualquer caractere alfanumérico em uma frase com símbolos. Aplique à string "Python é legal! 2024 é o ano!".
+1. Defina uma expressão regular que utilize `\w` para capturar todos os caracteres alfanuméricos de um nome de usuário em um e-mail (parte antes de "@"). Teste com a string "usuario_123@example.com".
+1. Crie uma expressão regular que utilize `\w` para extrair todas as palavras de uma string contendo espaços e símbolos. Aplique à string "Python_3 é incrível! Vamos aprender?".
+1. Escreva uma expressão regular que utilize `\w` para encontrar as palavras em uma URL, ignorando os caracteres de pontuação. Teste com a string "https://www.exemplo.com/caminho/pagina".
+1. Defina uma expressão regular que utilize `\w` para capturar qualquer sequência de letras e números separadas por espaços, ignorando pontuação. Teste com a string "A senha é 123abc_ e o código é xyz789!".
+1. Crie uma expressão regular que utilize `\w` para identificar todas as palavras e números em uma frase que também contém pontuações e símbolos. Aplique à string "Dia 12, mês 10, ano 2024 - Vamos lá!".
+1. Escreva uma expressão regular que utilize `\w` para extrair todas as partes alfanuméricas de uma string com códigos mistos. Teste com a string "Código: 123abc, Senha: 789xyz!".
+1. Defina uma expressão regular que utilize `\w` para encontrar nomes de variáveis e funções que contenham letras, números e sublinhados em um código de programação. Aplique à string "def minha_funcao(var1, var2): return var1 + var2".
+1. Crie uma expressão regular que utilize `\w` para capturar todas as palavras alfanuméricas em uma string que contém uma frase com números e símbolos. Teste com "Eu tenho 2_irmãos e 1_primo!".
+
+</details>
+
+---
+
+### `\W` (não-alfanuméricos)
+
+- **`\W`** corresponde a qualquer caractere **que não seja alfanumérico**;
+- **equivalente a**: `[^a-zA-Z0-9_]`;
+
+1. **exemplo encontrando caracteres não alfanuméricos**
+
+    ```python
+    # texto de exemplo
+    texto = "Nome: João & Maria! Número: 456."
+
+    # padrão : encontrar todos os caracteres que não são alfanuméricos
+    resultado = re.findall(r"\W", texto)
+
+    # exibindo o resultado
+    print("Caracteres não alfanuméricos encontrados:", resultado)
+    ```
+
+    **Explicação**
+    - **`\W`** encontra tudo que **não** é um caractere alfanumérico.
+
+    **Saída**
+    ```
+    Caracteres não alfanuméricos encontrados: [':', ' ', '&', ' ', '!', ' ', ':', ' ', '.']
+    ```
+
+1. **exemplo removendo caracteres não alfanuméricos**
+
+    ```python
+    # texto de exemplo
+    texto = "Nome: Ana@exemplo.com"
+
+    # padrão : substituir caracteres não alfanuméricos por uma string vazia
+    resultado = re.sub(r"\W", "", texto)
+
+    # exibindo o resultado
+    print("Resultado sem caracteres especiais:", resultado)
+    ```
+
+    **Explicação**
+    - **`\W`** remove todos os caracteres que não são letras, números ou sublinhados.
+
+    **Saída**
+    ```
+    Resultado sem caracteres especiais: NomeAnaexemplocom
+    ```
+
+### exercícios `\W`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize `\W` para encontrar todos os caracteres não alfanuméricos em uma string. Teste com a string "abc123!@#def$%&".
+1. Escreva uma expressão regular que utilize `\W` para encontrar todos os espaços e símbolos em uma frase. Aplique à string "Python é incrível! Vamos aprender?".
+1. Defina uma expressão regular que utilize `\W` para capturar todos os caracteres não alfanuméricos em uma URL. Teste com a string "https://www.exemplo.com/pagina-123".
+1. Crie uma expressão regular que utilize `\W` para extrair os caracteres especiais de uma string de senha complexa. Aplique à string "senha123!@#ABC$%_".
+1. Escreva uma expressão regular que utilize `\W` para encontrar todos os símbolos e pontuações em uma frase, ignorando letras e números. Teste com a string "Olá, tudo bem? Vamos ao cinema às 18h!".
+1. Defina uma expressão regular que utilize `\W` para identificar todos os caracteres não alfanuméricos, como espaços e pontuações, em uma string de código. Aplique à string "def minha_funcao(): print('Olá, Mundo!')".
+1. Crie uma expressão regular que utilize `\W` para capturar todos os caracteres que não sejam letras, números ou sublinhados em uma string de e-mail. Teste com "usuario_123@example.com".
+1. Escreva uma expressão regular que utilize `\W` para separar todas as palavras de uma frase, usando os símbolos como delimitadores. Teste com a string "Café&Chá#Biscoito@Bolacha".
+1. Defina uma expressão regular que utilize `\W` para encontrar os caracteres especiais em uma string de data no formato "dd/mm/aaaa". Aplique à string "07/10/2024".
+1. Crie uma expressão regular que utilize `\W` para remover todos os caracteres não alfanuméricos de uma frase, deixando apenas letras, números e sublinhados. Teste com "Senha segura: abc123!@#XYZ".
+
+</details>
+
+---
+
+### `\s` (espaços em branco)
+
+- **`\s`** corresponde a qualquer **caractere de espaço em branco**, como espaços, tabulações (`\t`), novas linhas (`\n`), etc;
+- **equivalente a**: `[ \t\n\r\f\v]`;
+
+1. **exemplo encontrando todos os espaços em branco em uma string**
+
+    ```python
+    import re
+
+    # texto de exemplo
+    texto = "Palavras separadas por espaços e tabulações.\tAqui também."
+
+    # padrão : encontrar todos os caracteres de espaço em branco
+    resultado = re.findall(r"\s", texto)
+
+    # exibindo o resultado
+    print("Espaços em branco encontrados:", resultado)
+    ```
+
+    **Explicação**
+    - **`\s`** encontra cada espaço em branco, incluindo espaços comuns e tabulações.
+
+    **Saída**
+    ```
+    Espaços em branco encontrados: [' ', ' ', ' ', ' ', ' ', ' ', '\t', ' ']
+    ```
+
+1. **exemplo substituindo espaços em branco**
+
+    ```python
+    # texto de exemplo
+    texto = "Texto com vários  espaços e linhas.\nAqui tem mais uma linha."
+
+    # padrão : substituir todos os espaços em branco por "-"
+    resultado = re.sub(r"\s", "-", texto)
+
+    # exibindo o resultado
+    print("Texto com substituição de espaços:", resultado)
+    ```
+
+    **Explicação**
+    - **`\s`** substitui cada espaço em branco por um traço "-".
+
+    **Saída**
+    ```
+    Texto com substituição de espaços: Texto-com-vários--espaços-e-linhas.-Aqui-tem-mais-uma-linha.
+    ```
+
+### exercícios `\s`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize `\s` para encontrar todos os espaços em uma string. Teste com a string "Python é uma linguagem poderosa".
+1. Escreva uma expressão regular que utilize `\s` para contar o número de espaços em branco em uma frase. Aplique à string "Aprendendo Python passo a passo".
+1. Defina uma expressão regular que utilize `\s` para capturar todos os espaços entre palavras. Teste com a string "O dia está ensolarado e quente".
+1. Crie uma expressão regular que utilize `\s` para substituir todos os espaços por sublinhados em uma frase. Aplique à string "Expressões regulares são úteis".
+1. Escreva uma expressão regular que utilize `\s` para identificar espaços em branco e substituir por uma vírgula. Teste com a string "1 2 3 4 5".
+1. Defina uma expressão regular que utilize `\s` para encontrar tabulações e espaços em uma string que contenha tanto tabulação quanto espaço. Aplique à string "Nome:\tJoão\t Idade: 25".
+1. Crie uma expressão regular que utilize `\s` para identificar quebras de linha em uma string. Teste com a string "Primeira linha\nSegunda linha\nTerceira linha".
+1. Escreva uma expressão regular que utilize `\s` para remover todos os espaços em uma frase, deixando as palavras juntas. Teste com "Removendo todos os espaços em branco".
+1. Defina uma expressão regular que utilize `\s` para contar o número total de caracteres de espaço, incluindo espaços, tabulações e quebras de linha. Teste com a string "Linha 1\nLinha 2\tLinha 3".
+1. Crie uma expressão regular que utilize `\s` para capturar todas as ocorrências de múltiplos espaços consecutivos e substituí-los por um único espaço. Aplique à string "Python    é   uma   linguagem   incrível".
+
+</details>
+
+---
+
+### `\S` (não-espaços)
+
+- **`\S`** corresponde a qualquer caractere **que não seja um espaço em branco**;
+- **equivalente a**: `[^ \t\n\r\f\v]`;
+
+1. **exemplo encontrando todos os caracteres que não são espaços**
+
+    ```python
+    # texto de exemplo
+    texto = "Exemplo: Linha com espaços."
+
+    # padrão : encontrar todos os caracteres que não são espaços
+    resultado = re.findall(r"\S", texto)
+
+    # exibindo o resultado
+    print("Caracteres que não são espaços:", resultado)
+    ```
+
+    **Explicação**
+    - **`\S`** encontra tudo que **não** é espaço em branco.
+
+    **Saída**
+    ```
+    Caracteres que não são espaços: ['E', 'x', 'e', 'm', 'p', 'l', 'o', ':', 'L', 'i', 'n', 'h', 'a', 'c', 'o', 'm', 'e', 's', 'p', 'a', 'ç', 'o', 's', '.']
+    ```
+
+1. **exemplo removendo todos os espaços em branco**
+
+    ```python
+    # texto de exemplo
+    texto = "Texto com espaços e tabulações.\tOutra linha."
+
+    # padrão : substituir todos os espaços em branco por uma string vazia
+    resultado = re.sub(r"\s", "", texto)
+
+    # exibindo o resultado
+    print("Texto sem espaços em branco:", resultado)
+    ```
+
+    **Explicação**
+    - **`\s`** remove todos os espaços em branco da string.
+
+    **Saída**
+    ```
+    Texto sem espaços em branco: Textocomespaçosetabulações.Outralinha.
+    ```
+
+### exercícios `\S`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize `\S` para encontrar todos os caracteres que não sejam espaços em uma string. Teste com a string "Python é incrível!".
+1. Escreva uma expressão regular que utilize `\S` para capturar todas as palavras de uma frase, ignorando os espaços em branco. Aplique à string "Aprendendo expressões regulares em Python".
+1. Defina uma expressão regular que utilize `\S` para encontrar todos os caracteres contínuos que não sejam espaços em uma URL. Teste com "https://www.exemplo.com".
+1. Crie uma expressão regular que utilize `\S` para capturar todos os símbolos e letras de uma string, ignorando os espaços. Aplique à string "O valor é: $100.00, desconto: 15%".
+1. Escreva uma expressão regular que utilize `\S` para encontrar todos os caracteres não espaços em uma linha de código. Teste com a string "def minha_funcao(): print('Olá, Mundo!')".
+1. Defina uma expressão regular que utilize `\S` para capturar todas as palavras e números de uma string com frases e números. Teste com "A idade de João é 25 anos e Maria tem 30".
+1. Crie uma expressão regular que utilize `\S` para remover os espaços de uma frase, deixando os caracteres contínuos. Aplique à string "Removendo os espaços em branco".
+1. Escreva uma expressão regular que utilize `\S` para capturar todos os caracteres de uma string, exceto os espaços e tabulações. Teste com a string "Nome: João\t Idade: 25".
+1. Defina uma expressão regular que utilize `\S` para identificar todos os caracteres, exceto os espaços, em uma string contendo quebra de linhas. Aplique à string "Linha 1\nLinha 2\nLinha 3".
+1. Crie uma expressão regular que utilize `\S` para capturar todos os caracteres não espaços de uma string com números e símbolos. Teste com "Códigos: 123-456; Senhas: abc!@#".
+
+</details>
+
+---
+
+### `\b` (limite de palavra)
+
+- **`\b`** corresponde a um **limite de palavra**, que pode ser o início ou o fim de uma palavra;
+- um limite de palavra ocorre quando há uma transição entre um caractere alfanumérico e um não-alfanumérico (ou vice-versa);
+
+1. **exemplo encontrando palavras exatas**
+
+    ```python
+    # texto de exemplo
+    texto = "Estamos aprendendo expressões regulares no Python."
+
+    # padrão : encontrar a palavra "Python"
+    resultado = re.search(r"\bPython\b", texto)
+
+    # exibindo o resultado
+    if resultado:
+        print("Palavra 'Python' encontrada:", resultado.group())
+    else:
+        print("Palavra não encontrada.")
+    ```
+
+    **Explicação**
+    - **`\bPython\b`** procura pela palavra exata "Python", verificando se há um limite de palavra antes e depois dela.
+
+    **Saída**
+    ```
+    Palavra 'Python' encontrada: Python
+    ```
+
+1. **exemplo substituindo palavras exatas**
+
+    ```python
+    # texto de exemplo
+    texto = "Vamos estudar Python e aprender Python com exemplos."
+
+    # padrão : substituir "Python" por "regex"
+    resultado = re.sub(r"\bPython\b", "regex", texto)
+
+    # exibindo o resultado
+    print("Texto após substituição:", resultado)
+    ```
+
+    **Explicação**
+    - **`\bPython\b`** garante que apenas a palavra exata "Python" seja substituída.
+
+    **Saída**
+    ```
+    Texto após substituição: Vamos estudar regex e aprender regex com exemplos.
+    ```
+
+### exercícios `\b`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize `\b` para encontrar a palavra "Python" em uma string. Teste com a string "Aprendendo Python é divertido".
+1. Escreva uma expressão regular que utilize `\b` para capturar todas as ocorrências da palavra "programação" em uma frase. Aplique à string "A programação em Python e a programação em Java são populares".
+1. Defina uma expressão regular que utilize `\b` para verificar se a palavra "teste" está presente em uma string, garantindo que não faça parte de outra palavra. Teste com "Isso é um teste".
+1. Crie uma expressão regular que utilize `\b` para encontrar todas as palavras que começam com a letra "A" em uma frase. Aplique à string "Aprenda a programar em Python e a criar projetos".
+1. Escreva uma expressão regular que utilize `\b` para substituir todas as ocorrências da palavra "bom" por "ótimo" em uma string. Teste com a frase "Isso é um bom exemplo".
+1. Defina uma expressão regular que utilize `\b` para capturar todas as palavras terminadas em "ar" em uma string. Aplique à string "Cantar, dançar e jogar são atividades divertidas".
+1. Crie uma expressão regular que utilize `\b` para contar quantas vezes a palavra "programa" aparece em uma string. Teste com "O programa é simples. Este programa é útil".
+1. Escreva uma expressão regular que utilize `\b` para encontrar todas as palavras que têm exatamente 4 letras. Teste com a string "Cão, gato, peixe e pato são animais comuns".
+1. Defina uma expressão regular que utilize `\b` para identificar se a palavra "ponto" está presente em uma string, ignorando casos onde é parte de outra palavra. Teste com "Um ponto é uma marca".
+1. Crie uma expressão regular que utilize `\b` para capturar todas as palavras que contêm a letra "e". Aplique à string "Ela é muito inteligente e sempre aprende rapidamente".
+
+</details>
+
+---
+
+### `\B` (não-limite de palavra)
+
+- **`\B`** corresponde a qualquer posição que **não seja um limite de palavra**;
+- usado para garantir que a correspondência ocorra no meio de uma palavra, e não nos seus limites;
+
+1. **exemplo encontrando ocorrências dentro de palavras**
+
+    ```python
+    # texto de exemplo
+    texto = "Expressões como sub, substring e superb."
+
+    # padrão : encontrar "sub" que não esteja no início ou no fim de uma palavra
+    resultado = re.findall(r"\Bsub\B", texto)
+
+    # exibindo o resultado
+    print("Ocorrências de 'sub' no meio de palavras:", resultado)
+    ```
+
+    **Explicação**
+    - **`\Bsub\B`** encontra a sequência "sub" dentro de palavras, mas não se ela estiver no início ou no fim.
+
+    **Saída**
+    ```
+    Ocorrências de 'sub' no meio de palavras: ['sub']
+    ```
+
+1. **exemplo usando `\b` para ignorar palavras completas**
+
+    ```python
+    # texto de exemplo
+    texto = "submarine, submission, and subscribe are common terms."
+
+    # padrão : encontrar ocorrências de "sub" que não estejam no início ou fim da palavra
+    resultado = re.findall(r"\Bsub\B", texto)
+
+    # exibindo o resultado
+    print("Ocorrências de 'sub' no meio:", resultado)
+    ```
+
+    **Explicação**
+    - **`\Bsub\B`** ignora ocorrências de "sub" que estão no início ou no final de palavras.
+
+    **Saída**
+    ```
+    Ocorrências de 'sub' no meio: []
+    ```
+
+### exercícios `\B`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma expressão regular que utilize `\B` para encontrar a sequência "Python" quando ela estiver dentro de outra palavra. Teste com a string "Pythonista".
+1. Escreva uma expressão regular que utilize `\B` para capturar a palavra "programação" quando ela estiver concatenada com outros caracteres. Aplique à string "programaçãoPython".
+1. Defina uma expressão regular que utilize `\B` para verificar se a sequência "está" está presente em uma string onde é parte de outra palavra. Teste com "Amanhã estará melhor".
+1. Crie uma expressão regular que utilize `\B` para encontrar todas as ocorrências da sequência "fun" que estejam dentro de palavras. Aplique à string "Fundamental e funcional".
+1. Escreva uma expressão regular que utilize `\B` para identificar se "código" aparece em uma palavra longa. Teste com "programacódigo".
+1. Defina uma expressão regular que utilize `\B` para capturar sequências que contêm "ar" no meio de palavras. Aplique à string "Programar é divertido".
+1. Crie uma expressão regular que utilize `\B` para encontrar palavras que contêm a sequência "de" no meio. Teste com a string "Padeiro e Madeira".
+1. Escreva uma expressão regular que utilize `\B` para capturar todas as ocorrências da sequência "ente" em palavras compostas. Teste com "Aventurente".
+1. Defina uma expressão regular que utilize `\B` para identificar se a sequência "passo" está presente em uma string onde é parte de outra palavra. Teste com "passos a seguir".
+1. Crie uma expressão regular que utilize `\B` para encontrar todas as palavras que têm "tor" no meio. Aplique à string "motor e ator".
+
+</details>
+
+---
+
+## exemplos práticos
+
+### exemplo removendo espaços em branco (trim)
+
+```python
+# texto de exemplo
+texto = "   Olá,   mundo!   "
+
+# padrão : remover espaços em branco no início e no fim da string
+resultado = re.sub(r"^\s+|\s+$", "", texto)
+
+# exibindo o resultado
+print("Texto sem espaços extras:", resultado)
+```
+
+**Saída esperada**:
+```
+Texto sem espaços extras: Olá,   mundo!
+```
+
+---
+
+### extraindo números de uma string complexa
+
+```python
+# texto de exemplo
+texto = "O aluno 12345 tirou nota 8.5 em 2 provas."
+
+# padrão : encontrar todos os números inteiros e decimais
+resultado = re.findall(r"\d+\.\d+|\d+", texto)
+
+# exibindo o resultado
+print("Números encontrados:", resultado)
+```
+
+**Saída esperada**:
+```
+Números encontrados: ['12345', '8.5', '2']
+```
+
+---
+
+### validando um endereço de e-mail
+
+```python
+# texto de exemplo
+email = "exemplo@dominio.com"
+
+# padrão : verificar se é um e-mail válido
+resultado = re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email)
+
+# exibindo o resultado
+if resultado:
+    print("E-mail válido!")
+else:
+    print("E-mail inválido.")
+```
+
+**Saída esperada**:
+```
+E-mail válido!
+```
+
+---
+
+### removendo caracteres especiais de uma string
+
+```python
+# texto de exemplo
+texto = "Aqui@Tem#Caracteres!Especiais?"
+
+# padrão : remover todos os caracteres não alfanuméricos
+resultado = re.sub(r"\W", "", texto)
+
+# exibindo o resultado
+print("Texto sem caracteres especiais:", resultado)
+```
+
+**Saída esperada**:
+```
+Texto sem caracteres especiais: AquiTemCaracteresEspeciais
+```
+
+---
+
+### validando um número de telefone (formato brasileiro)
+
+```python
+# texto de exemplo
+telefone = "(11) 98765-4321"
+
+# padrão : validar número de telefone brasileiro
+resultado = re.match(r"^\(\d{2}\) \d{5}-\d{4}$", telefone)
+
+# exibindo o resultado
+if resultado:
+    print("Número de telefone válido!")
+else:
+    print("Número de telefone inválido.")
+```
+
+**Saída esperada**:
+```
+Número de telefone válido!
+```
+
+---
+
+## exercícios `log`
+
+<details>
+
+<summary>Lista de Exercícios</summary>
+
+Considere o seguinte repositório [`LogHub`](https://github.com/logpai/loghub). Para *todos* os próximos exercícios, use esse repositório para buscar as informações.
+
+Baixe ele para sua máquina, descompacte-o e coloque-o junto do módulo que irá executar as Expressões Regulares. Use o módulo sys para buscar pelos arquivos `log` e realizar a busca especificada.
+
+1. Exercícios Simples
+    1. Encontre todas as ocorrências da palavra "error" em um arquivo de log.
+    1. Busque por linhas que contenham a palavra "warning".
+    1. Encontre todas as entradas que começam com "INFO".
+    1. Busque por linhas que contenham endereços IP (ex: 192.168.1.1).
+    1. Encontre todas as entradas que contenham a data no formato "YYYY-MM-DD".
+    1. Busque por linhas que terminam com um ponto e vírgula.
+    1. Encontre todas as ocorrências de um código de status HTTP (ex: 200, 404).
+    1. Busque por linhas que contenham palavras que começam com a letra "F".
+    1. Encontre todas as entradas que contêm a palavra "failed".
+    1. Busque por logs que incluem "disk" e "error".
+1. Exercícios Intermediários
+    1. Encontre todas as entradas que contêm um timestamp (ex: "2024-10-07 12:34:56").
+    1. Busque por linhas que contêm nomes de usuários (ex: "user123").
+    1. Encontre todas as mensagens que incluem a palavra "success".
+    1. Busque por entradas que tenham mais de 20 caracteres.
+    1. Encontre todas as linhas que contêm números de telefone (ex: "(123) 456-7890").
+    1. Busque por mensagens que começam com um número.
+    1. Encontre todas as entradas que terminam com um número.
+    1. Busque por logs que contenham a palavra "timeout".
+    1. Encontre todas as entradas que têm o formato de um e-mail.
+    1. Busque por mensagens que contêm a palavra "system" seguida de um número.
+1. Exercícios Avançados
+    1. Encontre todas as entradas que contêm URLs (ex: "http://example.com").
+    1. Busque por linhas que contêm a palavra "exception" seguida de uma descrição.
+    1. Encontre todas as ocorrências de palavras que começam com "net".
+    1. Busque por entradas que têm "user" seguido de um ID numérico.
+    1. Encontre todas as linhas que incluem "failed to" seguidas por uma ação.
+    1. Busque por entradas que têm uma sequência de três letras maiúsculas (ex: "ABC").
+    1. Encontre todas as linhas que têm "login" ou "logout".
+    1. Busque por logs que incluem a palavra "critical".
+    1. Encontre todas as entradas que têm "received" seguido por um número.
+    1. Busque por entradas que contêm um caractere especial (ex: "#").
+1. Exercícios Complexos
+    1. Encontre todas as entradas que contêm um timestamp no formato "YYYY/MM/DD".
+    1. Busque por mensagens que contêm "permission denied" e um nome de usuário.
+    1. Encontre todas as entradas que têm a estrutura de um comando do sistema (ex: "mkdir /path/to/dir").
+    1. Busque por logs que contêm uma sequência de 4 dígitos (ex: "1234").
+    1. Encontre todas as entradas que têm "error" seguido por um código de erro (ex: "error 500").
+    1. Busque por linhas que têm "failed" ou "success", seguidas por uma descrição.
+    1. Encontre todas as entradas que contêm a palavra "network" e um endereço IP.
+    1. Busque por logs que incluem um nome de arquivo (ex: "file.txt").
+    1. Encontre todas as mensagens que contêm "running" e uma descrição de processo.
+    1. Busque por entradas que têm "started" seguido por um nome de serviço.
+1. Exercícios Desafiadores
+    1. Encontre todas as entradas que contêm "user" seguido de um nome e um sobrenome.
+    1. Busque por logs que incluem uma sequência de caracteres que não são letras ou números.
+    1. Encontre todas as linhas que têm um status de processo (ex: "running", "stopped").
+    1. Busque por entradas que contêm a palavra "service" e um número de versão (ex: "v1.2.3").
+    1. Encontre todas as mensagens que incluem "session" e um ID de sessão numérico.
+    1. Busque por logs que contêm "server" seguido por um endereço IP e um status.
+    1. Encontre todas as entradas que têm "disconnected" e um nome de usuário.
+    1. Busque por mensagens que contêm a palavra "restart" seguida de uma data.
+    1. Encontre todas as linhas que têm "data" e um número de bytes.
+    1. Busque por entradas que contêm "attempt" e um número de tentativas.
+1. Exercícios Avançados (continuação)
+    1. Encontre todas as entradas que contêm "process" seguido por um ID numérico.
+    1. Busque por logs que incluem "configuration" e um arquivo de configuração.
+    1. Encontre todas as mensagens que têm "completed" e um timestamp.
+    1. Busque por entradas que contêm "download" e um URL.
+    1. Encontre todas as linhas que têm "upload" e um nome de arquivo.
+    1. Busque por logs que incluem "memory" e um valor numérico.
+    1. Encontre todas as entradas que têm "failed" seguido de um motivo.
+    1. Busque por mensagens que contêm "success" e uma descrição de ação.
+    1. Encontre todas as linhas que têm "version" e um número de versão.
+    1. Busque por entradas que contêm "user" e um endereço de e-mail.
+1. Exercícios Desafiadores (continuação)
+    1. Encontre todas as entradas que têm "unauthorized" e um nome de usuário.
+    1. Busque por logs que incluem "connection" e um status.
+    1. Encontre todas as mensagens que têm "timeout" e um número de segundos.
+    1. Busque por entradas que contêm "session" e um estado (ex: "active", "inactive").
+    1. Encontre todas as linhas que têm "request" e um código de resposta.
+    1. Busque por logs que incluem "cache" e um número.
+    1. Encontre todas as entradas que têm "database" e um nome de banco de dados.
+    1. Busque por mensagens que contêm "disk" e um status.
+    1. Encontre todas as linhas que têm "login" e um timestamp.
+    1. Busque por entradas que contêm "service" e um nome de serviço.
+1. Exercícios Complexos (continuação)
+    1. Encontre todas as entradas que têm "resource" e um valor numérico.
+    1. Busque por logs que incluem "event" e uma descrição de evento.
+    1. Encontre todas as mensagens que têm "error" seguido por um código de erro.
+    1. Busque por entradas que contêm "user" seguido por "logged in".
+    1. Encontre todas as entradas que têm "transaction" e um valor monetário.
+    1. Busque por logs que incluem "network" e "disconnected".
+    1. Encontre todas as mensagens que têm "service" e uma descrição.
+    1. Busque por entradas que contêm "script" seguido por um caminho de arquivo.
+    1. Encontre todas as linhas que têm "health" e um status (ex: "OK", "FAIL").
+    1. Busque por logs que incluem "upgrade" e um número de versão.
+1. Exercícios Avançados (continuação)
+    1. Encontre todas as entradas que contêm "error" e uma descrição do problema.
+    1. Busque por mensagens que têm "system" e um estado (ex: "active", "inactive").
+    1. Encontre todas as entradas que têm "API" e um status de resposta.
+    1. Busque por logs que incluem "timeout" e uma descrição.
+    1. Encontre todas as mensagens que têm "activity" e um timestamp.
+    1. Busque por entradas que contêm "backup" e um caminho de arquivo.
+    1. Encontre todas as linhas que têm "event" e um ID numérico.
+    1. Busque por logs que incluem "notification" e um destinatário.
+    1. Encontre todas as mensagens que têm "service" e um tempo de resposta.
+    1. Busque por entradas que contêm "configuration" e um parâmetro.
+1. Exercícios Desafiadores (continuação)
+    1. Encontre todas as entradas que têm "login" e uma hora.
+    1. Busque por logs que incluem "failed" e uma razão.
+    1. Encontre todas as mensagens que têm "download" e um tamanho de arquivo.
+    1. Busque por entradas que contêm "upload" e um status.
+    1. Encontre todas as linhas que têm "process" e um ID de processo.
+    1. Busque por logs que incluem "restart" e um serviço.
+    1. Encontre todas as entradas que têm "completed" e um tempo.
+    1. Busque por mensagens que têm "finished" e um timestamp.
+    1. Encontre todas as linhas que têm "access" e um ID de acesso.
+    1. Busque por entradas que contêm "status" e um código de status específico.
+
+</details>
