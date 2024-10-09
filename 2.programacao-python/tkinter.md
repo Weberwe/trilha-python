@@ -2301,3 +2301,415 @@ root.mainloop()
 1. **Fechar Menu ao Clicar Fora** : Implemente uma funcionalidade onde o menu é fechado se o usuário clicar fora dele, em qualquer parte da janela.
 
 </details>
+
+## `Frame`
+
+O **widget `Frame`** no Tkinter é um contêiner que serve como uma base para organizar outros widgets em uma janela. Ele é extremamente útil para estruturar layouts complexos, permitindo agrupar vários widgets em uma área específica da interface. Ao usar o `Frame`, pode-se dividir a janela em seções menores e organizar os widgets de maneira mais clara e gerenciável.
+
+Um `Frame` é, essencialmente, uma "caixa" vazia que pode conter outros widgets dentro dela. Pode-se aplicar diferentes métodos de layout (como `pack`, `grid` e `place`) diretamente no `Frame` para organizar como os widgets serão dispostos dentro dele.
+
+A sintaxe para criar um `Frame` no Tkinter é :
+
+```python
+frame = tk.Frame(parent, options...)
+```
+
+- **`parent`** : é a janela ou outro widget onde o `Frame` será inserido; normalmente, usa-se a janela principal (`Tk()`) ou outro `Frame`;
+- **`options`** : são parâmetros opcionais que podem ser usados para personalizar a aparência e comportamento do `Frame`;
+
+**Exemplos :**
+
+```python
+import tkinter as tk
+
+janela = tk.Tk()
+
+# criando um Frame dentro da janela principal
+frame = tk.Frame(janela, bg="lightblue", width=300, height=200)
+frame.pack()
+
+# adicionando widgets dentro do Frame
+label = tk.Label(frame, text="Dentro do Frame", bg="white")
+label.pack(pady=10)
+
+janela.mainloop()
+```
+
+Neste exemplo, o `Frame` com fundo azul claro tem um rótulo dentro dele com um fundo branco. O `Frame` é como uma "caixa" que contém o rótulo.
+
+### parâmetros comuns
+
+Aqui estão alguns dos parâmetros mais usados para configurar o widget `Frame`:
+
+- **`bg`** (`str`) : define a cor de fundo do `Frame`;
+- **`width`** (`int`) : define a largura do `Frame` em pixels;
+- **`height`** (`int`) : define a altura do `Frame` em pixels;
+- **`relief`** (`str`) : define o estilo da borda do `Frame`; os valores comuns incluem `FLAT`, `RAISED`, `SUNKEN`, `GROOVE`, e `RIDGE`;
+- **`bd`** (`int`) : define a largura da borda do `Frame` em pixels;
+
+### exemplo usando vários `Frames`
+
+Para entender melhor a utilidade dos `Frames`, aqui está um exemplo onde dois `Frames` são usados para organizar diferentes widgets na janela:
+
+```python
+import tkinter as tk
+
+janela = tk.Tk()
+
+# frame superior
+frm_superior = tk.Frame(janela, bg="lightgray", width=300, height=150)
+frm_superior.pack(side="top", fill="both", expand=True)
+
+# frame inferior
+frm_inferior = tk.Frame(janela, bg="lightgreen", width=300, height=150)
+frm_inferior.pack(side="bottom", fill="both", expand=True)
+
+# adicionando widgets no Frame superior
+lbl_top = tk.Label(frm_superior, text="Frame Superior", bg="white")
+lbl_top.pack(pady=20)
+
+# adicionando widgets no Frame inferior
+lbl_bottom = tk.Label(frm_inferior, text="Frame Inferior", bg="white")
+lbl_bottom.pack(pady=20)
+
+janela.mainloop()
+```
+
+### layouts mais complexos
+
+Ao usar múltiplos `Frames` dentro de uma mesma janela, pode-se criar layouts mais complexos e organizados, facilitando a divisão da interface em seções funcionais. Por exemplo, pode-se criar uma barra de ferramentas na parte superior de uma janela, uma área de trabalho central e uma barra de status na parte inferior, tudo isso usando `Frames` para manter a organização.
+
+**Exemplo :**
+
+```python
+import tkinter as tk
+
+janela = tk.Tk()
+
+# Frame para a barra de ferramentas
+frm_barra_ferramentas = tk.Frame(janela, bg="gray", height=50)
+frm_barra_ferramentas.pack(side="top", fill="x")
+
+# Frame para a área de trabalho
+frm_principal = tk.Frame(janela, bg="white")
+frm_principal.pack(side="top", fill="both", expand=True)
+
+# Frame para a barra de status
+frm_barra_status = tk.Frame(janela, bg="lightgray", height=30)
+frm_barra_status.pack(side="bottom", fill="x")
+
+# Adicionando widgets à barra de ferramentas
+btn_novo = tk.Button(frm_barra_ferramentas, text="Novo")
+btn_novo.pack(side="left", padx=5, pady=5)
+
+btn_abre = tk.Button(frm_barra_ferramentas, text="Abrir")
+btn_abre.pack(side="left", padx=5, pady=5)
+
+# Adicionando widgets à barra de status
+lbl_status = tk.Label(frm_barra_status, text="Status: OK", bg="lightgray")
+lbl_status.pack(side="left", padx=10)
+
+janela.mainloop()
+```
+
+## exercícios `Frame`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. **Criando um Frame Básico** : Crie uma janela Tkinter com um `Frame` de 300x200 pixels, com fundo azul claro. Dentro desse `Frame`, adicione um rótulo com o texto "Este é um Frame".
+1. **Organizando Widgets com Frames** : Crie uma janela que contenha dois `Frames`. O primeiro `Frame` (superior) deve conter um rótulo com o texto "Frame Superior" e o segundo `Frame` (inferior) deve conter um botão com o texto "Clique Aqui".
+1. **Usando Frames com o Método `pack()`** : Crie uma janela com três `Frames`. O primeiro deve estar no topo, o segundo à esquerda e o terceiro à direita. Use o método `pack()` para posicionar os `Frames` e preencha cada um deles com um rótulo de cores diferentes.
+1. **Aninhando Frames** : Crie uma interface com um `Frame` principal, e dentro dele, crie dois `Frames` aninhados, um à esquerda e outro à direita. No `Frame` da esquerda, adicione três botões dispostos verticalmente, e no `Frame` da direita, adicione um rótulo.
+1. **Layout de Ferramentas e Status** : Crie uma janela com três `Frames`: um para a barra de ferramentas na parte superior, um para a área de trabalho no meio, e outro para a barra de status na parte inferior. Adicione botões na barra de ferramentas e um rótulo na barra de status.
+1. **Usando o Método `grid()` em Frames** : Crie um `Frame` dentro de uma janela e use o método `grid()` para adicionar quatro botões dispostos em uma grade 2x2 dentro do `Frame`.
+1. **Manipulando Cores em Frames** : Crie uma janela com um `Frame` de 400x200 pixels. Divida o `Frame` em quatro seções iguais usando `Frames` aninhados, cada uma com uma cor de fundo diferente (ex: vermelho, azul, verde e amarelo).
+1. **Usando Frames com o Método `place()`** : Crie um `Frame` de 300x200 pixels e use o método `place()` para posicionar três botões dentro desse `Frame`, um em cada canto (exceto o canto inferior direito).
+1. **Alterando o Tamanho do Frame Dinamicamente** : Crie uma janela com dois `Frames` lado a lado. Configure-os para que um deles possa se expandir dinamicamente quando a janela for redimensionada, e o outro mantenha seu tamanho fixo.
+1. **Frame como Contêiner para Entradas** : Crie uma interface que tenha dois `Frames` lado a lado. No primeiro `Frame`, adicione dois campos de entrada (`Entry`) para nome e sobrenome. No segundo `Frame`, adicione um botão que, ao ser clicado, exiba o texto digitado em um rótulo abaixo dos `Frames`.
+
+</summary>
+
+## `TopLevel`
+
+O **`Toplevel`** no Tkinter é um widget usado para criar janelas secundárias dentro de uma aplicação. Ele é muito útil quando se deseja criar novas janelas adicionais que funcionem de forma independente da janela principal (`Tk`), como janelas de diálogo ou pop-ups.
+
+- **janela separada** : quando cria um widget `Toplevel`, ele cria uma nova janela separada que é controlada independentemente da janela principal;
+- **associado à janela principal** : apesar de ser uma janela separada, o `Toplevel` ainda está associado à janela principal da aplicação; se a janela principal for fechada, todas as janelas `Toplevel` também serão fechadas;
+- **personalização** : assim como a janela principal, também é possível adicionar widgets dentro do `Toplevel` e personalizá-lo (definir título, ícones, dimensões, etc.);
+- **uso em diálogos** : é comumente usado para criar janelas de diálogo ou janelas que exibem configurações, informações adicionais ou formulários que são abertos a partir de um menu ou botão na janela principal;
+
+A criação de um `Toplevel` é bastante simples. Veja um exemplo :
+
+```python
+import tkinter as tk
+
+def abrir_nova_janela():
+    nova_janela = tk.Toplevel()
+    nova_janela.title("Janela Secundária")
+    nova_janela.geometry("300x200")
+    label = tk.Label(nova_janela, text="Esta é uma nova janela.")
+    label.pack(pady=20)
+
+# janela principal
+janela_principal = tk.Tk()
+janela_principal.title("Janela Principal")
+janela_principal.geometry("400x300")
+
+btn_abrir = tk.Button(janela_principal, text="Abrir Nova Janela", command=abrir_nova_janela)
+btn_abrir.pack(pady=50)
+
+janela_principal.mainloop()
+```
+
+- **`tk.Toplevel()`** : cria uma nova janela; no exemplo, a função `abrir_nova_janela()` cria uma nova instância de `Toplevel` e adiciona um rótulo dentro dessa nova janela;
+- **`nova_janela.title()`** : define o título da janela secundária;
+- **`nova_janela.geometry()`** : define as dimensões da nova janela; aqui, o tamanho é 300x200 pixels;
+- **`btn_abrir`** : um botão na janela principal que, ao ser clicado, abre uma nova janela `Toplevel`;
+
+### propriedades e métodos úteis
+
+Assim como a janela principal, a instância do `Toplevel` suporta várias propriedades e métodos :
+
+- **`title(título)`** : define o título da nova janela;
+- **`geometry(dimensão)`** : define as dimensões da janela no formato `"largura x altura"`;
+- **`transient(parent)`** : define a janela `Toplevel` como dependente de outra janela; isso é útil quando deseja que a janela secundária esteja sempre sobre a janela principal;
+- **`withdraw()`** : oculta temporariamente a janela sem destruí-la;
+- **`deiconify()`** : traz de volta uma janela oculta com `withdraw()`;
+- **`destroy()`** : fecha e destrói a janela secundária;
+- **`resizable(largura, altura)`** : define se a janela pode ser redimensionada. Use `True` ou `False` para permitir ou desabilitar o redimensionamento horizontal e vertical;
+- **`iconbitmap(caminho_do_ícone)`** : define um ícone personalizado para a janela;
+
+**Exemplo :**
+
+Aqui está um exemplo mais avançado que usa algumas das propriedades mencionadas :
+
+```python
+import tkinter as tk
+
+def abrir_janela_customizada():
+    nova_janela = tk.Toplevel()
+    nova_janela.title("Configurações")
+    nova_janela.geometry("400x250")
+
+    # define que a janela não pode ser redimensionada
+    nova_janela.resizable(False, False)
+
+    # define um ícone (arquivo .ico) para a janela
+    # nova_janela.iconbitmap("icone.ico")
+
+    # adiciona widgets à nova janela
+    label = tk.Label(nova_janela, text="Ajuste suas configurações aqui:")
+    label.pack(pady=10)
+
+    btn_fechar = tk.Button(nova_janela, text="Fechar", command=nova_janela.destroy)
+    btn_fechar.pack(pady=10)
+
+# janela principal
+janela_principal = tk.Tk()
+janela_principal.title("Janela Principal")
+janela_principal.geometry("400x300")
+
+btn_abrir = tk.Button(janela_principal, text="Abrir Configurações", command=abrir_janela_customizada)
+btn_abrir.pack(pady=50)
+
+janela_principal.mainloop()
+```
+
+- **restrições de redimensionamento** : no exemplo, a função `resizable(False, False)` é usada para impedir que o usuário redimensione a janela;
+- **ícone personalizado** : o método comentado `iconbitmap()` definiria um ícone para a janela secundária;
+- **botão de fechar** : um botão na janela secundária usa o método `destroy()` para fechá-la;
+
+### vantagens
+
+1. **organização de interface** : ajuda a manter a interface organizada, abrindo janelas secundárias para configurações ou informações extras;
+1. **independência** : as janelas `Toplevel` são independentes, permitindo que o usuário interaja com várias janelas sem fechar a principal;
+1. **flexibilidade** : permite criar caixas de diálogo personalizadas, configurações ou outras janelas temporárias que não afetam o fluxo da janela principal;
+
+### `Tk` vs `Toplevel`
+
+- **`Tk()`** : representa a janela principal; somente uma instância de `Tk` pode ser criada em uma aplicação;
+- **`Toplevel()`** : usado para criar janelas secundárias; podem ser criadas várias instâncias de `Toplevel`;
+
+## exercícios `TopLevel`
+
+<details>
+<summary>Lista de Exercícios</summary>
+
+1. Crie uma janela principal com um botão. Quando o botão for clicado, abra uma nova janela usando o widget `Toplevel`, que contenha um rótulo com o texto "Bem-vindo à nova janela".
+1. Modifique o exercício anterior para que a nova janela tenha um botão "Fechar", que, quando clicado, feche apenas a nova janela sem fechar a janela principal.
+1. Crie uma janela principal com dois botões. O primeiro botão abre uma nova janela com um fundo azul, e o segundo botão abre outra janela com um fundo verde. Cada nova janela deve ser um `Toplevel`.
+1. Crie uma janela principal com um botão que, quando clicado, abra uma nova janela `Toplevel`. Adicione dois campos de entrada na nova janela e um botão que, ao ser clicado, exiba a soma dos valores digitados nos campos de entrada.
+1. Crie uma janela principal com um botão "Abrir Configurações". Ao clicar nesse botão, uma nova janela `Toplevel` deve ser aberta. A nova janela deve conter um campo de entrada para o usuário inserir o nome e um botão "Salvar". Quando o botão "Salvar" for clicado, o nome deve ser exibido na janela principal.
+1. Crie uma janela principal que tenha um botão "Abrir Janela de Ajuda". Ao clicar nesse botão, abra uma nova janela `Toplevel` que contenha um texto explicativo (usando o widget `Label`) e um botão "Fechar" para fechar a janela de ajuda.
+1. Crie uma janela principal que tenha um botão "Abrir Janela Temporária". Ao clicar nesse botão, uma nova janela `Toplevel` deve ser aberta. Essa janela deve desaparecer automaticamente após 5 segundos, usando o método `after()` do Tkinter.
+1. Crie uma janela principal que abra uma nova janela `Toplevel` ao clicar em um botão. Essa nova janela deve ser redimensionável, mas deve ter um tamanho mínimo de 300x200 pixels e um tamanho máximo de 600x400 pixels.
+1. Crie uma janela principal com um botão "Abrir Caixa de Diálogo". Ao clicar nesse botão, uma nova janela `Toplevel` deve ser aberta e configurada para que ela sempre esteja sobre a janela principal (usando o método `transient()`).
+1. Crie uma janela principal com um botão "Abrir Janelas". Ao clicar nesse botão, uma nova janela `Toplevel` deve ser aberta. Cada vez que o botão for clicado, a nova janela deve ter um tamanho, cor de fundo e posição diferentes, usando o método `geometry()` para ajustar a posição e dimensões.
+
+</details>
+
+## herança no tkinter
+
+A herança no Tkinter segue os mesmos princípios da herança em qualquer outro código Python, pois o Tkinter é uma biblioteca que se integra com o paradigma de orientação a objetos (OO). Isso significa que pode-se criar classes personalizadas que herdam de classes base do Tkinter, como `Tk`, `Frame`, `Button`, entre outras, e então personalizar ou estender suas funcionalidades.
+
+### como usar
+
+1. **herança da classe `Tk`** : quando se deseja criar uma janela personalizada que tenha comportamento adicional ou diferente, pode criar uma classe que herde de `Tk`, a classe que cria a janela principal;
+
+1. **herança da classe `Frame`** : criar um container ou seção personalizada dentro de uma janela do Tkinter, herdar da classe `Frame` é uma prática comum; isso permite que se crie interfaces modulares e reutilizáveis;
+
+**Exemplo :**
+
+Neste exemplo, uma classe personalizada é criada e ela herda de `Tk`, a classe que representa a janela principal do Tkinter. A subclasse poderá configurar a janela de maneira personalizada e adicionar widgets:
+
+```python
+import tkinter as tk
+
+# criando uma subclasse que herda de Tk
+class MinhaJanela(tk.Tk):
+    def __init__(self):
+        # inicializa a classe Tk (janela principal)
+        super().__init__()
+
+        # configurações da janela
+        self.title("Minha Janela Personalizada")
+        self.geometry("300x200")
+
+        # adicionando um rótulo à janela
+        self.label = tk.Label(self, text="Bem-vindo à janela personalizada!")
+        self.label.pack(pady=20)
+
+        # adicionando um botão à janela
+        self.button = tk.Button(self, text="Clique aqui", command=self.alterar_texto)
+        self.button.pack(pady=10)
+
+    def alterar_texto(self):
+        # método que altera o texto do rótulo
+        self.label.config(text="Texto alterado!")
+
+# instanciando e executando a janela
+if __name__ == "__main__":
+    janela = MinhaJanela()
+    janela.mainloop()
+```
+
+- `MinhaJanela` herda de `Tk`, então ela se comporta como uma janela Tkinter;
+- no método `__init__`, o método `super().__init__()` é usado para garantir que o inicializador da classe base (`Tk`) seja chamado;
+- um `Label` e um `Button` são adicionados à janela, e um método `alterar_texto()` é chamado quando o botão é clicado;
+
+**Exemplo de herança de `Frame`**
+
+Neste exemplo, uma subclasse personalizada que herda de `Frame` será criada. Isso permite que um "sub-componente" possa ser criado e inserido em várias janelas.
+
+```python
+import tkinter as tk
+
+# subclasse herdando de Frame
+class MinhaFrame(tk.Frame):
+    def __init__(self, parent):
+        # inicializando a classe Frame
+        super().__init__(parent)
+
+        # adicionando widgets ao frame
+        self.label = tk.Label(self, text="Este é um frame personalizado")
+        self.label.pack(pady=10)
+
+        self.entry = tk.Entry(self)
+        self.entry.pack(pady=5)
+
+        self.button = tk.Button(self, text="Enviar", command=self.exibir_texto)
+        self.button.pack(pady=5)
+
+    def exibir_texto(self):
+        # exibe o texto inserido no campo de entrada
+        texto = self.entry.get()
+        self.label.config(text=f"Texto inserido: {texto}")
+
+# criando uma janela principal e adicionando o frame personalizado
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("Exemplo com Frame Personalizado")
+
+    # instancia o frame personalizado e o insere na janela principal
+    frame = MinhaFrame(root)
+    frame.pack(padx=20, pady=20)
+
+    root.mainloop()
+```
+
+- `MinhaFrame` herda de `Frame`, então ela pode ser usada como um container;
+- no método `__init__`, a classe base `Frame` é inicializada com `super().__init__(parent)` para definir o frame em um widget pai (no caso, a janela principal);
+- widgets são adicinados ao frame como rótulos, campos de entrada e botões, e um método `exibir_texto()` é usado para exibir o texto digitado no `Entry` dentro do `Label`;
+
+### benefícios da herança no tkinter
+
+1. **modularidade** : ao criar classes baseadas em `Tk` ou `Frame`, pode-se dividir sua interface gráfica em partes menores e mais gerenciáveis, cada uma com sua própria lógica e comportamento;
+1. **reutilização de código** : se precisar usar a mesma interface (ou parte dela) em diferentes janelas ou programas, pode simplesmente reutilizar a classe herdada;
+1. **customização fácil** : métodos podem ser sobrescritos ou estendidos para adicionar comportamento novo, sem modificar a classe base;
+
+**Exemplo Avançado**
+
+Aqui está um exemplo que cria uma janela com dois frames, cada um implementado com uma classe que herda de `Frame`:
+
+```python
+import tkinter as tk
+
+# frame para entrada de dados
+class EntradaFrame(tk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        # widgets do frame de entrada
+        self.label = tk.Label(self, text="Digite algo:")
+        self.label.pack(padx=5, pady=5)
+
+        self.entry = tk.Entry(self)
+        self.entry.pack(padx=5, pady=5)
+
+        self.button = tk.Button(self, text="Enviar", command=self.enviar)
+        self.button.pack(padx=5, pady=5)
+
+    def enviar(self):
+        texto = self.entry.get()
+        self.master.resultado_frame.atualizar_resultado(texto)
+
+# frame para exibir o resultado
+class ResultadoFrame(tk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        # widgets do frame de resultado
+        self.label = tk.Label(self, text="Resultado:")
+        self.label.pack(padx=5, pady=5)
+
+        self.resultado_label = tk.Label(self, text="")
+        self.resultado_label.pack(padx=5, pady=5)
+
+    def atualizar_resultado(self, texto):
+        self.resultado_label.config(text=texto)
+
+# janela principal
+class JanelaPrincipal(tk.Tk):
+    def __init__(self):
+        super().__init__()
+
+        self.title("Exemplo com Vários Frames")
+        self.geometry("300x200")
+
+        # cria os frames e os coloca na janela principal
+        self.entrada_frame = EntradaFrame(self)
+        self.entrada_frame.pack(pady=10)
+
+        self.resultado_frame = ResultadoFrame(self)
+        self.resultado_frame.pack(pady=10)
+
+# instanciando a janela principal
+if __name__ == "__main__":
+    app = JanelaPrincipal()
+    app.mainloop()
+```
+
+- `EntradaFrame` é responsável por capturar dados do usuário;
+- `ResultadoFrame` exibe os resultados processados;
+- a classe principal `JanelaPrincipal` organiza e gerencia os frames;
