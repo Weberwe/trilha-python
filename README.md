@@ -10,7 +10,8 @@ Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
-| 35 | 07/09/2024 | [expressões regulares - parte 2](2.programacao-python/expressoes-regulares.md#sequências) |
+| 36 | 08/10/2024 | [sql](2.programacao-python/sql.md)<br>[pyinstaller](2.programacao-python/pyinstaller.md) |
+| 35 | 07/10/2024 | [expressões regulares - parte 2](2.programacao-python/expressoes-regulares.md#sequências) |
 | 34 | 03/10/2024 | tkinter<br>[método `trace()`](2.programacao-python/tkinter.md#método-trace)<br>[messagebox](2.programacao-python/tkinter.md#messagebox)<br>[Widget `Menu`](2.programacao-python/tkinter.md#menu)<br>[avaliação - parte 7](2.programacao-python/avaliacao.md#interface) |
 | 33 | 02/10/2024 | [função lambda](2.programacao-python/funcoes.md#lambda)<br>tkinter - parte 2<br>[callback](2.programacao-python/tkinter.md#callback) [tkinter e `lambda`](2.programacao-python/tkinter.md#tkinter-e-lambda) |
 | 32 | 01/10/2024 | [tkinter](2.programacao-python/tkinter.md) |
