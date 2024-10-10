@@ -2,9 +2,15 @@
 
 Repositório com o material de Python para a Trilha 4 - Desenvolvimento Python.
 
+## 3 - Django
+
+| Aula | Dia | Arquivo |
+| :----: | :----: | :----: |
+| 01 | 10/10/2024 | Django<br>[introdução](3.django/1.introducao.md)<br>[urls e aplicativos](3.django/2.urls-aplicativos.md) |
+
 ## 2 - Programação Python
 
-Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em ***10/10/2024***.
+Curso com duração de 256 horas, totalizando 39 aulas. Previsão de término em ***11/10/2024***.
 
 [avaliação](2.programacao-python/avaliacao.md)
 
