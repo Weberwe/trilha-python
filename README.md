@@ -6,6 +6,7 @@ Repositório com o material de Python para a Trilha 4 - Desenvolvimento Python.
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 03 | 14/11/2024 | [dividindo `HTML`s](3.django/4.colisao-estaticos.md)
 | 02 | 11/11/2024 | [Colisão de Nomes](3.django/4.colisao-estaticos.md)
 | 01 | 10/10/2024 | Django<br>[introdução](3.django/1.introducao.md)<br>[urls e aplicativos](3.django/2.urls-aplicativos.md)<br>[html](3.django/3.html.md) |
 
