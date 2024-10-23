@@ -6,6 +6,7 @@ Repositório com o material de Python para a Trilha 4 - Desenvolvimento Python.
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 09 | 22/10/2024 | [git](3.django/git.md) |
 | 08 | 21/10/2024 | [modelos](3.django/9.modelos.md#django) |
 | 07 | 18/10/2024 | [`Pillow`](3.django/8.pillow.md#pillow)<br>[Projeto](3.django/projeto.md) |
 | 06 | 17/10/2024 | [`tag if`](3.django/7.tagif-faker-heranca.md#tag-if)<br>[`Faker`](3.django/7.tagif-faker-heranca.md#faker)<br>[herança de templates](3.django/7.tagif-faker-heranca.md#herança-de-templates) |
