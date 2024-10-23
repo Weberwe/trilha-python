@@ -6,6 +6,7 @@ Repositório com o material de Python para a Trilha 4 - Desenvolvimento Python.
 
 | Aula | Dia | Arquivo |
 | :----: | :----: | :----: |
+| 10 | 23/10/2024 | [pip](3.django/10.pip-busca.md#pip)<br>[busca](3.django/10.pip-busca.md#formulário-de-busca) |
 | 09 | 22/10/2024 | [git](3.django/git.md) |
 | 08 | 21/10/2024 | [modelos](3.django/9.modelos.md#django) |
 | 07 | 18/10/2024 | [`Pillow`](3.django/8.pillow.md#pillow)<br>[Projeto](3.django/projeto.md) |
